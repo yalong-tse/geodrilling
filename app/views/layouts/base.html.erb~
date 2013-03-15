@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>中国铁道科学研究 </title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="controller-projects action-show">
+  <div id="wrapper">
+    <div id="top-menu">
+      <div id="header">
+        <div id="logo"><a href="/">projects</a></div>
+        <div id="top-menu-items">
+          <div id="search">
+            <!-- 搜索框-->
+          </div> <!-- search -->
+
+          <ul id="account-nav">
+            <li><a href="/" class="home">主页</a></li>
+            <li class="drop-down">
+            <a href="/projects" class="projects"> 合同</a>
+            <ul style="display:none">
+              <li> <a href="/projects" class="projects separator">所有的项目</a></li>
+            </ul>
+            </li> <!-- drop-down -->
+
+            <li><a href="/help" class="help">?</a></li>
+            <li><a href="/account/register">注册</a></li>
+            <li id="login-menu" class="drop-down last-child">
+              <a href="/login" class="login">登录 </a>
+              <div id="nav-login" style="display:none">
+              <div id="nav-login-content">
+                <form action="/login" method="post">
+                  <div style="margin:0;padding:0;display:inline">
+                    <table>
+                      <tr>
+                        <td><label for="useranme-pulldown">登录名</label></td>
+                        <td><label for="password-pulldown">密码</label></td>
+                      </tr>
+                      <tr>
+                        <td><input id="username-pulldown" name="username" tabindex="1" type="text"/></td>
+                        <td><input id="password-pulldown" name="password" tabindex="1" type="password"/></td>
+                      </tr>
+                    </table>
+                    <div id="optional_login_fields" style="top=10px;white-space:nowrap">
+                      <a href="/account/lost_password" tabindex="1">忘记密码</a>
+                      <a href="/account/register"tabindex="1">注册</a>
+                    </div> <!--end of optional -->
+                </form>
+              </div> <!-- nav-login-content-->
+            </div> <!--nav-login -->
+            </li> <!-- login-menu li -->
+          </ul>
+        </div> <!-- end of top-menu-items -->
+      </div> <!-- end of header -->
+
+      <div id="breadcrumb">
+        轨道交通PIS系统
+      </div>
+    </div> <!-- end of top-menu -->
+
+    <div id="main" class="">
+      <div id="side-container">
+        <div id="main-menu">
+          <ul>
+            <li><a href="/project/pis" class="overview selected">合同管理</a></li>
+            <li> <a href="/" class="activity">人员管理</a></li>
+            <li> <a href="#" class="news">物资管理</a>
+              <ul class="menu-children">
+                <li><a href="" class="new-news">添加物资</a></li>
+              </ul>
+            </li>
+            <li><a href="" class="news">设备管理</a>
+              <ul class="menu-children">
+                <li><a href="#" class="new-news">添加设备</a></li>
+              </ul>
+            </li>
+            <li><a href="" class="news">归档管理</a>
+              <ul class="menu-children">
+              </ul>
+            </li>
+          </ul>
+        </div><!-- main menu -->
+        <div id="sidebar">
+        </div>
+      </div>
+      <script type="text/javascript">
+        //<![CDATA[
+      jQuery.menu_expand({menuItem:'.projects'});
+      //]]>
+      </script>
+      <!-- end of side-container -->
+      <div class="" id="content">
+        <div class="contextual">
+          <%= yield %>
+        </div>
+        </div> <!-- content -->
+      </div> <!-- end of main -->
+
+
+      <div id="footer">
+        <div class="bgl"><div class="bgr">
+            powered by 地质勘探研究所
+        </div></div>
+      </div> <!-- footer-->
+
+      <div id="ajax-indicator" style="display:none"><span>载入中...</span></div>
+      <div id="dialog-window" style="display:none"></div>
+
+    </div> <!-- end of wrapper -->
+
+</body>
+</html>
