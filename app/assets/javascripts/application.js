@@ -13,14 +13,4 @@
 //= require jquery.min
 //= require jquery-ui.min
 //= require jquery.menu_expand
-//= require controls
-//= require dragdrop
-//= require context_menu
-//= require context_menu.jquery
-//= require main
-//= require modernizr.min
-//= require prototype
-//= require select_list_move
-//= require jstoolbar/jstoolbar
-//= require jstoolbar/textile
-//= require jstoolbar/lang/jstoolbar-zh
+//= require bootstrap
