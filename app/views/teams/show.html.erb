@@ -1,25 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h3>勘探队详情</h3>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @team.name %>
-</p>
-
-<p>
-  <b>Leader:</b>
-  <%= @team.leader %>
-</p>
-
-<p>
-  <b>Contact:</b>
-  <%= @team.contact %>
-</p>
-
-<p>
-  <b>Memberquantity:</b>
-  <%= @team.memberquantity %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong>队伍名称:</strong></dt>
+  <dd><%= @team.name %></dd>
+  <dt><strong>队伍领队:</strong></dt>
+  <dd><%= @team.leader %></dd>
+  <dt><strong>联系方式:</strong></dt>
+  <dd><%= @team.contact %></dd>
+  <dt><strong>成员数量:</strong></dt>
+  <dd><%= @team.memberquantity %></dd>
+</dl>
 
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="form-actions">
+  <%= link_to '编辑', edit_team_path(@team) ,:class=>"btn"%> |
+  <%= link_to '返回', teams_path ,:class=>"btn btn-primary"%>
+</div>
+<%=setActiveTab("_teams") %>

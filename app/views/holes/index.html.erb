@@ -17,14 +17,13 @@
     <td><%= hole.diameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to 'Show', hole %>,
-    <%= link_to 'Edit', edit_hole_path(hole) %>,
-    <%= link_to 'Destroy', hole, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '详情', hole %>|
+    <%= link_to '删除', hole, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to '新增钻孔', new_hole_path,:class=>"btn" %>
+<%= link_to '新增钻孔', new_hole_path,:class=>"btn btn-primary" %>
 <%=setActiveTab("_holes") %>

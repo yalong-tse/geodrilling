@@ -1,35 +1,25 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h3>设备详情</h3>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @equipment.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong>设备名称:</strong></dt>
+  <dd><%= @equipment.name %></dd>
+  <dt><strong>设备分类:</strong></dt>
+  <dd><%= @equipment.category %></dd>
+  <dt><strong>设备数量:</strong></dt>
+  <dd><%= @equipment.quantity %></dd>
+  <dt><strong>保管人:</strong></dt>
+  <dd><%= @equipment.keeper %></dd>
+  <dt><strong>借用人:</strong></dt>
+  <dd><%= @equipment.borrower %></dd>
+  <dt><strong>使用人:</strong></dt>
+  <dd><%= @equipment.usage %></dd>
+</dl>
 
-<p>
-  <b>Category:</b>
-  <%= @equipment.category %>
-</p>
-
-<p>
-  <b>Quantity:</b>
-  <%= @equipment.quantity %>
-</p>
-
-<p>
-  <b>Keeper:</b>
-  <%= @equipment.keeper %>
-</p>
-
-<p>
-  <b>Borrower:</b>
-  <%= @equipment.borrower %>
-</p>
-
-<p>
-  <b>Usage:</b>
-  <%= @equipment.usage %>
-</p>
-
-
-<%= link_to 'Edit', edit_equipment_path(@equipment) %> |
-<%= link_to 'Back', equipment_index_path %>
+<div class="form-actions">
+  <%= link_to '编辑', edit_equipment_path(@equipment),:class=>"btn" %> |
+  <%= link_to '返回', equipment_index_path ,:class=>"btn btn-primary" %>
+</div>
+<%= setActiveTab("_equipments") %>

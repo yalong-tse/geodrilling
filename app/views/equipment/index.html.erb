@@ -15,15 +15,14 @@
 
 <% @equipment.each do |equipment| %>
   <tr>
-    <td><%= equipment.name %></td>
+    <td><%= link_to equipment.name , equipment %></td>
     <td><%= equipment.category %></td>
     <td><%= equipment.quantity %></td>
     <td><%= equipment.keeper %></td>
     <td><%= equipment.borrower %></td>
     <td><%= equipment.usage %></td>
-    <td><%= link_to 'Show', equipment %>,
-    <%= link_to 'Edit', edit_equipment_path(equipment) %>,
-    <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '详情', equipment %> |
+    <%= link_to '删除', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

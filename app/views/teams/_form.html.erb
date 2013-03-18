@@ -12,30 +12,32 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name,:class=>"control-label" %>
+    <%= f.label "勘探队名称",:class=>"control-label" %>
     <div class="controls">
     <%= f.text_field :name, :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :leader,:class=>"control-label" %>
+    <%= f.label "勘探队领队",:class=>"control-label" %>
     <div class="controls">
     <%= f.text_field :leader, :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :contact,:class=>"control-label" %>
+    <%= f.label "联系方式",:class=>"control-label" %>
     <div class="controls">
     <%= f.text_field :contact, :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :memberquantity,:class=>"control-label" %>
+    <%= f.label "成员数量",:class=>"control-label" %>
     <div class="controls">
     <%= f.number_field :memberquantity, :class=>"text_field" %>
     </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "新增队伍" , :class=>"btn btn-primary" %> |
+    <%= link_back %>
   </div>
 <% end %>
+<%=setActiveTab("_teams") %>

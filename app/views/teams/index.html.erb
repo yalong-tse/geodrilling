@@ -12,13 +12,11 @@
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.name %></td>
+    <td><%= link_to team.name ,team_path(team) %></td>
     <td><%= team.leader %></td>
     <td><%= team.contact %></td>
     <td><%= team.memberquantity %></td>
-    <td><%= link_to 'Show', team %>,
-    <%= link_to 'Edit', edit_team_path(team) %>,
-    <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '删除', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
@@ -27,4 +25,3 @@
 
 <%= link_to '新增队伍', new_team_path ,:class=>"btn" %>
 <%=setActiveTab("_teams") %>
-</script>
