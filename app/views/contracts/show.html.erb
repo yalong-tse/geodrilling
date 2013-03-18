@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @contract.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @contract.content %>
+</p>
+
+<p>
+  <b>Signdate:</b>
+  <%= @contract.signdate %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @contract.startdate %>
+</p>
+
+<p>
+  <b>Finishdate:</b>
+  <%= @contract.finishdate %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @contract.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_contract_path(@contract) %> |
+<%= link_to 'Back', contracts_path %>

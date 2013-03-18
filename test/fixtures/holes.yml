@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  deep: 1
+  diameter: 1
+  startdate: 2013-03-15
+  finishdate: 2013-03-15
+
+two:
+  deep: 1
+  diameter: 1
+  startdate: 2013-03-15
+  finishdate: 2013-03-15

@@ -11,13 +11,53 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311054814) do
+ActiveRecord::Schema.define(:version => 20130315132256) do
+
+  create_table "contracts", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.date     "signdate"
+    t.date     "startdate"
+    t.date     "finishdate"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "equipment", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.integer  "quantity"
+    t.string   "keeper"
+    t.string   "borrower"
+    t.integer  "usage"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "holes", :force => true do |t|
+    t.integer  "deep"
+    t.integer  "diameter"
+    t.date     "startdate"
+    t.date     "finishdate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "materials", :force => true do |t|
     t.string   "name"
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.string   "leader"
+    t.string   "contact"
+    t.integer  "memberquantity"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end

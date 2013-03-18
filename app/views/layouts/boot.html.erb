@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GeoDrilling</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style>
+      body {
+          padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+  </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Geodrilling</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li id="_contract"><a href="/contracts">合同管理</a></li>
+          <li id="_holes"><a href="/holes" onclick="clickurl(this)">钻孔管理</a></li>
+          <li id="_teams"><a href="/teams">人员管理</a></li>
+          <li id="_equipments"><a href="/equipment">设备管理</a></li>
+          <li id="_schedule"><a href="/schedule">进度管理</a></li>
+          <li id="_archive"><a href="/archives">归档管理</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+      <%= yield %>
+  </div><!--/row-->
+  <hr>
+
+  <footer>
+    <p style="text-align: center;">&copy; 大柳树梦之队 2013</p>
+  </footer>
+
+</div>
+</body>
+</html>
+<script language="text/javascript">
+  function clickurl(tag)
+  {
+    $(tag).parent.attr(class,"active");
+  }
+</script>

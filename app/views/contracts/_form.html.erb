@@ -1,0 +1,53 @@
+<%= form_for @contract, :html=>{:class=>"form-horizontal"}  do |f|  %>
+  <% if @contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% @contract.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "合同名称:" ,:class=>"control-label" %>
+    <div class="controls">
+    <%= f.text_field :name , :class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "合同内容" , :class=>"control-label" %>
+    <div class="controls">
+    <%= f.text_field :content, :class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "签订日期", :class=>"control-label" %>
+    <div class="controls">
+    <%= f.date_select :signdate ,:class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "开始日期", :class=>"control-label" %>
+    <div class="controls">
+    <%= f.date_select :startdate, :class=>"text_field"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "结束日期", :class=>"control-label"%>
+    <div class="controls">
+    <%= f.date_select :finishdate, :class=>"text_field"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "合同状态",:class=>"control-label" %>
+    <div class="controls">
+    <%= f.number_field :status,:class=>"text_field" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="page-header">
+<h3>合同管理</h3>
+</div>
+<table class="table table-striped">
+  <tr>
+    <th>合同名称</th>
+    <th>合同内容</th>
+    <th>签订时间</th>
+    <th>签订日期</th>
+    <th>完成日期</th>
+    <th>合同状态</th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+    <td><%= contract.name %></td>
+    <td><%= contract.content %></td>
+    <td><%= contract.signdate %></td>
+    <td><%= contract.startdate %></td>
+    <td><%= contract.finishdate %></td>
+    <td><%= contract.status %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新增合同', new_contract_path ,:class=>"btn btn-primary" %>
+<%=setActiveTab("_contract") %>

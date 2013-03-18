@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  content: MyString
+  signdate: 2013-03-15
+  startdate: 2013-03-15
+  finishdate: 2013-03-15
+  status: 1
+
+two:
+  name: MyString
+  content: MyString
+  signdate: 2013-03-15
+  startdate: 2013-03-15
+  finishdate: 2013-03-15
+  status: 1

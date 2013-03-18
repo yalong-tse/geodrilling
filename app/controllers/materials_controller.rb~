@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  layout 'base'
   # GET /materials
   # GET /materials.json
   def index

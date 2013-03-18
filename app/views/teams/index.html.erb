@@ -1,0 +1,30 @@
+<div class="page-header">
+<h3>人员管理</h3>
+</div>
+<table class="table table-striped">
+  <tr>
+    <th>勘探队</th>
+    <th>领队</th>
+    <th>联系方式</th>
+    <th>成员数量</th>
+    <th>操作</th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= team.name %></td>
+    <td><%= team.leader %></td>
+    <td><%= team.contact %></td>
+    <td><%= team.memberquantity %></td>
+    <td><%= link_to 'Show', team %>,
+    <%= link_to 'Edit', edit_team_path(team) %>,
+    <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新增队伍', new_team_path ,:class=>"btn" %>
+<%=setActiveTab("_teams") %>
+</script>

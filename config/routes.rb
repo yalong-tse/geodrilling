@@ -1,7 +1,19 @@
 Geodrilling::Application.routes.draw do
+  resources :teams
+
+
+  resources :equipment
+
+
+  resources :holes
+
+
+  resources :contracts
+
+
   resources :materials
 
-
+  root :to=>"contracts#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

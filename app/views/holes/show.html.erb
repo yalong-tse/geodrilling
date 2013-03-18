@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Deep:</b>
+  <%= @hole.deep %>
+</p>
+
+<p>
+  <b>Diameter:</b>
+  <%= @hole.diameter %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @hole.startdate %>
+</p>
+
+<p>
+  <b>Finishdate:</b>
+  <%= @hole.finishdate %>
+</p>
+
+
+<%= link_to 'Edit', edit_hole_path(@hole) %> |
+<%= link_to 'Back', holes_path %>
