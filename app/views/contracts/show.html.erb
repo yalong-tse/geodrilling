@@ -18,6 +18,7 @@
 </dl>
 <div class="form-actions">
   <%= link_to '编辑', edit_contract_path(@contract) ,:class=>"btn"%> |
+  <%= link_to '增加钻孔', new_contract_hole_path(@contract) ,:class=>"btn"%> |
   <%= link_to '返回', contracts_path,:class=>"btn btn-primary" %>
 </div>
 <%= setActiveTab("_contract") %>

@@ -26,6 +26,10 @@ class HolesController < ApplicationController
   # GET /holes/new.json
   def new
     @hole = Hole.new
+    #@hole.contract = params[:contract_id]
+    #logger.info "------------------------------------"
+    #logger.info params[:contract_id]
+    @contract = Contract.find(params[:contract_id]) if params[:contract_id]
 
     respond_to do |format|
       format.html # new.html.erb

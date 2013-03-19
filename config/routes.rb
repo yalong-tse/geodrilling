@@ -5,10 +5,12 @@ Geodrilling::Application.routes.draw do
   resources :equipment
 
 
-  resources :holes
+  #resources :holes
 
 
-  resources :contracts
+  resources :contracts do
+    resources :holes
+  end
 
 
   resources :materials
