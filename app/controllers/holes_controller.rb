@@ -15,6 +15,7 @@ class HolesController < ApplicationController
   # GET /holes/1.json
   def show
     @hole = Hole.find(params[:id])
+    logger.info "++++++++++++++++++++++++++++++++"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,6 +31,7 @@ class HolesController < ApplicationController
     #logger.info "------------------------------------"
     #logger.info params[:contract_id]
     @contract = Contract.find(params[:contract_id]) if params[:contract_id]
+    @hole.contract = @contract if @contract
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,11 +48,13 @@ class HolesController < ApplicationController
   # POST /holes.json
   def create
     @hole = Hole.new(params[:hole])
-
+    logger.info "the hole info is #{@hole}"
+    logger.info "the contract id is #{params[:contract_id]}"
+    @hole.contract_id = params[:contract_id]
     respond_to do |format|
       if @hole.save
-        format.html { redirect_to @hole, notice: 'Hole was successfully created.' }
-        format.json { render json: @hole, status: :created, location: @hole }
+        format.html { redirect_to :controller=>'holes',:action=>'show',:id=>@hole.id , notice: 'Hole was successfully created.' }
+        format.json { render json: @hole.contract, status: :created, location: @hole }
       else
         format.html { render action: "new" }
         format.json { render json: @hole.errors, status: :unprocessable_entity }

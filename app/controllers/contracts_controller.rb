@@ -19,6 +19,7 @@ class ContractsController < ApplicationController
   # GET /contracts/1.json
   def show
     @contract = Contract.find(params[:id])
+    @holes = Hole.where("contract_id =?",@contract.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,13 +46,7 @@ class ContractsController < ApplicationController
   # POST /contracts
   # POST /contracts.json
   def create
-    logger.info "===================================="
-    logger.info "===================================="
     @contract = Contract.new(params[:contract])
-    logger.info "===========#{@contract}"
-    logger.info params[:contact]
-    logger.info "===================================="
-    logger.info "===========#{@contract}"
     @contract.save
 
     respond_to do |format|
