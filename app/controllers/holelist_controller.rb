@@ -1,7 +1,7 @@
 class HolelistController < ApplicationController
   layout 'boot'
   def index
-    @holes = Hole.all
+    @holes = Hole.find(:all,:order=>"startdate desc")
 
     respond_to do |format|
       format.html # index.html.erb
