@@ -1,0 +1,27 @@
+<div class="page-header">
+<h3>钻孔信息</h3>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>深度</th>
+    <th>孔径</th>
+    <th>开始日期</th>
+    <th>结束日期</th>
+    <th>所属合同</th>
+  </tr>
+
+<% @holes.each do |hole| %>
+  <tr>
+    <td><%= hole.deep %></td>
+    <td><%= hole.diameter %></td>
+    <td><%= hole.startdate %></td>
+    <td><%= hole.finishdate %></td>
+    <td><%= hole.contract.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%=setActiveTab("_holes") %>

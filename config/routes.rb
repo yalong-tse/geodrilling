@@ -1,4 +1,6 @@
 Geodrilling::Application.routes.draw do
+  get "holelist/index"
+
   resources :teams
 
 
