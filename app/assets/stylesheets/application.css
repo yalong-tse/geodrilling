@@ -9,8 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require fullcalendar
+ *= require fullcalendar.print
+ *= require ui-lightness/jquery-ui-1.10.2.custom.min
  *= require bootstrap-responsive
  *= require bootstrap
- *= require smoothness/jquery-ui
  *= require main
  */

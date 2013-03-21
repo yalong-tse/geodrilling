@@ -26,19 +26,19 @@
   <div class="control-group">
     <%= f.label "签订日期", :class=>"control-label" %>
     <div class="controls">
-    <%= f.date_select :signdate ,:class=>"text_field" %>
+    <%= f.text_field :signdate ,:class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "开始日期", :class=>"control-label" %>
     <div class="controls">
-    <%= f.date_select :startdate, :class=>"text_field"%>
+    <%= f.text_field :startdate, :class=>"text_field"%>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "结束日期", :class=>"control-label"%>
     <div class="controls">
-    <%= f.date_select :finishdate, :class=>"text_field"%>
+    <%= f.text_field :finishdate, :class=>"text_field"%>
     </div>
   </div>
   <div class="control-group">
@@ -53,3 +53,6 @@
   </div>
 <% end %>
 <%= setActiveTab("_contract") %>
+<%= make_datepicker(:model=>"contract",:property=>"startdate") %>
+<%= make_datepicker(:model=>"contract",:property=>"finishdate") %>
+<%= make_datepicker(:model=>"contract",:property=>"signdate") %>
