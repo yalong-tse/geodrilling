@@ -8,7 +8,10 @@
     <th>孔径</th>
     <th>开始日期</th>
     <th>结束日期</th>
-    <th>操作</th>
+    <th>所属合同</th>
+    <th>施工队伍</th>
+    <th>使用设备</th>
+    <th>使用材料</th>
   </tr>
 
 <% @holes.each do |hole| %>
@@ -17,8 +20,10 @@
     <td><%= hole.diameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to '详情', contract_hole_path(hole) %>|
-      <%= link_to '删除', :url=>{:controller=>"holes",:action=>"destroy",:id=>hole}, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%=link_to hole.contract.name ,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
+    <td><%= hole.finishdate %></td>
+    <td><%= hole.finishdate %></td>
+    <td><%= hole.finishdate %></td>
   </tr>
 <% end %>
 </table>

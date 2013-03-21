@@ -14,9 +14,8 @@
   <dd><%= @hole.finishdate %></dd>
 </dl>
 
-
 <div class="form-actions">
-  <%= link_to '编辑', edit_hole_path(@hole),:class=>"btn" %> |
-  <%= link_to '返回', holes_path ,:class=>"btn btn-primary"%>
+  <%= link_to '编辑', edit_contract_hole_path(@hole),:class=>"btn" %> |
+  <%= link_to '返回', {:controller=>"contracts",:action=>"show",:id=>@hole.contract_id} ,:class=>"btn btn-primary"%>
 </div>
 <%=setActiveTab("_holes") %>

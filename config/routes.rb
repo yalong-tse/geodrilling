@@ -1,14 +1,18 @@
 Geodrilling::Application.routes.draw do
+  get "holelist/index"
+
   resources :teams
 
 
   resources :equipment
 
 
-  resources :holes
+  #resources :holes
 
 
-  resources :contracts
+  resources :contracts do
+    resources :holes
+  end
 
 
   resources :materials
