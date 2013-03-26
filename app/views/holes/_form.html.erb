@@ -26,17 +26,19 @@
   <div class="control-group">
     <%= f.label "开始日期" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.date_select :startdate , :class=>"text_field" %>
+    <%= f.text_field :startdate , :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "结束日期" ,:class=>"control-label"%>
     <div class="controls">
-    <%= f.date_select :finishdate , :class=>"text_field"%>
+    <%= f.text_field :finishdate , :class=>"text_field"%>
     </div>
   </div>
   <div class="actions">
     <%= f.submit "新增钻孔" ,:class=>"btn btn-primary" %> |
-    <%= link_back %>
+    <%= link_back :class=>'btn' %>
   </div>
 <% end %>
+<%= make_datepicker(:model=>"hole",:property=>"startdate") %>
+<%= make_datepicker(:model=>"hole",:property=>"finishdate") %>

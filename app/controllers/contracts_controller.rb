@@ -5,10 +5,6 @@ class ContractsController < ApplicationController
   # GET /contracts.json
   def index
     @contracts = Contract.all
-
-    logger.info "===================================="
-    logger.info "===================================="
-    logger.info "===================================="
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @contracts }
