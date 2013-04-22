@@ -23,14 +23,82 @@
       <a class="brand" href="#">Geodrilling</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li id="_daily"><a href="/daily">每日工作</a></li>
-          <li id="_contract"><a href="/contracts">合同管理</a></li>
-          <li id="_holes"><a href="/holelist/index" onclick="clickurl(this)">钻孔管理</a></li>
-          <li id="_teams"><a href="/teams">人员管理</a></li>
-          <li id="_equipments"><a href="/equipment">设备管理</a></li>
-          <li id="_schedule"><a href="/schedule/index">进度管理</a></li>
-          <li id="_archive"><a href="/archives">归档管理</a></li>
-          <li id="_archive"><a href="/archives">系统管理</a></li>
+          <li class="dropdown" id="_daily">
+          <a href="/daily" class="dropdown-toggle" data-toggle="dropdown">待办事项<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">班报修改审核</a></li>
+            <li><a href="#">设备报废审核</a></li>
+            <li><a href="#">材料报废审核</a></li>
+            <li><a href="#">钻孔完工申请</a></li>
+            <li><a href="#">合同竣工申请</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="_contract">
+          <a href="/contracts" class="dropdown-toggle" data-toggle="dropdown">合同管理<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">合同新增</a></li>
+              <li><a href="#">合同列表</a></li>
+              <li><a href="#">合同关闭</a></li>
+            </ul>
+          </li>
+          <li id=""><a href="#">设计管理</a></li>
+          <li class="dropdown" id="_holes">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/holelist/index">钻孔管理<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">新增钻孔</a></li>
+              <li><a href="#">钻孔配置</a></li>
+              <li><a href="#">钻孔查询</a></li>
+              <li><a href="#">班报管理</a></li>
+              <li><a href="#">班报修改</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="_teams">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/teams">档案管理<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">合同归档</a></li>
+              <li><a href="#">钻孔</a></li>
+              <li><a href="#">班报</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="_equipments">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/equipment">设备管理<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">设备库存</a></li>
+              <li><a href="#">设备入库</a></li>
+              <li><a href="#">设备出库</a></li>
+              <li><a href="#">设备报废</a></li>
+              <li><a href="#">设备编组</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="_equipments">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/equipment">材料管理<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">材料库存</a></li>
+              <li><a href="#">材料入库</a></li>
+              <li><a href="#">材料出库</a></li>
+              <li><a href="#">材料报废</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/schedule/index">统计分析<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">合同</a></li>
+              <li><a href="#">设备</a></li>
+              <li><a href="#">材料</a></li>
+              <li><a href="#">钻孔</a></li>
+          </ul>
+          </li>
+          <li class="dropdown" id="_archive">
+          <a class="dropdown-toggle" data-toggle="dropdown"  href="/archives">系统管理<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">人员管理</a></li>
+              <li><a href="#">部门管理</a></li>
+              <li><a href="#">角色管理</a></li>
+              <li><a href="#">权限管理</a></li>
+              <li><a href="#">字典管理</a></li>
+              <li><a href="#">操作日志</a></li>
+          </ul>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
