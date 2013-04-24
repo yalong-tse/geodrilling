@@ -4,6 +4,8 @@
 
 <table class="table table-striped">
   <tr>
+    <th>矿区</th>
+    <th>孔号</th>
     <th>深度</th>
     <th>孔径</th>
     <th>开始日期</th>
@@ -14,20 +16,25 @@
     <th>使用材料</th>
   </tr>
 
-<% @holes.each do |hole| %>
+<% @holes_list.each do |hole| %>
   <tr>
+    <td><%= hole.minearea %></td>
+    <td><%= hole.minenumber %></td>
     <td><%= hole.deep %></td>
     <td><%= hole.diameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
     <td><%=link_to hole.contract.name ,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
-    <td><%= hole.finishdate %></td>
-    <td><%= hole.finishdate %></td>
-    <td><%= hole.finishdate %></td>
+    <td><%= link_to '施工队伍', {:controller=>"holes" , :action=>"edit", :id=>hole.id, :contract_id=>hole.contract.id}%></td>
+    <td><%= '使用设备' %></td>
+    <td><%= '使用材料' %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
+<div class="row-fluid">
+  <div class="span4"></div>
+  <div class="span4">
+    <%= will_paginate @holes_list, :renderer=>BootstrapPagination::Rails %>
+  </div>
+</div>
 <%=setActiveTab("_holes") %>

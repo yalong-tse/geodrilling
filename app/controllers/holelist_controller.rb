@@ -1,7 +1,7 @@
 class HolelistController < ApplicationController
   layout 'boot'
   def index
-    @holes = Hole.find(:all,:order=>"startdate desc")
+    @holes_list = Hole.paginate(:page=>params[:page],:per_page=>5).order('startdate desc')
 
     respond_to do |format|
       format.html # index.html.erb

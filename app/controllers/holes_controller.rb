@@ -15,8 +15,6 @@ class HolesController < ApplicationController
   # GET /holes/1.json
   def show
     @hole = Hole.find(params[:id])
-    logger.info "++++++++++++++++++++++++++++++++"
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @hole }

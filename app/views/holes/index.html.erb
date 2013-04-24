@@ -4,6 +4,8 @@
 
 <table class="table table-striped">
   <tr>
+    <th>矿区</th>
+    <th>孔号</th>
     <th>深度</th>
     <th>孔径</th>
     <th>开始日期</th>
@@ -13,6 +15,8 @@
 
 <% @holes.each do |hole| %>
   <tr>
+    <td><%= hole.minearea %></td>
+    <td><%= hole.minenumber %></td>
     <td><%= hole.deep %></td>
     <td><%= hole.diameter %></td>
     <td><%= hole.startdate %></td>

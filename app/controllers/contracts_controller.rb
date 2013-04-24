@@ -4,11 +4,7 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
-
-    logger.info "===================================="
-    logger.info "===================================="
-    logger.info "===================================="
+    @contracts = Contract.paginate(:page=>params[:page],:per_page=>5).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @contracts }
