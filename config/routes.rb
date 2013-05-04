@@ -9,7 +9,7 @@ Geodrilling::Application.routes.draw do
   resources :equipment
 
 
-  #resources :holes
+  resources :holes
 
 
   resources :contracts do

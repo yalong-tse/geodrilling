@@ -5,48 +5,33 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <style>
-      body {
-          padding-top: 50px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-  </style>
 </head>
-<body>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </a>
+      </button>
       <a class="brand" href="#">Geodrilling</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="dropdown" id="_daily">
-          <a href="/daily" class="dropdown-toggle" data-toggle="dropdown">待办事项<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">班报修改审核</a></li>
-            <li><a href="#">设备报废审核</a></li>
-            <li><a href="#">材料报废审核</a></li>
-            <li><a href="#">钻孔完工申请</a></li>
-            <li><a href="#">合同竣工申请</a></li>
-          </ul>
-          </li>
           <li class="dropdown" id="_contract">
           <a href="/contracts" class="dropdown-toggle" data-toggle="dropdown">合同管理<b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">合同新增</a></li>
-              <li><a href="#">合同列表</a></li>
-              <li><a href="#">合同关闭</a></li>
+              <li><%= link_to '合同新增', new_contract_path %></li>
+              <li><%= link_to '合同列表', contracts_path %></li>
+              <li><%= link_to '合同关闭', contracts_path %></li>
             </ul>
           </li>
           <li id=""><a href="#">设计管理</a></li>
           <li class="dropdown" id="_holes">
           <a class="dropdown-toggle" data-toggle="dropdown" href="/holelist/index">钻孔管理<b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="#">新增钻孔</a></li>
-              <li><a href="#">钻孔配置</a></li>
+            <li><%= link_to '增加钻孔', new_hole_path %></li>
+            <li><%= link_to '钻孔配置', holes_path %></li>
               <li><a href="#">钻孔查询</a></li>
               <li><a href="#">班报管理</a></li>
               <li><a href="#">班报修改</a></li>
@@ -105,10 +90,8 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row-fluid">
+<div class="container">
       <%= yield %>
-  </div><!--/row-->
   <hr>
 
   <footer>
@@ -121,6 +104,6 @@
 <script language="text/javascript">
   function clickurl(tag)
   {
-    $(tag).parent.attr(class,"active");
+    //$(tag).parent.attr(class,"active");
   }
 </script>

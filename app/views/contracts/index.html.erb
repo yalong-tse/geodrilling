@@ -1,12 +1,15 @@
 <div class="page-header">
-<h3>合同管理</h3>
+<h3>合同列表</h3>
 </div>
 <table class="table table-striped">
   <tr>
     <th>合同名称</th>
-    <th>合同内容</th>
-    <th>签订时间</th>
+    <th>项目名称</th>
+    <th>业主</th>
+    <th>乙方</th>
+    <th>合同金额</th>
     <th>签订日期</th>
+    <th>开始日期</th>
     <th>完成日期</th>
     <th>合同状态</th>
   </tr>
@@ -14,11 +17,14 @@
 <% @contracts.each do |contract| %>
   <tr>
     <td><%= link_to contract.name, contract_path(contract) %></td>
-    <td><%= contract.content %></td>
+    <td><%= contract.projectname %></td>
+    <td><%= contract.owner %></td>
+    <td><%= contract.buyerparty %></td>
+    <td><%= contract.contractamount %></td>
     <td><%= contract.signdate %></td>
     <td><%= contract.startdate %></td>
     <td><%= contract.finishdate %></td>
-    <td><%= contract.status %></td>
+    <td><%= contract_status_treat(contract.status) %></td>
   </tr>
 <% end %>
 </table>
@@ -31,4 +37,3 @@
 </div>
 
 <%= link_to '新增合同', new_contract_path ,:class=>"btn btn-primary" %>
-<%=setActiveTab("_contract") %>

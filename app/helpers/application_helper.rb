@@ -11,4 +11,19 @@ module ApplicationHelper
   def link_back(args)
     link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn"
   end
+  # 处理合同状态显示 helper
+  def contract_status_treat(args)
+    code = ""
+    case args
+    when 0
+    code << "<span class='badge badge-inverse'>待执行</span>";
+    when 1
+    code << "<span class='badge badge-warning'>正在执行</span>";
+    when 2
+    code << "<span class='badge badge-success'>已经完成</span>";
+    when 3
+    code <<  "<span class='badge badge-info'>已经归档</span>";
+    end
+    return simple_format(code)
+  end
 end

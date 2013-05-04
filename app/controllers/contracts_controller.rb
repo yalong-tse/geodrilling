@@ -11,6 +11,15 @@ class ContractsController < ApplicationController
     end
   end
 
+  # for 关闭合同的列表
+  def indexforclose
+    @contracts = Contract.paginate(:page=>params[:page],:per_page=>5).all
+    respond_to do |format|
+      format.html # indexforclose.html.erb
+      format.json { render json: @contracts }
+    end
+  end
+
   # GET /contracts/1
   # GET /contracts/1.json
   def show

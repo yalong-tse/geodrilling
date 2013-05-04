@@ -11,8 +11,8 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-responsive
+ *= require docs
  *= require ui-lightness/jquery-ui-1.10.2.custom.min
  *= require fullcalendar
  *= require fullcalendar.print
- *= require main
  */
