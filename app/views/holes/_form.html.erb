@@ -1,4 +1,4 @@
-<%= form_for(:hole,:url=>contract_holes_path(:contract_id=>@hole.contract,:id=>@hole) ,:html=>{:class=>"form-horizontal"}) do |f| %>
+<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:class=>"form-horizontal"}) do |f| %>
   <% if @hole.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
@@ -13,38 +13,68 @@
   <div class="control-group">
     <%= f.label "矿区" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.text_field :minearea , :class=>"text_field" %>
+      <%= f.text_field :minearea , :class=>"text_field" ,:placeholder=>""%>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "孔号" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.text_field :minenumber , :class=>"text_field" %>
+      <%= f.text_field :holenumber , :class=>"text_field" , :placeholder=>"zk001" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label "孔深度" ,:class=>"control-label" %>
+    <%= f.label "设计终孔深度" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.number_field :deep , :class=>"text_field" %>
+      <%= f.number_field :designdeep , :class=>"text_field" ,:placeholder=>"300" %> &nbsp;&nbsp;米
     </div>
   </div>
   <div class="control-group">
-    <%= f.label "孔径" ,:class=>"control-label" %>
+    <%= f.label "设计终孔直径" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.number_field :diameter , :class=>"text_field" %>
+      <%= f.select(:designdiameter,options_for_select(Hole::DIAMETERS), :class=>"text_field",:prompt=>"请选择...") %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label "开始日期" ,:class=>"control-label" %>
+    <%= f.label "设计终孔顶角" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :designapexangle,:class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "设计岩心采取率" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :designcoreratio,:class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "开孔日期" ,:class=>"control-label" %>
     <div class="controls">
     <%= f.text_field :startdate , :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label "结束日期" ,:class=>"control-label"%>
+    <%= f.label "终孔日期" ,:class=>"control-label"%>
     <div class="controls">
     <%= f.text_field :finishdate , :class=>"text_field"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "地层情况" ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.text_area :geologysituation , :rows=>"4", :cols=>"3", :class=>"text_field"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "设计书" ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.file_field :designbook , :rows=>"4", :cols=>"3", :class=>"text_field"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "钻探目的" ,:class=>"control-label"%>
+    <div class="controls">
+      <%= f.select :drillingpurpose , options_for_select(Hole::DRILLINGPURPOSE), :class=>"text_field"%>
     </div>
   </div>
   <div class="actions">

@@ -11,9 +11,9 @@ class ContractsController < ApplicationController
     end
   end
 
-  # for 关闭合同的列表
+  # for 关闭合同的列表，只选出执行完毕的合同
   def indexforclose
-    @contracts = Contract.paginate(:page=>params[:page],:per_page=>5).all
+    @contracts = Contract.paginate(:page=>params[:page],:per_page=>5).where(:status=>2)
     respond_to do |format|
       format.html # indexforclose.html.erb
       format.json { render json: @contracts }

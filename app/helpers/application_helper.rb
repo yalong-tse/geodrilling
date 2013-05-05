@@ -16,13 +16,13 @@ module ApplicationHelper
     code = ""
     case args
     when 0
-    code << "<span class='badge badge-inverse'>待执行</span>";
+    code << "<span class='label label-inverse'>待执行</span>";
     when 1
-    code << "<span class='badge badge-warning'>正在执行</span>";
+    code << "<span class='label label-warning'>正在执行</span>";
     when 2
-    code << "<span class='badge badge-success'>已经完成</span>";
+    code << "<span class='label label-success'>已经完成</span>";
     when 3
-    code <<  "<span class='badge badge-info'>已经归档</span>";
+    code <<  "<span class='label label-info'>已经归档</span>";
     end
     return simple_format(code)
   end

@@ -48,7 +48,7 @@ class HolesController < ApplicationController
     @hole = Hole.new(params[:hole])
     logger.info "the hole info is #{@hole}"
     logger.info "the contract id is #{params[:contract_id]}"
-    @hole.contract_id = params[:contract_id]
+    #@hole.contract_id = params[:contract_id]
     respond_to do |format|
       if @hole.save
         format.html { redirect_to :controller=>'holes',:action=>'show',:id=>@hole.id , notice: 'Hole was successfully created.' }

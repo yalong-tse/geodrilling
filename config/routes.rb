@@ -2,6 +2,7 @@ Geodrilling::Application.routes.draw do
   get "schedule/index"
 
   get "holelist/index"
+  get "contracts/indexforclose"
 
   resources :teams
 

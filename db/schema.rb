@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504031328) do
+ActiveRecord::Schema.define(:version => 20130505084412) do
 
   create_table "contracts", :force => true do |t|
+    t.string   "contractamount"
     t.string   "name"
     t.string   "content"
     t.date     "signdate"
     t.date     "startdate"
     t.date     "finishdate"
     t.integer  "status"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "projectname"
     t.string   "buyerparty"
     t.string   "projectaddr"
@@ -44,16 +45,24 @@ ActiveRecord::Schema.define(:version => 20130504031328) do
   end
 
   create_table "holes", :force => true do |t|
-    t.integer  "deep"
-    t.integer  "diameter"
-    t.date     "startdate"
-    t.date     "finishdate"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "contract_id"
-    t.string   "minearea"
-    t.string   "minenumber"
-    t.string   "geology"
+    t.integer "designdeep"
+    t.integer "actualdeep"
+    t.string  "designdiameter"
+    t.string  "actualdiameter"
+    t.date    "finishdate"
+    t.date    "startdate"
+    t.integer "contract_id"
+    t.string  "minearea"
+    t.string  "holenumber"
+    t.string  "geologysituation"
+    t.string  "designapexangle"
+    t.string  "actualapexangle"
+    t.string  "designcoreratio"
+    t.string  "actualcoreratio"
+    t.string  "designbook"
+    t.string  "drillingpurpose"
+    t.integer "status"
+    t.string  "remark"
   end
 
   create_table "materials", :force => true do |t|

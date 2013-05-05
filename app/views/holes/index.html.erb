@@ -16,17 +16,15 @@
 <% @holes.each do |hole| %>
   <tr>
     <td><%= hole.minearea %></td>
-    <td><%= hole.minenumber %></td>
-    <td><%= hole.deep %></td>
-    <td><%= hole.diameter %></td>
+    <td><%= hole.holenumber %></td>
+    <td><%= hole.designdeep %></td>
+    <td><%= hole.designdiameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to '详情', contract_hole_path(hole) %>|
+    <td><%= link_to '详情' %>|
       <%= link_to '删除', :url=>{:controller=>"holes",:action=>"destroy",:id=>hole}, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%=setActiveTab("_holes") %>

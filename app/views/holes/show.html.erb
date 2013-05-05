@@ -5,9 +5,9 @@
 
 <dl class="dl-horizontal">
   <dt><strong>钻孔深度:</strong></dt>
-  <dd><%= @hole.deep %></dd>
+  <dd><%= @hole.designdeep %></dd>
   <dt><strong>钻孔孔径:</strong></dt>
-  <dd><%= @hole.diameter %></dd>
+  <dd><%= @hole.designdiameter %></dd>
   <dt><strong>开始日期:</strong></dt>
   <dd><%= @hole.startdate %></dd>
   <dt><strong>结束日期:</strong></dt>
@@ -15,7 +15,6 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to '编辑', edit_contract_hole_path(@hole),:class=>"btn" %> |
+  <%= link_to '编辑', edit_hole_path(@hole),:class=>"btn" %> |
   <%= link_to '返回', {:controller=>"contracts",:action=>"show",:id=>@hole.contract_id} ,:class=>"btn btn-primary"%>
 </div>
-<%=setActiveTab("_holes") %>
