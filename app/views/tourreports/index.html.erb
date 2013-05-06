@@ -1,0 +1,45 @@
+<h1>Listing tourreports</h1>
+
+<table>
+  <tr>
+    <th>Holeid</th>
+    <th>Tourdate</th>
+    <th>Starttime</th>
+    <th>Finishtime</th>
+    <th>Administrator</th>
+    <th>Tourleader</th>
+    <th>Recorder</th>
+    <th>Tourshift</th>
+    <th>Tourcore</th>
+    <th>Tourdrillingtime</th>
+    <th>Tourauxiliarytime</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tourreports.each do |tourreport| %>
+  <tr>
+    <td><%= tourreport.holeid %></td>
+    <td><%= tourreport.tourdate %></td>
+    <td><%= tourreport.starttime %></td>
+    <td><%= tourreport.finishtime %></td>
+    <td><%= tourreport.administrator %></td>
+    <td><%= tourreport.tourleader %></td>
+    <td><%= tourreport.recorder %></td>
+    <td><%= tourreport.tourshift %></td>
+    <td><%= tourreport.tourcore %></td>
+    <td><%= tourreport.tourdrillingtime %></td>
+    <td><%= tourreport.tourauxiliarytime %></td>
+    <td><%= tourreport.remark %></td>
+    <td><%= link_to 'Show', tourreport %></td>
+    <td><%= link_to 'Edit', edit_tourreport_path(tourreport) %></td>
+    <td><%= link_to 'Destroy', tourreport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tourreport', new_tourreport_path %>

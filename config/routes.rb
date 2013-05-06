@@ -1,4 +1,7 @@
 Geodrilling::Application.routes.draw do
+  resources :tourreports
+
+
   get "schedule/index"
 
   get "holelist/index"

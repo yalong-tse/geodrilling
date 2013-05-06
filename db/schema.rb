@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505084412) do
+ActiveRecord::Schema.define(:version => 20130505154734) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -79,6 +79,23 @@ ActiveRecord::Schema.define(:version => 20130505084412) do
     t.integer  "memberquantity"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "tourreports", :force => true do |t|
+    t.integer  "holeid"
+    t.date     "tourdate"
+    t.datetime "starttime"
+    t.datetime "finishtime"
+    t.string   "administrator"
+    t.string   "tourleader"
+    t.string   "recorder"
+    t.string   "tourshift"
+    t.string   "tourcore"
+    t.string   "tourdrillingtime"
+    t.string   "tourauxiliarytime"
+    t.string   "remark"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  holeid: 1
+  tourdate: 2013-05-05
+  starttime: 2013-05-05 23:40:25
+  finishtime: 2013-05-05 23:40:25
+  administrator: MyString
+  tourleader: MyString
+  recorder: MyString
+  tourshift: MyString
+  tourcore: MyString
+  tourdrillingtime: MyString
+  tourauiliarytime: MyString
+  remark: MyString
+
+two:
+  holeid: 1
+  tourdate: 2013-05-05
+  starttime: 2013-05-05 23:40:25
+  finishtime: 2013-05-05 23:40:25
+  administrator: MyString
+  tourleader: MyString
+  recorder: MyString
+  tourshift: MyString
+  tourcore: MyString
+  tourdrillingtime: MyString
+  tourauiliarytime: MyString
+  remark: MyString

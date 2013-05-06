@@ -1,0 +1,65 @@
+<%= form_for(@tourreport) do |f| %>
+  <% if @tourreport.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tourreport.errors.count, "error") %> prohibited this tourreport from being saved:</h2>
+
+      <ul>
+      <% @tourreport.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :holeid %><br />
+    <%= f.number_field :holeid %>
+  </div>
+  <div class="field">
+    <%= f.label :tourdate %><br />
+    <%= f.date_select :tourdate %>
+  </div>
+  <div class="field">
+    <%= f.label :starttime %><br />
+    <%= f.datetime_select :starttime %>
+  </div>
+  <div class="field">
+    <%= f.label :finishtime %><br />
+    <%= f.datetime_select :finishtime %>
+  </div>
+  <div class="field">
+    <%= f.label :administrator %><br />
+    <%= f.text_field :administrator %>
+  </div>
+  <div class="field">
+    <%= f.label :tourleader %><br />
+    <%= f.text_field :tourleader %>
+  </div>
+  <div class="field">
+    <%= f.label :recorder %><br />
+    <%= f.text_field :recorder %>
+  </div>
+  <div class="field">
+    <%= f.label :tourshift %><br />
+    <%= f.text_field :tourshift %>
+  </div>
+  <div class="field">
+    <%= f.label :tourcore %><br />
+    <%= f.text_field :tourcore %>
+  </div>
+  <div class="field">
+    <%= f.label :tourdrillingtime %><br />
+    <%= f.text_field :tourdrillingtime %>
+  </div>
+  <div class="field">
+    <%= f.label :tourauxiliarytime %><br />
+    <%= f.text_field :tourauxiliarytime %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_field :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
