@@ -16,6 +16,9 @@
 /tmp/cache
 tmp/
 log/
+/log/*
+/tmp/*
+.rvmrc
 #Ignore all vim temp files
 *~
 *.swp
