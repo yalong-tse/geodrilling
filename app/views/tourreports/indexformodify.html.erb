@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>班报管理</h3>
+  <h3>班报修改</h3>
 </div>
 
 <table class="table table-striped">
@@ -14,6 +14,7 @@
     <th>本班取心</th>
     <th>纯钻时间</th>
     <th>辅助时间</th>
+    <th>操作</th>
   </tr>
 
 <% @tourreports.each do |tourreport| %>
@@ -28,7 +29,9 @@
     <td><%= tourreport.tourcore %></td>
     <td><%= tourreport.tourdrillingtime %></td>
     <td><%= tourreport.tourauxiliarytime %></td>
+    <td>
+    <%= link_to '修改', edit_tourreport_path(tourreport) %>
+    </td>
   </tr>
 <% end %>
 </table>
-<%= link_to '新增班报', new_tourreport_path , :class=>"btn btn-primary" %>

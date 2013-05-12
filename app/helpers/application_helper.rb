@@ -26,4 +26,10 @@ module ApplicationHelper
     end
     return simple_format(code)
   end
+
+  def formattime(args)
+    if(args)
+      DateTime.parse(args).strftime('%H:%M').to_s
+    end
+  end
 end

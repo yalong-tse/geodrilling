@@ -7,10 +7,8 @@ Geodrilling::Application.routes.draw do
   post "archive/contractarchive"
   post "archive/holearchive"
 
+  get "tourreports/indexformodify"
   resources :tourreports
-
-
-  get "schedule/index"
 
   get "holelist/index"
   get "contracts/indexforclose"

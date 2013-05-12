@@ -11,6 +11,15 @@ class TourreportsController < ApplicationController
     end
   end
 
+  def indexformodify
+    @tourreports = Tourreport.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tourreports }
+    end
+  end
+
   # GET /tourreports/1
   # GET /tourreports/1.json
   def show
