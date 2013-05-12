@@ -13,7 +13,7 @@
   <div class="control-group">
     <%= f.label "矿区" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :minearea , :class=>"text_field" ,:placeholder=>""%>
+      <%= f.text_field :minearea , :class=>"input-xxlarge" ,:placeholder=>""%>
     </div>
   </div>
   <div class="control-group">
@@ -26,25 +26,33 @@
   <div class="control-group">
     <%= f.label "设计终孔深度" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.number_field :designdeep , :class=>"text_field" ,:placeholder=>"300" %> &nbsp;&nbsp;米
+      <div class="input-append">
+        <%= f.number_field :designdeep , :class=>"text_field" ,:placeholder=>"300" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "设计终孔直径" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:designdiameter,options_for_select(Hole::DIAMETERS), :class=>"text_field",:prompt=>"请选择...") %>
+      <div class="input-append">
+        <%= f.select(:designdiameter,options_for_select(Hole::DIAMETERS), :class=>"text_field",:prompt=>"请选择...") %><span class="add-on">厘米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "设计终孔顶角" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :designapexangle,:class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :designapexangle,:class=>"text_field" %><span class="add-on">度</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "设计岩心采取率" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :designcoreratio,:class=>"text_field" %>
+      <div class="input-append">
+      <%= f.text_field :designcoreratio,:class=>"text_field" %><span class="add-on">%</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
@@ -62,7 +70,7 @@
   <div class="control-group">
     <%= f.label "地层情况" ,:class=>"control-label"%>
     <div class="controls">
-      <%= f.text_area :geologysituation , :rows=>"4", :cols=>"3", :class=>"text_field"%>
+      <%= f.text_area :geologysituation , :rows=>"4", :cols=>"3", :class=>"input-xxlarge"%>
     </div>
   </div>
   <div class="control-group">

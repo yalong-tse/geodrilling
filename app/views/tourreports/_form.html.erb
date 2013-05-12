@@ -19,13 +19,13 @@
   <div class="control-group">
     <%= f.label "开始时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.time_select :starttime, :class=>"text_field" ,:cols=>"3" %>
+      <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME), :class=>"text_field",:cols=>"3", :prompt=>"请选择...") %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "结束时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.time_select :finishtime , :class=>"text_field"%>
+      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME), :class=>"text_field",:cols=>"3", :prompt=>"请选择...") %>
     </div>
   </div>
   <div class="control-group">
@@ -49,31 +49,39 @@
   <div class="control-group">
     <%= f.label "本班进尺" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :tourshift , :class=>"text_field" %>
+      <div class="input-append">
+      <%= f.text_field :tourshift , :class=>"text_field" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "本班取心" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :tourcore  , :class=>"text_field"%>
+      <div class="input-append">
+      <%= f.text_field :tourcore  , :class=>"text_field"%><span class="add-on">米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "纯钻时长" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :tourdrillingtime , :class=>"text_field" %>
+      <div class="input-append">
+      <%= f.text_field :tourdrillingtime , :class=>"text_field" %><span class="add-on">小时</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "辅助时长" , :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :tourauxiliarytime , :class=>"text_field"%>
+      <div class="input-append">
+      <%= f.text_field :tourauxiliarytime , :class=>"text_field"%><span class="add-on">小时</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "备注" , :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :remark ,:class=>"text_field" %>
+      <%= f.text_area :remark ,:class=>"text_field" ,:rows=>"4"%>
     </div>
   </div>
   <div class="actions">

@@ -11,4 +11,9 @@ class Tourreport < ActiveRecord::Base
   # tourleader : 班长
   # tourshift : 本班进尺
   attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift
+  # 属于哪个钻孔
+  belongs_to :hole, :class_name=>"Hole", :foreign_key=>"hole_id"
+  TOURTIME=[['00:00'],['08:00'],['16:00']]
+  TOURTIME2=[['00:00'],['12:00']]
+
 end

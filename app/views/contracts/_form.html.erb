@@ -14,13 +14,13 @@
   <div class="control-group">
     <%= f.label "合同名称" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :name , :class=>"text_field",:placeholder=>"机械岩心钻探合同书" %>
+      <%= f.text_field :name , :class=>"input-xxlarge",:placeholder=>"机械岩心钻探合同书" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "项目名称" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :projectname, :class=>"text_field", :size=>50, :placeholder=>"河南省小秦岭金矿田北矿带F5矿脉深部金矿普查（Ⅰ标段）" %>
+      <%= f.text_field :projectname, :class=>"input-xxlarge", :size=>50, :placeholder=>"河南省小秦岭金矿田北矿带F5矿脉深部金矿普查（Ⅰ标段）" %>
     </div>
   </div>
   <div class="control-group">
@@ -32,19 +32,19 @@
   <div class="control-group">
     <%= f.label "合同业主" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :owner, :class=>"text_field" ,:placeholder=>"郑州四院" %>
+      <%= f.text_field :owner, :class=>"input-xxlarge" ,:placeholder=>"郑州四院" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "合同乙方" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :buyerparty, :class=>"text_field" ,:placeholder=>"郑州四院" %>
+      <%= f.text_field :buyerparty, :class=>"input-xxlarge" ,:placeholder=>"郑州四院" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "项目所在地" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :projectaddr, :class=>"text_field" ,:placeholder=>"河南省洛阳市XX县" %>
+      <%= f.text_field :projectaddr, :class=>"input-xxlarge" ,:placeholder=>"河南省洛阳市XX县" %>
     </div>
   </div>
   <div class="control-group">
@@ -56,13 +56,15 @@
   <div class="control-group">
     <%= f.label "合同金额" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :fundsource, :class=>"text_field" ,:placeholder=>"10,000" %>
+      <div class="input-append">
+        <%= f.text_field :fundsource, :class=>"text_field" ,:placeholder=>"10,000" %><span class="add-on">元</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "合同内容" , :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_area :content, :class=>"text_field",:placeholder=>"",:rows=>4,:cols=>"20" %>
+      <%= f.text_area :content, :class=>"input-xxlarge",:placeholder=>"",:rows=>4,:cols=>"20" %>
     </div>
   </div>
   <div class="control-group">
@@ -98,7 +100,7 @@
   <div class="control-group">
     <%= f.label "备注",:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_area :remark,:class=>"text_field",:rows=>3,:cols=>20 %>
+      <%= f.text_area :remark,:class=>"input-xxlarge",:rows=>3,:cols=>20 %>
     </div>
   </div>
   <div class="form-actions">
