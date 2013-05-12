@@ -1,4 +1,12 @@
 Geodrilling::Application.routes.draw do
+  get "archive/contract"
+
+  get "archive/hole"
+
+  get "archive/tourreport"
+  post "archive/contractarchive"
+  post "archive/holearchive"
+
   resources :tourreports
 
 

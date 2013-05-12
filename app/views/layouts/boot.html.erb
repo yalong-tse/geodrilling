@@ -40,9 +40,9 @@
           <li class="dropdown" id="_teams">
           <a class="dropdown-toggle" data-toggle="dropdown" href="/teams">档案管理<b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="#">合同归档</a></li>
-              <li><a href="#">钻孔</a></li>
-              <li><a href="#">班报</a></li>
+            <li><%= link_to "合同归档",archive_contract_path %></li>
+            <li><%= link_to "钻孔" , archive_hole_path %></li>
+            <li><%= link_to "班报" , archive_tourreport_path%></li>
           </ul>
           </li>
           <li class="dropdown" id="_equipments">

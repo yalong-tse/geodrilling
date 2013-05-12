@@ -1,0 +1,39 @@
+<div class="page-header">
+<h3>归档管理/合同归档</h3>
+</div>
+<table class="table table-striped">
+  <tr>
+    <th>合同名称</th>
+    <th>项目名称</th>
+    <th>业主</th>
+    <th>乙方</th>
+    <th>合同金额</th>
+    <th>开始日期</th>
+    <th>完成日期</th>
+    <th>合同状态</th>
+    <th>操作</th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+    <td><%= link_to contract.name, contract_path(contract) %></td>
+    <td><%= contract.projectname %></td>
+    <td><%= contract.owner %></td>
+    <td><%= contract.buyerparty %></td>
+    <td><%= contract.contractamount %></td>
+    <td><%= contract.startdate %></td>
+    <td><%= contract.finishdate %></td>
+    <td><%= contract_status_treat(contract.status) %></td>
+    <td><%= link_to '归档', archive_contractarchive_path , :class=>"btn btn-primary"%></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<div class="row-fluid">
+  <div class="span4"></div>
+  <div class="span4">
+    <%= will_paginate @contracts, :renderer=>BootstrapPagination::Rails %>
+  </div>
+</div>
+
+<%= link_to '新增合同', new_contract_path ,:class=>"btn btn-primary" %>

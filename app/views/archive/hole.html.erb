@@ -1,0 +1,38 @@
+<div class="page-header">
+<h3>归档管理/钻孔归档</h3>
+</div>
+<table class="table table-striped">
+  <tr>
+    <th>矿区</th>
+    <th>孔号</th>
+    <th>深度</th>
+    <th>孔径</th>
+    <th>开始日期</th>
+    <th>结束日期</th>
+    <th>所属合同</th>
+    <th>施工队伍</th>
+    <th>使用设备</th>
+    <th>使用材料</th>
+  </tr>
+
+<% @holes.each do |hole| %>
+  <tr>
+    <td><%= hole.minearea %></td>
+    <td><%= hole.holenumber %></td>
+    <td><%= hole.designdeep %></td>
+    <td><%= hole.designdiameter %></td>
+    <td><%= hole.startdate %></td>
+    <td><%= hole.finishdate %></td>
+    <td><%=link_to hole.contract.name,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
+    <td><%= link_to '施工队伍', {:controller=>"holes" , :action=>"edit", :id=>hole.id, :contract_id=>hole.contract.id}%></td>
+    <td><%= '使用设备' %></td>
+    <td><%= '使用材料' %></td>
+  </tr>
+<% end %>
+</table>
+<div class="row-fluid">
+  <div class="span4"></div>
+  <div class="span4">
+    <%= will_paginate @holes, :renderer=>BootstrapPagination::Rails %>
+  </div>
+</div>

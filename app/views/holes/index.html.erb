@@ -1,7 +1,16 @@
 <div class="page-header">
-<h3>钻孔信息</h3>
+<h3>钻孔管理/钻孔查询</h3>
 </div>
-
+<div class="container">
+    <form class="form-inline">
+      <%=label_tag "矿区：" , nil, :class=>"control-label" %> <%=text_field_tag :minearea,nil,:class=>"text_field", :placeholder=>"" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%=label_tag "孔号：", nil, :class=>"control-label" %><%=text_field_tag :holenumber,nil,:class=>"text_field",:placeholder=>"zk001" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%=label_tag "合同名称：" ,nil, :class=>"control-label"%>&nbsp;&nbsp;<%=text_field_tag :contract_name,nil,:class=>"text_field",:placeholder=>"" %>
+        <button type="submit" class="btn">查询</button>
+    </form>
+</div>
 <table class="table table-striped">
   <tr>
     <th>矿区</th>
@@ -26,5 +35,4 @@
   </tr>
 <% end %>
 </table>
-
 <br />

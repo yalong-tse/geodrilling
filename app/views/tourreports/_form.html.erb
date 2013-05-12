@@ -1,4 +1,4 @@
-<%= form_for(@tourreport) do |f| %>
+<%= form_for(@tourreport, :html=>{:class=>"form-horizontal"}) do |f| %>
   <% if @tourreport.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tourreport.errors.count, "error") %> prohibited this tourreport from being saved:</h2>
@@ -10,56 +10,75 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :holeid %><br />
-    <%= f.number_field :holeid %>
+  <div class="control-group">
+    <%= f.label "班报日期", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourdate,:class=>"text_field" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourdate %><br />
-    <%= f.date_select :tourdate %>
+  <div class="control-group">
+    <%= f.label "开始时间" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.time_select :starttime, :class=>"text_field" ,:cols=>"3" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :starttime %><br />
-    <%= f.datetime_select :starttime %>
+  <div class="control-group">
+    <%= f.label "结束时间" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.time_select :finishtime , :class=>"text_field"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :finishtime %><br />
-    <%= f.datetime_select :finishtime %>
+  <div class="control-group">
+    <%= f.label "项目经理", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :administrator , :class=>"text_field"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :administrator %><br />
-    <%= f.text_field :administrator %>
+  <div class="control-group">
+    <%= f.label "班长" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourleader , :class=>"text_field" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourleader %><br />
-    <%= f.text_field :tourleader %>
+  <div class="control-group">
+    <%= f.label "记录员" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :recorder ,:class=>"text_field"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :recorder %><br />
-    <%= f.text_field :recorder %>
+  <div class="control-group">
+    <%= f.label "本班进尺" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourshift , :class=>"text_field" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourshift %><br />
-    <%= f.text_field :tourshift %>
+  <div class="control-group">
+    <%= f.label "本班取心" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourcore  , :class=>"text_field"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourcore %><br />
-    <%= f.text_field :tourcore %>
+  <div class="control-group">
+    <%= f.label "纯钻时长" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourdrillingtime , :class=>"text_field" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourdrillingtime %><br />
-    <%= f.text_field :tourdrillingtime %>
+  <div class="control-group">
+    <%= f.label "辅助时长" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourauxiliarytime , :class=>"text_field"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tourauxiliarytime %><br />
-    <%= f.text_field :tourauxiliarytime %>
-  </div>
-  <div class="field">
-    <%= f.label :remark %><br />
-    <%= f.text_field :remark %>
+  <div class="control-group">
+    <%= f.label "备注" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :remark ,:class=>"text_field" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "新增班报" , :class=>"btn btn-primary" %>
+    <%= link_back :class=>'btn' %>
   </div>
 <% end %>
+<%= make_datepicker(:model=>"tourreport",:property=>"tourdate") %>

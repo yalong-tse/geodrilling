@@ -1,22 +1,20 @@
-<h1>Listing tourreports</h1>
+<div class="page-header">
+  <h3>班报管理</h3>
+</div>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>Holeid</th>
-    <th>Tourdate</th>
-    <th>Starttime</th>
-    <th>Finishtime</th>
-    <th>Administrator</th>
-    <th>Tourleader</th>
-    <th>Recorder</th>
-    <th>Tourshift</th>
-    <th>Tourcore</th>
-    <th>Tourdrillingtime</th>
-    <th>Tourauxiliarytime</th>
-    <th>Remark</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>班报日期</th>
+    <th>开始时间</th>
+    <th>结束时间</th>
+    <th>项目经理</th>
+    <th>班长</th>
+    <th>记录员</th>
+    <th>本班进尺</th>
+    <th>本班取心</th>
+    <th>纯钻时间</th>
+    <th>辅助时间</th>
+    <th>操作</th>
   </tr>
 
 <% @tourreports.each do |tourreport| %>
@@ -33,13 +31,10 @@
     <td><%= tourreport.tourdrillingtime %></td>
     <td><%= tourreport.tourauxiliarytime %></td>
     <td><%= tourreport.remark %></td>
-    <td><%= link_to 'Show', tourreport %></td>
-    <td><%= link_to 'Edit', edit_tourreport_path(tourreport) %></td>
-    <td><%= link_to 'Destroy', tourreport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', tourreport %>，
+    <%= link_to 'Edit', edit_tourreport_path(tourreport) %>，
+    <%= link_to 'Destroy', tourreport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Tourreport', new_tourreport_path %>
+<%= link_to '新增班报', new_tourreport_path , :class=>"btn btn-primary" %>
