@@ -1,3 +1,34 @@
 <div class="page-header">
 <h3>归档管理/班报归档</h3>
 </div>
+<table class="table table-striped">
+  <tr>
+    <th>班报日期</th>
+    <th>开始时间</th>
+    <th>结束时间</th>
+    <th>项目经理</th>
+    <th>班长</th>
+    <th>记录员</th>
+    <th>本班进尺</th>
+    <th>本班取心</th>
+    <th>纯钻时间</th>
+    <th>辅助时间</th>
+    <th>状态</th>
+  </tr>
+
+<% @tourreports.each do |tourreport| %>
+  <tr>
+    <td><%= tourreport.tourdate %></td>
+    <td><%= formattime(tourreport.starttime.to_s) %></td>
+    <td><%= formattime(tourreport.finishtime.to_s) %></td>
+    <td><%= tourreport.administrator %></td>
+    <td><%= tourreport.tourleader %></td>
+    <td><%= tourreport.recorder %></td>
+    <td><%= tourreport.tourshift %></td>
+    <td><%= tourreport.tourcore %></td>
+    <td><%= tourreport.tourdrillingtime %></td>
+    <td><%= tourreport.tourauxiliarytime %></td>
+    <td><%= tourreport_status_display(tourreport.status) %></td>
+  </tr>
+<% end %>
+</table>

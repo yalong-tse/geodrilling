@@ -32,4 +32,15 @@ module ApplicationHelper
       DateTime.parse(args).strftime('%H:%M').to_s
     end
   end
+
+  def tourreport_status_display(args)
+    code = ""
+    case args
+    when '1'
+        code << "正执行"
+    when '2'
+        code << "已关闭"
+    end
+    return code
+  end
 end

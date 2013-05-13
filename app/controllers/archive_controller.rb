@@ -29,5 +29,11 @@ class ArchiveController < ApplicationController
 
   #列出所有已经归档的班报
   def tourreport
+    @tourreports = Tourreport.archive.paginate(:page=>params[:page],:per_page=>5)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tourreports }
+    end
   end
 end
