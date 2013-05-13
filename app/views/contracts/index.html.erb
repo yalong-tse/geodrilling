@@ -1,6 +1,14 @@
 <div class="page-header">
 <h3>合同列表</h3>
 </div>
+<div class="container">
+    <form class="form-inline">
+      <%=label_tag "业主：" , nil, :class=>"control-label" %> <%=text_field_tag :owner,nil,:class=>"text_field", :placeholder=>"" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%=label_tag "合同名称：" ,nil, :class=>"control-label"%>&nbsp;&nbsp;<%=text_field_tag :contract_name,nil,:class=>"text_field",:placeholder=>"" %>
+      <button type="submit" class="btn"><i class="icon-search"></i> 查询</button>
+    </form>
+</div>
 <table class="table table-striped">
   <tr>
     <th>合同名称</th>
