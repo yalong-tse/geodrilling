@@ -84,15 +84,72 @@
       <%= f.text_area :remark ,:class=>"input-xlarge" ,:rows=>"4"%>
     </div>
   </div>
+  <!---  --->
   <div class="page-section">
-    <div class="control-group">
-      <%= f.label "开始时间" , :class=>"control-label" %>
-
+   <div class="control-group">
+    <div class="input-prepend">
+      <button class="btn">开始时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">结束时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">工作内容</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
     </div>
   </div>
-  <div class="actions">
+  <div class="control-group">
+    <div class="input-prepend">
+      <button class="btn">开始时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">结束时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">工作内容</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="input-prepend">
+      <button class="btn">开始时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">结束时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">工作内容</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="input-prepend">
+      <button class="btn">开始时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">结束时间</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">工作内容</button>
+      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="control-group">
+      <button class="btn btn-info"><i class="icon-plus"></i> 增加一行</button>
+  </div>
+
+  </div>
+  <div class="form-actions">
     <%= f.submit "新增班报" , :class=>"btn btn-primary" %>
-    <%= link_back :class=>'btn' %>
+    <%= link_back :class=>'btn btn-info', :html=>"<i class='icon-home'></i>" %>
   </div>
 <% end %>
 <%= make_datepicker(:model=>"tourreport",:property=>"tourdate") %>
