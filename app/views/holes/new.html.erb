@@ -1,24 +1,4 @@
 <div class="page-header">
 <h3>钻孔管理/增加钻孔</h3>
 </div>
-<div class="row-fluid">
-  <div class="main-content-wrapper">
-    <div class="main-content">
-      <div class="span8 offset1 left">
-        <div class="page-section">
-          <pre class="prettyprint">
-<% if @contract %>
-<strong>合同名称:</strong><%= @contract.name %>
-<strong>合同编号:</strong><%= @contract.content %>
-<strong>合同状态:</strong><%= @contract.status %>
-<% else %>
-
-<% end %>
-          </pre>
-        </div>
-      </div>
-   </div>
-  </div>
-</div>
 <%= render 'form' %>
-</div>
