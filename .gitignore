@@ -19,6 +19,8 @@ log/
 /log/*
 /tmp/*
 .rvmrc
+.ruby-version
+.ruby-gemset
 #Ignore all vim temp files
 *~
 *.swp
