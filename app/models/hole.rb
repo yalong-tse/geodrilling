@@ -23,5 +23,6 @@ class Hole < ActiveRecord::Base
 
   # 选出所有已经关闭的钻孔
   scope :closed , :conditions=>{:status=>2}
+  scope :unclosed , :conditions=>{:status=>1}
 
 end

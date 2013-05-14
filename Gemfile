@@ -6,11 +6,8 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-if RUBY_PLATFORM =~ /win32/
-  gem 'mysql2', :platform => [:mswin, :mingw]
-else
-  gem 'mysql2', :platform => :ruby
-end
+gem 'mysql2', :platform => [:mswin, :mingw]
+gem 'mysql2', :platform => :ruby
 #gem 'kaminari'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

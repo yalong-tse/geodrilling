@@ -28,9 +28,7 @@ class HolesController < ApplicationController
     #@hole.contract = params[:contract_id]
     #logger.info "------------------------------------"
     #logger.info params[:contract_id]
-    @contract = Contract.find(params[:contract_id]) if params[:contract_id]
-    @hole.contract = @contract if @contract
-
+    @contracts = Contract.unclosed
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @hole }

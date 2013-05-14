@@ -35,6 +35,7 @@ class TourreportsController < ApplicationController
   # GET /tourreports/new.json
   def new
     @tourreport = Tourreport.new
+    @holes = Hole.unclosed
 
     respond_to do |format|
       format.html # new.html.erb

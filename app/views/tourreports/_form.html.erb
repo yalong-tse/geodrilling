@@ -11,6 +11,12 @@
     </div>
   <% end %>
   <div class="control-group">
+    <%= f.label "所属钻孔", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.select(:hole,options_for_select(@holes.collect{|hole| [hole.contract.name+'['+hole.holenumber+']',hole.id]}) ,:class=>"span3") %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label "班报日期", :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :tourdate,:class=>"text_field" %>

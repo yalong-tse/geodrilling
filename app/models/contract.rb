@@ -14,4 +14,5 @@ class Contract < ActiveRecord::Base
 
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}
+  scope :unclosed , :conditions => {:status=>1}
 end
