@@ -3,7 +3,7 @@ class TourreportsController < ApplicationController
   # GET /tourreports
   # GET /tourreports.json
   def index
-    @tourreports = Tourreport.all
+    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +12,7 @@ class TourreportsController < ApplicationController
   end
 
   def indexformodify
-    @tourreports = Tourreport.all
+    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
 
     respond_to do |format|
       format.html # index.html.erb
