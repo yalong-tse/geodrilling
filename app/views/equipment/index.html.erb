@@ -1,7 +1,15 @@
 <div class="page-header">
-  <h3>设备管理</h3>
+  <h3>设备管理/库存管理</h3>
 </div>
-
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">钻塔</a></li>
+    <li> <a href="#tab2" data-toggle="tab">钻机</a></li>
+    <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
+    <li> <a href="#tab4" data-toggle="tab">设备配组</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
 <table class="table table-striped">
   <tr>
     <th>设备名称</th>
@@ -26,8 +34,19 @@
   </tr>
 <% end %>
 </table>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p> 钻机的界面 </p>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <p> 泥浆泵界面 </p>
+    </div>
+    <div class="tab-pane" id="tab4">
+      <p> 设备配组界面 </p>
+    </div>
+  </div>
+</div>
 
 <br />
 
 <%= link_to '新增设备', new_equipment_path ,:class=>"btn btn-primary" %>
-<%=setActiveTab("_equipments") %>
