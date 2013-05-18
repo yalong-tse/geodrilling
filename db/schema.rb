@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513015758) do
+ActiveRecord::Schema.define(:version => 20130518032445) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(:version => 20130513015758) do
     t.string   "owner"
     t.date     "deadlinedate"
     t.string   "fundsource"
+  end
+
+  create_table "drilltowers", :force => true do |t|
+    t.string   "model"
+    t.decimal  "height",                :precision => 10, :scale => 0
+    t.decimal  "deep",                  :precision => 10, :scale => 0
+    t.decimal  "effectiveload",         :precision => 10, :scale => 0
+    t.string   "topsize"
+    t.string   "pipequantityAndLenght"
+    t.string   "sheaveQuantity"
+    t.decimal  "weight",                :precision => 10, :scale => 0
+    t.decimal  "workbenchHeight",       :precision => 10, :scale => 0
+    t.string   "basePlatformsize"
+    t.string   "manufacture"
+    t.string   "manufactureContact"
+    t.string   "picture"
+    t.string   "remark"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
   end
 
   create_table "equipment", :force => true do |t|
@@ -70,6 +89,41 @@ ActiveRecord::Schema.define(:version => 20130513015758) do
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pumps", :force => true do |t|
+    t.string   "pumpmodel"
+    t.string   "pumpDiameter"
+    t.decimal  "pumplineNumber",     :precision => 10, :scale => 0
+    t.decimal  "stroke",             :precision => 10, :scale => 0
+    t.decimal  "strokeTimes",        :precision => 10, :scale => 0
+    t.decimal  "traffic",            :precision => 10, :scale => 0
+    t.decimal  "pressure",           :precision => 10, :scale => 0
+    t.decimal  "power",              :precision => 10, :scale => 0
+    t.string   "overallsize"
+    t.decimal  "weight",             :precision => 10, :scale => 0
+    t.string   "manufacture"
+    t.string   "manufactureContact"
+    t.string   "picture"
+    t.string   "remark"
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
+
+  create_table "rigmachines", :force => true do |t|
+    t.string   "rigmodel"
+    t.decimal  "righoleDeep",        :precision => 10, :scale => 0
+    t.decimal  "pipeDiameter",       :precision => 10, :scale => 0
+    t.decimal  "rigPower",           :precision => 10, :scale => 0
+    t.decimal  "rotatingSpeed",      :precision => 10, :scale => 0
+    t.decimal  "rigweight",          :precision => 10, :scale => 0
+    t.string   "manufacture"
+    t.string   "manufactureContact"
+    t.string   "overallsize"
+    t.string   "picture"
+    t.string   "remark"
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
   end
 
   create_table "teams", :force => true do |t|

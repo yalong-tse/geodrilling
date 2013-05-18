@@ -6,43 +6,92 @@
     <li class="active"><a href="#tab1" data-toggle="tab">钻塔</a></li>
     <li> <a href="#tab2" data-toggle="tab">钻机</a></li>
     <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
-    <li> <a href="#tab4" data-toggle="tab">设备配组</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-<table class="table table-striped">
-  <tr>
-    <th>设备名称</th>
-    <th>设备分类</th>
-    <th>数量</th>
-    <th>保管人</th>
-    <th>使用人</th>
-    <th>设备状态</th>
-    <th>操作</th>
-  </tr>
-
-<% @equipment.each do |equipment| %>
-  <tr>
-    <td><%= link_to equipment.name , equipment %></td>
-    <td><%= equipment.category %></td>
-    <td><%= equipment.quantity %></td>
-    <td><%= equipment.keeper %></td>
-    <td><%= equipment.borrower %></td>
-    <td><%= equipment.usage %></td>
-    <td><%= link_to '详情', equipment %> |
-    <%= link_to '删除', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      <table class="table table-stripped">
+        <tr>
+          <th>型号</th>
+          <th>有效载荷</th>
+          <th>深度</th>
+          <th>高度</th>
+          <th>提升钻杆根数与长度</th>
+          <th>滑车组数与减轻负荷倍数</th>
+          <th>顶宽尺寸</th>
+          <th>重量</th>
+          <th>厂商<th>
+        </tr>
+        <% @drilltower.each do |tower| %>
+          <tr>
+            <td> <%= tower.model %> </td>
+            <td> <%= tower.effectiveload %> </td>
+            <td> <%= tower.deep %> </td>
+            <td> <%= tower.height %> </td>
+            <td> <%= tower.pipequantityAndlength %> </td>
+            <td> <%= tower.sheaveQuantity %> </td>
+            <td> <%= tower.topsize %> </td>
+            <td> <%= tower.weight %> </td>
+            <td> <%= tower.manufacture %> </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
     <div class="tab-pane" id="tab2">
-      <p> 钻机的界面 </p>
+      <table class="table table-stripped">
+        <tr>
+          <th>钻机型号</th>
+          <th>钻机重量</th>
+          <th>钻孔深度</th>
+          <th>钻机功率</th>
+          <th>转速</th>
+          <th>钻孔直径</th>
+          <th>外观尺寸</th>
+          <th>厂商</th>
+        </tr>
+        <% @rigmachine.each do |rig| %>
+          <tr>
+            <td> <%=rig.rigmodel %> </td>
+            <td> <%=rig.rigweight %> </td>
+            <td> <%=rig.righoleDeep %> </td>
+            <td> <%=rig.rigpower %> </td>
+            <td> <%=rig.rotatingSpeed %> </td>
+            <td> <%=rig.pipeDiameter %> </td>
+            <td> <%=rig.overallsize %> </td>
+            <td> <%=rig.manufacture %> </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
     <div class="tab-pane" id="tab3">
-      <p> 泥浆泵界面 </p>
-    </div>
-    <div class="tab-pane" id="tab4">
-      <p> 设备配组界面 </p>
+      <table class="table table-stripped">
+        <tr>
+          <th>型号</th>
+          <th>缸径</th>
+          <th>缸数</th>
+          <th>冲程</th>
+          <th>冲次</th>
+          <th>流量</th>
+          <th>重量</th>
+          <th>功率</th>
+          <th>压力</th>
+          <th>外观尺寸</th>
+        </tr>
+        <% @pump.each do |pump| %>
+          <tr>
+            <td> <%= pump.pumpmodel %>  </td>
+            <td> <%= pump.pumpDiameter %>  </td>
+            <td> <%= pump.pumplineNumber %>  </td>
+            <td> <%= pump.stroke %>  </td>
+            <td> <%= pump.traffic %>  </td>
+            <td> <%= pump.weight %>  </td>
+            <td> <%= pump.power %>  </td>
+            <td> <%= pump.pressure %>  </td>
+            <td> <%= pump.overallsize %>  </td>
+            <td> <%= pump.pressure %>  </td>
+          </tr>
+        <% end %>
+      </table>
+
     </div>
   </div>
 </div>

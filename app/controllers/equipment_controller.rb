@@ -4,7 +4,10 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all
+#    @equipment = Equipment.all
+    @drilltower = Drilltower.all
+    @pump = Pump.all
+    @rigmachine = Rigmachine.all
 
     respond_to do |format|
       format.html # index.html.erb

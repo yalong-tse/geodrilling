@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model: MyString
+  height: 9.99
+  deep: 9.99
+  effectiveload: 9.99
+  topsize: MyString
+  pipequantityAndLenght: MyString
+  sheaveQuantity: MyString
+  weight: 9.99
+  workbenchHeight: 9.99
+  basePlatformsize: MyString
+  manufacture: MyString
+  manufactureContact: MyString
+  picture: MyString
+  remark: MyString
+
+two:
+  model: MyString
+  height: 9.99
+  deep: 9.99
+  effectiveload: 9.99
+  topsize: MyString
+  pipequantityAndLenght: MyString
+  sheaveQuantity: MyString
+  weight: 9.99
+  workbenchHeight: 9.99
+  basePlatformsize: MyString
+  manufacture: MyString
+  manufactureContact: MyString
+  picture: MyString
+  remark: MyString

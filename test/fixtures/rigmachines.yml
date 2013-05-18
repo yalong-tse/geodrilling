@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rigmodel: MyString
+  righoleDeep: 9.99
+  pipeDiameter: 9.99
+  rigPower: 9.99
+  rotatingSpeed: 9.99
+  rigweight: 9.99
+  manufacture: MyString
+  manufactureContact: MyString
+  overallsize: MyString
+  picture: MyString
+  remark: MyString
+
+two:
+  rigmodel: MyString
+  righoleDeep: 9.99
+  pipeDiameter: 9.99
+  rigPower: 9.99
+  rotatingSpeed: 9.99
+  rigweight: 9.99
+  manufacture: MyString
+  manufactureContact: MyString
+  overallsize: MyString
+  picture: MyString
+  remark: MyString

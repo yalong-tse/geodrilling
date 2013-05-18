@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pumpmodel: MyString
+  pumpDiameter: MyString
+  pumplineNumber: 9.99
+  stroke: 9.99
+  strokeTimes: 9.99
+  traffic: 9.99
+  pressure: 9.99
+  power: 9.99
+  overallsize: MyString
+  weight: 9.99
+  manufacture: MyString
+  manufactureContact: MyString
+  picture: MyString
+  remark: MyString
+
+two:
+  pumpmodel: MyString
+  pumpDiameter: MyString
+  pumplineNumber: 9.99
+  stroke: 9.99
+  strokeTimes: 9.99
+  traffic: 9.99
+  pressure: 9.99
+  power: 9.99
+  overallsize: MyString
+  weight: 9.99
+  manufacture: MyString
+  manufactureContact: MyString
+  picture: MyString
+  remark: MyString
