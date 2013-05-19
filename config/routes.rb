@@ -1,4 +1,11 @@
 Geodrilling::Application.routes.draw do
+  get "equipment/stockin"
+  get "equipment/newdrilltower"
+  get "equipment/newpump"
+  get "equipment/newrigmachine"
+
+  get "equipment/stockout"
+
   get "archive/contract"
 
   get "archive/hole"
