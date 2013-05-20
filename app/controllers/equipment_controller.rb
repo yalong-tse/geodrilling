@@ -39,7 +39,6 @@ class EquipmentController < ApplicationController
 
   def newdrilltower
     @tower = Drilltower.new 
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @equipment }
@@ -48,7 +47,6 @@ class EquipmentController < ApplicationController
 
   def newrigmachine
     @rigmachine = Rigmachine.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @equipment }
@@ -57,11 +55,11 @@ class EquipmentController < ApplicationController
 
   def newpump
     @pump = Pump.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @equipment }
     end
+
   end
   
 
