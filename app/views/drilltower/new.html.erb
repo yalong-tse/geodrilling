@@ -1,0 +1,114 @@
+<div class="page-header">
+  <h3>设备管理/设备入库/钻塔入库单</h3>
+</div>
+<%= form_for @drilltower, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
+  <% if @drilltower.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%=pluralize(@drilltower.errors.count, "error") %> 错误由于：</h2>
+      <ul>
+        <% @drilltower.errors.full_messages.each do |msg| %>
+          <li><%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "钻塔型号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :model , :class=>"input-large" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "钻塔高度", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :height , :class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "钻孔深度", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :deep , :class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "有效载荷", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :effectiveload , :class=>"text_field" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "提升钻杆根数与长度", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pipequantityAndLenght , :class=>"text_field" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "滑车总数逾减轻负荷倍数", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :sheaveQuantity , :class=>"text_field" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "底盘尺寸", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :basePlatformsize , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "顶宽尺寸", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :topsize , :class=>"text_field" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "工作台高度", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :workbenchHeight , :class=>"text_field" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "重量", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :weight , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "厂商", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufacture , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "厂商联系方式", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufactureContact , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "图片", :class=>"control-label" %>
+    <div class="controls">
+     <i class="icon-folder-open"></i><%= f.file_field :picture,:class=>"text" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "备注", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :remark , :rows=>"4", :cols=>"20" , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "钻塔入库单" , :class=>"btn btn-primary" %>
+    <%= link_back :class=>'btn btn-info'%>
+  </div>
+<% end %>

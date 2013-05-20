@@ -37,31 +37,6 @@ class EquipmentController < ApplicationController
     end
   end
 
-  def newdrilltower
-    @tower = Drilltower.new 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @equipment }
-    end
-  end
-
-  def newrigmachine
-    @rigmachine = Rigmachine.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @equipment }
-    end
-  end
-
-  def newpump
-    @pump = Pump.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @equipment }
-    end
-
-  end
-  
 
   def stockin
     respond_to do |format|
@@ -99,6 +74,7 @@ class EquipmentController < ApplicationController
       end
     end
   end
+
 
   # PUT /equipment/1
   # PUT /equipment/1.json

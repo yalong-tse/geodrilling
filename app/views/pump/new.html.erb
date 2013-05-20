@@ -1,0 +1,109 @@
+<div class="page-header">
+  <h3>设备管理/设备入库/泥浆泵入库单</h3>
+</div>
+<%= form_for @pump, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
+  <% if @pump.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%=pluralize(@pump.errors.count, "error") %> 错误由于：</h2>
+      <ul>
+        <% @pump.errors.full_messages.each do |msg| %>
+          <li><%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "泥浆泵型号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pumpmodel , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "功率", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :power , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "压力", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pressure , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "缸径", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pumpDiameter , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "缸数", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pumplineNumber , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "冲程", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :stroke , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "冲次", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :strokeTimes , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "流量", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :traffic , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "重量", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :weight , :class=>"input-large" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "厂商", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufacture , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "厂商联系方式", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufactureContact , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "图片", :class=>"control-label" %>
+    <div class="controls">
+     <i class="icon-folder-open"></i><%= f.file_field :picture,:class=>"text" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "备注", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :remark , :rows=>"4", :cols=>"20" , :class=>"input-xlarge" %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "泥浆泵入库单" , :class=>"btn btn-primary" %>
+    <%= link_back :class=>'btn btn-info'%>
+  </div>
+<% end %>

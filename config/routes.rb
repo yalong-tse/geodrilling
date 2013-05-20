@@ -1,9 +1,35 @@
 Geodrilling::Application.routes.draw do
-  get "equipment/stockin"
-  get "equipment/newdrilltower"
-  get "equipment/newpump"
-  get "equipment/newrigmachine"
+  get "pump/index"
 
+  post "pump/create"
+
+  get "pump/new"
+
+  post "pump/update"
+
+  get "pump/show"
+
+  get "rigmachine/index"
+
+  post "rigmachine/create"
+
+  get "rigmachine/new"
+
+  post "rigmachine/update"
+
+  get "rigmachine/show"
+
+  get "drilltower/index"
+
+  post "drilltower/create"
+
+  get "drilltower/new"
+
+  post "drilltower/update"
+
+  get "drilltower/show"
+
+  get "equipment/stockin"
   get "equipment/stockout"
 
   get "archive/contract"

@@ -1,0 +1,96 @@
+<div class="page-header">
+  <h3>设备管理/设备入库/钻机入库单</h3>
+</div>
+<%= form_for @rigmachine, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
+  <% if @rigmachine.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%=pluralize(@rigmachine.errors.count, "error") %> 错误由于：</h2>
+      <ul>
+        <% @rigmachine.errors.full_messages.each do |msg| %>
+          <li><%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "钻机型号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :rigmodel , :class=>"input-large" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label "钻孔直径", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :pipeDiameter , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "钻机功率", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :rigPower , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "钻孔深度", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :righoleDeep , :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "钻机重量", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :rigweight, :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "转速", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :rotatingSpeed, :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "外观尺寸", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :overallsize, :class=>"input-large" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "厂商", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufacture, :class=>"input-xxlarge" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "厂商联系方式", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :manufactureContact, :class=>"input-xxlarge" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "图片", :class=>"control-label" %>
+    <div class="controls">
+     <i class="icon-folder-open"></i><%= f.file_field :picture,:class=>"text" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "备注", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :remark , :rows=>"4", :cols=>"20" , :class=>"input-xlarge" %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "钻机入库单" , :class=>"btn btn-primary" %>
+    <%= link_back :class=>'btn btn-info'%>
+  </div>
+<% end %>
