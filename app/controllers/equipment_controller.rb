@@ -47,6 +47,9 @@ class EquipmentController < ApplicationController
 
 
   def stockout
+    @drilltower = Drilltower.all
+    @pump = Pump.all
+    @rigmachine = Rigmachine.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @equipment }

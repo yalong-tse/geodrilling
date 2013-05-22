@@ -22,30 +22,38 @@
   <div class="control-group">
     <%= f.label "钻塔高度", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :height , :class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :height , :class=>"text_field" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "钻孔深度", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :deep , :class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :deep , :class=>"text_field" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "有效载荷", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :effectiveload , :class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :effectiveload , :class=>"text_field" %><span class="add-on">KN</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "提升钻杆根数与长度", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pipequantityAndLenght , :class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :pipequantityAndLenght , :class=>"text_field" %><span class="add-on">根x米</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label "滑车总数逾减轻负荷倍数", :class=>"control-label" %>
+    <%= f.label "滑车总数与减轻负荷倍数", :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :sheaveQuantity , :class=>"text_field" %>
     </div>
@@ -54,28 +62,36 @@
   <div class="control-group">
     <%= f.label "底盘尺寸", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :basePlatformsize , :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :basePlatformsize , :class=>"input-large" %><span class="add-on">米x米</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "顶宽尺寸", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :topsize , :class=>"text_field" %>
+      <div class="input-append">
+       <%= f.text_field :topsize , :class=>"text_field" %><span class="add-on">米x米</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "工作台高度", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :workbenchHeight , :class=>"text_field" %>
+      <div class="input-append">
+        <%= f.text_field :workbenchHeight , :class=>"text_field" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "重量", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :weight , :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :weight , :class=>"input-large" %><span class="add-on">吨</span>
+      </div>
     </div>
   </div>
 
@@ -108,7 +124,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "钻塔入库单" , :class=>"btn btn-primary" %>
+    <%= f.submit "保存钻塔入库单" , :class=>"btn btn-primary" %>
     <%= link_back :class=>'btn btn-info'%>
   </div>
 <% end %>

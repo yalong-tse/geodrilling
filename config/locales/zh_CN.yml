@@ -3,6 +3,10 @@ zh_CN:
     project: "钻探施工过程管理信息系统"
     team: "大柳树梦之队"
 
+  will_paginate:
+    previous_label: "上一页"
+    next_label: "下一页"
+
   labels:
     sign_in: "登陆"
     sign_up: "注册"

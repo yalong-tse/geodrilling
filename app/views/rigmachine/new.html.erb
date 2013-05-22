@@ -23,42 +23,54 @@
   <div class="control-group">
     <%= f.label "钻孔直径", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pipeDiameter , :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :pipeDiameter , :class=>"input-large" %><span class="add-on">mm</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "钻机功率", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :rigPower , :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :rigPower , :class=>"input-large" %><span class="add-on">KW</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "钻孔深度", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :righoleDeep , :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :righoleDeep , :class=>"input-large" %><span class="add-on">米</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "钻机重量", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :rigweight, :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :rigweight, :class=>"input-large" %><span class="add-on">KG</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "转速", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :rotatingSpeed, :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :rotatingSpeed, :class=>"input-large" %><span class="add-on">r/min</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "外观尺寸", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :overallsize, :class=>"input-large" %>
+      <div class="input-append">
+        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)x宽(mm)x高(mm)</span>
+      </div>
     </div>
   </div>
 

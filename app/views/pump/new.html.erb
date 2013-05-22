@@ -16,28 +16,34 @@
   <div class="control-group">
     <%= f.label "泥浆泵型号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pumpmodel , :class=>"input-large" %>
+        <%= f.text_field :pumpmodel , :class=>"input-large" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "功率", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :power , :class=>"input-large" %>
+      <div class="input-append">
+      <%= f.text_field :power , :class=>"input-large" %><span class="add-on">KW</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "压力", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pressure , :class=>"input-large" %>
+      <div class="input-append">
+      <%= f.text_field :pressure , :class=>"input-large" %><span class="add-on">MPa</span>
+      </div>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label "缸径", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pumpDiameter , :class=>"input-large" %>
+      <div class="input-append">
+      <%= f.text_field :pumpDiameter , :class=>"input-large" %><span class="add-on">mm</span>
+      </div>
     </div>
   </div>
 
@@ -51,7 +57,9 @@
   <div class="control-group">
     <%= f.label "冲程", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :stroke , :class=>"input-large" %>
+      <div class="input-append">
+      <%= f.text_field :stroke , :class=>"input-large" %><span class="add-on">mm</span>
+      </div>
     </div>
   </div>
 
@@ -72,9 +80,21 @@
   <div class="control-group">
     <%= f.label "重量", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :weight , :class=>"input-large" %>
+      <div class="input-append">
+      <%= f.text_field :weight , :class=>"input-large" %><span class="add-on">KG</span>
+      </div>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label "外观尺寸", :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)x宽(mm)x高(mm)</span>
+      </div>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label "厂商", :class=>"control-label" %>
     <div class="controls">
@@ -103,7 +123,7 @@
     </div>
   </div>
   <div class="form-actions">
-    <%= f.submit "泥浆泵入库单" , :class=>"btn btn-primary" %>
+    <%= f.submit "保存泥浆泵入库单" , :class=>"btn btn-primary" %>
     <%= link_back :class=>'btn btn-info'%>
   </div>
 <% end %>
