@@ -1,2 +1,78 @@
-<h1>Pump#show</h1>
-<p>Find me in app/views/pump/show.html.erb</p>
+<div class="page-header">
+  <h3>设备管理/设备入库/泥浆泵入库单查看</h3>
+</div>
+<div class="container">
+  <div class="span9">
+    <h4>泥浆泵入库单详情</h4>
+  <table class="table table-hover">
+    <tr>
+      <th>项目名称</th>
+      <th>值</th>
+    </tr>
+    <tr>
+      <td>泥浆泵型号</td>
+      <td><%=@pump.pumpmodel %></td>
+    </tr>
+    <tr>
+      <td>泥浆泵功率</td>
+      <td><%=@pump.power %></td>
+    </tr>
+    <tr>
+      <td>泥浆泵压力</td>
+      <td><%=@pump.pressure %></td>
+    </tr>
+    <tr>
+      <td>泥浆泵缸径</td>
+      <td><%=@pump.pumpDiameter %></td>
+    </tr>
+    <tr>
+      <td>泥浆泵缸数</td>
+      <td><%=@pump.pumplineNumber %></td>
+    </tr>
+    <tr>
+      <td>冲程</td>
+      <td><%=@pump.stroke %></td>
+    </tr>
+    <tr>
+      <td>冲次</td>
+      <td><%=@pump.strokeTimes %></td>
+    </tr>
+    <tr>
+      <td>流量</td>
+      <td><%=@pump.traffic %></td>
+    </tr>
+    <tr>
+      <td>重量</td>
+      <td><%=@pump.weight %></td>
+    </tr>
+    <tr>
+      <td>外观尺寸</td>
+      <td><%=@pump.overallsize %></td>
+    </tr>
+    <tr>
+      <td>厂商</td>
+      <td><%=@pump.manufacture %></td>
+    </tr>
+    <tr>
+      <td>厂商联系方式</td>
+      <td><%=@pump.manufactureContact %></td>
+    </tr>
+    <tr>
+      <td>图片</td>
+      <td>
+        <ul class="thumbnails">
+          <li class="span2">
+            <div class="thumbnail">
+              <img data-src="holder.js/260x180" alt="钻塔图片" src="/assets/zuanta.jpg"/>
+            </div>
+         </li>
+       </ul>
+     </td>
+    </tr>
+    <tr>
+      <td>备注</td>
+      <td><%=@pump.remark %></td>
+    </tr>
+  </table>
+</div>
+</div>

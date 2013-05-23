@@ -56,6 +56,15 @@ class EquipmentController < ApplicationController
     end
   end
 
+  def discard
+    @drilltower = Drilltower.all
+    @pump = Pump.all
+    @rigmachine = Rigmachine.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @equipment }
+    end
+  end
 
   # GET /equipment/1/edit
   def edit

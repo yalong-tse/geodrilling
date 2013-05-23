@@ -30,7 +30,10 @@ Geodrilling::Application.routes.draw do
   get "drilltower/show"
 
   get "equipment/stockin"
+
   get "equipment/stockout"
+  
+  get "equipment/discard"
 
   get "archive/contract"
 

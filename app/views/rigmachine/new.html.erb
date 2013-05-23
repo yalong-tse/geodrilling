@@ -1,5 +1,11 @@
 <div class="page-header">
-  <h3>设备管理/设备入库/钻机入库单</h3>
+  <h5>
+  <ul class="breadcrumb warn warn-info">
+    <li>设备管理<span class="divider">/</span></li>
+    <li><a href="<%=equipment_stockin_path %>">设备入库</a><span class="divider">/</span></li>
+    <li>钻机入库单</li>
+  </ul>
+  </h5>
 </div>
 <%= form_for @rigmachine, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
   <% if @rigmachine.errors.any? %>
