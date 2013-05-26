@@ -8,13 +8,41 @@
 </div>
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">钻塔</a></li>
-    <li> <a href="#tab2" data-toggle="tab">钻机</a></li>
+    <li class="active"><a href="#tab1" data-toggle="tab">钻机</a></li>
+    <li> <a href="#tab2" data-toggle="tab">钻塔</a></li>
     <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <table class="table table-striped">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>钻机型号</th>
+          <th>钻机重量</th>
+          <th>钻孔深度</th>
+          <th>钻机功率</th>
+          <th>转速</th>
+          <th>钻孔直径</th>
+          <th>厂商</th>
+          <th>占用状态</th>
+          <th>设备履历</th>
+        </tr>
+        <% @rigmachine.each do |rig| %>
+          <tr>
+            <td> <%=rig.rigmodel %> </td>
+            <td> <%=rig.rigweight %> </td>
+            <td> <%=rig.righoleDeep %> </td>
+            <td> <%=rig.rigPower %> </td>
+            <td> <%=rig.rotatingSpeed %> </td>
+            <td> <%=rig.pipeDiameter %> </td>
+            <td> <%=rig.manufacture %> </td>
+            <td> <%=rig.status %> </td>
+            <td> <button class="btn btn-small btn-info">查看</button></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <table class="table table-striped table-hover table-bordered">
         <tr>
           <th>型号</th>
           <th>有效载荷</th>
@@ -24,7 +52,9 @@
           <th>滑车组数与减轻负荷倍数</th>
           <th>顶宽尺寸</th>
           <th>重量</th>
-          <th>厂商<th>
+          <th>厂商</th>
+          <th>占用状态</th>
+          <th>设备履历</th>
         </tr>
         <% @drilltower.each do |tower| %>
           <tr>
@@ -37,38 +67,14 @@
             <td> <%= tower.topsize %> </td>
             <td> <%= tower.weight %> </td>
             <td> <%= tower.manufacture %> </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <table class="table table-striped">
-        <tr>
-          <th>钻机型号</th>
-          <th>钻机重量</th>
-          <th>钻孔深度</th>
-          <th>钻机功率</th>
-          <th>转速</th>
-          <th>钻孔直径</th>
-          <th>外观尺寸</th>
-          <th>厂商</th>
-        </tr>
-        <% @rigmachine.each do |rig| %>
-          <tr>
-            <td> <%=rig.rigmodel %> </td>
-            <td> <%=rig.rigweight %> </td>
-            <td> <%=rig.righoleDeep %> </td>
-            <td> <%=rig.rigPower %> </td>
-            <td> <%=rig.rotatingSpeed %> </td>
-            <td> <%=rig.pipeDiameter %> </td>
-            <td> <%=rig.overallsize %> </td>
-            <td> <%=rig.manufacture %> </td>
+            <td> <%= tower.status %> 空闲 </td>
+            <td> <button class="btn btn-small btn-info">查看</button> </td>
           </tr>
         <% end %>
       </table>
     </div>
     <div class="tab-pane" id="tab3">
-      <table class="table table-striped">
+      <table class="table table-striped table-hover">
         <tr>
           <th>型号</th>
           <th>缸径</th>
@@ -80,6 +86,8 @@
           <th>功率</th>
           <th>压力</th>
           <th>外观尺寸</th>
+          <th>占用状态</th>
+          <th>设备履历</th>
         </tr>
         <% @pump.each do |pump| %>
           <tr>
@@ -93,6 +101,8 @@
             <td> <%= pump.pressure %>  </td>
             <td> <%= pump.overallsize %>  </td>
             <td> <%= pump.pressure %>  </td>
+            <td> <%= pump.status %>  </td>
+            <td> <button class="btn btn-small btn-info">查看</button> </td>
           </tr>
         <% end %>
       </table>

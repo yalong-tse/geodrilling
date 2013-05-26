@@ -8,42 +8,12 @@
 </div>
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">钻塔</a></li>
-    <li> <a href="#tab2" data-toggle="tab">钻机</a></li>
+    <li class="active"><a href="#tab1" data-toggle="tab">钻机</a></li>
+    <li> <a href="#tab2" data-toggle="tab">钻塔</a></li>
     <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
-      <table class="table table-hover table-striped">
-        <tr>
-          <th>型号</th>
-          <th>有效载荷</th>
-          <th>深度</th>
-          <th>高度</th>
-          <th>提升钻杆根数与长度</th>
-          <th>滑车组数与减轻负荷倍数</th>
-          <th>顶宽尺寸</th>
-          <th>重量</th>
-          <th>厂商<th>
-          <th>操作<th>
-        </tr>
-        <% @drilltower.each do |tower| %>
-          <tr>
-            <td> <%= tower.model %> </td>
-            <td> <%= tower.effectiveload %> </td>
-            <td> <%= tower.deep %> </td>
-            <td> <%= tower.height %> </td>
-            <td> <%= tower.pipequantityAndLenght %> </td>
-            <td> <%= tower.sheaveQuantity %> </td>
-            <td> <%= tower.topsize %> </td>
-            <td> <%= tower.weight %> </td>
-            <td> <%= tower.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning">报废申请</button></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab2">
+    <div class="tab-pane" id="tab1">
       <table class="table table-hover table-striped">
         <tr>
           <th>钻机型号</th>
@@ -66,6 +36,36 @@
             <td> <%=rig.pipeDiameter %> </td>
             <td> <%=rig.overallsize %> </td>
             <td> <%=rig.manufacture %> </td>
+            <td><button class="btn btn-small btn-warning">报废申请</button></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane active" id="tab2">
+      <table class="table table-hover table-striped">
+        <tr>
+          <th>型号</th>
+          <th>有效载荷</th>
+          <th>深度</th>
+          <th>高度</th>
+          <th>提升钻杆根数与长度</th>
+          <th>滑车组数与减轻负荷倍数</th>
+          <th>顶宽尺寸</th>
+          <th>重量</th>
+          <th>厂商</th>
+          <th>操作</th>
+        </tr>
+        <% @drilltower.each do |tower| %>
+          <tr>
+            <td> <%= tower.model %> </td>
+            <td> <%= tower.effectiveload %> </td>
+            <td> <%= tower.deep %> </td>
+            <td> <%= tower.height %> </td>
+            <td> <%= tower.pipequantityAndLenght %> </td>
+            <td> <%= tower.sheaveQuantity %> </td>
+            <td> <%= tower.topsize %> </td>
+            <td> <%= tower.weight %> </td>
+            <td> <%= tower.manufacture %> </td>
             <td><button class="btn btn-small btn-warning">报废申请</button></td>
           </tr>
         <% end %>

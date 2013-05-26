@@ -12,5 +12,16 @@ class Rigmachine < ActiveRecord::Base
   # rigmodel 钻机型号
   # rigweight 钻机重量
   # rotatingSpeed 转速 
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed
+  # status 占用状态
+  # name 名称
+  # devicenumber  设备编号
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed ,:name , :devicenumber , :status 
+
+  has_one :pump , :foreign_key=>"rigmachineid"
+  has_one :drilltower, :foreign_key=>"rigmachineid"
+  
+  scope :used , :conditions=>{:stauts=>1}
+  scope :unused , :conditions=>{:status=>0}
+
 end
+

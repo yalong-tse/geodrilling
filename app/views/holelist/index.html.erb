@@ -29,16 +29,58 @@
     <td><%= hole.designdiameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%=link_to hole.contract.name,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
+    <td><%= link_to hole.contract.name,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
     <td><%= link_to '施工队伍', {:controller=>"holes" , :action=>"edit", :id=>hole.id, :contract_id=>hole.contract.id}%></td>
-    <td><%= '使用设备' %></td>
-    <td><%= '使用材料' %></td>
+    <td><%= hole_use_device(hole) %></td>
+    <td><%= hole_use_materials(hole) %></td>
   </tr>
 <% end %>
 </table>
+<div id="_modal" class="modal hide fade" tabindex="-1" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h4>请配置使用的钻机</h4>
+  </div>
+  <div class="modal-body">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>钻机型号</th>
+          <th>钻机重量</th>
+          <th>钻孔深度</th>
+          <th>钻机功率</th>
+          <th>转速</th>
+          <th>钻孔直径</th>
+          <th>钻塔</th>
+          <th>泥浆泵</th>
+        </tr>
+        <% @rigmachine.each do |rig| %>
+          <tr>
+            <td> <%=rig.rigmodel %> </td>
+            <td> <%=rig.rigweight %> </td>
+            <td> <%=rig.righoleDeep %> </td>
+            <td> <%=rig.rigPower %> </td>
+            <td> <%=rig.rotatingSpeed %> </td>
+            <td> <%=rig.pipeDiameter %> </td>
+            <td> <%= drilltower_group(rig) %> </td>
+            <td> <%= pump_group(rig) %> </td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">关闭</button>
+    <a href="#" class="btn btn-primary">确定</a>
+  </div>
+</div>
 <div class="row-fluid">
   <div class="span4"></div>
   <div class="span4">
     <%= will_paginate @holes_list, :renderer=>BootstrapPagination::Rails %>
   </div>
 </div>
+<script language="javascript">
+  function open_modal()
+  {
+    $("#_modal").modal();
+  }
+</script>

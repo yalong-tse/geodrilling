@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518032445) do
+ActiveRecord::Schema.define(:version => 20130526082906) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(:version => 20130518032445) do
     t.string   "remark"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
+    t.string   "name"
+    t.string   "devicenumber"
+    t.boolean  "status"
+    t.boolean  "groupstatus"
+    t.decimal  "rigmachineid",          :precision => 10, :scale => 0
   end
 
   create_table "equipment", :force => true do |t|
@@ -108,6 +113,11 @@ ActiveRecord::Schema.define(:version => 20130518032445) do
     t.string   "remark"
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
+    t.string   "name"
+    t.string   "devicenumber"
+    t.boolean  "status"
+    t.boolean  "groupstatus"
+    t.decimal  "rigmachineid",       :precision => 10, :scale => 0
   end
 
   create_table "rigmachines", :force => true do |t|
@@ -124,6 +134,9 @@ ActiveRecord::Schema.define(:version => 20130518032445) do
     t.string   "remark"
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
+    t.string   "name"
+    t.string   "devicenumber"
+    t.boolean  "status"
   end
 
   create_table "teams", :force => true do |t|
@@ -151,6 +164,18 @@ ActiveRecord::Schema.define(:version => 20130518032445) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "status"
+  end
+
+  create_table "transferrecords", :force => true do |t|
+    t.string   "devicenumber"
+    t.string   "devicetype"
+    t.date     "borrowdate"
+    t.string   "borrower"
+    t.string   "holenumber"
+    t.string   "return"
+    t.date     "returndate"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

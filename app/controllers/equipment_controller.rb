@@ -47,19 +47,29 @@ class EquipmentController < ApplicationController
 
 
   def stockout
+    @rigmachine = Rigmachine.all
     @drilltower = Drilltower.all
     @pump = Pump.all
-    @rigmachine = Rigmachine.all
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @equipment }
+      format.json { render json: @rigmachine }
+    end
+  end
+
+  def group
+    @rigmachine = Rigmachine.all
+    @drilltower = Drilltower.all
+    @pump = Pump.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @rigmachine}
     end
   end
 
   def discard
+    @rigmachine = Rigmachine.all
     @drilltower = Drilltower.all
     @pump = Pump.all
-    @rigmachine = Rigmachine.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @equipment }

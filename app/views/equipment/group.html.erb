@@ -2,18 +2,11 @@
   <h5>
   <ul class="breadcrumb warn warn-info">
     <li>设备管理<span class="divider">/</span></li>
-    <li>设备出库</li>
+    <li>设备配组</li>
   </ul>
   </h5>
 </div>
-<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">钻机</a></li>
-    <li> <a href="#tab2" data-toggle="tab">钻塔</a></li>
-    <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
+<div class="container">
       <table class="table table-striped table-hover">
         <tr>
           <th>钻机型号</th>
@@ -24,7 +17,8 @@
           <th>钻孔直径</th>
           <th>外观尺寸</th>
           <th>厂商</th>
-          <th>操作</th>
+          <th>钻塔</th>
+          <th>泥浆泵</th>
         </tr>
         <% @rigmachine.each do |rig| %>
           <tr>
@@ -36,12 +30,18 @@
             <td> <%=rig.pipeDiameter %> </td>
             <td> <%=rig.overallsize %> </td>
             <td> <%=rig.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning">出库</button></td>
+            <td> <%= drilltower_group(rig) %> </td>
+            <td> <%= pump_group(rig) %> </td>
           </tr>
         <% end %>
       </table>
-    </div>
-    <div class="tab-pane" id="tab2">
+</div>
+<div id="_drilltower_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h4>请选择配组的钻塔</h4>
+  </div>
+  <div class="modal-body">
       <table class="table table-striped table-hover">
         <tr>
           <th>型号</th>
@@ -53,7 +53,6 @@
           <th>顶宽尺寸</th>
           <th>重量</th>
           <th>厂商</th>
-          <th>操作</th>
         </tr>
         <% @drilltower.each do |tower| %>
           <tr>
@@ -66,12 +65,22 @@
             <td> <%= tower.topsize %> </td>
             <td> <%= tower.weight %> </td>
             <td> <%= tower.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning">出库</button></td>
           </tr>
         <% end %>
       </table>
-    </div>
-    <div class="tab-pane" id="tab3">
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">关闭</button>
+    <a href="#" class="btn btn-primary">确定</a>
+  </div>
+</div>
+
+<div id="_pump_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h4>请选择配组的泥浆泵</h4>
+  </div>
+  <div class="modal-body">
       <table class="table table-striped table-hover">
         <tr>
           <th>型号</th>
@@ -84,7 +93,6 @@
           <th>功率</th>
           <th>压力</th>
           <th>外观尺寸</th>
-          <th>操作</th>
         </tr>
         <% @pump.each do |pump| %>
           <tr>
@@ -98,11 +106,23 @@
             <td> <%= pump.pressure %>  </td>
             <td> <%= pump.overallsize %>  </td>
             <td> <%= pump.pressure %>  </td>
-            <td><button class="btn btn-small btn-warning">出库</button></td>
           </tr>
         <% end %>
       </table>
-
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">关闭</button>
+    <a href="#" class="btn btn-primary">确定</a>
   </div>
 </div>
+<script language="javascript">
+  function open_drilltower()
+  {
+    $("#_drilltower_modal").modal();
+  }
+
+  function open_pump()
+  {
+    $("#_pump_modal").modal();
+  }
+</script>

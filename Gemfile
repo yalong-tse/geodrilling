@@ -11,6 +11,8 @@ gem 'mysql2', :platform => :ruby
 #gem 'kaminari'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'seed_dumper'
+gem 'yaml_db'
 
 
 # Gems used only for assets and not required

@@ -16,6 +16,7 @@
       <button type="submit" class="btn"><i class="icon-search"></i> 查询</button>
     </form>
 </div>
+<div class="container">
 <table class="table table-striped">
   <tr>
     <th>矿区</th>
@@ -35,9 +36,10 @@
     <td><%= hole.designdiameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to '详情' %>|
-      <%= link_to '删除', :url=>{:controller=>"holes",:action=>"destroy",:id=>hole}, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '详情', nil, :class=>"btn btn-info" %>|
+      <%= link_to '删除', :url=>{:controller=>"holes",:action=>"destroy",:id=>hole}, method: :delete, data: { confirm: 'Are you sure?' }, :html=>{:class=>"btn btn-info"} %></td>
   </tr>
 <% end %>
 </table>
+</div>
 <br />

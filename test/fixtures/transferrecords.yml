@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  devicenumber: MyString
+  devicetype: MyString
+  borrowdate: 2013-05-26
+  borrower: MyString
+  holenumber: MyString
+  return: MyString
+  returndate: 2013-05-26
+
+two:
+  devicenumber: MyString
+  devicetype: MyString
+  borrowdate: 2013-05-26
+  borrower: MyString
+  holenumber: MyString
+  return: MyString
+  returndate: 2013-05-26

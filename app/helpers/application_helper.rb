@@ -24,7 +24,7 @@ module ApplicationHelper
     when 3
     code <<  "<span class='label label-info'>已经归档</span>";
     end
-    return simple_format(code)
+    code.html_safe
   end
 
   def formattime(args)
@@ -41,6 +41,54 @@ module ApplicationHelper
     when '2'
         code << "已关闭"
     end
-    return code
+    code.html_safe
+  end
+
+  def pump_group(rig)
+    html = ""
+    if (rig.pump && rig.pump.pumpmodel)
+      html << "<span class='label label-success'>" 
+      html << rig.pump.pumpmodel
+      html << "</span>"
+    else
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_pump()'>"
+      html << "配组泥浆泵"
+      html << "</button>"
+    end
+    html.html_safe
+  end
+
+  def drilltower_group(rig)
+    html = ""
+    if (rig.drilltower && rig.drilltower.model)
+      html << "<span class='label label-success'>" 
+      html << rig.drilltower.model
+      html << "</span>"
+    else
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_drilltower()'>"
+      html << "配组钻塔"
+      html << "</button>"
+    end
+    html.html_safe
+  end
+
+  def hole_use_device(hole)
+    html = ""
+    if(hole)
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_modal();'>"
+      html << "配置设备"
+      html << "</button>"
+    end
+    html.html_safe
+  end
+
+  def hole_use_materials(hole)
+    html = ""
+    if(hole)
+      html << "<button class='btn btn-small btn-warning'>"
+      html << "配置材料"
+      html << "</button>"
+    end
+    html.html_safe
   end
 end
