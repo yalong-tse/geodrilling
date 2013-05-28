@@ -36,8 +36,8 @@
     <td><%= hole.designdiameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to '详情', nil, :class=>"btn btn-info" %>|
-      <%= link_to '删除', :url=>{:controller=>"holes",:action=>"destroy",:id=>hole}, method: :delete, data: { confirm: 'Are you sure?' }, :html=>{:class=>"btn btn-info"} %></td>
+    <td><%= link_to '详情', nil, :class=>"btn btn-small btn-info" %>
+      <%= link_to '删除', nil, :class=>"btn btn-small btn-info" %></td>
   </tr>
 <% end %>
 </table>

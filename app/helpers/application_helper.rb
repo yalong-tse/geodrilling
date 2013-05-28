@@ -82,6 +82,18 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def device_status(args)
+    result = ""
+    case args
+    when "0"
+      result = "<span class='label label-success'>空闲</span>"
+    when nil
+      result = "<span class='label label-success'>空闲</span>"
+    when "2"
+      result = "<span class='label label-important'>占用</span>"
+    end
+    result.html_safe
+  end
   def hole_use_materials(hole)
     html = ""
     if(hole)

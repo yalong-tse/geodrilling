@@ -35,7 +35,7 @@
             <td> <%=rig.rotatingSpeed %> </td>
             <td> <%=rig.pipeDiameter %> </td>
             <td> <%=rig.manufacture %> </td>
-            <td> <%=rig.status %> </td>
+            <td> <%=device_status rig.status %> </td>
             <td> <button class="btn btn-small btn-info">查看</button></td>
           </tr>
         <% end %>
@@ -67,7 +67,7 @@
             <td> <%= tower.topsize %> </td>
             <td> <%= tower.weight %> </td>
             <td> <%= tower.manufacture %> </td>
-            <td> <%= tower.status %> 空闲 </td>
+            <td> <%= device_status tower.status %></td>
             <td> <button class="btn btn-small btn-info">查看</button> </td>
           </tr>
         <% end %>
@@ -101,7 +101,7 @@
             <td> <%= pump.pressure %>  </td>
             <td> <%= pump.overallsize %>  </td>
             <td> <%= pump.pressure %>  </td>
-            <td> <%= pump.status %>  </td>
+            <td> <%= device_status pump.status %>  </td>
             <td> <button class="btn btn-small btn-info">查看</button> </td>
           </tr>
         <% end %>

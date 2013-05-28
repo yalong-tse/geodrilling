@@ -6,9 +6,20 @@
   </ul>
   </h5>
 </div>
-
+<div class="container">
+    <form class="form-inline">
+      <%=label_tag "矿区：" , nil, :class=>"control-label" %> <%=text_field_tag :minearea,nil,:class=>"input-medium", :placeholder=>"" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%=label_tag "孔号：", nil, :class=>"control-label" %><%=text_field_tag :holenumber,nil,:class=>"input-medium",:placeholder=>"zk001" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%=label_tag "合同名称：" ,nil, :class=>"control-label"%>&nbsp;&nbsp;<%=text_field_tag :contract_name,nil,:class=>"input-medium",:placeholder=>"" %>
+      <button type="submit" class="btn"><i class="icon-search"></i> 查询</button>
+    </form>
+</div>
+<div class="container">
 <table class="table table-striped">
   <tr>
+    <th>钻孔编号</th>
     <th>班报日期</th>
     <th>开始时间</th>
     <th>结束时间</th>
@@ -23,6 +34,7 @@
 
 <% @tourreports.each do |tourreport| %>
   <tr>
+    <td><%= tourreport.hole.holenumber if tourreport.hole %></td>
     <td><%= tourreport.tourdate %></td>
     <td><%= formattime(tourreport.starttime.to_s) %></td>
     <td><%= formattime(tourreport.finishtime.to_s) %></td>
@@ -36,4 +48,5 @@
   </tr>
 <% end %>
 </table>
+</div>
 <%= link_to '新增班报', new_tourreport_path , :class=>"btn btn-primary" %>
