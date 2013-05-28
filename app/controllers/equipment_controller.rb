@@ -50,6 +50,7 @@ class EquipmentController < ApplicationController
     @rigmachine = Rigmachine.all
     @drilltower = Drilltower.all
     @pump = Pump.all
+    @holes = Hole.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @rigmachine }
