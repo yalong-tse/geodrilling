@@ -110,29 +110,36 @@
 <div id="_holes_modal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h4>请选择出库配置的钻孔</h4>
+    <h5>设备出库单详情</h5>
   </div>
   <div class="modal-body">
 <table class="table table-striped table-hover table-bordered">
   <tr>
-    <th>矿区</th>
-    <th>孔号</th>
-    <th>深度</th>
-    <th>孔径</th>
-    <th>开始日期</th>
-    <th>结束日期</th>
+    <td>出库日期</td>
+    <td></td>
   </tr>
-
-<% @holes.each do |hole| %>
   <tr>
-    <td><%= hole.minearea %></td>
-    <td><%= hole.holenumber %></td>
-    <td><%= hole.designdeep %></td>
-    <td><%= hole.designdiameter %></td>
-    <td><%= hole.startdate %></td>
-    <td><%= hole.finishdate %></td>
+    <td>出库原因</td>
+    <td></td>
   </tr>
-<% end %>
+  <tr>
+    <td>出库说明</td>
+    <td><input class="input-xlarge"/></td>
+  </tr>
+  <tr>
+    <td>配置钻孔</td>
+    <td>
+      <select class="span4" multiple="multiple" rows="6">
+        <% @holes.each do |hole| %>
+          <option value="<%= hole.id %>"><%= hole.minearea %>, <%= hole.holenumber %></option>
+        <% end %>
+      </select> 
+    </td>
+  </tr>
+  <tr>
+    <td>设备领用人</td>
+    <td></td>
+  </tr>
 </table>
   </div>
   <div class="modal-footer">

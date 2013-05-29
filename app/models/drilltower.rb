@@ -25,7 +25,7 @@ class Drilltower < ActiveRecord::Base
   belongs_to :rigmachine ,:class_name=>"Rigmachine", :foreign_key=>"rigmachineid"
 
   scope :used , :conditions=>{ :status=>1}
-  scope :unused , :conditions=>{:status=>0}
+  scope :unused , :conditions=>{:status=>0 || :status }
   scope :grouped , :conditions=>{:groupstatus=>1}
   scope :ungrouped , :conditions=>{:groupstatus=>0}
 

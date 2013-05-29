@@ -29,7 +29,7 @@
     <td><%= contract.startdate %></td>
     <td><%= contract.finishdate %></td>
     <td><%= contract_status_treat(contract.status) %></td>
-    <td><button class="btn btn-small btn-primary">关闭</button></td>
+    <td><button class="btn btn-small btn-primary" onclick="javascript:open_modal(this)">关闭</button></td>
   </tr>
 <% end %>
 </table>
@@ -40,3 +40,25 @@
     <%= will_paginate @contracts, :renderer=>BootstrapPagination::Rails %>
   </div>
 </div>
+<div id="_close_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h5>您确认需要关闭该钻孔吗</h5>
+  </div>
+  <div class="modal-body">
+    <p> 合同名称:<span id="_contract_name" class="label label-important"></span></p>
+    <p> 项目名称:<span id="_project_name"class="label label-important"></span></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">否</button>
+    <a href="#" class="btn btn-primary">是</a>
+  </div>
+</div>
+<script language="javascript">
+  function open_modal(obj)
+  {
+    $("#_contract_name").html($(obj).parent().parent().find("td:eq(0)").text());
+    $("#_project_name").html($(obj).parent().parent().find("td:eq(1)").text());
+    $("#_close_modal").modal();
+  }
+</script>

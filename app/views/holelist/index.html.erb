@@ -39,33 +39,41 @@
 <div id="_modal" class="modal hide fade" tabindex="-1" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h4>请配置使用的钻机</h4>
+    <h5>请配置使用的钻机</h5>
   </div>
   <div class="modal-body">
-      <table class="table table-striped table-hover">
-        <tr>
-          <th>钻机型号</th>
-          <th>钻机重量</th>
-          <th>钻孔深度</th>
-          <th>钻机功率</th>
-          <th>转速</th>
-          <th>钻孔直径</th>
-          <th>钻塔</th>
-          <th>泥浆泵</th>
+     <table class="table table-bordered">
+       <tr>
+         <td>钻机</td>
+         <td>
+           <select multiple="multiple" class="span4">
+            <% @rigmachine.each do |rig| %>
+            <option value="<%=rig.id%>"><%=rig.rigmodel%></option>
+             <% end %>
+            </select>
+          </td>
         </tr>
-        <% @rigmachine.each do |rig| %>
-          <tr>
-            <td> <%=rig.rigmodel %> </td>
-            <td> <%=rig.rigweight %> </td>
-            <td> <%=rig.righoleDeep %> </td>
-            <td> <%=rig.rigPower %> </td>
-            <td> <%=rig.rotatingSpeed %> </td>
-            <td> <%=rig.pipeDiameter %> </td>
-            <td> <%= drilltower_group(rig) %> </td>
-            <td> <%= pump_group(rig) %> </td>
-          </tr>
-        <% end %>
-      </table>
+        <tr>
+          <td>钻塔</td>
+          <td>
+            <select multiple="multiple" class="span4">
+              <% @drilltower.each do |tower| %>
+                <option value="<%= tower.id %>"><%= tower.model %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>泥浆泵</td>
+          <td>
+            <select multiple="multiple" class="span4">
+              <% @pump.each do |pump|%> 
+                <option value="<%=pump.id %>"><%= pump.pumpmodel %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+      </table> 
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal">关闭</button>
