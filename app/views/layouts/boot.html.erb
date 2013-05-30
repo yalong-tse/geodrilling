@@ -58,10 +58,10 @@
           <li class="dropdown" id="_equipments">
           <a class="dropdown-toggle" data-toggle="dropdown" href="/equipment">材料管理<b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="#">材料库存</a></li>
-              <li><a href="#">材料入库</a></li>
-              <li><a href="#">材料出库</a></li>
-              <li><a href="#">材料报废</a></li>
+            <li><%= link_to "材料库存", materials_path %></li>
+            <li><%= link_to "材料入库" , new_material_path%></li>
+            <li><%= link_to "材料出库" , material_stockout_path %></li>
+            <li><%= link_to "材料报废" , material_discard_path %></li>
           </ul>
           </li>
           <li class="dropdown" id="">

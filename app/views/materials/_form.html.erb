@@ -1,4 +1,4 @@
-<%= form_for(@material) do |f| %>
+<%= form_for(@material , :html=>{:class=>"form-horizontal"}) do |f| %>
   <% if @material.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@material.errors.count, "error") %> prohibited this material from being saved:</h2>
@@ -11,15 +11,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label "材料名称", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :name , :class=>"input-xlarge", :placeholder=>"" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :count %><br />
-    <%= f.number_field :count %>
+  <div class="control-group">
+    <%= f.label "材料型号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :model , :class=>"input-xlarge", :placeholder=>"" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "材料单价", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :price , :class=>"input-xlarge", :placeholder=>"" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "数量" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.number_field :count, :class=>"input-large", :placeholder=>"3" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "入库时间" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :stockdate, :class=>"input-large", :placeholder=>"" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "材料类型" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :materialtype, :class=>"input-large", :placeholder=>"" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "记录人" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :recorder,  :class=>"input-large", :placeholder=>"" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "备注" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :remark, :class=>"input-large", :placeholder=>"" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  "保存", :class=>"btn btn-primary"%>
   </div>
 <% end %>

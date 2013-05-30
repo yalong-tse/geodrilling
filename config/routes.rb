@@ -67,6 +67,9 @@ Geodrilling::Application.routes.draw do
 
   resources :materials
 
+  get "material/stockout"
+  get "material/discard"
+
   root :to=>"contracts#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

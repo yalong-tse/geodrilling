@@ -1,3 +1,10 @@
 class Material < ActiveRecord::Base
-  attr_accessible :count, :name
+  # name 名称
+  # model 型号
+  # type 类型
+  # count 数量
+  # price 采购价格
+  # stockdate 入库日期
+  # recorder 记录人
+  attr_accessible :count, :model, :name, :price, :recorder, :remark, :stockdate, :materialtype
 end

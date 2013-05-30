@@ -21,7 +21,9 @@ class Rigmachine < ActiveRecord::Base
   has_one :drilltower, :foreign_key=>"rigmachineid"
   
   scope :used , :conditions=>{:stauts=>1}
-  scope :unused , :conditions=>{:status=>0}
+
+  # 所有未占用的钻机
+  scope :unused , where("status=0 or status is null")
 
 end
 

@@ -1,23 +1,30 @@
 <div class="page-header">
-<h1>Listing materials</h1>
+  <h5>
+  <ul class="breadcrumb warn warn-info">
+    <li>材料管理<span class="divider">/</span></li>
+    <li>材料库存</li>
+  </ul>
+  </h5>
 </div>
-<table class="table table-striped">
+<table class="table table-striped table-hover table-bordered">
   <tr>
-    <th width="30%">Name</th>
-    <th width="30%">Count</th>
-    <th width="40%">操作</th>
+    <th width="20%">材料名称</th>
+    <th width="20%">材料型号</th>
+    <th width="20%">材料单价</th>
+    <th width="20%">材料数量</th>
+    <th width="20%">入库时间</th>
   </tr>
 
 <% @materials.each do |material| %>
   <tr>
     <td><%= material.name %></td>
+    <td><%= material.model %></td>
+    <td><%= material.price %></td>
     <td><%= material.count %></td>
-    <td><%= link_to 'Show', material %>,
-    <%= link_to 'Edit', edit_material_path(material) %>,
-    <%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= material.stockdate %></td>
   </tr>
 <% end %>
 </table>
 <br />
 
-<%= link_to 'New Material', new_material_path %>
+<%= link_to '新增材料', new_material_path ,:class=>"btn btn-primary" %>

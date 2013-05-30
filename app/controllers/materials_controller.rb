@@ -1,8 +1,27 @@
+#encoding: utf-8
 class MaterialsController < ApplicationController
   layout 'boot'
   # GET /materials
   # GET /materials.json
   def index
+    @materials = Material.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @materials }
+    end
+  end
+  #出库
+  def stockout
+    @materials = Material.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @materials }
+    end
+  end
+
+  def discard 
     @materials = Material.all
 
     respond_to do |format|

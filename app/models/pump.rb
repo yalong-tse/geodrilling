@@ -25,7 +25,7 @@ class Pump < ActiveRecord::Base
   belongs_to :rigmachine , :class_name=>"Rigmachine" , :foreign_key=>"rigmachineid"
 
   scope :used ,:conditions=>{:status=>1}
-  scope :unused , :conditions=>{:status=>0 || :status }
+  scope :unused , where("status=0 or status is null")
   scope :grouped , :conditions=>{:groupstatus=>1}
   scope :ungrouped ,:conditions=>{:groupstatus=>0}
 end

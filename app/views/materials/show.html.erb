@@ -1,15 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @material.name %>
-</p>
-
-<p>
-  <b>Count:</b>
-  <%= @material.count %>
-</p>
-
-
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+<div class="page-header">
+  <h5>
+  <ul class="breadcrumb warn warn-info">
+    <li>材料管理<span class="divider">/</span></li>
+    <li>材料库存<span class="divider">/</span></li>
+    <li>材料查看</li>
+  </ul>
+  </h5>
+</div>
+<div class="container">
+  <div class="span9">
+    <h4>材料入库详情</h4>
+  <table class="table table-hover">
+    <tr>
+      <th>项目名称</th>
+      <th>值</th>
+    </tr>
+    <tr>
+      <td>材料名称</td>
+      <td><%=@material.name %></td>
+    </tr>
+    <tr>
+      <td>材料型号</td>
+      <td><%=@material.model %></td>
+    </tr>
+    <tr>
+      <td>材料单价</td>
+      <td><%=@material.price %></td>
+    </tr>
+    <tr>
+      <td>材料类型</td>
+      <td><%=@material.materialtype %></td>
+    </tr>
+    <tr>
+      <td>材料数量</td>
+      <td><%=@material.count %></td>
+    </tr>
+    <tr>
+      <td>入库时间</td>
+      <td><%=@material.stockdate %></td>
+    </tr>
+    <tr>
+      <td>记录人</td>
+      <td><%=@material.recorder %></td>
+    </tr>
+    <tr>
+      <td>备注</td>
+      <td><%=@material.remark %></td>
+    </tr>
+  </table>
+  </div>
+</div>
