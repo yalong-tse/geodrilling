@@ -51,6 +51,8 @@ Geodrilling::Application.routes.draw do
   get "holelist/index"
   get "contracts/indexforclose"
 
+  get "schedule/index"
+
   resources :teams
 
 
@@ -59,16 +61,12 @@ Geodrilling::Application.routes.draw do
 
   resources :holes
 
+  resources :contracts
 
-  resources :contracts do
-    resources :holes
-  end
-
+  get "materials/stockout"
+  get "materials/discard"
 
   resources :materials
-
-  get "material/stockout"
-  get "material/discard"
 
   root :to=>"contracts#index"
   # The priority is based upon order of creation:
