@@ -75,7 +75,7 @@ module ApplicationHelper
   def hole_use_device(hole)
     html = ""
     if(hole)
-      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_modal();'>"
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_modal_device();'>"
       html << "配置设备"
       html << "</button>"
     end
@@ -97,7 +97,7 @@ module ApplicationHelper
   def hole_use_materials(hole)
     html = ""
     if(hole)
-      html << "<button class='btn btn-small btn-warning'>"
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_modal_material()'>"
       html << "配置材料"
       html << "</button>"
     end
