@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529143813) do
+ActiveRecord::Schema.define(:version => 20130602095545) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -91,15 +91,15 @@ ActiveRecord::Schema.define(:version => 20130529143813) do
 
   create_table "materials", :force => true do |t|
     t.string   "name"
-    t.string   "type"
-    t.string   "model"
-    t.decimal  "count",      :precision => 10, :scale => 0
-    t.decimal  "price",      :precision => 10, :scale => 0
+    t.decimal  "count",        :precision => 10, :scale => 0
+    t.decimal  "price",        :precision => 10, :scale => 0
     t.date     "stockdate"
     t.string   "recorder"
     t.string   "remark"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "materialtype"
+    t.string   "model"
   end
 
   create_table "pumps", :force => true do |t|
@@ -170,6 +170,21 @@ ActiveRecord::Schema.define(:version => 20130529143813) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "status"
+  end
+
+  create_table "tourreportworkcontents", :force => true do |t|
+    t.integer  "tourreport_id"
+    t.time     "starttime"
+    t.time     "finishtime"
+    t.string   "workcontent"
+    t.string   "drillfootage"
+    t.string   "drillbit"
+    t.string   "rotatespeed"
+    t.string   "pumppressure"
+    t.string   "pumpquantity"
+    t.string   "coresamplelength"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "transferrecords", :force => true do |t|

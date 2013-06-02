@@ -95,57 +95,85 @@
    <div class="control-group">
     <div class="input-prepend">
       <button class="btn">开始时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime, nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">结束时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_finishtime, nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">工作内容</button>
-      <%= f.select(:starttime,options_for_select(Tourreport::WORKITEM),:class=>"input-medium"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-small" )%>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group">
     <div class="input-prepend">
       <button class="btn">开始时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">结束时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_finishtime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">工作内容</button>
-      <%= f.select(:starttime,options_for_select(Tourreport::WORKITEM),:class=>"input-medium"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-small" )%>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">进尺</button>
+      <%=text_field_tag :workcontent_drillfootage ,nil, :class=>"input-small" %>
+    </div>
+    <div class="input-prepend">
+      <button class="btn">钻头</button>
+      <%=text_field_tag :workcontent_drillbit ,nil, :class=>"input-small" %>
+    </div>
+    <div class="input-prepend">
+      <button class="btn">转速</button>
+      <%=text_field_tag :workcontent_rotatespeed ,nil, :class=>"input-small" %>
+    </div>
+    <div class="input-prepend">
+      <button class="btn">泵量</button>
+      <%=text_field_tag :workcontent_pumpquantity ,nil, :class=>"input-small" %>
+    </div>
+    <div class="input-prepend">
+      <button class="btn">泵压</button>
+      <%=text_field_tag :workcontent_pumppressure,nil, :class=>"input-small" %>
     </div>
   </div>
   <div class="control-group">
     <div class="input-prepend">
       <button class="btn">开始时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">结束时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">工作内容</button>
-      <%= f.select(:starttime,options_for_select(Tourreport::WORKITEM),:class=>"input-medium"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-small"  )%>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">岩心长度</button>
+      <%= text_field_tag :starttime, nil,:class=>"input-small" %>&nbsp;&nbsp;
+    </div>
+    <div class="input-prepend">
+      <button class="btn">残留岩心长度</button>
+      <%= text_field_tag :starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group">
     <div class="input-prepend">
       <button class="btn">开始时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">结束时间</button>
-      <%= f.text_field :starttime, :class=>"input-medium" %>&nbsp;&nbsp;
+      <%= text_field_tag :workcontent_starttime,nil, :class=>"input-small" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <button class="btn">工作内容</button>
-      <%= f.select(:starttime,options_for_select(Tourreport::WORKITEM),:class=>"input-medium"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-small"  )%>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group">

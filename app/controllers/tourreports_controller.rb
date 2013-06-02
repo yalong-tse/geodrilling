@@ -36,6 +36,7 @@ class TourreportsController < ApplicationController
   def new
     @tourreport = Tourreport.new
     @holes = Hole.unclosed
+    @tourreportworkcontent = Tourreportworkcontent.new
 
     respond_to do |format|
       format.html # new.html.erb

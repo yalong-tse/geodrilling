@@ -1,6 +1,6 @@
 class ChangeColumnMaterial < ActiveRecord::Migration
   def up
-    add_column :materials , :materialtype, :string
+    add_column :materials , :materialtype, :string unless :materialtype
   end
 
   def down

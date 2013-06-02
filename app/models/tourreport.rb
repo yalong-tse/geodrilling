@@ -15,6 +15,7 @@ class Tourreport < ActiveRecord::Base
   attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status
   # 属于哪个钻孔
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
+  has_many :tourreportworkcontent
   TOURTIME=[['00:00'],['08:00'],['16:00']]
   TOURTIME2=[['00:00'],['12:00']]
   WORKITEM=[['下钻'],['钻进'],['取心'],['起钻'],['事故处理'],['停待'],['下套管'],['测井'],['孔深校正'],['简易水文观测'],['封孔'],['其他']]
