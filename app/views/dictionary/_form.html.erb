@@ -1,0 +1,43 @@
+<%= form_for(:dictionary, :url=>dictionary_create_path(@dictionary), :html=>{:class=>"form-horizontal"} )  do |f|  %>
+  <% if @dictionary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dictionary.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% @dictionary.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "字典项" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :item , :class=>"input-xxlarge",:placeholder=>"起钻" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "字典类型" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :dictype ,options_for_select(Dictionary::DICTYPE), :class=>"input-xxlarge",:placeholder=>"起钻" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "顺序号" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :priority , :class=>"input-large",:placeholder=>"10" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "备注" ,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_area :remark, :class=>"input-large", :rows=>"4",:placeholder=>"10" %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "新增字典" ,:class=>"btn btn-primary" %> 
+    <%= link_back :class=>'btn' %>
+  </div>
+<% end %>

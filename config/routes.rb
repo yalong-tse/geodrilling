@@ -1,4 +1,14 @@
 Geodrilling::Application.routes.draw do
+  get "dictionary/index"
+
+  get "dictionary/show"
+
+  get "dictionary/new"
+
+  get "dictionary/destroy"
+
+  post "dictionary/create"
+
   get "pump/index"
 
   post "pump/create"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602095545) do
+ActiveRecord::Schema.define(:version => 20130603153456) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20130602095545) do
     t.string   "owner"
     t.date     "deadlinedate"
     t.string   "fundsource"
+  end
+
+  create_table "dictionaries", :force => true do |t|
+    t.string   "item"
+    t.boolean  "delflag"
+    t.decimal  "priority",   :precision => 10, :scale => 0
+    t.string   "remark"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "dictype"
   end
 
   create_table "drilltowers", :force => true do |t|
