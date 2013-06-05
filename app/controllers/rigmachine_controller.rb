@@ -28,6 +28,12 @@ class RigmachineController < ApplicationController
   def update
   end
 
+  def resume
+    respond_to do |format|
+      format.html
+    end 
+  end
+
   def show
     @rigmachine = Rigmachine.find(params[:id])
     respond_to do |format|

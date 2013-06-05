@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h5>
+  <ul class="breadcrumb warn warn-info">
+    <li>设备管理<span class="divider">/</span></li>
+    <li>设备履历</li>
+  </ul>
+  </h5>
+</div>
+<div class="container">
+  <div id="my-timeline"></div>
+</div>
+<script language="javascript">
+			$(document).ready(function() {
+				createStoryJS({
+					type:		'timeline',
+					width:		'100%',
+					height:		'600',
+					source:		'/example_json.json',
+					embed_id:	'my-timeline',
+					debug:		true
+				});
+			});
+</script>
+

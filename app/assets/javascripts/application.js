@@ -15,3 +15,5 @@
 //= require jquery.menu_expand
 //= require bootstrap
 //= require fullcalendar.min
+//= require storyjs-embed
+//= require timeline

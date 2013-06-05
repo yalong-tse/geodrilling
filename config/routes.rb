@@ -28,6 +28,7 @@ Geodrilling::Application.routes.draw do
   post "rigmachine/update"
 
   get "rigmachine/show"
+  get "rigmachine/resume"
 
   get "drilltower/index"
 

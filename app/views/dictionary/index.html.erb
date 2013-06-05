@@ -9,17 +9,17 @@
 <div class="container">
   <table class="table table-striped table-bordered table-hover">
     <tr>
-      <th>字典类型</th>
       <th>字典项目</th>
+      <th>字典类型</th>
       <th>顺序号</th>
       <th>是否可用</th>
     </tr>
     <% @dictionary.each do |dic| %>
     <tr>
-      <td><%= dic.dictype %></td>
       <td><%= dic.item %></td>
+      <td><%= dic.dictype %></td>
       <td><%= dic.priority %></td>
-      <td><%= dic.delflag %></td>
+      <td><%= dictionary_delflag(dic.delflag) %></td>
     </tr>
   <% end %>
   </table>

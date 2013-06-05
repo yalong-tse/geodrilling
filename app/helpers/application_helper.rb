@@ -103,4 +103,16 @@ module ApplicationHelper
     end
     html.html_safe
   end
+  def dictionary_delflag(arg)
+    result = ""
+    case arg
+    when "0"
+      result ="<span class='label label-success'>可用</span>"
+    when nil
+      result = "<span class='label label-success'>可用</span>"
+    when "1"
+      result = "<span class='label label-warning'>不可用</span>"
+    end
+    result.html_safe
+  end
 end
