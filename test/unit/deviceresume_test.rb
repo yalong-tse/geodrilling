@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TransferrecordTest < ActiveSupport::TestCase
+class DeviceresumeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

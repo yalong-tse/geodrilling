@@ -3,17 +3,17 @@
 one:
   devicenumber: MyString
   devicetype: MyString
-  borrowdate: 2013-05-26
-  borrower: MyString
+  operatedate: 2013-06-06
+  operatetype: MyString
+  operator: MyString
   holenumber: MyString
-  return: MyString
-  returndate: 2013-05-26
+  remark: MyString
 
 two:
   devicenumber: MyString
   devicetype: MyString
-  borrowdate: 2013-05-26
-  borrower: MyString
+  operatedate: 2013-06-06
+  operatetype: MyString
+  operator: MyString
   holenumber: MyString
-  return: MyString
-  returndate: 2013-05-26
+  remark: MyString

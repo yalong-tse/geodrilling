@@ -2,7 +2,7 @@
 {
     "timeline":
     {
-        "headline":"Sh*t People Say",
+        "headline":"这是一个设备的履历情况",
         "type":"default",
 		"text":"People say stuff",
 		"startDate":"2012,1,26",
@@ -10,8 +10,8 @@
             {
                 "startDate":"2011,12,12",
 				"endDate":"2012,1,27",
-                "headline":"Vine",
-                "text":"<p>Vine Test</p>",
+                "headline":"钻机",
+                "text":"<p>钻机设备</p>",
                 "asset":
                 {
                     "media":"https://vine.co/v/b55LOA1dgJU",
@@ -22,8 +22,8 @@
             {
                 "startDate":"2012,1,26",
 				"endDate":"2012,1,27",
-                "headline":"Sh*t Politicians Say",
-                "text":"<p>In true political fashion, his character rattles off common jargon heard from people running for office.</p>",
+                "headline":"钻塔",
+                "text":"<p>钻塔被 钻孔号 zk0001 使用</p>",
                 "asset":
                 {
                     "media":"http://youtu.be/u4XpeU9erbg",
