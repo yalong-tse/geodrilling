@@ -51,9 +51,17 @@ class EquipmentController < ApplicationController
     @drilltower = Drilltower.all
     @pump = Pump.all
     @holes = Hole.all
+    @deviceresume = Deviceresume.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @rigmachine }
+    end
+  end
+
+  def resume
+    @deviceresume = Deviceresume.new(params[:deviceresume])
+    respond_to do |format|
+      format.html {render :action=>"stockout"}
     end
   end
 

@@ -45,6 +45,7 @@ Geodrilling::Application.routes.draw do
   get "equipment/stockout"
   
   get "equipment/discard"
+  post "equipment/resume"
   
   get "equipment/group"
 

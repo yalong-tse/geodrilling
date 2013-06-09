@@ -107,6 +107,7 @@
   </div>
 </div>
 
+<%= form_for(@deviceresume,:url=>equipment_resume_path,:html=>{:class=>"form-horizontal"}) do |f| %>
 <div id="_holes_modal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -116,15 +117,11 @@
 <table class="table table-striped table-hover table-bordered">
   <tr>
     <td>出库日期</td>
-    <td><input class="input-large"/></td>
-  </tr>
-  <tr>
-    <td>出库原因</td>
-    <td><input class="input-large"/></td>
+    <td><%=f.text_field :operatedate, :class=>"text_field"  %></td>
   </tr>
   <tr>
     <td>出库说明</td>
-    <td><input class="input-xlarge"/></td>
+    <td><%=f.text_field :remark, :class=>"input-xlarge" %></td>
   </tr>
   <tr>
     <td>配置钻孔</td>
@@ -138,15 +135,16 @@
   </tr>
   <tr>
     <td>设备领用人</td>
-    <td><input class="input-large"/></td>
+    <td><%=f.text_field :operator, :class=>"input-large" %></td>
   </tr>
 </table>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal">关闭</button>
-    <a href="#" class="btn btn-primary">确定</a>
+    <%= f.submit "确定" , :class=>"btn btn-primary" %>
   </div>
 </div>
-
+<% end %>
+<%= make_datepicker("#deviceresume_operatedate") %>
 <script language="javascript">
 </script>

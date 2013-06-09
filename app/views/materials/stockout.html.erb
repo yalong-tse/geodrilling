@@ -37,11 +37,7 @@
 <table class="table table-striped table-hover table-bordered">
   <tr>
     <td>出库日期</td>
-    <td><input class="input-large"/></td>
-  </tr>
-  <tr>
-    <td>出库原因</td>
-    <td><input class="input-large"/></td>
+    <td><input class="input-large" id="checkoutdate"/></td>
   </tr>
   <tr>
     <td>出库说明</td>
@@ -58,7 +54,7 @@
     </td>
   </tr>
   <tr>
-    <td>设备领用人</td>
+    <td>材料领用人</td>
     <td><input class="input-large"/></td>
   </tr>
 </table>
@@ -68,3 +64,4 @@
     <a href="#" class="btn btn-primary">确定</a>
   </div>
 </div>
+<%= make_datepicker("#checkoutdate") %>

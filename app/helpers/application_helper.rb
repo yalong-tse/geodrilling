@@ -11,6 +11,35 @@ module ApplicationHelper
   def link_back(args)
     link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
   end
+
+  # 处理钻孔的状态
+  # 1-执行中 2-终孔 3-停工  4-续作
+  def hole_status_treat(args)
+    code = ""
+    case args
+    when 1
+      code << "<span class='label label-success'>正在执行</span>"
+    when 2
+      code << "<span class='label label-info'>终孔</span>"
+    when 3 
+      code << "<span class='label label-inverse'>停工</span>"
+    when 4
+      code << "<span class='label label-success'>续作</span>"
+    when nil
+      code << "<span class='label label-success'>续作</span>"
+    end
+    code.html_safe
+  end
+
+  def hole_enable_archive(status)
+    code = ""
+    if status == 2 
+      code << "<button class='btn btn-small btn-warning'>归档</button>"
+    else
+      code << "<button class='btn btn-small btn-warning'>无</button>"
+    end
+    code.html_safe
+  end
   # 处理合同状态显示 helper
   def contract_status_treat(args)
     code = ""
@@ -82,6 +111,7 @@ module ApplicationHelper
     html.html_safe
   end
 
+  # 设备状态处理
   def device_status(args)
     result = ""
     case args
@@ -94,6 +124,8 @@ module ApplicationHelper
     end
     result.html_safe
   end
+
+  #钻孔配置材料的处理
   def hole_use_materials(hole)
     html = ""
     if(hole)
@@ -103,6 +135,8 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  # 字典删除标识处理
   def dictionary_delflag(arg)
     result = ""
     case arg

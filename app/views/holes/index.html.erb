@@ -25,7 +25,7 @@
     <th>孔径</th>
     <th>开始日期</th>
     <th>结束日期</th>
-    <th>操作</th>
+    <th>详情</th>
   </tr>
 
 <% @holes.each do |hole| %>
@@ -36,10 +36,57 @@
     <td><%= hole.designdiameter %></td>
     <td><%= hole.startdate %></td>
     <td><%= hole.finishdate %></td>
-    <td><%= link_to '详情', nil, :class=>"btn btn-small btn-info" %>
-      <%= link_to '删除', nil, :class=>"btn btn-small btn-info" %></td>
+    <td width="20%"><button class="btn btn-small btn-info" onclick='open_detail("<%=hole_path(hole,:format=>:json) %>")'>详细 <i class="icon-play"/></button></td>
   </tr>
-<% end %>
-</table>
+<% end %> </table>
 </div>
-<br />
+
+<div id="_holes_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h5>钻孔详情</h5>
+  </div>
+  <div class="modal-body">
+<table class="table table-striped table-hover table-bordered">
+  <tr>
+    <td>矿区</td>
+    <td id="_minearea"></td>
+  </tr>
+  <tr>
+    <td>钻孔编号</td>
+    <td id="_holenumber"></td>
+  </tr>
+  <tr>
+    <td>设计终孔深度</td>
+    <td id="_designdeep"></td>
+  </tr>
+  <tr>
+    <td>设计终孔直径</td>
+    <td></td>
+  </tr>
+</table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">关闭</button>
+  </div>
+</div>
+<script language="javascript">
+  $(function(){
+
+    $("a").bind('ajax:success',function(event,data,status,xhr){
+      ("#_minearea").html(data.minearea);
+    })
+    .bind('ajax:error',function(event,xhr,status,error){});
+  });
+
+  function open_detail(url)
+  {
+    $.getJSON(url,{},function(data){
+      $("#_holes_modal").modal();
+      $("#_minearea").html(data.minearea);
+      $("#_holenumber").html(data.holenumber);
+      $("#_designdeep").html(data.designdeep);
+    });
+  }
+
+</script>

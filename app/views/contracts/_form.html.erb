@@ -108,7 +108,6 @@
     <%= link_back :class=>'btn btn-info'%>
   </div>
 <% end %>
-<%= setActiveTab("_contract") %>
-<%= make_datepicker(:model=>"contract",:property=>"startdate") %>
-<%= make_datepicker(:model=>"contract",:property=>"finishdate") %>
-<%= make_datepicker(:model=>"contract",:property=>"signdate") %>
+<%= make_datepicker("#contract_startdate") %>
+<%= make_datepicker("#contract_finishdate") %>
+<%= make_datepicker("#contract_signdate") %>

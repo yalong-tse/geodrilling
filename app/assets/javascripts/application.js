@@ -17,3 +17,4 @@
 //= require fullcalendar.min
 //= require storyjs-embed
 //= require timeline
+//= require datepicker
