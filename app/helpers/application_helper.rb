@@ -26,7 +26,7 @@ module ApplicationHelper
     when 4
       code << "<span class='label label-success'>续作</span>"
     when nil
-      code << "<span class='label label-success'>续作</span>"
+      code << "<span class='label label-success'>正在执行</span>"
     end
     code.html_safe
   end
