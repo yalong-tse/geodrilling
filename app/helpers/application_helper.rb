@@ -34,9 +34,9 @@ module ApplicationHelper
   def hole_enable_archive(status)
     code = ""
     if status == 2 
-      code << "<button class='btn btn-small btn-warning'>归档</button>"
+      code << "<button class='btn btn-small btn-warning' onclick='open_modal(this)'>归档</button>"
     else
-      code << "<button class='btn btn-small btn-warning'>无</button>"
+      code << "<button class='btn btn-small btn-warning' onclick='open_modal(this)'>无</button>"
     end
     code.html_safe
   end

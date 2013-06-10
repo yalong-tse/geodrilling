@@ -13,6 +13,7 @@ class Deviceresume < ActiveRecord::Base
 
   scope :borrowed , :conditions=>{:operatetype=>"1"}
   scope :returned , :conditions=>{:operatetype=>"2"}
+  scope :rigmachine , :conditions=>{:devicetype=>"rigmachine"}
 
 
 end

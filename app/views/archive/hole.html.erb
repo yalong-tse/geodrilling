@@ -39,3 +39,38 @@
     <%= will_paginate @holes, :renderer=>BootstrapPagination::Rails %>
   </div>
 </div>
+<div id="_close_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h5>您确认需要归档该钻孔吗</h5>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+      <td>矿区</td>
+       <td id="_minearea"></td>
+      </tr>
+      <tr>
+      <td>合同</td>
+       <td id="_contractname"></td>
+      </tr>
+      <tr>
+      <td>钻孔编号</td>
+       <td id="_holenumber"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">否</button>
+    <a href="#" class="btn btn-primary">是</a>
+  </div>
+</div>
+<script language="javascript">
+  function open_modal(obj)
+  {
+    $("#_minearea").html($(obj).parent().parent().find("td:eq(0)").text());
+    $("#_holenumber").html($(obj).parent().parent().find("td:eq(1)").text());
+    $("#_contractname").html($(obj).parent().parent().find("td:eq(6)").text());
+    $("#_close_modal").modal();
+  }
+</script>
