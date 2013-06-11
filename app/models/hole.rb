@@ -29,6 +29,9 @@ class Hole < ActiveRecord::Base
   scope :closed , :conditions=>{:status=>2}
   scope :unclosed , :conditions=>{:status=>1}
 
+  def self.getbyholenumber(holenumber,contract_name)
+    where("holenumber=? and contract.name=?",holenumber , contract_name)
+  end
   # virtual attribute
   def statusstr
    result = ""

@@ -13,7 +13,10 @@ class Deviceresume < ActiveRecord::Base
 
   scope :borrowed , :conditions=>{:operatetype=>"1"}
   scope :returned , :conditions=>{:operatetype=>"2"}
-  scope :rigmachine , :conditions=>{:devicetype=>"rigmachine"}
+#  scope :rigmachine , :conditions=>{:devicetype=>"rigmachine"}
 
+  def self.rigmachine(devicenumber)
+    where("devicetype ='rigmachine' and devicenumber=?",devicenumber)
+  end
 
 end

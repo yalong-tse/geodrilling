@@ -29,6 +29,9 @@ class RigmachineController < ApplicationController
   end
 
   def resume
+    logger.info("==================================")
+    @deviceresume = Deviceresume.rigmachine(params[:devicenumber])
+    logger.info( params[:devicenumber])
     respond_to do |format|
       format.html
     end 

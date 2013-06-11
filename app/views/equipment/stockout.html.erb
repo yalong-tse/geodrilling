@@ -36,7 +36,7 @@
             <td> <%=rig.pipeDiameter %> </td>
             <td> <%=rig.overallsize %> </td>
             <td> <%=rig.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning" data-toggle="modal" data-target="#_holes_modal">出库</button></td>
+            <td><button class="btn btn-small btn-warning" data-toggle="modal" data-target="#_holes_modal" onclick="rigmachine_open_modal('<%=rig.devicenumber%>')">出库</button></td>
           </tr>
         <% end %>
       </table>
@@ -126,7 +126,7 @@
   <tr>
     <td>配置钻孔</td>
     <td>
-      <select class="span4" multiple="multiple" rows="6">
+      <select class="span4" multiple="multiple" name="deviceresume[holenumber]" id="deviceresume_holenumber" rows="6">
         <% @holes.each do |hole| %>
           <option value="<%= hole.id %>"><%= hole.minearea %>, <%= hole.holenumber %></option>
         <% end %>
@@ -144,7 +144,17 @@
     <%= f.submit "确定" , :class=>"btn btn-primary" %>
   </div>
 </div>
+<%=f.hidden_field :operatetype, :value=>"出库" %>
+<%=f.hidden_field :devicenumber, :value=>"" %>
+<%=f.hidden_field :devicetype, :value=>"" %>
 <% end %>
 <%= make_datepicker("#deviceresume_operatedate") %>
 <script language="javascript">
+  function rigmachine_open_modal(devicenumber)
+  {
+//    alert(devicenumber);
+    $("#deviceresume_devicetype").val("rigmachine");
+    $("#deviceresume_devicenumber").val(devicenumber);
+    
+  }
 </script>

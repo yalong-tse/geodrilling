@@ -31,6 +31,16 @@ module ApplicationHelper
     code.html_safe
   end
 
+  def holenumber_dealing(holeid)
+    result = ""
+    logger.info("==============="+holeid)
+    if holeid then 
+      hole = Hole.find(holeid) if holeid
+      result = hole.contract.name + "[" + hole.holenumber + "]" if hole
+    end
+    return result
+  end
+
   def hole_enable_archive(status)
     code = ""
     if status == 2 

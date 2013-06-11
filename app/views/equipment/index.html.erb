@@ -36,7 +36,7 @@
             <td> <%=rig.pipeDiameter %> </td>
             <td> <%=rig.manufacture %> </td>
             <td> <%=device_status rig.status %> </td>
-            <td> <button class="btn btn-small btn-info" onclick="javascript:rigmachine_resume()">查看</button></td>
+            <td> <button class="btn btn-small btn-info" onclick="javascript:rigmachine_resume('<%=rig.devicenumber %>')">查看</button></td>
           </tr>
         <% end %>
       </table>
@@ -102,7 +102,7 @@
             <td> <%= pump.overallsize %>  </td>
             <td> <%= pump.pressure %>  </td>
             <td> <%= device_status pump.status %>  </td>
-            <td> <button class="btn btn-small btn-info">查看</button> </td>
+            <td><button class="btn btn-small btn-info">查看</button> </td>
           </tr>
         <% end %>
       </table>
@@ -113,8 +113,8 @@
 
 <br />
 <script language="javascript">
-  function rigmachine_resume()
+  function rigmachine_resume(devicenumber)
   {
-    window.location.href="<%=rigmachine_resume_path %>"
+    window.location.href="<%=rigmachine_resume_path %>?devicenumber="+devicenumber
   }
 </script>
