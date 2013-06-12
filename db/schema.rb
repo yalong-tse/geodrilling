@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606010627) do
+ActiveRecord::Schema.define(:version => 20130612100409) do
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -219,6 +219,18 @@ ActiveRecord::Schema.define(:version => 20130606010627) do
     t.date     "returndate"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "useroperations", :force => true do |t|
+    t.string   "username"
+    t.string   "useraccount"
+    t.decimal  "userid",         :precision => 10, :scale => 0
+    t.string   "userip"
+    t.datetime "operatetime"
+    t.string   "operatecontent"
+    t.string   "remark"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
 end

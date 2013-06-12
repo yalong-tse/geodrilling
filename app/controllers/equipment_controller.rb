@@ -62,7 +62,7 @@ class EquipmentController < ApplicationController
     @deviceresume = Deviceresume.new(params[:deviceresume])
     logger.info(@deviceresume)
     respond_to do |format|
-      if @deviceresume.save
+      if @device.save
         format.html {redirect_to :action=>"stockout" ,notice: "出库记录保存成功" }
       else
         format.html {redirect_to :action=>"stockout" , notice:"出库记录保存失败"}

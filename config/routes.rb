@@ -1,4 +1,8 @@
 Geodrilling::Application.routes.draw do
+  get "useroperation/index"
+
+  get "useroperation/show"
+
   get "dictionary/index"
 
   get "dictionary/show"
