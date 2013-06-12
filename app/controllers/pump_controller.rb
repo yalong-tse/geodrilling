@@ -17,6 +17,15 @@ class PumpController < ApplicationController
     end
   end
 
+  def resume
+    logger.info("==================================")
+    @deviceresume = Deviceresume.pump(params[:devicenumber])
+    logger.info( params[:devicenumber])
+    respond_to do |format|
+      format.html
+    end 
+  end
+
   def new
     @pump = Pump.new
     respond_to do |format|

@@ -68,7 +68,7 @@
             <td> <%= tower.weight %> </td>
             <td> <%= tower.manufacture %> </td>
             <td> <%= device_status tower.status %></td>
-            <td> <button class="btn btn-small btn-info">查看</button> </td>
+            <td> <button class="btn btn-small btn-info" onclick="javascript:drilltower_resume('<%=tower.devicenumber %>')">查看</button> </td>
           </tr>
         <% end %>
       </table>
@@ -102,7 +102,7 @@
             <td> <%= pump.overallsize %>  </td>
             <td> <%= pump.pressure %>  </td>
             <td> <%= device_status pump.status %>  </td>
-            <td><button class="btn btn-small btn-info">查看</button> </td>
+            <td><button class="btn btn-small btn-info" onclick="javascript:pump_resume('<%=pump.devicenumber %>')" >查看</button> </td>
           </tr>
         <% end %>
       </table>
@@ -117,4 +117,16 @@
   {
     window.location.href="<%=rigmachine_resume_path %>?devicenumber="+devicenumber
   }
+
+  function drilltower_resume(devicenumber)
+  {
+    window.location.href="<%=drilltower_resume_path %>?devicenumber="+devicenumber
+  }
+
+  function pump_resume(devicenumber)
+  {
+    window.location.href="<%=pump_resume_path %>?devicenumber="+devicenumber
+  }
+
+
 </script>

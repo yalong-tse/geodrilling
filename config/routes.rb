@@ -18,6 +18,7 @@ Geodrilling::Application.routes.draw do
   post "pump/update"
 
   get "pump/show"
+  get "pump/resume"
 
   get "rigmachine/index"
 
@@ -39,6 +40,7 @@ Geodrilling::Application.routes.draw do
   post "drilltower/update"
 
   get "drilltower/show"
+  get "drilltower/resume"
 
   get "equipment/stockin"
 

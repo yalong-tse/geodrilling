@@ -37,4 +37,14 @@ class DrilltowerController < ApplicationController
       format.json {render json: @drilltower}
     end
   end
+
+  def resume
+    logger.info("==================================")
+    @deviceresume = Deviceresume.drilltower(params[:devicenumber])
+    logger.info( params[:devicenumber])
+    respond_to do |format|
+      format.html
+    end 
+  end
+
 end

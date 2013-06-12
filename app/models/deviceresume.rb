@@ -19,4 +19,11 @@ class Deviceresume < ActiveRecord::Base
     where("devicetype ='rigmachine' and devicenumber=?",devicenumber)
   end
 
+  def self.drilltower(devicenumber)
+    where("devicetype='drilltower' and devicenumber=?", devicenumber)
+  end
+
+  def self.pump(devicenumber)
+    where("devicetype='pump' and devicenumber=?" , devicenumber)
+  end
 end
