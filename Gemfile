@@ -14,6 +14,11 @@ gem 'will_paginate-bootstrap'
 gem 'seed_dumper'
 gem 'yaml_db'
 
+# Active Record Nesting
+gem 'ancestry'
+
+# Authorization
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +35,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
