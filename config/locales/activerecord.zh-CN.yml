@@ -1,0 +1,69 @@
+zh-CN:
+  activerecord:
+    models:
+      department: "部门"
+      user: "用户"
+      role: "角色"
+      permission: "权限"
+      hole: "钻孔"
+    attributes:
+      department:
+        depcode: "部门编码"
+        name: "部门名称"
+        head: "负责人"
+        phone: "电话"
+        address: "地址"
+        remark: "备注"
+      user:
+        name: "姓名"
+        sex:  "性别"
+        birthday: "出生日期"
+        duty: "职务"
+        email: "邮箱"
+        isappuser: "是否系统用户"
+        mobile: "手机"
+        officephone: "办公电话"
+        education: "学历"
+        account: "登陆帐号"
+        password: "密码"
+        password_confirmation: "确认密码"
+        department: "部门"
+      role:
+        name: "名称"
+        description: "描述"
+        permission: "权限"
+      permission:
+        name: "名称"
+        subject_class: "模块名称"
+        action: "模块操作"
+        description: "描述"
+      hole:
+        designdeep: "设计孔深"
+        actualdeep: "实际孔深"
+        designdiameter: "设计孔径"
+        actualdiameter: "实际孔径"
+        finishdate: "完工日期"
+        startdate: "开工日期"
+        contract: "所属合同"
+        minearea: "矿区"
+        holenumber: "钻孔号"
+        geologysituation: "地层情况"
+        designapexangle: "设计顶角"
+        actualapexangel: "实际终孔顶角"
+        designcoreratio: "设计岩心采取率"
+        actualcoreratio: "实际岩心采取率"
+        designbook: "设计书"
+        drillingpurpose: "钻探目的"
+        status: "钻孔状态"
+        remark: "备注"
+    successful:
+      messages:
+        created: "%{model} 创建成功!"
+        updated: "%{model} 修改成功!"
+    errors:
+      modles:
+        user:
+          name:
+            blank: "请输入用户姓名"
+      messages:
+        notfound: "未选择任何%{model}! 请选择!"

@@ -1,6 +1,6 @@
 #encoding: utf-8
 class PumpController < ApplicationController
-  layout "boot"
+
   def index
   end
 

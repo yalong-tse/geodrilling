@@ -16,4 +16,22 @@
  *= require fullcalendar
  *= require fullcalendar.print
  *= require timeline
+ *= require dhtmlxtree
+ *= require dhtmlxmenu_dhx_skyblue
  */
+
+.dl-horizontal > dd:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+div#footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+div#wrapper {
+    margin-bottom: 5em;
+}

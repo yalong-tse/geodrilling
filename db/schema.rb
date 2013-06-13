@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612100409) do
+ActiveRecord::Schema.define(:version => 20130613014108) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
+  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -33,6 +43,18 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
     t.string   "fundsource"
   end
 
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.string   "depcode"
+    t.string   "head"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "remark"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "deviceresumes", :force => true do |t|
     t.string   "devicenumber"
     t.string   "devicetype"
@@ -46,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
   end
 
   create_table "dictionaries", :force => true do |t|
+    t.string   "type"
     t.string   "item"
     t.boolean  "delflag"
     t.decimal  "priority",   :precision => 10, :scale => 0
@@ -113,6 +136,8 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
 
   create_table "materials", :force => true do |t|
     t.string   "name"
+    t.string   "type"
+    t.string   "model"
     t.decimal  "count",        :precision => 10, :scale => 0
     t.decimal  "price",        :precision => 10, :scale => 0
     t.date     "stockdate"
@@ -121,7 +146,20 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
     t.string   "materialtype"
-    t.string   "model"
+  end
+
+  create_table "permissions", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "subject_class"
+    t.string   "action"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "permissions_roles", :id => false, :force => true do |t|
+    t.integer "permission_id"
+    t.integer "role_id"
   end
 
   create_table "pumps", :force => true do |t|
@@ -165,6 +203,13 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
     t.string   "name"
     t.string   "devicenumber"
     t.boolean  "status"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "teams", :force => true do |t|
@@ -232,5 +277,24 @@ ActiveRecord::Schema.define(:version => 20130612100409) do
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.integer  "sex"
+    t.date     "birthday"
+    t.string   "duty"
+    t.string   "education"
+    t.string   "mobile"
+    t.string   "officephone"
+    t.string   "email"
+    t.boolean  "isappuser"
+    t.integer  "department_id"
+    t.string   "account"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "users", ["department_id"], :name => "index_users_on_department_id"
 
 end

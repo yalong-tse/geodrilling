@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h5>
+    <ul class="breadcrumb">
+      <li><%= t 'headers.system.department.manage' %><span class="divider">/</span></li>
+      <li class="active"><%= t 'headers.system.department.show' %></li>
+    </ul>
+  </h5>
+</div>
+<%= render partial: "layouts/flash_messages" %>
+
+<dl class="dl-horizontal">
+  <dt><%= Department.human_attribute_name("depcode") %></dt>
+  <dd><%= @department.depcode %></dd>
+  <dt><%= Department.human_attribute_name("name") %></dt>
+  <dd><%= @department.name %></dd>
+  <dt><%= Department.human_attribute_name("head") %></dt>
+  <dd><%= @department.head %></dd>
+  <dt><%= Department.human_attribute_name("phone") %></dt>
+  <dd><%= @department.phone %></dd>
+  <dt><%= Department.human_attribute_name("address") %></dt>
+  <dd><%= @department.address %></dd>
+  <dt><%= Department.human_attribute_name("remark") %></dt>
+  <dd><%= @department.remark %></dd>
+</dl>
+<p class="text-left">
+<%= link_to t('labels.edit'), edit_department_path(@department), :class => "btn btn-primary" %>
+</p>
+</div>

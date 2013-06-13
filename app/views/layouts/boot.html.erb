@@ -76,10 +76,9 @@
           <li class="dropdown" id="_archive">
           <a class="dropdown-toggle" data-toggle="dropdown"  href="/archives">系统管理<b class="caret"></b></a>
           <ul class="dropdown-menu">
-              <li><a href="#">人员管理</a></li>
-              <li><a href="#">部门管理</a></li>
-              <li><a href="#">角色管理</a></li>
-              <li><a href="#">权限管理</a></li>
+              <li><%= link_to t("headers.system.people.manage"), users_main_path %></li>
+              <li><%= link_to t('headers.system.department.manage'), department_tree_path %></li>
+              <li><%= link_to t('headers.system.role.manage'), roles_path %></li>
               <li><%=link_to "字典管理", dictionary_index_path %></li>
               <li><%=link_to "操作日志", useroperation_index_path %></li>
           </ul>

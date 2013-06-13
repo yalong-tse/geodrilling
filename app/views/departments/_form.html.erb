@@ -1,0 +1,54 @@
+<%= form_for(@department, :html => {:class=>"form-horizontal"}) do |f| %>
+  <% if @department.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+      <% @department.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :depcode, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :depcode %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :head, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :head %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :phone %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :address %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :remark, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :remark %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit t('labels.save'), :class => "btn btn-primary" %>
+    <%= link_back :class => "btn" %>
+  </div>
+<% end %>

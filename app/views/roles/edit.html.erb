@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h5>
+    <ul class="breadcrumb">
+      <li><%= t 'headers.system.role.manage' %><span class="divider">/</span></li>
+      <li class="active"><%= t 'headers.system.role.edit' %> - <%= @role.name %></li>
+    </ul>
+  </h5>
+</div>
+<%= form_for(@role, :url => role_path, :method => :put, :html => {:class => 'form-horizontal'}) do |f| %>
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this user from being saved:</h2>
+      
+      <ul>
+        <% @role.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :description %>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= Permission.human_attribute_name("subject_class") %></th>
+        <th><%= Permission.human_attribute_name("action") %> <%= check_box_tag 'main', 0, false %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= generate_permissions_output(@permissions_array, @role_permissions) %>
+    </tdoby>
+  </table>
+  <%= f.submit t('labels.save'), :class => "btn btn-primary" %>
+  <%= link_to t('labels.back'), roles_path, :class => "btn" %>
+<% end %>

@@ -1,5 +1,5 @@
 class UseroperationController < ApplicationController
-  layout "boot"
+
 
   def index
     @useroperations = Useroperation.all

@@ -1,5 +1,5 @@
 class TourreportsController < ApplicationController
-  layout 'boot'
+
   # GET /tourreports
   # GET /tourreports.json
   def index

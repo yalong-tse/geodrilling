@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h5>
+    <ul class="breadcrumb">
+      <li><%= t 'headers.system.people.manage' %><span class="divider">/</span></li>
+      <li class="active"><%= t 'headers.system.people.show' %></li>
+    </ul>
+  </h5>
+</div>
+<%= render partial: "layouts/flash_messages", flash: flash %>
+
+<dl class="dl-horizontal">
+  <dt><%= User.human_attribute_name("name") %></dt>
+  <dd><%= @user.name %></dd>
+  <dt><%= User.human_attribute_name("sex") %></dt>
+  <dd><%= human_sex @user %></dd>
+  <dt><%= User.human_attribute_name("birthday") %></dt>
+  <dd><%= @user.birthday %></dd>
+  <dt><%= User.human_attribute_name("duty") %></dt>
+  <dd><%= @user.duty %></dd>
+  <dt><%= User.human_attribute_name("education") %></dt>
+  <dd><%= @user.education %></dd>
+  <dt><%= User.human_attribute_name("mobile") %></dt>
+  <dd><%= @user.mobile %></dd>
+  <dt><%= User.human_attribute_name("officephone") %></dt>
+  <dd><%= @user.officephone %></dd>
+  <dt><%= User.human_attribute_name("email") %></dt>
+  <dd><%= @user.email %></dd>
+  <dt><%= User.human_attribute_name("isappuser") %></dt>
+  <dd><%= is_appuser @user %></dd>
+  <dt><%= User.human_attribute_name("department") %></dt>
+  <dd><%= @user.department.name %></dd>
+</dl>
+
+<div class="form-actions">
+<%= link_to t('labels.edit'), edit_department_user_path(@department,@user), :class => "btn" %>
+<%= link_to t('labels.back'), department_users_path(@department), :class=>"btn btn-primary" %>
+</div>

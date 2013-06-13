@@ -1,6 +1,6 @@
 #encoding: utf-8
 class EquipmentController < ApplicationController
-  layout "boot"
+
   # GET /equipment
   # GET /equipment.json
   def index

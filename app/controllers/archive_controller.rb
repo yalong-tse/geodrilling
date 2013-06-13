@@ -1,6 +1,6 @@
 #encoding: utf-8
 class ArchiveController < ApplicationController
-  layout 'boot'
+
   # 列出所有等待归档的合同
   def contract
     @contracts = Contract.wait_archive.paginate(:page=>params[:page],:per_page=>5)

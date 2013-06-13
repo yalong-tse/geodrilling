@@ -1,6 +1,6 @@
 #encoding: utf-8
 class DictionaryController < ApplicationController
-  layout "boot"
+
   def index
     @dictionary = Dictionary.all
     respond_to do |format|

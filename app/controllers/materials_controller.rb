@@ -1,6 +1,6 @@
 #encoding: utf-8
 class MaterialsController < ApplicationController
-  layout 'boot'
+
   # GET /materials
   # GET /materials.json
   def index

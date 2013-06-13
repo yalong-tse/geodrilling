@@ -1,5 +1,5 @@
 class HolesController < ApplicationController
-  layout "boot"
+
   # GET /holes
   # GET /holes.json
   def index

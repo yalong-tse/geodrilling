@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h5>
+    <ul class="breadcrumb">
+      <li><%= t 'headers.system.role.manage' %><span class="divider">/</span></li>
+      <li class="active"><%= t 'headers.system.role.show' %>: <%= @role.name %></li>
+    </ul>
+  </h5>
+</div>
+
+<table class="table table-hover" width="100%">
+  <tr>
+    <th><%= Role.human_attribute_name("name") %></th>
+    <td colspan="2"><%= @role.name %></td>
+  </tr>
+  <tr>
+    <th><%= Role.human_attribute_name("description") %></th>
+    <td colspan="2"><%= @role.description %></td>
+  </tr>
+  <tr>
+    <th width="20%" rowspan="2"><%= Role.human_attribute_name("permission") %></th>
+    <td width="20%"><%= Permission.human_attribute_name("subject_class") %></td>
+    <td width="60%"><%= Permission.human_attribute_name("action") %></td>
+  </tr>
+  <% @permissions.each do |permission| %>
+    <tr>
+      <td><%= permission.subject_class %></td>
+      <td><%= permission.action %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to t('labels.back'), roles_path, :class => "btn" %>

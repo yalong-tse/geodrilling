@@ -1,6 +1,6 @@
 #encoding: utf-8
 class ContractsController < ApplicationController
-  layout "boot"
+
   # GET /contracts
   # GET /contracts.json
   def index

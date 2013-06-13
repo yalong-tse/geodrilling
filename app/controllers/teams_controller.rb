@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  layout "boot"
+
   # GET /teams
   # GET /teams.json
   def index

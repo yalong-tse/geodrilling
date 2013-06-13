@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h5>
+    <ul class="breadcrumb">
+      <li><%= t 'headers.system.role.manage' %><span class="divider">/</span></li>
+      <li class="active"><%= t 'headers.system.role.index' %> </li>
+    </ul>
+  </h5>
+</div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= t 'labels.select' %></th>
+      <th><%= Role.human_attribute_name("name") %></th>
+      <th><%= Role.human_attribute_name("description") %></th>
+      <th><%= t 'labels.handle' %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @roles.each do |role| %>
+    <tr>
+      <td><%= check_box_tag "roles[]", role.id %></td>
+      <td><%= role.name %></td>
+      <td><%= role.description %></td>
+      <td><%= link_to t('labels.show'), role %> | <%= link_to t('labels.edit'), edit_role_path(role) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to t('labels.new'), new_role_path, :class => "btn btn-primary" %>
+

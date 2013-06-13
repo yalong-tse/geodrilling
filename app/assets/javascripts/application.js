@@ -18,3 +18,8 @@
 //= require storyjs-embed
 //= require timeline
 //= require datepicker
+//= require dhtmlxcommon
+//= require dhtmlxtree
+//= require dhtmlxtree_json
+//= require dhtmlxmenu
+//= require dhtmlxmenu_ext
