@@ -10,6 +10,6 @@ namespace 'app' do
       Department.create(:name => "综合部门", :depcode => "002001", :parent => Department.find_by_name("矿源公司"))
 
       User.create(:name => "系统管理员", :account => "admin", :sex => 1, :password => "1", :password_confirmation => "1", )
-    
+    end
   end
 end

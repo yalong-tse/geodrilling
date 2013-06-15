@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
     return name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name rescue nil
   end
 
+  def self.permission_ZN
+    name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name.downcase rescue nil
+    I18n.t "controllers.#{name}"
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_user)
   end

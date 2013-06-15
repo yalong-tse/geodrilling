@@ -41,7 +41,25 @@ zh-CN:
     handle: "操作"
     select: "选择"
     giveright: "授权"
-
+  controllers:
+    archive: "归档"
+    contract: "合同"
+    department: "部门"
+    hole: "钻孔"
+    drilltower: "钻塔"
+    pump: "泥浆泵"
+    equipment: "设备"
+    holelist: "钻孔配置"
+    tourreport: "班报"
+    schedule: "班报日历"
+    material: "材料"
+    rigmachine: "钻机"
+    team: "勘探队"
+    dictionary: "字典"
+    useroperation: "用户日志"
+    role: "角色"
+    user: "用户"
+    session: "登陆"
   prompt:
     confirm:
       delete: "您确认要删除么?"
