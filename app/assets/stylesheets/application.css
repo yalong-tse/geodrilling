@@ -35,3 +35,11 @@ div#footer {
 div#wrapper {
     margin-bottom: 5em;
 }
+
+.loginbtn{
+  width: 115px;
+  height: 41px;
+  background: url(/assets/login_bg.gif) no-repeat;
+  border: 0 none;
+  cursor: pointer;
+}

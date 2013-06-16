@@ -18,8 +18,8 @@
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
             <% if current_user %>
-              <strong><%= current_user.account %></strong>
-              <%= link_to t("labels.logout"), logout_path, :class => "btn btn-mini btn-danger" %>
+              <strong><%= current_user.account %></strong> &nbsp;
+              <%= link_to logout_path, :class => "btn btn-small btn-danger" do %><%= t("labels.logout") %> <i class="icon-off"></i><% end %>
             <% end %>
         </p>
         <ul class="nav">
@@ -99,7 +99,7 @@
   <hr>
 
   <footer>
-    <p style="text-align: center;">&copy; 大柳树梦之队 2013</p>
+    <p style="text-align: center;">&copy; 北京探矿工程研究所 2013</p>
   </footer>
 
 </div>
