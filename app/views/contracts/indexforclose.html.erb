@@ -8,6 +8,7 @@
 </div>
 <table class="table table-striped table-bordered table-hover">
   <tr>
+    <th>合同编号</th>
     <th>合同名称</th>
     <th>项目名称</th>
     <th>业主</th>
@@ -21,6 +22,7 @@
 
 <% @contracts.each do |contract| %>
   <tr>
+    <td><%= contract.contractno %></td>
     <td><%= link_to contract.name, contract_path(contract) %></td>
     <td><%= contract.projectname %></td>
     <td><%= contract.owner %></td>
