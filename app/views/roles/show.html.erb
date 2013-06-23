@@ -17,14 +17,20 @@
     <td colspan="2"><%= @role.description %></td>
   </tr>
   <tr>
-    <th width="20%" rowspan="2"><%= Role.human_attribute_name("permission") %></th>
+    <th width="20%" rowspan="<%= @rowspan %>"><%= Role.human_attribute_name("permission") %></th>
     <td width="20%"><%= Permission.human_attribute_name("subject_class") %></td>
     <td width="60%"><%= Permission.human_attribute_name("action") %></td>
   </tr>
-  <% @permissions.each do |permission| %>
+  <% @permissions.each do |permissions_hash| %>
     <tr>
-      <td><%= permission.subject_class %></td>
-      <td><%= permission.action %></td>
+      <% permissions_hash.each do |key, value| %>
+        <td><%= key %></td>
+        <td>
+          <% value.each do |permission| %>
+            <%= permission.name %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

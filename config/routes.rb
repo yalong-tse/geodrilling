@@ -89,7 +89,11 @@ Geodrilling::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
 
-  resources :roles
+  resources :roles do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
   resources :sessions
 
   resources :departments do

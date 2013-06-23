@@ -39,7 +39,18 @@
       </tr>
     </thead>
     <tbody>
-      <%= generate_permissions_output(@permissions_array,nil) %>
+      <% @permissions_array.each do |permissions_hash| %>
+      <tr>
+        <% permissions_hash.each do |key, value| %>
+        <td><%= key %></td>
+        <td>
+          <% value.each do |permission| %>
+              <%= check_box_tag "role[permission_ids][]", permission.id, false, :id=>"permission_ids_#{permission.id}" %> <%= permission.name %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
     </tbody>
   </table>
   <div class="form-actions">
