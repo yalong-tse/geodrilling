@@ -16,6 +16,7 @@
     <div class="tab-pane active" id="tab1">
       <table class="table table-striped table-hover table-bordered">
         <tr>
+          <th>设备编号</th>
           <th>钻机型号</th>
           <th>钻机重量</th>
           <th>钻孔深度</th>
@@ -28,6 +29,7 @@
         </tr>
         <% @rigmachine.each do |rig| %>
           <tr>
+            <td> <%=rig.devicenumber %> </td>
             <td> <%=rig.rigmodel %> </td>
             <td> <%=rig.rigweight %> </td>
             <td> <%=rig.righoleDeep %> </td>
@@ -44,6 +46,7 @@
     <div class="tab-pane" id="tab2">
       <table class="table table-striped table-hover table-bordered">
         <tr>
+          <th>设备编号</th>
           <th>型号</th>
           <th>有效载荷</th>
           <th>深度</th>
@@ -58,6 +61,7 @@
         </tr>
         <% @drilltower.each do |tower| %>
           <tr>
+            <td> <%= tower.devicenumber %> </td>
             <td> <%= tower.model %> </td>
             <td> <%= tower.effectiveload %> </td>
             <td> <%= tower.deep %> </td>
@@ -76,6 +80,7 @@
     <div class="tab-pane" id="tab3">
       <table class="table table-striped table-hover table-bordered">
         <tr>
+          <th>设备编号</th>
           <th>型号</th>
           <th>缸径</th>
           <th>缸数</th>
@@ -91,6 +96,7 @@
         </tr>
         <% @pump.each do |pump| %>
           <tr>
+            <td> <%= pump.devicenumber %>  </td>
             <td> <%= pump.pumpmodel %>  </td>
             <td> <%= pump.pumpDiameter %>  </td>
             <td> <%= pump.pumplineNumber %>  </td>

@@ -9,7 +9,7 @@
 <div class="container">
   <%= form_for(:useroperation, :url=>useroperation_index_path, :html=>{:class=>"form-inline"}) do |f| %>
     <%= f.label "用户名称", :class=>'control-label' %> &nbsp;&nbsp;<%=f.text_field :username , :class=>"input-medium" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.label "操作日期", :class=>'control-label' %> &nbsp;&nbsp;<%=f.text_field :operatetime , :class=>"input-medium" %>&nbsp;&nbsp;&nbsp;&nbsp;至 &nbsp;&nbsp;<%=f.text_field :operatetime , :class=>"input-medium" %>
+    <%= f.label "操作日期", :class=>'control-label' %> &nbsp;&nbsp;<%=f.text_field :operatetime , :class=>"input-medium" %>&nbsp;&nbsp;&nbsp;&nbsp;至 &nbsp;&nbsp;<%= text_field_tag :operatetimeend , nil, :class=>"input-medium" %>
   <% end %>
 </div>
 <div class="container">
@@ -23,11 +23,14 @@
   </tr>
   <% @useroperations.each do |u| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%=u.username %></td>
+      <td><%=u.useraccount%></td>
+      <td><%=u.userip %></td>
+      <td><%=u.operatetime %></td>
+      <td><%=u.operatecontent%></td>
     </tr>
   <% end %>
 </table>
 </div>
+<%= make_datepicker("#useroperation_operatetime") %>
+<%= make_datepicker("#operatetimeend") %>
