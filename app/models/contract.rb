@@ -15,4 +15,7 @@ class Contract < ActiveRecord::Base
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}
   scope :unclosed , :conditions => {:status=>1}
+
+  QUERY_CONDITIONS=[["合同名称","name"],["项目名称","projectname"],["业主","owner"],["乙方","buyerparty"],["合同金额","contractamount"]]
+
 end

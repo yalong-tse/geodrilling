@@ -176,4 +176,30 @@ module ApplicationHelper
     end
   end
   
+  def makechoice
+    code =<<-END_OF_CODE
+    <select name="choice" class="span1">
+      <option value="like">like</option>
+      <option value="=">=</option>
+      <option value=">">></option>
+      <option value="<"><</option>
+    </select>
+    END_OF_CODE
+    code.html_safe
+  end
+  
+  def makeminus
+    code =<<-END_OF_CODE
+    <i class="icon-minus-sign"></i>
+    END_OF_CODE
+    code.html_safe
+  end
+
+  def makeplus
+    code =<<-END_OF_CODE
+    <i class="icon-plus-sign"></i>
+    END_OF_CODE
+    code.html_safe
+  end
+  
 end

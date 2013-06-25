@@ -1,0 +1,39 @@
+<%= form_for(:contract, :url=>"contracts_path" , :method=>"get", :html=>{:name=>"query_form"} )  do |f| %>
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th>查询条件</th>
+      <th>查询方式</th>
+      <th>查询值</th>
+      <th>操作</th>
+    </tr>
+    <tr>
+      <td width="30%">
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+      </td>
+      <td width="10%"><%= makechoice %></td>
+      <td width="40%"><%=text_field_tag :name, nil, :class=>"text_field"  %></td>
+      <td width="10%"><%=makeminus %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+      </td>
+      <td><%= makechoice %></td>
+      <td><%=text_field_tag :owner,nil,:class=>"text_field", :placeholder=>"" %></td>
+      <td width="10%"><%=makeminus %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+      </td>
+      <td><%=makechoice %></td>
+      <td><%=text_field_tag :contract_name,nil,:class=>"text_field",:placeholder=>"" %></td>
+      <td width="10%"><%=makeplus %></td>
+    </tr>
+    <tr>
+      <td colspan="4">
+      <button type="submit" class="btn"><i class="icon-search"></i> 查询</button>
+      </td>
+    </tr>
+<% end %>
+  </table>
