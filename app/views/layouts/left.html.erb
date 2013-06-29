@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>钻探施工过程管理信息系统</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style>
+html {
+  height: 100%;
+}
+ 
+body {
+  height: 100%;
+  background: #555;
+}
+ 
+div#wrapper {
+  position: relative;
+  min-height: 100%;
+}
+ 
+.navbar {
+  height: 70px;
+}
+ 
+.navbar-inner {
+  background: #2c2c2c;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+}
+ 
+.container {
+  margin-left: 10px;
+}
+ 
+#sidebar {
+  background-color: #2C2C2C;
+  margin-left: 0px;
+  position: absolute;
+  top: 70px;
+  bottom: 0px;
+  min-height: 100%;
+}
+ 
+#sidebar > .nav > .nav-menu > a {
+  border: 0px;
+  border-radius: 0px;
+  padding: 20px;
+}
+ 
+#main {
+  float: right;
+}
+  </style>
+</head>
+<body>
+ <div id="wrapper">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <h2><a href="#" class="brand">brand</a></h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div id="sidebar" class="sidebar-nav span3">
+            <ul class="nav nav-tabs nav-stacked">
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+              <li class="nav-menu"><a href="#">Home</a></li>
+            </ul>
+          </div>
+          <div id="main" class="span9">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</body>
+
+</html>
+<script language="text/javascript">
+  function clickurl(tag)
+  {
+    //$(tag).parent.attr(class,"active");
+  }
+</script>

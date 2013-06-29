@@ -179,10 +179,10 @@ module ApplicationHelper
   def makechoice
     code =<<-END_OF_CODE
     <select name="choice" class="span1">
-      <option value="like">like</option>
-      <option value="=">=</option>
-      <option value=">">></option>
-      <option value="<"><</option>
+      <option value="like">模糊</option>
+      <option value="=">精确</option>
+      <option value=">">大于</option>
+      <option value="<">小于</option>
     </select>
     END_OF_CODE
     code.html_safe
