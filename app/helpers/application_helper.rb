@@ -203,8 +203,10 @@ module ApplicationHelper
   end
 
   def active_page? (path)
-    if current_page?(path)
-      raw ('class=active')
+    if path ==nil
+      ''
+    elsif current_page?(path)
+      raw ("class='active'")
     else
       ''
     end
