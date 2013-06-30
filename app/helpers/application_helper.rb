@@ -178,7 +178,7 @@ module ApplicationHelper
   
   def makechoice
     code =<<-END_OF_CODE
-    <select name="choice" class="span1">
+    <select name="choice" >
       <option value="like">模糊</option>
       <option value="=">精确</option>
       <option value=">">大于</option>

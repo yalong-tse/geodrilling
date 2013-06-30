@@ -1,3 +1,12 @@
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'chosen' %>
+  <%= stylesheet_link_tag 'datepicker' %>
+  <%= stylesheet_link_tag 'bootstrap-timepicker' %>
+  <%= stylesheet_link_tag 'daterangepicker' %>
+  <%= stylesheet_link_tag 'colorpicker' %>
+<% end %>
+
 <%= form_for(:contract, :url=>"contracts_path" , :method=>"get", :html=>{:name=>"query_form"} )  do |f| %>
   <table class="table table-striped table-bordered table-hover">
     <tr>
@@ -7,16 +16,16 @@
       <th>操作</th>
     </tr>
     <tr>
-      <td width="30%">
-        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+      <td width="25%">
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS) %> 
       </td>
       <td width="10%"><%= makechoice %></td>
-      <td width="40%"><%=text_field_tag :name, nil, :class=>"text_field"  %></td>
-      <td width="10%"><%=makeminus %></td>
+      <td width="40%"><%=text_field_tag :name, nil, :class=>"xxlarge"  %></td>
+      <td ><%=makeminus %></td>
     </tr>
     <tr>
       <td>
-        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS) %> 
       </td>
       <td><%= makechoice %></td>
       <td><%=text_field_tag :owner,nil,:class=>"text_field", :placeholder=>"" %></td>
@@ -24,7 +33,7 @@
     </tr>
     <tr>
       <td>
-        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS), :class=>"span2" %> 
+        <%= select_tag "", options_for_select(Contract::QUERY_CONDITIONS) %> 
       </td>
       <td><%=makechoice %></td>
       <td><%=text_field_tag :contract_name,nil,:class=>"text_field",:placeholder=>"" %></td>
