@@ -201,5 +201,18 @@ module ApplicationHelper
     END_OF_CODE
     code.html_safe
   end
+
+  def active_page? (path)
+    if current_page?(path)
+      raw ('class=active')
+    else
+      ''
+    end
+  end
+
+  def active_menu? (path)
+    path ? 'active open' : ''
+  end
+  
   
 end

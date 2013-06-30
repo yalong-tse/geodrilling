@@ -9,17 +9,5 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui-1.10.2.custom.min
-//= require jquery.menu_expand
-//= require bootstrap
-//= require fullcalendar.min
-//= require storyjs-embed
-//= require timeline
-//= require datepicker
-//= require dhtmlxcommon
-//= require dhtmlxtree
-//= require dhtmlxtree_json
-//= require dhtmlxmenu
-//= require dhtmlxmenu_ext
+//
+

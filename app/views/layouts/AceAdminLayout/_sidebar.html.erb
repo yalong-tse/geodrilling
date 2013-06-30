@@ -1,0 +1,248 @@
+<div id="sidebar">
+<div id="sidebar-shortcuts">
+  <div id="sidebar-shortcuts-large">
+    <button class="btn btn-small btn-success">
+      <i class="icon-signal"></i>
+    </button>
+
+    <button class="btn btn-small btn-info">
+      <i class="icon-pencil"></i>
+    </button>
+
+    <button class="btn btn-small btn-warning">
+      <i class="icon-group"></i>
+    </button>
+
+    <button class="btn btn-small btn-danger">
+      <i class="icon-cogs"></i>
+    </button>
+  </div>
+
+  <div id="sidebar-shortcuts-mini">
+    <span class="btn btn-success"></span>
+
+    <span class="btn btn-info"></span>
+
+    <span class="btn btn-warning"></span>
+
+    <span class="btn btn-danger"></span>
+  </div>
+</div><!--#sidebar-shortcuts-->
+
+<ul class="nav nav-list">
+  <li <%= active_page?(contracts_path) %>>
+    <%= link_to (raw('<i class="icon-home"></i><span>首页</span>')), contracts_path %>
+  </li>
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_contract_path) || current_page?(contracts_path) || current_page?(contracts_indexforclose_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-desktop"></i>
+      <span>合同管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(new_contract_path) %>>
+          <%= link_to (raw('<i class="icon-double-angle-right"></i>新增合同')), new_contract_path %>
+      </li>
+
+      <li <%= active_page?(contracts_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同列表')), contracts_path %>
+      </li>
+
+      <li <%= active_page?(contracts_indexforclose_path) %>>
+          <%= link_to (raw('<i class="icon-double-angle-right"></i>合同完成')), contracts_indexforclose_path %>
+      </li>
+    </ul>
+  <% end %>
+
+  <li <%= active_page?(contracts_path) %>>
+    <%= link_to (raw('<i class="icon-list"></i><span>设计管理</span>')), contracts_path %>
+  </li>
+
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(tourreports_path) || current_page?(tourreports_indexformodify_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-edit"></i>
+      <span>钻孔管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(new_hole_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>新增钻孔')), new_hole_path %>
+      </li>
+
+      <li <%= active_page?(holelist_index_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔配备')), holelist_index_path %>
+      </li>
+
+      <li <%= active_page?(holes_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔查询')), holes_path %>
+      </li>
+
+      <li <%= active_page?(tourreports_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报管理')), tourreports_path %>
+      </li>
+
+      <li <%= active_page?(tourreports_indexformodify_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报修改')), tourreports_indexformodify_path %>
+      </li>
+    </ul>
+  <% end %>
+
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(archive_contract_path) || current_page?(archive_hole_path) || current_page?(archive_tourreport_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-tasks"></i>
+      <span>档案管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(archive_contract_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同归档')), archive_contract_path %>
+      </li>
+
+      <li <%= active_page?(archive_hole_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔')), archive_hole_path %>
+      </li>
+
+      <li <%= active_page?(archive_tourreport_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报')), archive_tourreport_path %>
+      </li>
+
+    </ul>
+  <% end %>
+
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) || current_page?(equipment_stockout_path) || current_page?(equipment_discard_path) ||current_page?(equipment_group_path) )}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-bell"></i>
+      <span>设备管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(equipment_index_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备库存')), equipment_index_path %>
+      </li>
+
+      <li <%= active_page?(equipment_stockin_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备入库')), equipment_stockin_path %>
+      </li>
+
+      <li <%= active_page?(equipment_stockout_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备出库')), equipment_stockout_path %>
+      </li>
+
+      <li <%= active_page?(equipment_discard_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备报废')), equipment_discard_path %>
+      </li>
+      
+      <li <%= active_page?(equipment_group_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备编组')), equipment_group_path %>
+      </li>
+
+    </ul>
+  <% end %>
+
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(materials_path) || current_page?(new_material_path) || current_page?(materials_stockout_path) || current_page?(materials_discard_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-picture"></i>
+      <span>材料管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(materials_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料库存')), materials_path %>
+      </li>
+
+      <li <%= active_page?(new_material_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料入库')), new_material_path %>
+      </li>
+
+      <li <%= active_page?(materials_stockout_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料出库')), materials_stockout_path %>
+      </li>
+
+      <li <%= active_page?(materials_discard_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料报废')), materials_discard_path %>
+      </li>
+
+    </ul>
+  <% end %>
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(nil))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-dashboard"></i>
+      <span>统计分析</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(nil) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同')), nil %>
+      </li>
+
+      <li <%= active_page?(nil) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备')), nil %>
+      </li>
+
+      <li <%= active_page?(nil) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料')), nil %>
+      </li>
+
+      <li <%= active_page?(nil) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔')), nil %>
+      </li>
+
+    </ul>
+  <% end %>
+
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(users_main_path) || current_page?(department_tree_path) || current_page?(roles_path) || current_page?(dictionary_index_path) || current_page?(useroperation_index_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-cog"></i>
+      <span>系统管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(users_main_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t("headers.system.people.manage") )), users_main_path %>
+      </li>
+
+      <li <%= active_page?(department_tree_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.department.manage'))), department_tree_path %>
+      </li>
+
+      <li <%= active_page?(roles_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.role.manage'))), roles_path %>
+      </li>
+
+      <li <%= active_page?(dictionary_index_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.dictionary.manage'))), dictionary_index_path %>
+      </li>
+
+      <li <%= active_page?(useroperation_index_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.useroperation.manage'))), useroperation_index_path %>
+      </li>
+    </ul>
+  <% end %>
+
+
+</ul><!--/.nav-list-->
+
+<div id="sidebar-collapse">
+  <i class="icon-double-angle-left"></i>
+</div>
+</div>

@@ -23,6 +23,13 @@ zh-CN:
         show: "角色信息"
         edit: "编辑角色"
         new: "新建角色"
+      dictionary:
+        manage: "字典管理"
+        index: "字典列表"
+        show: "字典信息"
+        edit: "字典编辑"
+      useroperation:
+        manage: "操作日志"
     others:
       password: "密码"
       account: "用户名"

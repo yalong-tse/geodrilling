@@ -9,37 +9,4 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
- *= require bootstrap-responsive
- *= require docs
- *= require ui-lightness/jquery-ui-1.10.2.custom.min
- *= require fullcalendar
- *= require fullcalendar.print
- *= require timeline
- *= require dhtmlxtree
- *= require dhtmlxmenu_dhx_skyblue
  */
-
-.dl-horizontal > dd:after {
-    display: table;
-    content: "";
-    clear: both;
-}
-
-div#footer {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-}
-
-div#wrapper {
-    margin-bottom: 5em;
-}
-
-.loginbtn{
-  width: 115px;
-  height: 41px;
-  background: url(/assets/login_bg.gif) no-repeat;
-  border: 0 none;
-  cursor: pointer;
-}
