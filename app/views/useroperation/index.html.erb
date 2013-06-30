@@ -1,11 +1,4 @@
-<div class="page-header">
-  <h5>
-  <ul class="breadcrumb warn warn-info">
-    <li>系统管理<span class="divider">/</span></li>
-    <li>操作日志</li>
-  </ul>
-  </h5>
-</div>
+<% content_for(:title,"操作日志") %>
 <div class="container">
   <%= form_for(:useroperation, :url=>useroperation_index_path, :html=>{:class=>"form-inline"}) do |f| %>
     <%= f.label "用户名称", :class=>'control-label' %> &nbsp;&nbsp;<%=f.text_field :username , :class=>"input-medium" %>&nbsp;&nbsp;&nbsp;&nbsp;

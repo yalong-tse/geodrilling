@@ -1,11 +1,4 @@
-<div class="page-header">
-  <h5>
-  <ul class="breadcrumb warn warn-info">
-    <li>钻孔管理<span class="divider">/</span></li>
-    <li>钻孔查询</li>
-  </ul>
-  </h5>
-</div>
+<% content_for(:title,"钻孔查询") %>
 <div class="container">
     <form class="form-inline">
       <%=label_tag "矿区：" , nil, :class=>"control-label" %> <%=text_field_tag :minearea,nil,:class=>"input-medium", :placeholder=>"" %>

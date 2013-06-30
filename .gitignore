@@ -24,3 +24,4 @@ log/
 #Ignore all vim temp files
 *~
 *.swp
+*.swo

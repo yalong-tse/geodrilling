@@ -1,10 +1,2 @@
-<div class="page-header">
-  <h5>
-  <ul class="breadcrumb warn warn-info">
-    <li>系统管理<span class="divider">/</span></li>
-    <li><a href="<%=dictionary_index_path%>">字典管理</a><span class="divider">/<span></li>
-    <li>新增字典项</li>
-  </ul>
-  </h5>
-</div>
+<% content_for(:title,"新增字典项") %>
 <%=  render "form" %>
