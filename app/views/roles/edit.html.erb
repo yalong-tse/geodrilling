@@ -1,11 +1,4 @@
-<div class="page-header">
-  <h5>
-    <ul class="breadcrumb">
-      <li><%= t 'headers.system.role.manage' %><span class="divider">/</span></li>
-      <li class="active"><%= t 'headers.system.role.edit' %> - <%= @role.name %></li>
-    </ul>
-  </h5>
-</div>
+<%= render "header" %>
 <%= form_for(@role, :url => role_path, :method => :put, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @role.errors.any? %>
     <div id="error_explanation">

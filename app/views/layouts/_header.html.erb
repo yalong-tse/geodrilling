@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <%= render 'layouts/AceAdminLayout/stylesheets_include' %>
+  <%= yield(:head) %>
 </head>
 
 <body>
@@ -18,7 +19,6 @@
     </a>
     <%= render 'layouts/AceAdminLayout/sidebar' %>
     <div id="main-content" class="clearfix">
-      <%= render 'layouts/AceAdminLayout/breadcrumbs_and_search' %>
       <div id="page-content" class="clearfix">
         <%= render 'layouts/AceAdminLayout/page_header' %>
         <div class="row-fluid">

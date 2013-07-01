@@ -1,5 +1,6 @@
 <%= form_for([@department, @user],:html => {:class => 'form-horizontal'}) do |f| %>
   <div class="row-fluid">
+    <div class="span12">
       <% if @user.errors.any? %>
         <div class="row-fluid">
           <div id="error_explanation" class="span12">
@@ -93,8 +94,9 @@
         <div class="span6">
           <div class="control-group">
             <div class="controls">
-              <label class="checkbox">
-                <%= f.check_box :isappuser, :id => "isappuser" %> <%= User.human_attribute_name("isappuser") %>
+              <label>
+                <%= f.check_box :isappuser, :id => "isappuser" %>
+                <span class="lbl"> <%= User.human_attribute_name("isappuser") %></span>
               </label>
             </div>
           </div>
@@ -117,7 +119,7 @@
           </div>
         </div>
       </div>
-   
+    </div>
   </div>
   
 <% end %>
