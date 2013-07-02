@@ -3,10 +3,13 @@
   <div class="span9">
     <h4>字典详情</h4>
   <table class="table table-hover">
+    <thead>
     <tr>
       <th>项目名称</th>
       <th>值</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td>字典类型</td>
       <td><%= @dictionary.dictype%> </td>
@@ -23,6 +26,7 @@
       <td>备注</td>
       <td><%= @dictionary.remark %></td>
     </tr>
+  </tbody>
   </table>
 </div>
 </div>

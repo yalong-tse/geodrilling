@@ -16,6 +16,8 @@ class Contract < ActiveRecord::Base
   scope :wait_archive, :conditions => {:status=>2}
   scope :unclosed , :conditions => {:status=>1}
 
+  STATUS=[["待执行",1], ["执行中",2],["已完成",3]]
+
   QUERY_CONDITIONS=[["合同名称","name"],["项目名称","projectname"],["业主","owner"],["乙方","buyerparty"],["合同金额","contractamount"]]
 
 end
