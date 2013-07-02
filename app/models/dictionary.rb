@@ -6,6 +6,8 @@ class Dictionary < ActiveRecord::Base
   # type 字典类型
   attr_accessible :delflag, :item, :priority, :remark, :dictype
 
-  DICTYPE=[["工作内容"],["材料类型"]];
+  scope :fundsource, :conditions=>{:dictype=>"资金来源"}
+
+  DICTYPE=[["工作内容"],["材料类型"],["资金来源"]];
   
 end

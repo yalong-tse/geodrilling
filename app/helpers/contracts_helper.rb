@@ -1,7 +1,7 @@
 module ContractsHelper
   def make_datepicker(args)
     code = "$(function (){"
-    code << "$('#{args}').datepicker({dateFormat:'yy-mm-dd'});"
+    code << "$('#{args}').datepicker({format:'yyyy-mm-dd'});"
     code << "});"
     javascript_tag(code);
   end

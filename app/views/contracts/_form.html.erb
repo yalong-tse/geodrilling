@@ -2,6 +2,19 @@
   <%= javascript_include_tag 'jquery-ui-1.10.2.custom.min' %>
   <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
 <% end %>
+<script type="text/javascript">
+	$.fn.datepicker.dates['zh-CN'] = {
+			days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+			daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],
+			months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+			monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+			today: "今日"
+	};
+</script>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'datepicker' %>
+<% end %>
 <%= form_for @contract, :html=>{:class=>"form-horizontal"}  do |f|  %>
   <% if @contract.errors.any? %>
     <div id="error_explanation">
@@ -82,7 +95,7 @@
   <div class="control-group">
     <%= f.label "资金来源" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :fundsource, :class=>"text_field" ,:placeholder=>"省财政" %>
+      <%= f.select(:fundsource , options_for_select(Dictionary.fundsource.collect{|d|[d.item,d.id]}), :class=>"span4",:prompt=>"请选择") %>
     </div>
   </div>
   </div>
@@ -105,7 +118,7 @@
   <div class="control-group">
     <%= f.label "合同状态",:class=>"control-label" %>
     <div class="controls">
-    <%= f.number_field :status,:class=>"text_field" %>
+      <%= f.select(:status , options_for_select(Contract::STATUS), :class=>"span4",:prompt=>"请选择") %>
     </div>
   </div>
   </div>
@@ -182,7 +195,18 @@
     <%= link_back :class=>'btn btn-info'%>
   </div>
 <% end %>
-
+<script type="text/javascript">
+$(function (){
+	$.fn.datepicker.dates['zh-CN'] = {
+			days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+			daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],
+			months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+			monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+			today: "今日"
+	}
+    });
+</script>
 <%= content_for :inline_javascripts do %>
 <%= make_datepicker("#contract_startdate") %>
 <%= make_datepicker("#contract_finishdate") %>
@@ -200,6 +224,5 @@ $('#_contract_file').ace_file_input({
         //onchange:''
         //
       });
-
 </script>
 <% end %>
