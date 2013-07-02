@@ -17,7 +17,19 @@
       <td class="center"><%= check_box_tag "roles[]", role.id %><span class="lbl"></span></td>
       <td><%= role.name %></td>
       <td><%= role.description %></td>
-      <td><%= link_to t('labels.show'), role %> | <%= link_to t('labels.edit'), edit_role_path(role) %> | <%= link_to t('labels.destroy'), role, :method=>:delete, :confirm => t('prompt.confirm.delete')  %></td>
+      <td class="td-actions">
+        <div class="inline position-relative btn-group">
+        <%= link_to role, :class=>"btn btn-mini btn-success" do %>
+          <i class="icon-eye-open bigger-120"></i>
+        <% end %>
+        <%= link_to edit_role_path(role), :class=>"btn btn-mini btn-info" do %>
+          <i class="icon-edit bigger-120"></i>
+        <% end %>
+        <%= link_to role,:class=>"btn btn-mini btn-danger", :method=>:delete, :confirm => t('prompt.confirm.delete') do %>
+          <i class="icon-trash bigger-120"></i>
+        <% end %>
+        </div>
+      </td>
     </tr>
   <% end %>
   </tbody>
