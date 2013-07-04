@@ -219,5 +219,11 @@ module ApplicationHelper
   def javascript(*files)
     content_for(:head) { javascript_include_tag(*files) }
   end
+
+  def contract_status(passkey)
+    h3 = Hash[Contract::STATUS.map {|key,value| [value,key] }]
+#    puts h3
+    return h3[passkey]
+  end
   
 end

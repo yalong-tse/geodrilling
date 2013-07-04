@@ -1,5 +1,6 @@
 <%= render partial: "layouts/flash_messages", flash: flash %>
 <% content_for(:title,"合同详情") %>
+<% content_for(:page_header_description, "合同详情情况，请确认") %>
 <div class="page-section">
 <dl class="dl-horizontal">
   <dt><strong>合同名称:</strong></dt>
@@ -13,7 +14,7 @@
   <dt><strong>结束日期:</strong></dt>
   <dd><%= @contract.finishdate %></dd>
   <dt><strong>合同状态:</strong></dt>
-  <dd><%= @contract.status %></dd>
+  <dd><%= contract_status @contract.status %></dd>
 </dl>
 </div>
 <div class="row-fluid">

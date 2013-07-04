@@ -3,6 +3,7 @@
   <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
   <%= javascript_include_tag 'chosen.jquery.min' %>
 <% end %>
+
 <script type="text/javascript">
 	$.fn.datepicker.dates['zh-CN'] = {
 			days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
@@ -185,11 +186,11 @@
   </div>
 <% end %>
 <%= content_for :inline_javascripts do %>
-<%= make_datepicker("#contract_startdate") %>
-<%= make_datepicker("#contract_finishdate") %>
-<%= make_datepicker("#contract_signdate") %>
-<script type="text/javascript">
-$('#_contract_file').ace_file_input({
+  <%= make_datepicker("#contract_startdate") %>
+  <%= make_datepicker("#contract_finishdate") %>
+  <%= make_datepicker("#contract_signdate") %>
+  <script type="text/javascript">
+  $('#_contract_file').ace_file_input({
         no_file:'未选择文件 ...',
         btn_choose:'选择',
         btn_change:'Change',
@@ -201,5 +202,5 @@ $('#_contract_file').ace_file_input({
         //onchange:''
         //
       });
-</script>
+  </script>
 <% end %>
