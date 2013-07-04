@@ -39,7 +39,7 @@
         <td><%= key %></td>
         <td>
           <% value.each do |permission| %>
-              <%= check_box_tag "role[permission_ids][]", permission.id, false, :id=>"permission_ids_#{permission.id}" %> <%= permission.name %>
+              <%= check_box_tag "role[permission_ids][]", permission.id, false, :id=>"permission_ids_#{permission.id}" %><span class="lbl"></span> <%= permission.name %>
           <% end %>
         </td>
         <% end %>

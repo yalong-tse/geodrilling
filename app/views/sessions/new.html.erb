@@ -1,3 +1,23 @@
+<%= content_for :inline_stylesheets do %>
+  <style>
+    div#footer {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      background-color: #1F1D1D;
+    }
+    div#wrapper {
+      margin-bottom: 5em;
+    }
+    .baselayout {
+      background-image: url("<%= image_path('jp-mountain.jpg') %>");
+      background-size: cover;
+    }
+    .baselayout:before {
+      display: none;
+    }
+  </style>
+<% end %>
 <div id="wrapper" class="container">
   <div class="page-header">
     <h1><%= t 'headers.project' %></h1>
@@ -45,7 +65,7 @@
   </div>
 </div>
 
-<div id="footer" style="background-color: #c2c2c2;">
+<div id="footer">
   <footer>
     <p style="text-align:center">&copy; <%= t("headers.company") %> <%= t "headers.year" %></p>
   </footer>

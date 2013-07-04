@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <title>钻探施工过程管理信息系统</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title><%= t('headers.project') %></title>
+  <%= render 'layouts/AceAdminLayout/stylesheets_include' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="background-color: #F5F5F5">
+<body class="baselayout">
   <%= yield %>
 </body>
 </html>
