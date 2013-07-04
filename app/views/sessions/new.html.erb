@@ -8,8 +8,11 @@
     div#wrapper {
       margin-bottom: 5em;
     }
-    body {
-      background-color: #D0D0D0;
+    .baselayout {
+      background-color: #F5F5F5;
+    }
+    .baselayout:before {
+      display: none;
     }
   </style>
 <% end %>
@@ -48,7 +51,9 @@
         </div>
         <div class="control-group">
           <div class="controls">
-            <%= submit_tag t("labels.sign_in"), :class => "btn btn-primary" %>
+            <%= submit_tag t("labels.sign_in"), :class => "btn btn-primary" do %>
+              <i class="icon-key"></i>
+            <% end %>
           </div>
         </div>
 
