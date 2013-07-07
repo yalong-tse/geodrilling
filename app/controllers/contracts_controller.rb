@@ -4,10 +4,11 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.paginate(:page=>params[:page],:per_page=>25).all
+#    @contracts = Contract.paginate(:page=>params[:page],:per_page=>25).all
+#    logger.info("1111111111111111111111111111111111111")
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @contracts }
+      format.json { render json: ContractsDatatable.new(view_context) }
     end
   end
 
