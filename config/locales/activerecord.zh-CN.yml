@@ -28,6 +28,7 @@ zh-CN:
         password: "密码"
         password_confirmation: "确认密码"
         department: "部门"
+        role: "角色"
       role:
         name: "名称"
         description: "描述"

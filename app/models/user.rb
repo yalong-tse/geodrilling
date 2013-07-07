@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, :through => :assignments
   
-  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation
+  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids
   attr_accessor :password
 
   before_save :encrypt_password
@@ -17,6 +17,16 @@ class User < ActiveRecord::Base
 
   validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?
   validates :account, :uniqueness => true, :if => :is_appuser?
+
+  def role_ids=(role_ids)
+    # 只有是系统用户时才能添加角色，防止页面点击“是”后又改为“否”的特殊情况下，系统逻辑出错
+    if :is_appuser
+      role_ids.each do |r_id|
+        role = Role.find(r_id)
+        self.roles << role
+      end
+    end
+  end
   
   def is_appuser?
     isappuser?

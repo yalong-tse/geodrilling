@@ -52,7 +52,9 @@ class UsersController < ApplicationController
   # GET departments/1/users/new.json
   def new
     @user = @department.users.build
-
+    @roles = Role.all
+    @user_roles = @user.roles.collect{ |r| r.id }
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -62,13 +64,14 @@ class UsersController < ApplicationController
   # GET departments/1/users/1/edit
   def edit
     @user = @department.users.find(params[:id])
+    @roles = Role.all
+    @user_roles = @user.roles.collect{ |r| r.id }
   end
 
   # POST departments/1/users
   # POST departments/1/users.json
   def create
     @user = @department.users.build(params[:user])
-    logger.debug "*********************New user: #{@user.attributes.inspect}"
     User.set_default_password(@user) if params[:user][:isappuser]
     respond_to do |format|
       if @user.save
