@@ -3,11 +3,11 @@ class HolesController < ApplicationController
   # GET /holes
   # GET /holes.json
   def index
-    @holes = Hole.all
+#    @holes = Hole.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @holes }
+      format.json { render json: HolesDatatable.new(view_context) }
     end
   end
 
