@@ -58,7 +58,7 @@ private
   end
 
   def sort_column
-    columns = %w[name projectname owner buyerparty]
+    columns = %w[name projectname owner buyerparty contractamount signdate startdate finishdate status]
     columns[params[:iSortCol_0].to_i]
   end
 
