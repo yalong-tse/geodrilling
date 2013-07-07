@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ContractsDatatable
   delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
 
@@ -28,11 +29,24 @@ private
         h(contract.signdate.strftime("%Y-%m-%e")),
         h(contract.startdate.strftime("%Y-%m-%e")),
         h(contract.finishdate.strftime("%Y-%m-%e")),
-        h(contract.status)
-        #h(product.released_on.strftime("%B %e, %Y")),
-        #number_to_currency(product.price)
+        h(contract_status_treat(contract.status))
       ]
     end
+  end
+
+  def contract_status_treat(args)
+    code = ""
+    case args
+    when 0
+    code << "<span class='label label-inverse'>待执行</span>";
+    when 1
+    code << "<span class='label label-warning'>正在执行</span>";
+    when 2
+    code << "<span class='label label-success'>已经完成</span>";
+    when 3
+    code <<  "<span class='label label-info'>已经归档</span>";
+    end
+    code.html_safe
   end
 
   def contracts
@@ -58,7 +72,7 @@ private
   end
 
   def sort_column
-    columns = %w[name projectname owner buyerparty contractamount signdate startdate finishdate status]
+    columns = %w[name projectname owner buyerparty contractamount signdate startdate finishdate ]
     columns[params[:iSortCol_0].to_i]
   end
 
