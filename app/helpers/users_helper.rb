@@ -7,10 +7,16 @@ module UsersHelper
         $('#isappuser').click(function() {
           if($('#isappuser').is(":checked")) {
             $('#account_field').attr("class", "control-group");
+            $('#role_field').attr("class", "row-fluid");
           } else {
             $('#account_field').attr("class", "control-group hidden");
+            $('#role_field').attr("class", "row-fluid hidden");
           }
         });
+        if("#{@user.isappuser}" == "true") {
+          $('#account_field').attr("class", "control-group");
+          $('#role_field').attr("class", "row-fluid");
+        }
       });
     ACCOUNTFIELD
     javascript_tag code
