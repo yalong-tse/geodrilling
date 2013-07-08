@@ -2,10 +2,10 @@
 class DictionaryController < ApplicationController
 
   def index
-    @dictionary = Dictionary.all
+#    @dictionary = Dictionary.all
     respond_to do |format|
       format.html
-      format.json {render json: @dictionary}
+      format.json {render json: DictionaryDatatable.new(view_context) }
     end
   end
 

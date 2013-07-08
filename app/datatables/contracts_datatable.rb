@@ -25,7 +25,7 @@ private
         h(contract.projectname),
         h(contract.owner),
         h(contract.buyerparty),
-        number_to_currency(contract.contractamount),
+        h(contract.contractamount),
         h(contract.signdate.strftime("%Y-%m-%e")),
         h(contract.startdate.strftime("%Y-%m-%e")),
         h(contract.finishdate.strftime("%Y-%m-%e")),
