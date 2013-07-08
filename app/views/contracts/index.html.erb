@@ -28,7 +28,6 @@
   $(function(){
       var oTable1=$("#_table_contract").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,null,{"bSortable":false} ],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=contracts_path(:format=>:json) %>",
@@ -36,7 +35,7 @@
         "sLengthMenu":"每页 _MENU_",
         "sZeroRecords":"对不起,没有数据",
         "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
-        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0条数据",
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" }

@@ -1,8 +1,8 @@
 <%content_for(:title,"字典列表") %>
 <% content_for(:page_header_description, "系统所有需要的字典表，已经按照类别分类") %>
-<div class="container">
+<div class="row-fluid">
   <table id="_dictionary_table" class="table table-striped table-bordered table-hover">
-    <thead>
+  <thead>
     <tr>
       <th>字典项目</th>
       <th>字典类型</th>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-</tbody>
+  </tbody>
   </table>
 </div>
 <%= link_to "新增字典项" , dictionary_new_path , :class=>"btn btn-primary" %>
