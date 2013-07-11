@@ -1,3 +1,4 @@
+<% content_for(:page_header_description, "录入钻孔的基本信息") %>
 <%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:class=>"form-horizontal"}) do |f| %>
   <% if @hole.errors.any? %>
     <div id="error_explanation">
@@ -146,5 +147,32 @@
     <%= link_back :class=>'btn' %>
   </div>
 <% end %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min" %>
+  <%= stylesheet_link_tag "chosen" %>
+  <%= stylesheet_link_tag 'datepicker' %>
+<% end %>
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+  <%= javascript_include_tag 'fuelux/fuelux.spinner.min' %>
+  <%= javascript_include_tag 'date-time/moment.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
+  <%= javascript_include_tag 'date-time/daterangepicker.min' %>
+  <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
+  <%= javascript_include_tag 'jquery.knob.min' %>
+  <%= javascript_include_tag 'jquery.autosize-min' %>
+  <%= javascript_include_tag 'jquery.inputlimiter.1.3.1.min' %>
+  <%= javascript_include_tag 'jquery.maskedinput.min' %>
+<% end %>
+<%= content_for :inline_javascripts do %>
 <%= make_datepicker("#hole_startdate") %>
 <%= make_datepicker("#hole_finishdate") %>
+<script type="text/javascript">
+  $("#hole_designdeep").ace_spinner({value:200,min:10,max:1000,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
+  $("#hole_designapexangle").ace_spinner({value:30,min:10,max:100,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
+  $("#hole_designcoreratio").ace_spinner({value:30,min:10,max:100,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
+</script>
+<% end %>

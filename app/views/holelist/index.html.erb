@@ -1,5 +1,7 @@
 <% content_for(:title, "钻孔配置" ) %>
-<table class="table table-striped">
+<% content_for(:page_header_description, "分别选择施工队伍、使用设备和使用材料配置钻孔所需的人员、设备和材料") %>
+<table id="_table_holes" class="table table-striped">
+<thead>
   <tr>
     <th>矿区</th>
     <th>孔号</th>
@@ -12,7 +14,9 @@
     <th>使用设备</th>
     <th>使用材料</th>
   </tr>
+</thead>
 
+<tbody>
 <% @holes_list.each do |hole| %>
   <tr>
     <td><%= hole.minearea %></td>
@@ -27,6 +31,7 @@
     <td><%= hole_use_materials(hole) %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 <div id="_modal_device" class="modal hide fade" tabindex="-1" >
   <div class="modal-header">
@@ -154,12 +159,11 @@
     <a href="#" class="btn btn-primary">确定</a>
   </div>
 </div>
-<div class="row-fluid">
-  <div class="span4"></div>
-  <div class="span4">
-    <%= will_paginate @holes_list, :renderer=>BootstrapPagination::Rails %>
-  </div>
-</div>
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+<% content_for :inline_javascripts do %>
 <script language="javascript">
   function open_modal_device()
   {
@@ -169,4 +173,24 @@
   {
     $("#_modal_material").modal();
   }
+
+  $(function(){
+    var oTable1 = $("#_table_holes").dataTable({
+      "aoColumns" :[null,null,null,null,null,null,null,
+      {"bSortable":false},
+      {"bSortable":false},
+      {"bSortable":false}
+      ],
+      "bAutoWidth" : false,
+      "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0条数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" }
+    });
+  })
 </script>
+<% end %>

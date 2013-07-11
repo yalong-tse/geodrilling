@@ -1,7 +1,7 @@
 class HolelistController < ApplicationController
 
   def index
-    @holes_list = Hole.paginate(:page=>params[:page],:per_page=>5).order('startdate desc')
+    @holes_list = Hole.unclosed.order('startdate desc')
     @rigmachine = Rigmachine.unused
     @drilltower = Drilltower.unused
     @pump = Pump.unused
