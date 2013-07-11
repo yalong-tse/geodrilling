@@ -1,3 +1,4 @@
+<% content_for(:page_header_description, "输入字典项的内容") %>
 <%= form_for(:dictionary, :url=>dictionary_create_path(@dictionary), :html=>{:class=>"form-horizontal"} )  do |f|  %>
   <% if @dictionary.errors.any? %>
     <div id="error_explanation">
@@ -37,7 +38,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "新增字典" ,:class=>"btn btn-primary" %> 
+    <button class="btn btn-primary" type="submit"><i class="icon-ok bigger-110"></i>新增字典项</button>
     <%= link_back :class=>'btn' %>
   </div>
 <% end %>
