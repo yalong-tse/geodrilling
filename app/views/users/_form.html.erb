@@ -41,7 +41,7 @@
           <div class="control-group">
             <%= f.label :sex, :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :sex, User::SEXS, {}, :class=>"span3" %>
+              <%= f.select :sex, User::SEXS, {}, :class=>"input-mini" %>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           <div class="control-group">
             <%= f.label :education, :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :education, User::EDUCATION, {:prompt => t('prompt.select')}, {:class=>"span5"} %>
+              <%= f.select :education, User::EDUCATION, {:prompt => t('prompt.select')}, {:class=>"input-medium"} %>
             </div>
           </div>
         </div>
