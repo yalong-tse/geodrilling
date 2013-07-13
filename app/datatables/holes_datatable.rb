@@ -1,6 +1,6 @@
 #encoding: utf-8
 class HolesDatatable
-  delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h,:hole_path, :link_to, :number_to_currency, :logger, to: :@view
 
   def initialize(view)
     @view = view
@@ -26,15 +26,15 @@ private
         h(hole.designdiameter),
         h(hole.startdate.strftime("%Y-%m-%e")),
         h(hole.finishdate.strftime("%Y-%m-%e")),
-        h(detail_button)
+        h(detail_button(hole))
       ]
     end
   end
 
-  def detail_button
-    code =<<-END_OF_CODE
-      <button class="btn btn-small btn-info" onclick='open_detail("<%=hole_path(hole,:format=>:json) %>")'><i class="icon-th"></i></button>
-    END_OF_CODE
+  def detail_button(hole)
+    code = "<div class=\"inline position-relative btn-group\">"
+    code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\"" + hole_path(hole,:format=>:json)  + "\")' rel=\"tooltip\" title=\"查看详情\")'><i class=\"icon-eye-open bigger-120\"></i></button>"
+    code << "</div>"
     code.html_safe
   end
 

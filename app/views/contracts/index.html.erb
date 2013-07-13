@@ -28,8 +28,8 @@
   $(function(){
       var oTable1=$("#_table_contract").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,null,{"bSortable":false} ],
-        "bServerSide":true
-        "bAutoWidth" : false,
+        "bServerSide":true,
+        "bAutoWidth" :false,
         "sAjaxSource":"<%=contracts_path(:format=>:json) %>",
         "oLanguage":{
         "sLengthMenu":"每页 _MENU_",

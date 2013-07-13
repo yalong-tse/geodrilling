@@ -1,9 +1,29 @@
-<%content_for(:title,"库存管理") %>
+<% content_for(:title,"库存管理") %>
+<% content_for(:page_header_description, "分类查看设备的库存情况") %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'jquery.gritter.css' %>
+<% end %>
 <div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">钻机</a></li>
-    <li> <a href="#tab2" data-toggle="tab">钻塔</a></li>
-    <li> <a href="#tab3" data-toggle="tab">泥浆泵</a></li>
+  <ul class="nav nav-tabs" id="_tabs">
+    <li class="active">
+    <a href="#tab1" data-toggle="tab">
+      <i class="pink icon-dashboard bigger-110"></i>
+      钻机
+    </a>
+    </li>
+    <li> 
+    <a href="#tab2" data-toggle="tab">
+      <i class="blue icon-user bigger-110"></i>
+      钻塔
+    </a>
+    </li>
+    <li> 
+    <a href="#tab3" data-toggle="tab">
+      <i class="icon-rocket"></i>
+      泥浆泵
+    </a>
+    </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
