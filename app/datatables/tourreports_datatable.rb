@@ -58,7 +58,7 @@ private
   end
 
   def sort_column
-    columns = %w[tourdate starttime finishtime administrator tourleader recorder tourshift tourcore tourdrillingtime tourauxiliarytime]
+    columns = %w[holeid tourdate starttime finishtime administrator tourleader recorder tourshift tourcore tourdrillingtime tourauxiliarytime]
     columns[params[:iSortCol_0].to_i]
   end
 

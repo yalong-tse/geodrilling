@@ -1,5 +1,12 @@
 <% content_for(:title,"班报管理") %>
-<% content_for(:page_header_description, "查看该钻孔的班报信息") %>
+<%
+  if @holeid  
+    content_for(:page_header_description, "查看钻孔<strong class='light red'>".html_safe + Hole.find(@holeid).holenumber + "</strong>的班报信息".html_safe ) 
+  else
+    content_for(:page_header_description, "查看所有钻孔的班报信息")
+  end
+%>
+
 <div class="container">
 <table id="_tourreport_table" class="table table-striped">
   <thead>
@@ -34,7 +41,7 @@
 <script language="javascript">
   $(function(){
    var oTable1=$("#_tourreport_table").dataTable({
-        "aoColumns":[{"bSortable":false},null,null,null,null,null,null,null,null,null,null ],
+        "aoColumns":[{"bSortable":false},null,{"bSortable":false},{"bSortable":false},null,null,null,null,null,null,null ],
         "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,

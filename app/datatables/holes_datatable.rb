@@ -34,7 +34,7 @@ private
   def detail_button(hole)
     code = "<div class=\"inline position-relative btn-group\">"
     code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\"" + hole_path(hole,:format=>:json)  + "\")' rel=\"tooltip\" title=\"查看详情\")'><i class=\"icon-eye-open bigger-120\"></i></button>"
-    code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_tourreports(\"" + tourreports_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"查看班报\")'><i class=\"icon-th bigger-120\"></i></button>"
+    code << "<button class=\"btn btn-mini btn-warning tooltip-success\" onclick='open_tourreports(\"" + tourreports_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"查看班报\")'><i class=\"icon-calendar bigger-120\"></i></button>"
     code << "</div>"
     code.html_safe
   end
