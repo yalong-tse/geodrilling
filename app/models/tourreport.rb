@@ -21,4 +21,10 @@ class Tourreport < ActiveRecord::Base
   WORKITEM=[['下钻'],['钻进'],['取心'],['起钻'],['事故处理'],['停待'],['下套管'],['测井'],['孔深校正'],['简易水文观测'],['封孔'],['其他']]
 
   scope :archive, :conditions => {:status=>2}
+
+  # 根据钻孔id 查询班报
+  def self.gettourreports(holenumber)
+    where("holeid =?", holenumber).order("holeid desc")
+  end
+
 end

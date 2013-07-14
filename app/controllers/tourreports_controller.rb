@@ -3,11 +3,11 @@ class TourreportsController < ApplicationController
   # GET /tourreports
   # GET /tourreports.json
   def index
-    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
-
+#    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
+    logger.info("the hole id is #{params[:holeid]}")
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @tourreports }
+      format.json { render json: TourreportsDatatable.new(view_context,params[:holeid]) }
     end
   end
 
