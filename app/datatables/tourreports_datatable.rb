@@ -22,9 +22,9 @@ private
     tourreports.map do |report|
       [
         h(report.hole.holenumber),
-        h(report.tourdate.strftime("%Y-%m-%e")),
-        h(report.starttime),
-        h(report.finishtime),
+        h(report.tourdate.strftime("%Y-%m-%d")),
+        h(report.starttime.strftime("%H:%M")),
+        h(report.finishtime.strftime("%H:%M")),
         h(report.administrator),
         h(report.tourleader),
         h(report.recorder),
@@ -44,7 +44,7 @@ private
     tourreports = Tourreport.gettourreports(@holeid).order("#{sort_column} #{sort_direction}")
     tourreports = tourreports.page(page).per_page(per_page)
     if params[:sSearch].present?
-      tourreports = tourreports.where("tourdate like :search or administrator like :search or tourleader like :search", search: "%#{params[:sSearch]}%")
+      tourreports = tourreports.joins(:hole).where("holes.holenumber like :search or tourdate like :search or administrator like :search or tourleader like :search", search: "%#{params[:sSearch]}%")
     end
     tourreports 
   end
@@ -58,7 +58,7 @@ private
   end
 
   def sort_column
-    columns = %w[hole.holenumber tourdate starttime finishtime administrator tourleader recorder tourshift tourcore tourdrillingtime tourauxiliarytime]
+    columns = %w[tourdate starttime finishtime administrator tourleader recorder tourshift tourcore tourdrillingtime tourauxiliarytime]
     columns[params[:iSortCol_0].to_i]
   end
 

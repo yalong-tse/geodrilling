@@ -24,8 +24,8 @@ private
         h(hole.holenumber),
         h(hole.designdeep),
         h(hole.designdiameter),
-        h(hole.startdate.strftime("%Y-%m-%e")),
-        h(hole.finishdate.strftime("%Y-%m-%e")),
+        h(hole.startdate.strftime("%Y-%m-%d")),
+        h(hole.finishdate.strftime("%Y-%m-%d")),
         h(detail_button(hole))
       ]
     end

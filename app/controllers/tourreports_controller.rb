@@ -5,6 +5,7 @@ class TourreportsController < ApplicationController
   def index
 #    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
     logger.info("the hole id is #{params[:holeid]}")
+    @holeid = params[:holeid]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: TourreportsDatatable.new(view_context,params[:holeid]) }

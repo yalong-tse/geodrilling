@@ -26,8 +26,8 @@ private
         h(contract.owner),
         h(contract.buyerparty),
         h(contract.contractamount),
-        h(contract.signdate.strftime("%Y-%m-%e")),
-        h(contract.startdate.strftime("%Y-%m-%e")),
+        h(contract.signdate.strftime("%Y-%m-%d")),
+        h(contract.startdate.strftime("%Y-%m-%d")),
         h(contract.finishdate.strftime("%Y-%m-%e")),
         h(contract_status_treat(contract.status))
       ]

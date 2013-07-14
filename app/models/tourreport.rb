@@ -24,7 +24,11 @@ class Tourreport < ActiveRecord::Base
 
   # 根据钻孔id 查询班报
   def self.gettourreports(holenumber)
-    where("holeid =?", holenumber).order("holeid desc")
+    if holenumber
+      where("holeid =?", holenumber).order("holeid desc")
+    else
+      order("holeid desc")
+    end
   end
 
 end
