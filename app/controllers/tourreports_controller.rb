@@ -36,7 +36,9 @@ class TourreportsController < ApplicationController
   # GET /tourreports/new.json
   def new
     @tourreport = Tourreport.new
-    @holes = Hole.unclosed
+    @hole = Hole.find(params[:holeid])
+
+    #@holes = Hole.unclosed
     @tourreportworkcontent = Tourreportworkcontent.new
 
     respond_to do |format|

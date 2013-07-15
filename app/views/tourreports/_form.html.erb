@@ -10,12 +10,69 @@
       </ul>
     </div>
   <% end %>
+<div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
-    <%= f.label "所属钻孔", :class=>"control-label" %>
+    <%= f.label "合同名称", :class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:hole,options_for_select(@holes.collect{|hole| [hole.contract.name+'['+hole.holenumber+']',hole.id]}) ,:class=>"span3") %>
+      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
     </div>
   </div>
+  </div>
+
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "项目名称", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.projectname , :readonly=>true %>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="row-fluid">
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "项目编号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.contractno , :readonly=>true %>
+    </div>
+  </div>
+  </div>
+
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "钻孔编号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="row-fluid">
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "项目经理", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :administrator , :class=>"text_field" , :value=>"机长" , :readonly=>true%>
+    </div>
+  </div>
+  </div>
+
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "班长" , :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :tourleader , :class=>"text_field" ,:value=>"班长" ,:readonly=>true %>
+    </div>
+  </div>
+  </div>
+
+</div>
+
   <div class="control-group">
     <%= f.label "班报日期", :class=>"control-label" %>
     <div class="controls">
@@ -32,18 +89,6 @@
     <%= f.label "结束时间" ,:class=>"control-label" %>
     <div class="controls">
       <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME), :class=>"text_field",:cols=>"3", :prompt=>"请选择...") %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label "项目经理", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :administrator , :class=>"text_field"%>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label "班长" , :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :tourleader , :class=>"text_field" %>
     </div>
   </div>
   <div class="control-group">
