@@ -1,5 +1,17 @@
 <% content_for(:title, "班报日历") %>
+<% content_for(:page_header_description , "查看班报日历") %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'fullcalendar' %>
+<% end %>
 <div class="container">
   <div id="calendar"></div>
 </div>
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'fullcalendar.min' %>
+  <%= javascript_include_tag 'bootbox.min' %>
+<% end %>
+<% content_for :inline_javascripts do %>
 <%= make_calendar_for_tourreport(1) %> 
+<% end %>
