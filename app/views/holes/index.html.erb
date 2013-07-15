@@ -80,7 +80,7 @@
 </table>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-info" data-dismiss="modal">关闭</button>
+    <button class="btn btn-info" data-dismiss="modal"><i class="icon-reply"></i>关闭</button>
   </div>
 </div>
 <% content_for :page_specific_javascripts do %>
@@ -134,6 +134,11 @@
     });
   }
   function open_tourreports(url)
+  {
+    window.location.href=url;
+  }
+
+  function new_tourreports(url)
   {
     window.location.href=url;
   }
