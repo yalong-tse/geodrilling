@@ -28,7 +28,7 @@ private
         h(contract.contractamount),
         h(contract.signdate.strftime("%Y-%m-%d")),
         h(contract.startdate.strftime("%Y-%m-%d")),
-        h(contract.finishdate.strftime("%Y-%m-%e")),
+        h(contract.finishdate.strftime("%Y-%m-%d")),
         h(contract_status_treat(contract.status))
       ]
     end
@@ -72,7 +72,7 @@ private
   end
 
   def sort_column
-    columns = %w[name projectname owner buyerparty contractamount signdate startdate finishdate]
+    columns = %w[contractno name projectname owner buyerparty contractamount signdate startdate finishdate]
     columns[params[:iSortCol_0].to_i]
   end
 
