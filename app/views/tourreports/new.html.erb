@@ -1,2 +1,8 @@
 <% content_for(:title,"新建班报") %>
+<% 
+  if @hole
+    content_for(:page_header_description,"新建钻孔班报，当前钻孔编号为:".html_safe + ("<strong class=\'light red\'> #{@hole.holenumber} </strong>".html_safe))
+  else
+    content_for(:page_header_description, "新建钻孔编号")
+  end%>
 <%= render 'form' %>
