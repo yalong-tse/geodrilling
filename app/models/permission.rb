@@ -1,4 +1,6 @@
 class Permission < ActiveRecord::Base
+  has_and_belongs_to_many :roles
+
   attr_accessible :action, :description, :name, :subject_class
 
   def self.format_permissions_output(permissions)
