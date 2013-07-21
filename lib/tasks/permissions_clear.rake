@@ -7,5 +7,6 @@ namespace 'permissions' do
     end
     # Permission.destroy_all
     Permission.delete_all
+    
   end
 end
