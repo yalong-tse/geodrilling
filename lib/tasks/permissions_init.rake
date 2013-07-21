@@ -1,4 +1,4 @@
-# encoding: utf-8
+#encoding: utf-8
 namespace 'permissions' do
   desc "Loading all models and their related controller methods in permissions table."
   task(:init => :environment) do
