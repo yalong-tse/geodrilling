@@ -73,12 +73,15 @@ class UsersController < ApplicationController
   def create
     @user = @department.users.build(params[:user])
     User.set_default_password(@user) if params[:user][:isappuser]
+    logger.debug "----------#{params[:user]}"
     respond_to do |format|
       if @user.save
         # format.html { redirect_to [@department, @user], notice: I18n.t('activerecord.successful.messages.created', :model => @user.class.model_name.human) }
         format.html { redirect_to department_users_url, notice: t('activerecord.successful.messages.created', :model => @user.class.model_name.human) }
         format.json { render json: @user, status: :created, location: @user }
       else
+        @roles = Role.all
+        @user_roles = @user.roles.collect{|r| r.id}
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

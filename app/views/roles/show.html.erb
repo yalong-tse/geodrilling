@@ -17,7 +17,7 @@
   <% @permissions.each do |permissions_hash| %>
     <tr>
       <% permissions_hash.each do |key, value| %>
-        <td><%= key %></td>
+        <td><%= t "controllers.#{key.downcase}" %></td>
         <td>
           <% value.each do |permission| %>
             <%= permission.name %>
