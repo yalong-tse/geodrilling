@@ -4,7 +4,8 @@ namespace 'permissions' do
   task(:init => :environment) do
     arr = []
     # load all the controllers
-    controllers = Dir.new("#{Rails.root}/app/controllers").entries
+    controllers = Dir.new("#{Rails.root}/app/controllers").entries.sort  # 按ASCII码排序
+    # or Dir.new(...).entries.sort_by{ |a| File.stat(a).mtime} 按文件修改时间排序
     controllers.each do |entry|
       if entry=~ /_controller/
         # check if the controller is valid
@@ -17,6 +18,8 @@ namespace 'permissions' do
         end
       end
     end
+
+    write_permission("all", "manager", "全部") # 增加"全部"权限添加的入口
 
     arr.each do |controller|
       # only that controller which represents a model

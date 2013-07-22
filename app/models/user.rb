@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   EDUCATION = ["大专","本科","硕士","博士","博士后"]
 
   validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?
-  validates :account, :uniqueness => true, :if => :is_appuser?
+  validates :account, presence: true, :if => :is_appuser?
+  validates_uniqueness_of :account, :conditions => where('isappuser = ?', true), :if => :is_appuser?
 
   def role_ids=(role_ids)
     # 只有是系统用户时才能添加角色，防止页面点击“是”后又改为“否”的特殊情况下，系统逻辑出错
