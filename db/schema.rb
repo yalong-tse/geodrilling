@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613014108) do
+ActiveRecord::Schema.define(:version => 20130723170803) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -295,6 +295,7 @@ ActiveRecord::Schema.define(:version => 20130613014108) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "users", ["account"], :name => "index_users_on_account", :unique => true
   add_index "users", ["department_id"], :name => "index_users_on_department_id"
 
 end

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   before_save :encrypt_password
+  before_save :normalize_blank_values
+  before_validation :normalize_blank_values
 
   SEXS = [["男",1], ["女",2]]
   EDUCATION = ["大专","本科","硕士","博士","博士后"]
@@ -23,9 +25,23 @@ class User < ActiveRecord::Base
   # validates_uniqueness_of :account, conditions: -> { where(isappuser: true) }, :if => :is_appuser?
 
   def unique_account_only_for_appuser
-    user = User.where("isappuser = ? AND account = ?", true, account)
-    unless user.empty?
+    users = User.where("isappuser = ? AND account = ?", true, account)
+    unless users.empty?
       errors.add(:account, I18n.t("errors.messages.taken"))
+    end
+  end
+
+  # 如果attributes为空字符串或者strip后为空，将它设置为nil
+  def normalize_blank_values
+    attributes.each do |column, value|
+      self[column].respond_to?(:strip) ? self[column].strip! : self[column]
+      if self[column].respond_to?(:empty?)
+        self[column] = nil if self[column].empty?
+      else
+        self[column]
+      end
+      self[column]
+      # self[column].present? || self[column] = nil
     end
   end
 
