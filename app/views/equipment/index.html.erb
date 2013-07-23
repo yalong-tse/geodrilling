@@ -27,7 +27,8 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <table class="table table-striped table-hover table-bordered">
+      <table id="_rigmachine_table" class="table table-striped table-hover table-bordered">
+        <thead>
         <tr>
           <th>设备编号</th>
           <th>钻机型号</th>
@@ -38,22 +39,9 @@
           <th>钻孔直径</th>
           <th>厂商</th>
           <th>占用状态</th>
-          <th>设备履历</th>
         </tr>
-        <% @rigmachine.each do |rig| %>
-          <tr>
-            <td> <%=rig.devicenumber %> </td>
-            <td> <%=rig.rigmodel %> </td>
-            <td> <%=rig.rigweight %> </td>
-            <td> <%=rig.righoleDeep %> </td>
-            <td> <%=rig.rigPower %> </td>
-            <td> <%=rig.rotatingSpeed %> </td>
-            <td> <%=rig.pipeDiameter %> </td>
-            <td> <%=rig.manufacture %> </td>
-            <td> <%=device_status rig.status %> </td>
-            <td> <button class="btn btn-small btn-info" onclick="javascript:rigmachine_resume('<%=rig.devicenumber %>')">查看</button></td>
-          </tr>
-        <% end %>
+      </thead>
+      <tbody></tbody>
       </table>
     </div>
     <div class="tab-pane" id="tab2">
@@ -129,9 +117,32 @@
     </div>
   </div>
 </div>
-
 <br />
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+<% content_for :inline_javascripts do %>
 <script language="javascript">
+  $(function(){
+   var oTable1=$("#_rigmachine_table").dataTable({
+        "aoColumns":[null,null,null,null,null,null,null,null,null],
+        "bProcessing":true,
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=rigmachine_index_path(:format=>:json) %>",
+        "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" }
+        }
+     );
+  })
+
   function rigmachine_resume(devicenumber)
   {
     window.location.href="<%=rigmachine_resume_path %>?devicenumber="+devicenumber
@@ -146,6 +157,5 @@
   {
     window.location.href="<%=pump_resume_path %>?devicenumber="+devicenumber
   }
-
-
 </script>
+<% end %>
