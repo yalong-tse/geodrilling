@@ -36,7 +36,7 @@
       <% @permissions_array.each do |permissions_hash| %>
       <tr>
         <% permissions_hash.each do |key, value| %>
-        <td><%= key %></td>
+        <td><%= t "controllers.#{key.downcase}" %></td>
         <td>
           <% value.each do |permission| %>
             <%= check_box_tag "role[permission_ids][]", permission.id, @role_permissions.include?(permission.id), :id => "permission_ids_#{permission.id}" %><span class="lbl"></span> <%= permission.name %>

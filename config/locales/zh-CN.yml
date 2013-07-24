@@ -49,6 +49,7 @@ zh-CN:
     select: "选择"
     giveright: "授权"
   controllers:
+    all: "全部"
     archive: "归档"
     contract: "合同"
     department: "部门"
