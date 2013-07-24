@@ -18,7 +18,6 @@
       <% if @user.errors.any? %>
         <div class="row-fluid">
           <div id="error_explanation" class="span12">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
             <ul>
               <% @user.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -41,7 +40,7 @@
           <div class="control-group">
             <%= f.label :sex, :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :sex, User::SEXS, {}, :class=>"span3" %>
+              <%= f.select :sex, User::SEXS, {}, :class=>"input-mini" %>
             </div>
           </div>
         </div>
@@ -71,7 +70,7 @@
           <div class="control-group">
             <%= f.label :education, :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :education, User::EDUCATION, {:prompt => t('prompt.select')}, {:class=>"span5"} %>
+              <%= f.select :education, User::EDUCATION, {:prompt => t('prompt.select')}, {:class=>"input-medium"} %>
             </div>
           </div>
         </div>

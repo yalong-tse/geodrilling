@@ -4,12 +4,12 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th class="center"><%= check_box_tag "selectAll" %><span class="lbl"></span></th>
-      <th><%= User.human_attribute_name("name") %></th>
-      <th><%= User.human_attribute_name("sex") %></th>
-      <th><%= User.human_attribute_name("duty") %></th>
-      <th><%= t '.contactway' %></th>
-      <th><%= t 'labels.handle' %></th>
+      <th class="center" width="5%"><%= check_box_tag "selectAll" %><span class="lbl"></span></th>
+      <th width="10%"><%= User.human_attribute_name("name") %></th>
+      <th width="5%"><%= User.human_attribute_name("sex") %></th>
+      <th width="10%"><%= User.human_attribute_name("duty") %></th>
+      <th width="10%"><%= t '.contactway' %></th>
+      <th width="20%"><%= t 'labels.handle' %></th>
     </tr>
   </thead>
   <tbody>

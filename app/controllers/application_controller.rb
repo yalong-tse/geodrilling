@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -26,7 +27,8 @@ class ApplicationController < ActionController::Base
   def self.permission
     return name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name rescue nil
   end
-
+  
+  # 此方法不再使用 20130711 
   def self.permission_ZN
     name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name.downcase rescue nil
     I18n.t "controllers.#{name}"

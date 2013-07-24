@@ -38,11 +38,14 @@ module UsersHelper
   end
 
   def contactway(user)
-    if user.mobile.empty?
-      user.officephone
-    else
-      user.mobile
-    end
+    #if user.mobile.empty?
+#      user.officephone
+ #   else
+  #    user.mobile
+   # end
+    user.officephone if user.officephone
+    user.mobile if user.mobile
+    "" unless user.mobile
   end
 
   def human_sex(user)
