@@ -10,11 +10,13 @@
   <%# --------------------None-------------------- %>
 <% end %>
 
-<% javascript "dhtmlxcommon" %>
-<% javascript "dhtmlxtree" %>
-<% javascript "dhtmlxtree_json" %>
-<% javascript "dhtmlxmenu" %>
-<% javascript "dhtmlxmenu_ext" %>
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'dhtmlxcommon' %>
+  <%= javascript_include_tag 'dhtmlxtree' %>
+  <%= javascript_include_tag 'dhtmlxtree_json' %>
+  <%= javascript_include_tag 'dhtmlxmenu' %>
+  <%= javascript_include_tag 'dhtmlxmenu_ext' %>
+<% end %>
 
 <%= content_for :inline_javascripts do %>
   <%= dhtmlxtree_dynatree(:tree_id => "dynatree") %>

@@ -49,6 +49,7 @@ module DepartmentsHelper
         }
       }
 
+    $(function(){
       var menu = new dhtmlXMenuObject();
       menu.setIconsPath("/assets/common/");
       menu.renderAsContextMenu();
@@ -72,17 +73,17 @@ module DepartmentsHelper
         $('#_iframe').attr("src","/departments/"+nodeId);
         return true;
       });
-
-      DHTMLXTREE
+    });
+    DHTMLXTREE
     javascript_tag(code)
   end
 
   def init_modal
     javascript = <<-MODAL
       $(function(){
-        $('#modal).modal();
+        $('#modal').modal();
         $('#cancel_action').click(function() {
-          $('#modal).modal('toggle');
+          $('#modal').modal('toggle');
           return false;
         });
       });
