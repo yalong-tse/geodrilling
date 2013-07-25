@@ -133,8 +133,10 @@
   <div class="span6">
   <div class="control-group">
     <%= f.label "签订日期", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :signdate ,:class=>"text_field",:placeholder=>"2013-04-05" %>
+    <div class="controls ">
+      <div class="input-append">
+      <%= f.text_field :signdate ,:class=>"text_field",:placeholder=>"2013-04-05" %><span class="add-on"><i class="icon-calendar"></i></span>
+    </div>
     </div>
   </div>
   </div>
@@ -146,7 +148,10 @@
   <div class="control-group">
     <%= f.label "开始日期", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :startdate, :class=>"text_field" , :placeholder=>"2013-05-03"%>
+      <div class="input-append">
+        <%= f.text_field :startdate, :class=>"text_field" , :placeholder=>"2013-05-03"%><span class="add-on"><i class="icon-calendar"></i></span>
+
+    </div>
     </div>
   </div>
   </div>
@@ -155,7 +160,9 @@
   <div class="control-group">
     <%= f.label "截止日期", :class=>"control-label"%>
     <div class="controls">
-    <%= f.text_field :finishdate, :class=>"text_field"%>
+    <div class="input-append">
+      <%= f.text_field :finishdate, :class=>"text_field"%><span class="add-on"><i class="icon-calendar"></i></span>
+    </div>
     </div>
   </div>
   </div>

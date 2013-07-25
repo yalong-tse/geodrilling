@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723170803) do
+ActiveRecord::Schema.define(:version => 20130725155511) do
+
+  create_table "appsettings", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20130723170803) do
 
   add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
+
+  create_table "attachments", :force => true do |t|
+    t.string   "filename"
+    t.string   "filetype"
+    t.string   "savefilename"
+    t.string   "savepath"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "contracts", :force => true do |t|
     t.string   "contractamount"
@@ -41,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130723170803) do
     t.string   "owner"
     t.date     "deadlinedate"
     t.string   "fundsource"
+    t.integer  "attachment_id"
   end
 
   create_table "departments", :force => true do |t|
@@ -68,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20130723170803) do
   end
 
   create_table "dictionaries", :force => true do |t|
-    t.string   "type"
     t.string   "item"
     t.boolean  "delflag"
     t.decimal  "priority",   :precision => 10, :scale => 0
@@ -136,8 +153,6 @@ ActiveRecord::Schema.define(:version => 20130723170803) do
 
   create_table "materials", :force => true do |t|
     t.string   "name"
-    t.string   "type"
-    t.string   "model"
     t.decimal  "count",        :precision => 10, :scale => 0
     t.decimal  "price",        :precision => 10, :scale => 0
     t.date     "stockdate"
@@ -146,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20130723170803) do
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
     t.string   "materialtype"
+    t.string   "model"
   end
 
   create_table "permissions", :force => true do |t|
