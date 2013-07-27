@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725155511) do
+ActiveRecord::Schema.define(:version => 20130727051621) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "settingtype"
     t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "assignments", :force => true do |t|

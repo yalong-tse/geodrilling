@@ -53,8 +53,7 @@ class ContractsController < ApplicationController
   # POST /contracts.json
   def create
     @contract = Contract.new(params[:contract])
-    @contract.save
-
+    @contract.save_file(params[:attachment]) if params[:attachment]
     respond_to do |format|
       if @contract.save
         format.html { redirect_to @contract, notice: '新增合同成功.' }

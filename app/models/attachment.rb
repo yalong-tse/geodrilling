@@ -10,7 +10,8 @@ class Attachment < ActiveRecord::Base
         logger.info "the name is #{name}"
         rename = UUIDTools::UUID.random_create.to_s.gsub("-","")
         str = name.split('.');
-        save_path = Appsetting.where(:name=>'attachment_savepath')
+        appsettings = Appsetting.where(:name=>'attachment_savepath')
+        save_path = appsettings[0].value if appsettings[0]
         logger.info("the save_path is #{save_path}");
         rename="#{rename}.#{str[1]}"
         fullname = "#{save_path}/#{rename}"
