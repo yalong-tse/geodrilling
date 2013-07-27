@@ -10,3 +10,7 @@
  *
  *= require_self
  */
+/* 表单必添项校验 */
+.required {
+    background:#FAAEAE!important;
+}
