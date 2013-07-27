@@ -27,6 +27,7 @@ class Contract < ActiveRecord::Base
     if !file.nil?
       @attachment = Attachment.new
       rename = @attachment.save_att(file)
+      logger.info("the rename is #{rename}");
       @attachment.save
       self.attachment_id = @attachment.id
     end

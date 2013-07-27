@@ -26,11 +26,19 @@ private
         h(contract.owner),
         h(contract.buyerparty),
         h(contract.contractamount),
-        h(contract.signdate.strftime("%Y-%m-%e")),
-        h(contract.startdate.strftime("%Y-%m-%e")),
-        h(contract.finishdate.strftime("%Y-%m-%e")),
+        h(regtime(contract.signdate)),
+        h(regtime(contract.startdate)),
+        h(regtime(contract.finishdate)),
         h(contract_status_treat(contract.status))
       ]
+    end
+  end
+
+  def regtime(args)
+    if(args)
+      args.strftime("%Y-%m-%d")
+    else
+      ""
     end
   end
 

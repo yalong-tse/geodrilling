@@ -11,12 +11,14 @@ class Attachment < ActiveRecord::Base
         rename = UUIDTools::UUID.random_create.to_s.gsub("-","")
         str = name.split('.');
         save_path = Appsetting.where(:name=>'attachment_savepath')
+        logger.info("the save_path is #{save_path}");
         rename="#{rename}.#{str[1]}"
         fullname = "#{save_path}/#{rename}"
+        logger.info("the fullname is #{fullname}")
         File.open("#{fullname}","wb") do |f|
           f.write(file.read)
         end 
-        self.filename = filename
+        self.filename = name 
         self.filetype = str.last
         self.savefilename = rename
         self.savepath = save_path
