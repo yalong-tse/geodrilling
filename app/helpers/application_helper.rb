@@ -225,5 +225,12 @@ module ApplicationHelper
 #    puts h3
     return h3[passkey]
   end
+
+  def attachment_dealing(args)
+    if(args)
+#      link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
+      link_to args.attachment.filename,args.attachment.savepath + "/" + args.attachment.savefilename, :class=>args[:class]||="btn btn-info"
+    end
+  end
   
 end
