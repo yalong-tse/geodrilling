@@ -5,6 +5,12 @@
 .form-horizontal .controls {
     margin-left: 90px;
 }
+.dl-horizontal dt {
+    width: 60px;
+}
+.dl-horizontal dd {
+    margin-left: 80px;
+}
 /* 必填项样式，参考网易邮箱注册的页面 */
 .required-field {
     color: #C00;

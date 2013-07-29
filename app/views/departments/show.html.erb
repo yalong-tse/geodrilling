@@ -14,7 +14,7 @@
   <dt><%= Department.human_attribute_name("remark") %></dt>
   <dd><%= @department.remark %></dd>
 </dl>
-<p class="text-left">
+<div class="form-actions">
 <%= link_to t('labels.edit'), edit_department_path(@department), :class => "btn btn-primary" %>
-</p>
+</div>
 </div>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :depcode, :class => "control-label" %>
+    <%= f.label :depcode, "<span class='required-field'>*</span>#{Department.human_attribute_name(:depcode)}".html_safe, :class => "control-label" %>
     <div class="controls">
       <%= f.text_field :depcode %>
     </div>
