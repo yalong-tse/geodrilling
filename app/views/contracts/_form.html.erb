@@ -1,9 +1,9 @@
+# -*- coding: utf-8 -*-
 <% content_for(:page_header_description, "录入合同的基本信息,合同编号唯一，合同正文通过附件上传") %>
 <%= content_for :page_specific_stylesheets do %>
   <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min" %>
   <%= stylesheet_link_tag "chosen" %>
   <%= stylesheet_link_tag 'datepicker' %>
-  <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'bootstrap-override' %>
 <% end %>
 
@@ -37,7 +37,7 @@
   <div class="control-group">
     <%= f.label "合同编号" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.text_field :contractno, :class=>"text_field required",:placeholder=>"zt20130001" %>
+    <%= f.text_field :contractno, :class=>"text_field",:placeholder=>"zt20130001" %>
     </div>
   </div>
   </div>

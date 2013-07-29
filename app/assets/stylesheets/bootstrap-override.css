@@ -1,7 +1,12 @@
 .form-horizontal .control-label {
-    width: 70px;
+    width: 80px;
     font-weight: bold;
 }
 .form-horizontal .controls {
-    margin-left: 80px;
+    margin-left: 90px;
+}
+/* 必填项样式，参考网易邮箱注册的页面 */
+.control-group .control-label .required-field {
+    color: #C00;
+    margin-right: 4px;
 }
