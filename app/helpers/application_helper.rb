@@ -229,7 +229,7 @@ module ApplicationHelper
   def attachment_dealing(args)
     if(args)
 #      link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
-      link_to args.attachment.filename,contracts_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="btn btn-info"
+      link_to args.attachment.filename,contracts_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success"
     end
   end
   
