@@ -68,6 +68,7 @@ Geodrilling::Application.routes.draw do
 
   get "holelist/index"
   get "contracts/indexforclose"
+  get "contracts/download"
 
   get "schedule/index"
 
