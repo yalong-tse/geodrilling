@@ -14,3 +14,10 @@
 .required {
     background:#FAAEAE!important;
 }
+html, body {
+    height: 100%;
+}
+.scrollable {
+    height: 100%;
+    overflow: auto;
+}

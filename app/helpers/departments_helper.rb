@@ -49,13 +49,13 @@ module DepartmentsHelper
         }
       }
 
-    $(function(){
+
       var menu = new dhtmlXMenuObject();
       menu.setIconsPath("/assets/common/");
       menu.renderAsContextMenu();
       menu.attachEvent("onClick", onButtonClick);
       menu.loadXMLString("<menu id='0'><item text='添加同级部门' id='addnewitemnext' img='red.gif' /><item text='添加子部门' id='addchilditem' img='green.gif' /><item text='删除该部门' id='deleteitem' img='blue.gif' /></menu>");
-  
+
       var tree = new dhtmlXTreeObject("#{args[:tree_id]}", "100%", "100%", 0);
       tree.setImagePath("/assets/dhtmlxtree/imgs/csh_dhx_skyblue/");
       tree.enableContextMenu(menu);
@@ -73,7 +73,7 @@ module DepartmentsHelper
         $('#_iframe').attr("src","/departments/"+nodeId);
         return true;
       });
-    });
+
     DHTMLXTREE
     javascript_tag(code)
   end
@@ -81,7 +81,8 @@ module DepartmentsHelper
   def init_modal
     javascript = <<-MODAL
       $(function(){
-        $('#modal').modal();
+
+        $('#modal').modal('hide');
         $('#cancel_action').click(function() {
           $('#modal').modal('toggle');
           return false;
