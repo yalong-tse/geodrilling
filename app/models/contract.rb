@@ -33,4 +33,9 @@ class Contract < ActiveRecord::Base
     end
   end
 
+  def close(contractno)
+    @contract = Contract.where(:contractno=>contractno).first
+    @contract.update_attribute(:status=>3)
+  end
+
 end

@@ -60,7 +60,7 @@ private
   def operation_dealing(args)
     code = ""
     if args
-      code << "<button class=\"btn btn-mini btn-primary\" onclick=\"javascript:open_modal('#{args.name}','#{args.projectname}')\">关闭</button>"
+      code << "<button class=\"btn btn-mini btn-primary\" onclick=\"javascript:open_modal('#{args.contractno}','#{args.name}','#{args.projectname}')\">关闭</button>"
     end
     code.html_safe
   end

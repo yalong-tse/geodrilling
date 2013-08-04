@@ -101,4 +101,14 @@ class ContractsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # 关闭合同
+  def close
+#    @contract = Contract.find_by_contractno(params[:contractno])
+    @contract.close(params[:contractno])
+    respond_to do |format|
+      format.html { redirect_to contracts_url }
+      format.json { head :no_content }
+    end
+  end
 end

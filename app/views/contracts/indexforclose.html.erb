@@ -19,18 +19,22 @@
 </table>
 <br />
 </div>
-<div id="_close_modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+<div id="_close_modal" class="modal hide fade widget-box">
+  <div class="model-header widget-header widget-header-flat">
     <h5>您确认需要关闭该钻孔吗</h5>
+    <div class="widget-toolbar">
+      <label>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+     </label>
+    </div>
   </div>
-  <div class="modal-body">
+  <div class="modal-body widget-body">
     <p> 合同名称:<span id="_contract_name" class="label label-important"></span></p>
     <p> 项目名称:<span id="_project_name"class="label label-important"></span></p>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal">否</button>
-    <a href="#" class="btn btn-primary">是</a>
+    <button class="btn" data-dismiss="modal"><i class="icon-undo"></i>否</button>
+    <a href="#"  class="btn btn-primary" onclick="close_contract()"><i class="icon-ok"></i>是</a>
   </div>
 </div>
 <% content_for :page_specific_javascripts do %>
@@ -40,6 +44,7 @@
 
 <% content_for :inline_javascripts do %>
 <script language="javascript">
+  var _contractno; 
   $(function(){
       var oTable1=$("#_table_contract").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,null,{"bSortable":false}],
@@ -58,11 +63,17 @@
         );
   });
 
-  function open_modal(contractname,projectname)
+  function open_modal(contractno,contractname,projectname)
   {
+    _contractno = contractno; 
     $("#_contract_name").html(contractname);
     $("#_project_name").html(projectname);
     $("#_close_modal").modal();
+  }
+
+  function close_contract()
+  {
+    window.location.href="";
   }
 </script>
 
