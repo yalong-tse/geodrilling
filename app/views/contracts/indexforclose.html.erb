@@ -73,7 +73,8 @@
 
   function close_contract()
   {
-    window.location.href="";
+    //alert("the contractno is:"+ _contractno);
+    window.location.href="<%=contracts_close_path%>?contractno=" + _contractno;
   }
 </script>
 

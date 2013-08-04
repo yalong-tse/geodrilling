@@ -105,7 +105,8 @@ class ContractsController < ApplicationController
   # 关闭合同
   def close
 #    @contract = Contract.find_by_contractno(params[:contractno])
-    @contract.close(params[:contractno])
+    logger.info("the contractno is #{params[:contractno]}")
+    Contract.close(params[:contractno])
     respond_to do |format|
       format.html { redirect_to contracts_url }
       format.json { head :no_content }
