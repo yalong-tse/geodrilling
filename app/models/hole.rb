@@ -17,6 +17,7 @@ class Hole < ActiveRecord::Base
   attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id
 
   attr_reader :statusstr
+  attr_reader :attachmentstr
   belongs_to :contract,:class_name=>"Contract" ,:foreign_key=>"contract_id"
   belongs_to :attachment,:class_name=>"Attachment",:foreign_key=>"attachment_id"
 
@@ -51,6 +52,15 @@ class Hole < ActiveRecord::Base
      result
   end
 
+  def attachmentstr
+    if attachment_id
+      @attachment = Attachment.find(attachment_id)
+      return "<a href='/holes/download?id=#{@attachment.id}' class='alert alert-success'>#{@attachment.filename}</a>"
+    else
+      return ""
+    end 
+  end
+
   # 保存附件的方法
   def save_file(file)
     if !file.nil?
@@ -64,7 +74,7 @@ class Hole < ActiveRecord::Base
 
   # 增加 as_json 方法
   def as_json(options={})
-    super.as_json(options).merge({:statusstr=> statusstr})
+    super.as_json(options).merge({:statusstr=> statusstr}).merge({:attachmentstr=>attachmentstr})
   end
 
 end
