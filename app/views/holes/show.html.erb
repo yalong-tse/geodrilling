@@ -1,18 +1,69 @@
-<p id="notice"><%= notice %></p>
-<div class="page-header">
-  <h3>钻孔详情</h3>
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title,"钻孔详情") %>
+<div class="page-section">
+  <div class="container">
+    <div class="span8">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th width="30%">名称</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <tr>
+            <td><strong>矿区</strong></td>
+            <td><%= @hole.minearea %></td>
+          </tr>
+            <td><strong>所属合同</strong></td>
+            <td><%= @hole.contract.name %></td>
+          </tr>
+          <tr>
+            <td><strong>孔号</strong></td>
+            <td><%= @hole.holenumber %></td>
+          </tr>
+          <tr>
+            <td><strong>设计钻孔深度</strong></td>
+            <td><%= @hole.designdeep %></td>
+          </tr>
+          <tr>
+            <td><strong>设计钻孔直径</strong></td>
+            <td><%= @hole.designdiameter %></td>
+          </tr>
+          <tr>
+            <td><strong>设计终孔顶角</strong></td>
+            <td><%= @hole.designapexangle %></td>
+          </tr>
+          <tr>
+            <td><strong>设计岩心采取率</strong></td>
+            <td><%= @hole.designcoreratio %></td>
+          </tr>
+          <tr>
+            <td><strong>开孔日期</strong></td>
+            <td><%= @hole.startdate %></td>
+          </tr>
+          <tr>
+            <td><strong>终孔日期</strong></td>
+            <td><%= @hole.finishdate %></td>
+          </tr>
+          <tr>
+            <td><strong>地层情况</strong></td>
+            <td><%= @hole.geologysituation %></td>
+          </tr>
+          <tr>
+            <td><strong>设计书附件</strong></td>
+            <td><%=hole_attachment_dealing @hole %></td>
+          </tr>
+          <tr>
+            <td><strong>钻探目的</strong></td>
+            <td><%= @hole.drillingpurpose %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong>钻孔深度:</strong></dt>
-  <dd><%= @hole.designdeep %></dd>
-  <dt><strong>钻孔孔径:</strong></dt>
-  <dd><%= @hole.designdiameter %></dd>
-  <dt><strong>开始日期:</strong></dt>
-  <dd><%= @hole.startdate %></dd>
-  <dt><strong>结束日期:</strong></dt>
-  <dd><%= @hole.finishdate %></dd>
-</dl>
 
 <div class="form-actions">
   <%= link_to '编辑', edit_hole_path(@hole),:class=>"btn" %> |

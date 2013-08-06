@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727051621) do
+ActiveRecord::Schema.define(:version => 20130806010605) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20130727051621) do
     t.string  "drillingpurpose"
     t.integer "status"
     t.string  "remark"
+    t.integer "attachment_id"
   end
 
   create_table "materials", :force => true do |t|

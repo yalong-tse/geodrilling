@@ -226,10 +226,16 @@ module ApplicationHelper
     return h3[passkey]
   end
 
-  def attachment_dealing(args)
+  def contract_attachment_dealing(args)
     if(args && args.attachment)
 #      link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
       link_to args.attachment.filename,contracts_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success" 
+    end
+  end
+
+  def hole_attachment_dealing(args)
+    if(args && args.attachment)
+      link_to args.attachment.filename,holes_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success" 
     end
   end
   

@@ -13,7 +13,7 @@ class Contract < ActiveRecord::Base
   has_many :holes
 
   #合同的附件
-  belongs_to :attachment
+  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
 
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}

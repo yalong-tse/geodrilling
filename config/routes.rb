@@ -67,6 +67,7 @@ Geodrilling::Application.routes.draw do
   resources :tourreports
 
   get "holelist/index"
+  get "holes/download"
   get "contracts/indexforclose"
   get "contracts/download"
   get "contracts/close"

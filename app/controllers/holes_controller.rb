@@ -47,8 +47,9 @@ class HolesController < ApplicationController
   def create
     @hole = Hole.new(params[:hole])
     @hole.save_file(params[:attachment]) if params[:attachment]
+    logger.info "the attachment is #{params[:attachment]}"
     logger.info "the hole info is #{@hole}"
-    logger.info "the contract id is #{params[:contract_id]}"
+    logger.info "the contract id is #{params[:hole][:contract_id]}"
     #@hole.contract_id = params[:contract_id]
     respond_to do |format|
       if @hole.save
@@ -59,6 +60,12 @@ class HolesController < ApplicationController
         format.json { render json: @hole.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def download
+    @attachment = Attachment.find(params[:id]) if params[:id]
+    filename ="#{@attachment.savepath}/#{@attachment.savefilename}"
+    send_file filename if filename
   end
 
   # PUT /holes/1

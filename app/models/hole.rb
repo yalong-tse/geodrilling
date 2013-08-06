@@ -14,10 +14,11 @@ class Hole < ActiveRecord::Base
   #designbook , 设计书
   #drillingpurpose , 钻探目的
   #status , 钻孔状态, 1-执行中 , 2-终孔 , 3-停工， 4-续作
-  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark
+  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id
 
   attr_reader :statusstr
   belongs_to :contract,:class_name=>"Contract" ,:foreign_key=>"contract_id"
+  belongs_to :attachment,:class_name=>"Attachment",:foreign_key=>"attachment_id"
 
 #  attr_accessor :statusstr
 
@@ -52,7 +53,7 @@ class Hole < ActiveRecord::Base
 
   # 保存附件的方法
   def save_file(file)
-    if !@file.nil?
+    if !file.nil?
       @attachment = Attachment.new
       rename = @attachment.save_att(file)
       logger.info("the rename is #{rename}");
