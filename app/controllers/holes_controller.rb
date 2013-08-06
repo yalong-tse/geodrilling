@@ -46,6 +46,7 @@ class HolesController < ApplicationController
   # POST /holes.json
   def create
     @hole = Hole.new(params[:hole])
+    @hole.save_file(params[:attachment]) if params[:attachment]
     logger.info "the hole info is #{@hole}"
     logger.info "the contract id is #{params[:contract_id]}"
     #@hole.contract_id = params[:contract_id]

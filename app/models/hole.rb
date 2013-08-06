@@ -50,6 +50,17 @@ class Hole < ActiveRecord::Base
      result
   end
 
+  # 保存附件的方法
+  def save_file(file)
+    if !@file.nil?
+      @attachment = Attachment.new
+      rename = @attachment.save_att(file)
+      logger.info("the rename is #{rename}");
+      @attachment.save
+      self.attachment_id = @attachment.id
+    end
+  end
+
   # 增加 as_json 方法
   def as_json(options={})
     super.as_json(options).merge({:statusstr=> statusstr})

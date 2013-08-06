@@ -1,5 +1,5 @@
 <% content_for(:page_header_description, "录入钻孔的基本信息") %>
-<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:class=>"form-horizontal"}) do |f| %>
+<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:multipart=>true,:class=>"form-horizontal"}) do |f| %>
   <% if @hole.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
@@ -127,7 +127,7 @@
   <div class="control-group">
     <%= f.label "设计书" ,:class=>"control-label"%>
     <div class="controls">
-      <i class="icon-folder-open"></i> <%= f.file_field :designbook , :rows=>"4", :cols=>"3", :class=>"text_field"%>
+      <i class="icon-folder-open"></i><input name="attachment" type="file" id="_hole_file"/>
     </div>
   </div>
   </div>
