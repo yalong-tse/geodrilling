@@ -66,6 +66,6 @@
 </div>
 
 <div class="form-actions">
-  <%= link_to '编辑', edit_hole_path(@hole),:class=>"btn" %> |
-  <%= link_to '返回', {:controller=>"contracts",:action=>"show",:id=>@hole.contract_id} ,:class=>"btn btn-primary"%>
+  <%= link_to edit_hole_path(@hole),:class=>"btn" do  %><i class="icon-pencil"></i>编辑<% end %> |
+  <%= link_to holes_path,:class=>"btn btn-primary" do %><i class="icon-reply"></i>返回<% end %>
 </div>
