@@ -25,8 +25,8 @@
     <td><%= hole_rigmachine hole.id %></td>
     <td><%= hole_drilltower hole.id %></td>
     <td><%= hole_pump hole.id %></td>
-    <td><%= hole_use_device(hole) %></td>
-    <td><%= hole_use_materials(hole) %></td>
+    <td>&nbsp;</td>
+    <td><%= hole_deployment(hole) %></td>
   </tr>
 <% end %>
 </tbody>
@@ -125,11 +125,7 @@
 <% end %>
 <% content_for :inline_javascripts do %>
 <script language="javascript">
-  function open_modal_device()
-  {
-    $("#_modal_device").modal();
-  }
-  function open_modal_material()
+  function open_hole_deployment()
   {
     $("#_modal_material").modal();
   }
@@ -137,7 +133,6 @@
   $(function(){
     var oTable1 = $("#_table_holes").dataTable({
       "aoColumns" :[null,null,null,null,null,null,null,
-      {"bSortable":false},
       {"bSortable":false},
       {"bSortable":false}
       ],

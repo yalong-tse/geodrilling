@@ -137,11 +137,11 @@ module ApplicationHelper
   end
 
   #钻孔配置材料的处理
-  def hole_use_materials(hole)
+  def hole_deployment(hole)
     html = ""
     if(hole)
-      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_modal_material()'>"
-      html << "配置材料"
+      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_hole_deployment()'>"
+      html << "钻孔配置"
       html << "</button>"
     end
     html.html_safe
