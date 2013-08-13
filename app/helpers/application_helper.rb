@@ -226,6 +226,58 @@ module ApplicationHelper
     return h3[passkey]
   end
 
+  def contract_fundsource(passkey)
+    dic = Dictionary.find(passkey)
+    if dic
+      return dic.item 
+    else
+      return ""
+    end
+  end
+
+  # 根据holeid 获取 钻孔的机长
+  def hole_administrator(holeid)
+#    d = Deployment.getDeployByHoleId(holeid)
+    d = Deployment.find_by_hole_id holeid
+#    logger.info "the deploy is #{d}"
+    if d
+      return d.user.name if d.user
+    else
+      return ""
+    end
+  end
+
+  # 根据holeid 获取配置的钻机
+  def hole_rigmachine(holeid)
+    d = Deployment.find_by_hole_id(holeid)
+    if d
+      return d.rigmachine.devicenumber + "-" + d.rigmachine.rigmodel if d.rigmachine
+    else
+      ""
+    end
+  end
+
+  # 根据holeid 获取配置的钻塔
+  def hole_drilltower(holeid)
+    d = Deployment.find_by_hole_id(holeid)
+    if d
+      return d.drilltower.devicenumber+"-"+ d.drilltower.model if d.drilltower
+    else
+      ""
+    end
+  end
+  
+  # 根据holeid 获取配置的泥浆泵
+  def hole_pump(holeid)
+    d = Deployment.find_by_hole_id(holeid)
+    if d
+      return d.pump.devicenumber+"-" + d.pump.pumpmodel if d.pump
+    else
+      ""
+    end
+  end
+
+  #处理合同的附件
   def contract_attachment_dealing(args)
     if(args && args.attachment)
 #      link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
@@ -233,6 +285,8 @@ module ApplicationHelper
     end
   end
 
+
+  # 处理钻孔的附件
   def hole_attachment_dealing(args)
     if(args && args.attachment)
       link_to args.attachment.filename,holes_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success" 

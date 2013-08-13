@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806010605) do
+ActiveRecord::Schema.define(:version => 20130813030654) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -72,6 +72,22 @@ ActiveRecord::Schema.define(:version => 20130806010605) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "deployments", :force => true do |t|
+    t.integer  "hole_id"
+    t.integer  "pump_id"
+    t.integer  "rigmachine_id"
+    t.integer  "drilltower_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "deployments", ["drilltower_id"], :name => "index_deployments_on_drilltower_id"
+  add_index "deployments", ["hole_id"], :name => "index_deployments_on_hole_id"
+  add_index "deployments", ["pump_id"], :name => "index_deployments_on_pump_id"
+  add_index "deployments", ["rigmachine_id"], :name => "index_deployments_on_rigmachine_id"
+  add_index "deployments", ["user_id"], :name => "index_deployments_on_user_id"
 
   create_table "deviceresumes", :force => true do |t|
     t.string   "devicenumber"

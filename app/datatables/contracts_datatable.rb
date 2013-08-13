@@ -45,13 +45,13 @@ private
   def contract_status_treat(args)
     code = ""
     case args
-    when 0
+    when 1 
     code << "<span class='label label-inverse arrowed-in'>待执行</span>";
-    when 1
+    when 2 
     code << "<span class='label label-warning arrowed-in'>正在执行</span>";
-    when 2
+    when 3 
     code << "<span class='label label-success arrowed-in'>已经完成</span>";
-    when 3
+    when 4 
     code <<  "<span class='label label-info arrowed-in'>已经归档</span>";
     end
     code.html_safe

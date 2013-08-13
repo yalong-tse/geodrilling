@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hole: 
+  pump: 
+  rigmachine: 
+  drilltower: 
+  user: 
+
+two:
+  hole: 
+  pump: 
+  rigmachine: 
+  drilltower: 
+  user: 

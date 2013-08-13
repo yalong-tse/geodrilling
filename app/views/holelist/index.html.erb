@@ -6,12 +6,12 @@
     <th>矿区</th>
     <th>所属合同</th>
     <th>孔号</th>
-    <th>机长</th>
-    <th>钻工</th>
+    <th>机长/项目经理</th>
     <th>钻机</th>
     <th>钻塔</th>
     <th>泥浆泵</th>
     <th>使用材料</th>
+    <th>操作</th>
   </tr>
 </thead>
 
@@ -21,11 +21,10 @@
     <td><%= hole.minearea %></td>
     <td><%= link_to hole.contract.name,{:controller=>"contracts", :action=>"show", :id=>hole.contract.id } %></td>
     <td><%= hole.holenumber %></td>
-    <td><%= hole.designdeep %></td>
-    <td><%= hole.designdiameter %></td>
-    <td><%= hole.startdate %></td>
-    <td><%= hole.finishdate %></td>
-    <td><%= link_to '施工队伍', {:controller=>"holes" , :action=>"edit", :id=>hole.id, :contract_id=>hole.contract.id}%></td>
+    <td><%= hole_administrator hole.id %></td>
+    <td><%= hole_rigmachine hole.id %></td>
+    <td><%= hole_drilltower hole.id %></td>
+    <td><%= hole_pump hole.id %></td>
     <td><%= hole_use_device(hole) %></td>
     <td><%= hole_use_materials(hole) %></td>
   </tr>
