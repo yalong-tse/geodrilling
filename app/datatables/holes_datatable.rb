@@ -26,6 +26,7 @@ private
         h(hole.designdiameter),
         h(hole.startdate.strftime("%Y-%m-%d")),
         h(hole.finishdate.strftime("%Y-%m-%d")),
+        h(hole_status_treat(hole.status)),
         h(detail_button(hole))
       ]
     end
@@ -37,6 +38,21 @@ private
     code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + tourreports_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"查看班报\")'><i class=\"icon-calendar bigger-120\"></i></button>"
     code << "<button class=\"btn btn-mini btn-warning tooltip-success\" onclick='new_tourreports(\"" + new_tourreport_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"新增班报\")'><i class=\"icon-plus bigger-120\"></i></button>"
     code << "</div>"
+    code.html_safe
+  end
+
+  def hole_status_treat(args)
+    code = ""
+    case args
+    when 1 
+    code << "<span class='label label-success arrowed-in'>执行中</span>";
+    when 2 
+    code << "<span class='label label-alert arrowed-in'>终孔</span>";
+    when 3 
+    code << "<span class='label label-inverse arrowed-in'>停工</span>";
+    when 4 
+    code <<  "<span class='label label-warning arrowed-in'>续作</span>";
+    end
     code.html_safe
   end
 
@@ -62,7 +78,7 @@ private
   end
 
   def sort_column
-    columns = %w[minearea holenumber designdeep designdiameter startdate finishdate]
+    columns = %w[minearea holenumber designdeep designdiameter startdate finishdate status]
     columns[params[:iSortCol_0].to_i]
   end
 

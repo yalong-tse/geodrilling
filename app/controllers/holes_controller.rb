@@ -46,6 +46,8 @@ class HolesController < ApplicationController
   # POST /holes.json
   def create
     @hole = Hole.new(params[:hole])
+    #默认钻孔的状态是 1， 为正在执行
+    @hole.status = 1
     @hole.save_file(params[:attachment]) if params[:attachment]
     logger.info "the attachment is #{params[:attachment]}"
     logger.info "the hole info is #{@hole}"
