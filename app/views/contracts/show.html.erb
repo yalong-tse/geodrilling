@@ -8,65 +8,65 @@
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-            <th>名称</th>
+            <th width="20%">名称</th>
             <th>内容</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-              <td>合同编号</td>
+            <td><strong>合同编号</strong></td>
               <td><%= @contract.contractno %></td>
           </tr>
           <tr>
-              <td>合同名称</td>
+            <td><strong>合同名称</strong></td>
               <td><%= @contract.name %></td>
           </tr>
           <tr>
-              <td>项目名称</td>
+            <td><strong>项目名称</strong></td>
               <td><%= @contract.projectname %></td>
           </tr>
           <tr>
-              <td>项目所在地</td>
+            <td><strong>项目所在地</strong></td>
               <td><%= @contract.projectaddr %></td>
           </tr>
           <tr>
-              <td>合同业主</td>
+            <td><strong>合同业主</strong></td>
               <td><%= @contract.owner %></td>
           </tr>
           <tr>
-            <td>合同乙方</td>
+            <td><strong>合同乙方</strong></td>
             <td><%= @contract.buyerparty %></td>
           </tr>
           <tr>
-              <td><strong>签订日期:</strong></td>
+              <td><strong>签订日期</strong></td>
               <td><%= @contract.signdate %></td>
           </tr>
           <tr>
-              <td><strong>开始日期:</strong></td>
+              <td><strong>开始日期</strong></td>
               <td><%= @contract.startdate %></td>
           </tr>
           <tr>
-              <td><strong>完工日期:</strong></td>
+              <td><strong>完工日期</strong></td>
               <td><%= @contract.finishdate %></td>
           </tr>
           <tr>
-              <td><strong>合同状态:</strong></td>
+              <td><strong>合同状态</strong></td>
               <td><%= contract_status @contract.status %></td>
           </tr>
           <tr>
-              <td><strong>资金来源:</strong></td>
+              <td><strong>资金来源</strong></td>
               <td><%= contract_fundsource @contract.fundsource %></td>
           </tr>
           <tr>
-              <td><strong>合同金额:</strong></td>
+              <td><strong>合同金额</strong></td>
               <td><%= @contract.contractamount %></td>
           </tr>
           <tr>
-              <td><strong>合同附件:</strong></td>
+              <td><strong>合同附件</strong></td>
               <td><%=contract_attachment_dealing @contract %></td>
           </tr>
           <tr>
-             <td><strong>合同备注:</strong></td>
+             <td><strong>合同备注</strong></td>
              <td><%= @contract.remark %></td>
           </tr>
         </tbody>
@@ -74,8 +74,8 @@
     </div>
   </div>
 </div>
+
 <div class="form-actions">
   <%= link_to edit_contract_path(@contract) ,:class=>"btn btn-purple btn-small" do %>编辑 <i class="icon-edit icon-on-right"></i><% end %> |
-  <%= link_to new_hole_path(@contract) ,:class=>"btn btn-info btn-small" do %>增加钻孔 <i class="icon-plus icon-on-right"></i><% end %> |
   <%= link_to contracts_path,:class=>"btn btn-primary btn-small" do  %>返回 <i class="icon-arrow-left icon-on-right"></i> <% end %>
 </div>

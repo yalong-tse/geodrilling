@@ -1,145 +1,45 @@
 <% content_for(:title, "钻孔配置" ) %>
 <% content_for(:page_header_description, "分别选择施工队伍、使用设备和使用材料配置钻孔所需的人员、设备和材料") %>
-<%= form_for(:holelist,:url=>holelist_path(@hole) ,:html=>{:class=>"form-horizontal"}) do |f| %>
-  <% if @hole.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
-
-      <ul>
-      <% @hole.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render partial: "layouts/flash_messages" %>
+<%= form_for(:holelist,:url=>holelist_create_path(@deployment) ,:html=>{:class=>"form-horizontal"}) do |f| %>
   <div class="row-fluid">
     <div class="span12">
       <div class="control-group">
         <%= f.label "矿区" ,:class=>"control-label" %>
         <div class="controls">
-        <%= f.label @hole.minearea, :class=>"input-xxlarge" %>
+        <%= f.label @hole.minearea, :class=>"span10" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span5">
+      <div class="control-group">
+        <%= f.label "合同名称" , :class=>"control-label" %>
+        <div class="controls">
+          <%= f.label @hole.contract.name, :class=>"span3" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="span5">
+      <div class="control-group">
+        <%= f.label "孔号", :class=>"control-label" %>
+        <div class="controls">
+          <%= f.label @hole.holenumber, :class=>"span2" %>
         </div>
       </div>
     </div>
   </div>
 
 <% end %>
-
-<div id="_modal_device" class="modal hide fade" tabindex="-1" >
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h5>请配置使用的设备</h5>
-  </div>
-  <div class="modal-body">
-     <table class="table table-bordered">
-       <tr>
-         <td>钻机</td>
-         <td>
-           <select multiple="multiple" class="span4">
-            <% @rigmachine.each do |rig| %>
-            <option value="<%=rig.id%>"><%=rig.rigmodel%></option>
-             <% end %>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>钻塔</td>
-          <td>
-            <select multiple="multiple" class="span4">
-              <% @drilltower.each do |tower| %>
-                <option value="<%= tower.id %>"><%= tower.model %></option>
-              <% end %>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>泥浆泵</td>
-          <td>
-            <select multiple="multiple" class="span4">
-              <% @pump.each do |pump|%> 
-                <option value="<%=pump.id %>"><%= pump.pumpmodel %></option>
-              <% end %>
-            </select>
-          </td>
-        </tr>
-      </table> 
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal">关闭</button>
-    <a href="#" class="btn btn-primary">确定</a>
-  </div>
-</div>
-<div id="_modal_material" class="modal hide fade" tabindex="-1" >
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h5>请配置使用的材料</h5>
-  </div>
-  <div class="modal-body">
-     <table class="table table-striped">
-       <tr>
-         <th>材料类型</th>
-         <th>材料名称</th>
-         <th>材料数量</th>
-       </tr>
-       <tr>
-         <td>
-           <select class="span6">
-            <option value="钻头">钻头</option>
-            <option value="钻杆">钻杆</option>
-            </select>
-          </td>
-          <td>
-            <select class="span6">
-                <option value="全面钻头">全面钻头</option>
-                <option value="全面钻头">全面钻头</option>
-                <option value="内平钻杆">内平钻杆</option>
-                <option value="内加厚钻杆">内加厚钻杆</option>
-                <option value="内加厚钻杆">绳索取心钻杆</option>
-            </select>
-          </td>
-          <td>
-            <input type="text" name="count" class="input-small" />
-          </td>
-        </tr>
-        <tr>
-          <td><button class="btn btn-info"><i class="icon-plus"></i> 增加一行</button></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table> 
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal">关闭</button>
-    <a href="#" class="btn btn-primary">确定</a>
-  </div>
-</div>
 <% content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.dataTables.min' %>
   <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
 <% end %>
 <% content_for :inline_javascripts do %>
 <script language="javascript">
-  function open_hole_deployment()
-  {
-    $("#_modal_material").modal();
-  }
 
-  $(function(){
-    var oTable1 = $("#_table_holes").dataTable({
-      "aoColumns" :[null,null,null,null,null,null,null,
-      {"bSortable":false},
-      {"bSortable":false}
-      ],
-      "bAutoWidth" : false,
-      "oLanguage":{
-        "sLengthMenu":"每页 _MENU_",
-        "sZeroRecords":"对不起,没有数据",
-        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
-        "sInfoEmpty":"显示 0 到 0 , 总计0条数据",
-        "sSearch": "检索",
-        "sProcessing": "系统正在处理...",
-        "sInfoFiltered":"(过滤_MAX_数据)" }
-    });
-  })
 </script>
 <% end %>
