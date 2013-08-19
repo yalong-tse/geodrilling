@@ -16,6 +16,10 @@ class HolelistController < ApplicationController
   #钻孔的配置界面
   def deployment
     @deployment = Deployment.find_by_hole_id(params[:holeid]) if params[:holeid]
+    @rigmachine = Rigmachine.unused
+    @drilltower = Drilltower.unused
+    @pump = Pump.unused
+
     @hole = Hole.find(params[:holeid]) if params[:holeid]
     respond_to do |format|
       format.html # index.html.erb
