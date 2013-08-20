@@ -58,7 +58,9 @@
       <div class="control-group">
         <%=f.label "钻塔" , :class=>"control-label" %>
         <div class="controls">
-          <%= text_field_tag "drilltower","", :class=>"input-large" %>
+          <span class="input-icon">
+            <input type="text" name="drilltower", class="input-large" onclick="javascript:open_drilltower_modal();" ><i class="icon-leaf"></i>
+          </span>
         </div>
       </div>
     </div>
@@ -68,7 +70,7 @@
         <%=f.label "钻机" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
-            <input type="text" name="rigmachine", class="input-large" onclick="javascript:open_rigmachine_model();" ><i class="icon-leaf"></i>
+            <input type="text" name="rigmachine", class="input-large" onclick="javascript:open_rigmachine_modal();" ><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
@@ -80,7 +82,9 @@
       <div class="control-group">
         <%=f.label "泥浆泵" , :class=>"control-label" %>
         <div class="controls">
-          <%= text_field_tag "pump","",:disabled=>true, :class=>"input-large" %>
+          <span class="input-icon">
+            <input type="text" name="pump" class="input-large" onclick="javascript:open_pump_modal();"><i class="icon-leaf"></i>
+          </span>
         </div>
       </div>
     </div>
@@ -154,28 +158,34 @@
   <div class="modal-body widget-body">
     <table class="table table-striped table-bordered table-hover">
       <thead>
-        <th>选择</th>
-        <th>设备编号</th>
-        <th>钻机重量</th>
-        <th>钻孔深度</th>
-        <th>钻机功率</th>
-         <th>转速</th>
-         <th>钻孔直径</th>
-         <th>厂商</th>
-         <th>占用状态</th>
+          <th>选择</th>
+          <th>设备编号</th>
+          <th>型号</th>
+          <th>有效载荷</th>
+          <th>深度</th>
+          <th>高度</th>
+          <th>提升钻杆根数与长度</th>
+          <th>滑车组数与减轻负荷倍数</th>
+          <th>顶宽尺寸</th>
+          <th>重量</th>
+          <th>厂商</th>
+          <th>占用状态</th>
       </thead>
       <tbody>
-        <% @rigmachine.each do |rig| %>
+        <% @drilltower.each do |tower| %>
           <tr>
-            <td class="center"><input type="radio" name="rig" value="<%=rig.id%>" /></td>
-            <td><%= rig.devicenumber %> </td>
-            <td><%= rig.rigweight %></td>
-            <td><%= rig.righoleDeep %></td>
-            <td><%= rig.rigPower %></td>
-            <td><%= rig.rotatingSpeed %></td>
-            <td><%= rig.pipeDiameter %></td>
-            <td><%= rig.manufacture%></td>
-            <td><%= rig.status%></td>
+            <td class="center"><input type="radio" name="tower" value="<%=tower.id%>" /></td>
+            <td><%= tower.devicenumber %> </td>
+            <td><%= tower.model %></td>
+            <td><%= tower.effectiveload%></td>
+            <td><%= tower.deep %></td>
+            <td><%= tower.height %></td>
+            <td><%= tower.pipequantityAndLenght %></td>
+            <td><%= tower.sheaveQuantity%></td>
+            <td><%= tower.topsize%></td>
+            <td><%= tower.weight%></td>
+            <td><%= tower.manufacture%></td>
+            <td><%= tower.status%></td>
           </tr>
         <% end %>
       </tbody>
@@ -199,6 +209,11 @@
       width:900px;
       margin:10px 0 0 -450px;
       }
+
+    #_drilltower_modal{
+      width:1024px;
+      margin:10px 0 0 -450px;
+      }
   </style>
 <% end %>
 
@@ -208,9 +223,19 @@
     $(".chzn-select").chosen();
   });
 
-  function open_rigmachine_model()
+  function open_rigmachine_modal()
   {
     $("#_rigmachine_modal").modal();
+  }
+
+  function open_pump_modal()
+  {
+    $("#_pump_modal").modal();
+  }
+
+  function open_drilltower_modal()
+  {
+    $("#_drilltower_modal").modal();
   }
 </script>
 <% end %>
