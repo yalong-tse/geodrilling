@@ -57,7 +57,14 @@
         "sInfoEmpty":"显示 0 到 0 , 总计0条数据",
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
-        "sInfoFiltered":"(过滤_MAX_数据)" }
+        "sInfoFiltered":"(过滤_MAX_数据)" },
+        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+    });
+
+    $("div.dt-search").html("<input id='dt-search-input' type='text''><button id='dt-search-btn' class='btn btn-mini'><i class='icon-search'></i></button>");
+    $("#dt-search-btn").click(function(){
+      var filterString = $('#dt-search-input').val();
+      oTable1.fnFilter(filterString);
     });
   })
 </script>
