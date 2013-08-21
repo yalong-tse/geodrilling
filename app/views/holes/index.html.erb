@@ -98,8 +98,7 @@
   $(function(){
     $("a").bind('ajax:success',function(event,data,status,xhr){
       ("#_minearea").html(data.minearea);
-    })
-    .bind('ajax:error',function(event,xhr,status,error){});
+    }).bind('ajax:error',function(event,xhr,status,error){});
 
     $("div.dt-search").html("<input id='dt-search-input' type='text''><button id='dt-search-btn' class='btn btn-mini'><i class='icon-search'></i></button>");
 

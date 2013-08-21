@@ -27,6 +27,7 @@ class HolelistController < ApplicationController
     end
   end
 
+  # 钻孔配置的保存功能
   def create 
     @deployment = Deployment.new(params[:deployment])
     rigid = params[:rigmachineid]
