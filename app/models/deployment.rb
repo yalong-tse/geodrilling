@@ -2,7 +2,7 @@
 # 钻孔的配置表实体
 # 主要配置机长和 泥浆泵、钻机、钻塔等信息
 class Deployment < ActiveRecord::Base
-  attr_accessible :hole,:pump,:rigmachine,:drilltower,:user
+  attr_accessible :hole,:pump,:rigmachine,:drilltower,:user, :hole_id, :pump_id,:rigmachine_id,:drilltower_id
 
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"hole_id"
   belongs_to :pump, :class_name=>"Pump", :foreign_key=>"pump_id"

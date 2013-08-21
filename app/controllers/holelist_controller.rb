@@ -29,7 +29,15 @@ class HolelistController < ApplicationController
 
   def create 
     @deployment = Deployment.new(params[:deployment])
-
+    rigid = params[:rigmachineid]
+    pumpid = params[:pumpid]
+    towerid = params[:drilltowerid]
+    holeid = params[:holeid]
+    #logger.info("the rigid is #{rigid}, the pumpid is #{pumpid}, the towerid is #{towerid}");
+    @deployment.hole_id = holeid
+    @deployment.pump_id = pumpid
+    @deployment.rigmachine_id = rigid
+    @deployment.drilltower_id = towerid
     respond_to do |format|
       if @deployment.save
         format.html {redirect_to :action=>"index", notice:"钻孔配置成功"}
