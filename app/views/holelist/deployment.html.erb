@@ -129,7 +129,7 @@
       <tbody>
         <% @rigmachine.each do |rig| %>
           <tr>
-            <td class="center"><input type="radio" name="rig" value="<%=rig.id%>" /></td>
+            <td class="center"><input type="radio" name="rig" value="<%=rig.id%>" style="opacity:100;position:relative"/></td>
             <td><%= rig.devicenumber %> </td>
             <td><%= rig.rigweight %></td>
             <td><%= rig.righoleDeep %></td>
@@ -178,7 +178,7 @@
       <tbody>
         <% @drilltower.each do |tower| %>
           <tr>
-            <td class="center"><input type="radio" name="tower" value="<%=tower.id%>" /></td>
+            <td class="center"><input type="radio" name="tower" value="<%=tower.id%>" style="opacity:100;position:relative"/></td>
             <td><%= tower.devicenumber %> </td>
             <td><%= tower.model %></td>
             <td><%= tower.effectiveload%></td>
@@ -231,7 +231,7 @@
       <tbody>
         <% @pump.each do |pump| %>
           <tr>
-            <td class="center"><input type="radio" name="pump" value="<%=pump.id%>" /></td>
+            <td class="center"><input type="radio" name="pump" value="<%=pump.id%>" style="opacity:100;position:relative"/></td>
             <td><%= pump.devicenumber %> </td>
             <td><%= pump.pumpmodel %></td>
             <td><%= pump.pumpDiameter%></td>

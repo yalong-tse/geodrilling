@@ -3,12 +3,14 @@
 <%= content_for :page_specific_stylesheets do %>
   <%= stylesheet_link_tag 'fullcalendar' %>
 <% end %>
+
 <div class="row-fluid">
   <div class="span10">
     <div class="space"></div>
     <div id="calendar"></div>
   </div>
 </div>
+
 <%= content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
   <%= javascript_include_tag 'fullcalendar.min' %>

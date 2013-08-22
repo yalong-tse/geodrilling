@@ -7,7 +7,6 @@
   <% if @tourreport.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tourreport.errors.count, "error") %> prohibited this tourreport from being saved:</h2>
-
       <ul>
       <% @tourreport.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -16,7 +15,7 @@
     </div>
   <% end %>
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "合同名称", :class=>"control-label" %>
     <div class="controls">
@@ -25,7 +24,7 @@
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "项目名称", :class=>"control-label" %>
     <div class="controls">
@@ -37,7 +36,7 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "项目编号", :class=>"control-label" %>
     <div class="controls">
@@ -46,7 +45,7 @@
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "钻孔编号", :class=>"control-label" %>
     <div class="controls">
@@ -58,7 +57,7 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "项目经理", :class=>"control-label" %>
     <div class="controls">
@@ -67,7 +66,7 @@
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "班长" , :class=>"control-label" %>
     <div class="controls">
@@ -80,7 +79,7 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "班报日期", :class=>"control-label" %>
     <div class="controls">
@@ -89,7 +88,7 @@
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "记录员" ,:class=>"control-label" %>
     <div class="controls">
@@ -101,20 +100,20 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "开始时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME), :class=>"text_field",:cols=>"3", :prompt=>"请选择...") %>
+      <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME),{}, {:class=>"text_field",:cols=>"3",:onchange=>"change_time()"}) %>
     </div>
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "结束时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME), :class=>"text_field",:cols=>"3", :prompt=>"请选择...") %>
+      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {:class=>"text_field",:cols=>"3" }) %>
     </div>
   </div>
   </div>
@@ -122,23 +121,23 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "本班进尺" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-      <%= f.text_field :tourshift , :class=>"text_field" %><span class="add-on">米</span>
+        <%= f.text_field :tourshift , :class=>"text_field", :readonly=>true %><span class="add-on">米</span>
       </div>
     </div>
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "本班取心" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-      <%= f.text_field :tourcore  , :class=>"text_field"%><span class="add-on">米</span>
+        <%= f.text_field :tourcore  , :class=>"text_field", :readonly=>true %><span class="add-on">米</span>
       </div>
     </div>
   </div>
@@ -147,23 +146,23 @@
 
 
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "纯钻时长" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-      <%= f.text_field :tourdrillingtime , :class=>"text_field" %><span class="add-on">小时</span>
+        <%= f.text_field :tourdrillingtime , :class=>"text_field" , :readonly=>true %><span class="add-on">小时</span>
       </div>
     </div>
   </div>
   </div>
 
-  <div class="span6">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "辅助时长" , :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-      <%= f.text_field :tourauxiliarytime , :class=>"text_field"%><span class="add-on">小时</span>
+      <%= f.text_field :tourauxiliarytime , :class=>"text_field" , :readonly=>true %><span class="add-on">小时</span>
       </div>
     </div>
   </div>
@@ -175,7 +174,7 @@
   <div class="control-group">
     <%= f.label "备注" , :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_area :remark ,:class=>"input-xlarge" ,:rows=>"4",:cols=>"50"%>
+      <%= f.text_area :remark ,:class=>"input-xxlarge" ,:rows=>"4"%>
     </div>
   </div>
   </div>
@@ -288,7 +287,6 @@
     <%= link_back :class=>'btn btn-info', :html=>"<i class='icon-home'></i>" %>
   </div>
 <% end %>
-<%= make_datepicker("#tourreport_tourdate") %>
 <%= content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
   <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
@@ -299,9 +297,7 @@
 <% end %>
 <% content_for :inline_javascripts do %>
   <script type="text/javascript">
-
     $(function(){
-        //alert("111");
         $(".time_picker").timepicker({
             minuteStep:1,
             showSeconds:true,
@@ -309,5 +305,18 @@
           });
         
         })
+
+  function change_time()
+  {
+    if($("#tourreport_starttime").val()=="00:00")
+    {
+        $("#tourreport_finishtime").val("08:00");
+    }
+    else if($("#tourreport_starttime").val()=="08:00")
+    {
+        $("#tourreport_finishtime").val("16:00");
+    }
+  }
+
   </script>
 <% end %>
