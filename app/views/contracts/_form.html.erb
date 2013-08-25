@@ -136,7 +136,7 @@
     <%= f.label "签订日期", :class=>"control-label" %>
     <div class="controls ">
       <div class="input-append">
-      <%= f.text_field :signdate ,:class=>"text_field",:placeholder=>"2013-04-05"  %><span class="add-on"><i class="icon-calendar"></i></span>
+      <%= f.text_field :signdate ,:class=>"text_field",:value=>Time.now.strftime("%Y-%m-%d")  %><span class="add-on"><i class="icon-calendar"></i></span>
     </div>
     </div>
   </div>
@@ -150,7 +150,7 @@
     <%= f.label "开始日期", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :startdate, :class=>"text_field" , :placeholder=>"2013-05-03"%><span class="add-on"><i class="icon-calendar"></i></span>
+        <%= f.text_field :startdate, :class=>"text_field" , :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
 
     </div>
     </div>
@@ -162,7 +162,7 @@
     <%= f.label "截止日期", :class=>"control-label"%>
     <div class="controls">
     <div class="input-append">
-      <%= f.text_field :finishdate, :class=>"text_field"%><span class="add-on"><i class="icon-calendar"></i></span>
+      <%= f.text_field :finishdate, :class=>"text_field", :value=>Time.now.change(:year=>Time.now.year+1).strftime("%Y-%m-%d")%><span class="add-on"><i class="icon-calendar"></i></span>
     </div>
     </div>
   </div>
@@ -239,8 +239,9 @@
      "contract[signdate]":{required:"签订日期不能为空"},
      "contract[startdate]":{required:"开始日期不能为空"},
      "contract[finishdate]":{required:"截止日期不能为空"},
-}
-      });
+  }
+ });
+
 
   });
   </script>
