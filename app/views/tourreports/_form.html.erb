@@ -113,7 +113,7 @@
   <div class="control-group">
     <%= f.label "结束时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {:class=>"text_field",:cols=>"3" }) %>
+      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME_END ,:selected=>"08:00" ), {:class=>"text_field",:cols=>"3" }) %>
     </div>
   </div>
   </div>
@@ -308,6 +308,7 @@
 
   function change_time()
   {
+
     if($("#tourreport_starttime").val()=="00:00")
     {
         $("#tourreport_finishtime").val("08:00");
@@ -316,7 +317,13 @@
     {
         $("#tourreport_finishtime").val("16:00");
     }
+    else if($("#tourreport_starttime").val()=="16:00")
+    {
+        $("#tourreport_finishtime").val("23:59");
+    }
+
   }
+
 
   </script>
 <% end %>
