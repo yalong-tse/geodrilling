@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   belongs_to :department
   has_many :assignments
   has_many :roles, :through => :assignments
-  
+  has_and_belongs_to_many :groups
+
   attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids
   attr_accessor :password
 

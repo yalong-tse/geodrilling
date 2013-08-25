@@ -30,6 +30,8 @@ zh-CN:
         edit: "字典编辑"
       useroperation:
         manage: "操作日志"
+      group:
+        index: "人员配组"
     others:
       password: "密码"
       account: "用户名"
