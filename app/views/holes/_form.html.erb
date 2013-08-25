@@ -1,5 +1,5 @@
 <% content_for(:page_header_description, "录入钻孔的基本信息") %>
-<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:multipart=>true,:class=>"form-horizontal"}) do |f| %>
+<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:multipart=>true,:class=>"form-horizontal",:id=>"formservice"}) do |f| %>
   <% if @hole.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
@@ -96,7 +96,7 @@
   <div class="control-group">
     <%= f.label "开孔日期" ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.text_field :startdate , :class=>"text_field" %>
+      <%= f.text_field :startdate , :class=>"text_field",:value=>Time.now.strftime("%Y-%m-%d")%>
     </div>
   </div>
   </div>
@@ -105,7 +105,7 @@
   <div class="control-group">
     <%= f.label "终孔日期" ,:class=>"control-label"%>
     <div class="controls">
-    <%= f.text_field :finishdate , :class=>"text_field"%>
+    <%= f.text_field :finishdate , :class=>"text_field" ,:value=>Time.now.change(:year=>Time.now.year+1).strftime("%Y-%m-%d")%>
     </div>
   </div>
   </div>
@@ -127,7 +127,7 @@
   <div class="control-group">
     <%= f.label "设计书" ,:class=>"control-label" %>
     <div class="controls">
-      <i class="icon-folder-open"></i><input name="attachment" type="file" id="_hole_file"/>
+      <input name="attachment" type="file" id="_hole_file"/>
     </div>
   </div>
   </div>
@@ -175,5 +175,38 @@
   $("#hole_designdeep").ace_spinner({value:200,min:10,max:1000,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
   $("#hole_designapexangle").ace_spinner({value:30,min:10,max:100,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
   $("#hole_designcoreratio").ace_spinner({value:30,min:10,max:100,step:10,icon_up:'icon-plus',icon_down:'icon-minus',btn_up_class:'btn-success',btn_down_class:'btn-danger'});
+
+  $(function(){
+
+  $('#_hole_file').ace_file_input({
+        no_file:'未选择文件 ...',
+        btn_choose:'选择',
+        btn_change:'重新选择',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+        });
+  
+  $("#formservice").validate({
+    rules:{
+    "hole[minearea]":{required:true},
+    "hole[contract_id]":{required:true},
+    "hole[holenumber]":{required:true}
+    },
+  messages:{
+  "hole[minearea]":{required:"矿区不能为空"},
+  "hole[contract_id]":{required:"必须选择合同名称"},
+  "hole[holenumber]":{required:"孔号不能为空"}
+
+    }
+    
+    });
+
+  });
+
 </script>
 <% end %>

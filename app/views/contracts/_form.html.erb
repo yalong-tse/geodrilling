@@ -16,7 +16,6 @@
   <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
   <%= javascript_include_tag 'date-time/daterangepicker.min' %>
   <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
-  <%= javascript_include_tag 'jquery.placeholder.min' %>
 <% end %>
 
 <%= form_for @contract, :html=>{:multipart=>true, :class=>"form-horizontal"}  do |f|  %>
@@ -137,7 +136,7 @@
     <%= f.label "签订日期", :class=>"control-label" %>
     <div class="controls ">
       <div class="input-append">
-      <%= f.text_field :signdate ,:class=>"text_field",:placeholder=>"2013-04-05" %><span class="add-on"><i class="icon-calendar"></i></span>
+      <%= f.text_field :signdate ,:class=>"text_field",:value=>Time.now.strftime("%Y-%m-%d")  %><span class="add-on"><i class="icon-calendar"></i></span>
     </div>
     </div>
   </div>
@@ -151,7 +150,7 @@
     <%= f.label "开始日期", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :startdate, :class=>"text_field" , :placeholder=>"2013-05-03"%><span class="add-on"><i class="icon-calendar"></i></span>
+        <%= f.text_field :startdate, :class=>"text_field" , :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
 
     </div>
     </div>
@@ -163,7 +162,7 @@
     <%= f.label "截止日期", :class=>"control-label"%>
     <div class="controls">
     <div class="input-append">
-      <%= f.text_field :finishdate, :class=>"text_field"%><span class="add-on"><i class="icon-calendar"></i></span>
+      <%= f.text_field :finishdate, :class=>"text_field", :value=>Time.now.change(:year=>Time.now.year+1).strftime("%Y-%m-%d")%><span class="add-on"><i class="icon-calendar"></i></span>
     </div>
     </div>
   </div>
@@ -206,7 +205,7 @@
   <script type="text/javascript">
 
   $(function(){
-  $('input, textarea').placeholder();
+//  $('input, textarea').placeholder();
   $('#_contract_file').ace_file_input({
         no_file:'未选择文件 ...',
         btn_choose:'选择',
@@ -219,6 +218,31 @@
         //onchange:''
         //
         });
+
+  $("#new_contract").validate({
+  rules:{
+  "contract[name]":{required:true,maxlength:500},
+  "contract[contractno]":{required:true, maxlength:50},
+  "contract[projectname]":{required:true},
+  "contract[owner]":{required:true},
+  "contract[fundsource]":{required:true},
+  "contract[signdate]":{required:true},
+  "contract[startdate]":{required:true},
+  "contract[finishdate]":{required:true},
+  },
+  messages:{
+     "contract[name]":{required:"合同名称不能为空",maxlength:"合同名称不能超过500字符"},
+     "contract[contractno]":{required:"合同编号不能为空", maxlength:"合同编号不能超过50字符"},
+     "contract[projectname]":{required:"工程名称不能为空"},
+     "contract[owner]":{required:"合同业主不能为空"},
+     "contract[fundsource]":{required:"资金来源不能为空"},
+     "contract[signdate]":{required:"签订日期不能为空"},
+     "contract[startdate]":{required:"开始日期不能为空"},
+     "contract[finishdate]":{required:"截止日期不能为空"},
+  }
+ });
+
+
   });
   </script>
 <% end %>

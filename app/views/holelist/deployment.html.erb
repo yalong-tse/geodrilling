@@ -1,7 +1,7 @@
 <% content_for(:title, "钻孔配置" ) %>
 <% content_for(:page_header_description, "分别选择施工队伍、使用设备和使用材料配置钻孔所需的人员、设备和材料") %>
 <%= render partial: "layouts/flash_messages" %>
-<%= form_for(:holelist,:url=>holelist_create_path(@deployment) ,:html=>{:class=>"form-horizontal"}) do |f| %>
+<%= form_for(:holelist,:url=>holelist_create_path,:html=>{:class=>"form-horizontal" , :id=>"formservice"}) do |f| %>
   <input type="hidden" name="holeid" value="<%=@hole.id %>" />
   <div class="row-fluid">
     <div class="span12">
@@ -285,6 +285,23 @@
 
   $(function(){
     $(".chzn-select").chosen();
+
+  $("#formservice").validate({
+    rules:{
+    "rigmachine":{required:true},
+    "drilltower":{required:true},
+    "pump":{required:true},
+    "holelist[user]":{required:true}
+    },
+  messages:{
+  "rigmachine":{required:"请选择钻机"},
+  "drilltower":{required:"请选择钻塔"},
+  "pump":{required:"请选择泥浆泵"},
+  "holelist[user]":{required:"请选择机长"}
+
+    }
+    });
+
   });
 
   function open_rigmachine_modal()
