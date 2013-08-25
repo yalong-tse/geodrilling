@@ -3,7 +3,7 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab">
     <li class="dropdown active">
-      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+      <a data-toggle="dropdown" class="dropdown-toggle" href="#1">
         人员分组
         <b class="caret"></b>
       </a>
@@ -31,15 +31,19 @@
   <div class="tab-content">
     <div class="tab-pane in active" id="dropdown1">
       <p>项目经理</p>
+      <%= render partial: "users_group", locals: {users: @users1} %>
     </div>
     <div class="tab-pane" id="dropdown2">
       <p>机长</p>
+      <%= render partial: "users_group", locals: {users: @users2} %>
     </div>
     <div class="tab-pane" id="dropdown3">
       <p>班长</p>
+      <%= render partial: "users_group", locals: {users: @users3} %>
     </div>
     <div class="tab-pane" id="dropdown4">
       <p>班员</p>
+      <%= render partial: "users_group", locals: {users: @users4} %>
     </div>
     <div class="tab-pane" id="tab2">
       <p>机组配置</p>
@@ -52,3 +56,19 @@
     </div>
   </div>
 </div>
+<% content_for :inline_javascripts do %>
+<script type="text/javascript">
+  $(function() {
+    $('#myTab a[href="#tab2"]').click(function(e) {
+      e.preventDefault();
+      $(this).tab('show');
+      $('#tab2').load('/users/main');
+    });
+    //$('#myTab a[href="#dropdown1"]').click(function(e){
+      // do something
+      //$('#dropdown1').load('/groups/index?groupid=1');
+      //e.preventDefault();
+    //});
+  });
+</script>
+<% end %>
