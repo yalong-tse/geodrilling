@@ -36,7 +36,7 @@
   <div class="control-group">
     <%= f.label :contractno, "<span class='required-field'>*</span>合同编号".html_safe ,:class=>"control-label" %>
     <div class="controls">
-    <%= f.text_field :contractno, :class=>"text_field",:placeholder=>"zt20130001" %>
+    <%= f.text_field :contractno, :class=>"text_field" %>
     </div>
   </div>
   </div>
@@ -48,7 +48,7 @@
   <div class="control-group">
     <%= f.label :name, "<span class='required-field'>*</span>合同名称".html_safe ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :name , :class=>"input-xxlarge",:placeholder=>"机械岩心钻探合同书" %>
+      <%= f.text_field :name , :class=>"input-xxlarge" %>
     </div>
   </div>
   </div>
@@ -59,7 +59,7 @@
   <div class="control-group">
     <%= f.label :projectname, "<span class='required-field'>*</span>项目名称".html_safe ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :projectname, :class=>"input-xxlarge", :size=>50, :placeholder=>"河南省小秦岭金矿田北矿带F5矿脉深部金矿普查（Ⅰ标段）" %>
+      <%= f.text_field :projectname, :class=>"input-xxlarge", :size=>50 %>
     </div>
   </div>
   </div>
@@ -71,7 +71,7 @@
   <div class="control-group">
     <%= f.label "项目所在地" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :projectaddr, :class=>"input-xxlarge" ,:placeholder=>"河南省洛阳市XX县" %>
+      <%= f.text_field :projectaddr, :class=>"input-xxlarge" %>
     </div>
   </div>
   </div>
@@ -83,7 +83,7 @@
   <div class="control-group">
     <%= f.label "合同业主" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :owner, :class=>"input-large" ,:placeholder=>"郑州四院" %>
+      <%= f.text_field :owner, :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -92,7 +92,7 @@
   <div class="control-group">
     <%= f.label "合同乙方" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :buyerparty, :class=>"input-large" ,:placeholder=>"郑州四院" %>
+      <%= f.text_field :buyerparty, :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -113,7 +113,7 @@
     <%= f.label "合同金额" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :contractamount, :class=>"text_field" ,:placeholder=>"10,000" %><span class="add-on">元</span>
+        <%= f.text_field :contractamount, :class=>"text_field" %><span class="add-on">元</span>
       </div>
     </div>
   </div>
@@ -229,6 +229,7 @@
   "contract[signdate]":{required:true},
   "contract[startdate]":{required:true},
   "contract[finishdate]":{required:true},
+  "contract[contractamount]":{digits:true},
   },
   messages:{
      "contract[name]":{required:"合同名称不能为空",maxlength:"合同名称不能超过500字符"},
@@ -239,6 +240,7 @@
      "contract[signdate]":{required:"签订日期不能为空"},
      "contract[startdate]":{required:"开始日期不能为空"},
      "contract[finishdate]":{required:"截止日期不能为空"},
+      "contract[contractamount]":{digits:"必须输入整数"},
   }
  });
 

@@ -3,7 +3,7 @@
   <%= stylesheet_link_tag 'chosen' %>
   <%= stylesheet_link_tag 'bootstrap-timepicker' %>
 <% end %>
-<%= form_for(@tourreport, :html=>{:class=>"form-horizontal"}) do |f| %>
+<%= form_for(@tourreport, :html=>{:class=>"form-horizontal", :id=>"formservice"}) do |f| %>
   <% if @tourreport.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tourreport.errors.count, "error") %> prohibited this tourreport from being saved:</h2>
@@ -19,7 +19,7 @@
   <div class="control-group">
     <%= f.label "合同名称", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
+      <%= f.text_field :contractname, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
     </div>
   </div>
   </div>
@@ -28,7 +28,7 @@
   <div class="control-group">
     <%= f.label "项目名称", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.projectname , :readonly=>true %>
+      <%= f.text_field :projectname , :class=>"text_field", :value=>@hole.contract.projectname , :readonly=>true %>
     </div>
   </div>
   </div>
@@ -40,7 +40,7 @@
   <div class="control-group">
     <%= f.label "项目编号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.contract.contractno , :readonly=>true %>
+      <%= f.text_field :contractno , :class=>"text_field", :value=>@hole.contract.contractno , :readonly=>true %>
     </div>
   </div>
   </div>
@@ -49,7 +49,7 @@
   <div class="control-group">
     <%= f.label "钻孔编号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :hole , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
+      <%= f.text_field :holenumber , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
     </div>
   </div>
   </div>
@@ -204,7 +204,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-small" )%>
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-small" , :onchange=>"content_change(this)"  )%>
     </div>
   </div>
   <div class="control-group">
@@ -216,7 +216,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-small" )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-small", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">进尺</span>
@@ -248,7 +248,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-small"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-small" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">岩心长度</span>
@@ -268,7 +268,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-small"  )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-small" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group">
@@ -303,6 +303,35 @@
             showSeconds:true,
             showMeridian:false
           });
+
+  $("#formservice").validate({
+  rules:{
+  "tourreport[contractname]":{required:true,maxlength:500},
+  "tourreport[projectname]":{required:true, maxlength:50},
+  "tourreport[contractno]":{required:true},
+  "tourreport[holenumber]":{required:true},
+  "tourreport[administrator]":{required:true},
+  "tourreport[tourleader]":{required:true},
+  "tourreport[tourdate]":{required:true},
+  "tourreport[recorder]":{required:true},
+  "tourreport[starttime]":{required:true},
+  "tourreport[finishtime]":{required:true},
+  "tourreport[tourcore]":{required:true},
+  "tourreport[tourshift]":{required:true},
+  },
+  messages:{
+     "contract[name]":{required:"合同名称不能为空",maxlength:"合同名称不能超过500字符"},
+     "contract[contractno]":{required:"合同编号不能为空", maxlength:"合同编号不能超过50字符"},
+     "contract[projectname]":{required:"工程名称不能为空"},
+     "contract[owner]":{required:"合同业主不能为空"},
+     "contract[fundsource]":{required:"资金来源不能为空"},
+     "contract[signdate]":{required:"签订日期不能为空"},
+     "contract[startdate]":{required:"开始日期不能为空"},
+     "contract[finishdate]":{required:"截止日期不能为空"},
+      "contract[contractamount]":{digits:"必须输入整数"},
+  }
+ });
+
         
         })
 
@@ -322,6 +351,12 @@
         $("#tourreport_finishtime").val("23:59");
     }
 
+  }
+
+
+  function content_change(obj)
+  {
+    alert("111111111");
   }
 
 
