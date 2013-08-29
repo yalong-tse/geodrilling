@@ -1,74 +1,29 @@
-<% provide(:title, '系统管理') %>
-
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs" id="myTab">
-    <li class="dropdown active">
-      <a data-toggle="dropdown" class="dropdown-toggle" href="#1">
-        人员分组
-        <b class="caret"></b>
-      </a>
-
-      <ul class="dropdown-menu dropdown-info">
-        <li>
-          <a data-toggle="tab" href="#dropdown1">项目经理</a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#dropdown2">机长</a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#dropdown3">班长</a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#dropdown4">班员</a>
-        </li>
-      </ul>
-    </li>
-
-    <li><a href="#tab2" data-toggle="tab">机组配置</a></li>
-    <li><a href="#tab3" data-toggle="tab">班组配置</a></li>
-    <li><a href="#tab4" data-toggle="tab">项目经理配置</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane in active" id="dropdown1">
-      <p>项目经理</p>
-      <%= render partial: "users_group", locals: {users: @users1} %>
-    </div>
-    <div class="tab-pane" id="dropdown2">
-      <p>机长</p>
-      <%= render partial: "users_group", locals: {users: @users2} %>
-    </div>
-    <div class="tab-pane" id="dropdown3">
-      <p>班长</p>
-      <%= render partial: "users_group", locals: {users: @users3} %>
-    </div>
-    <div class="tab-pane" id="dropdown4">
-      <p>班员</p>
-      <%= render partial: "users_group", locals: {users: @users4} %>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <p>机组配置</p>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>班组配置</p>
-    </div>
-    <div class="tab-pane" id="tab4">
-      <p>项目经理配置</p>
-    </div>
-  </div>
-</div>
-<% content_for :inline_javascripts do %>
-<script type="text/javascript">
-  $(function() {
-    $('#myTab a[href="#tab2"]').click(function(e) {
-      e.preventDefault();
-      $(this).tab('show');
-      $('#tab2').load('/users/main');
-    });
-    //$('#myTab a[href="#dropdown1"]').click(function(e){
-      // do something
-      //$('#dropdown1').load('/groups/index?groupid=1');
-      //e.preventDefault();
-    //});
-  });
-</script>
-<% end %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="center">
+        <label>
+          <input type="checkbox" class="ace">
+          <span class="lbl"></span>
+        </label>
+      </th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>联系方式</th>
+      <th>所属部门</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td class="center"><%= check_box_tag "users[]", user.id %><span class="lbl"></span></td>
+      <td><%= user.name %></td>
+      <td><%= human_sex(user) %></td>
+      <td><%= contactway(user) %></td>
+      <td><%= user.department.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t('labels.new'), new_group_path, :class=>"btn btn-primary" %>
+<%= submit_tag t('labels.destroy'), :class => "btn" %>

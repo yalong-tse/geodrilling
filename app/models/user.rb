@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
   has_and_belongs_to_many :groups
 
-  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids
+  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id
   attr_accessor :password
 
   before_save :encrypt_password
