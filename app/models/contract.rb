@@ -41,4 +41,12 @@ class Contract < ActiveRecord::Base
     @contract.update_attribute(:status,3)
   end
 
+  def self.getowner
+    Contract.select(:owner).uniq
+  end
+  
+  def self.getbuyer
+    Contract.select(:buyerparty).uniq
+  end
+
 end

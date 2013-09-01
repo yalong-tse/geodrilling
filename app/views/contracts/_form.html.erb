@@ -81,18 +81,31 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
-    <%= f.label "合同业主" ,:class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :owner, :class=>"input-large" %>
+    <%= f.label "业主名称" ,:class=>"control-label" %>
+    <div class="controls" style="position:relative;">
+      <span style="margin-left:100px;width:18px;overflow:hidden;">  
+        <select style="width:218px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">  
+          <option value="www.souzz.net"> souzz </option>  
+          <option value="www.eWebSoft.com"> eWebSoft </option>  
+          <option value="WEB开发者"> WEB开发者 </option>  
+      </select>
+    </span>  
+    <%= f.text_field :owner, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
   </div>
 
   <div class="span5">
   <div class="control-group">
-    <%= f.label "合同乙方" ,:class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :buyerparty, :class=>"input-large" %>
+    <%= f.label "乙方名称" ,:class=>"control-label" %>
+    <div class="controls" style="position:relative;">
+      <span style="margin-left:100px;width:18px;overflow:hidden;">  
+        <select style="width:218px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">  
+          <option value="www.souzz.net"> souzz </option>  
+          <option value="www.eWebSoft.com"> eWebSoft </option>  
+          <option value="WEB开发者"> WEB开发者 </option>  
+      </select>
+      <%= f.text_field :buyerparty, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
   </div>
