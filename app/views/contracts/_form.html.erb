@@ -84,12 +84,8 @@
     <%= f.label "业主名称" ,:class=>"control-label" %>
     <div class="controls" style="position:relative;">
       <span style="margin-left:100px;width:18px;overflow:hidden;">  
-        <select style="width:218px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">  
-          <option value="www.souzz.net"> souzz </option>  
-          <option value="www.eWebSoft.com"> eWebSoft </option>  
-          <option value="WEB开发者"> WEB开发者 </option>  
-      </select>
-    </span>  
+        <%= select_tag("ownerselect", options_for_select(Contract.getowner.collect{|d|[d.owner]}), {:style=>"width:218px;margin-left:-100px",:onchange=>"setsibling(this)"}) %>
+      </span>  
     <%= f.text_field :owner, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
@@ -100,11 +96,9 @@
     <%= f.label "乙方名称" ,:class=>"control-label" %>
     <div class="controls" style="position:relative;">
       <span style="margin-left:100px;width:18px;overflow:hidden;">  
-        <select style="width:218px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">  
-          <option value="www.souzz.net"> souzz </option>  
-          <option value="www.eWebSoft.com"> eWebSoft </option>  
-          <option value="WEB开发者"> WEB开发者 </option>  
-      </select>
+        <%= select_tag("ownerselect", options_for_select(Contract.getbuyer.collect{|d|[d.buyerparty]}), {:style=>"width:218px;margin-left:-100px",:onchange=>"setsibling(this)"}) %>
+      </span>  
+    </span>
       <%= f.text_field :buyerparty, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
@@ -259,5 +253,10 @@
 
 
   });
+
+function setsibling(obj) 
+{
+  $(obj).parent().siblings("input").val($(obj).val());
+}
   </script>
 <% end %>
