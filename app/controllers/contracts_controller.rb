@@ -54,6 +54,7 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(params[:contract])
     @contract.save_file(params[:attachment]) if params[:attachment]
+    @contract.status=0
     respond_to do |format|
       if @contract.save
         format.html { redirect_to @contract, notice: '新增合同成功.' }
