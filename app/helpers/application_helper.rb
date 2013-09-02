@@ -140,7 +140,7 @@ module ApplicationHelper
   def hole_deployment(hole)
     html = ""
     if(hole)
-      html << "<button class='btn btn-small btn-warning' onclick='javascript:open_hole_deployment(#{hole.id})'>"
+      html << "<button class='btn btn-mini btn-warning' onclick='javascript:open_hole_deployment(#{hole.id})'>"
       html << "钻孔配置"
       html << "</button>"
     end
