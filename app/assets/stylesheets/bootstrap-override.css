@@ -1,9 +1,9 @@
 .form-horizontal .control-label {
-    width: 80px;
-    font-weight: bold;
+    width: 100px;
+    font-weight: normal;
 }
 .form-horizontal .controls {
-    margin-left: 90px;
+    margin-left: 110px;
 }
 .dl-horizontal dt {
     width: 60px;
