@@ -20,8 +20,8 @@ private
   def data
     holes.map do |hole|
       [
-        h(hole.minearea),
         h(hole.holenumber),
+        h(hole.contract.name),
         h(hole.designdeep),
         h(hole.designdiameter),
         h(hole.startdate.strftime("%Y-%m-%d")),
