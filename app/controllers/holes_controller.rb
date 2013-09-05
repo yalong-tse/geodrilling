@@ -11,6 +11,15 @@ class HolesController < ApplicationController
     end
   end
 
+
+  # 需要的另外一个list, for 班报填写的钻孔列表
+  def list
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: HolelistDatatable.new(view_context) }
+    end
+  end
+
   # GET /holes/1
   # GET /holes/1.json
   #

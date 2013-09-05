@@ -75,6 +75,7 @@ Geodrilling::Application.routes.draw do
   post "holelist/create"
 
   get "holes/download"
+  get "holes/list"
   get "contracts/indexforclose"
   get "contracts/download"
   get "contracts/close"
