@@ -14,37 +14,9 @@
       </ul>
     </div>
   <% end %>
-<div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "合同名称", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :contractname, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
-    </div>
-  </div>
-  </div>
-
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "项目名称", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :projectname , :class=>"text_field", :value=>@hole.contract.projectname , :readonly=>true %>
-    </div>
-  </div>
-  </div>
-</div>
 
 
 <div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "项目编号", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :contractno , :class=>"text_field", :value=>@hole.contract.contractno , :readonly=>true %>
-    </div>
-  </div>
-  </div>
-
   <div class="span5">
   <div class="control-group">
     <%= f.label "钻孔编号", :class=>"control-label" %>
@@ -53,8 +25,16 @@
     </div>
   </div>
   </div>
-</div>
 
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "合同名称", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :contractname, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
+    </div>
+  </div>
+  </div>
+</div>
 
 <div class="row-fluid">
   <div class="span5">
@@ -70,7 +50,7 @@
   <div class="control-group">
     <%= f.label "班长" , :class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:tourleader, options_for_select([["班长一"],["班长二"],["班长三"]]),:class=>"text_field", :cols=>"3", :prompt=>"选择班长") %>
+     <%= f.select(:tourleader, options_for_select([["班长一"],["班长二"],["班长三"]]),:class=>"text_field", :cols=>"3", :prompt=>"选择班长") %>
     </div>
   </div>
   </div>
@@ -113,12 +93,11 @@
   <div class="control-group">
     <%= f.label "结束时间" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME_END ,:selected=>"08:00" ), {:class=>"text_field",:cols=>"3" }) %>
+      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {:class=>"text_field",:cols=>"3",:readonly=>true} ) %>
     </div>
   </div>
   </div>
   </div>
-
 
 <div class="row-fluid">
   <div class="span5">
@@ -163,6 +142,57 @@
     <div class="controls">
       <div class="input-append">
       <%= f.text_field :tourauxiliarytime , :class=>"text_field" , :readonly=>true %><span class="add-on">小时</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+<div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "接班孔深" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :tourdrillingtime , :class=>"text_field" , :readonly=>true %><span class="add-on">米</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "交班孔深" , :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+      <%= f.text_field :tourauxiliarytime , :class=>"text_field" , :readonly=>true %><span class="add-on">米</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+<div class="row-fluid">
+  <div class="span12">
+  <div class="control-group">
+    <%= f.label "钻具交接" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_area :tourdrillingtime ,:rows=>"6", :cols=>"3", :class=>"input-xxlarge" %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+  <div class="control-group">
+    <%= f.label "交接说明" , :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_area :tourauxiliarytime ,:rows=>"6", :cols=>"3", :class=>"input-xxlarge" %>
       </div>
     </div>
   </div>
@@ -261,7 +291,7 @@
     </div>
   </div>
   <div class="control-group" id="_thelast">
-      <button class="btn btn-info" onclick="javascript:add_line()" ><i class="icon-plus"></i> 增加一行</button>
+    <input type="button" class="btn btn-info" onClick="add_line()" value="添加+"/>
   </div>
               
             </div>
@@ -272,7 +302,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "新增班报" , :class=>"btn btn-primary" %>
+    <%= f.submit "新增班报", :class=>"btn btn-primary" %>
     <%= link_back :class=>'btn btn-info', :html=>"<i class='icon-home'></i>" %>
   </div>
 <% end %>
@@ -287,12 +317,8 @@
 <% content_for :inline_javascripts do %>
   <script type="text/javascript">
     $(function(){
-        $(".time_picker").timepicker({
-            minuteStep:1,
-            showSeconds:true,
-            showMeridian:false
-          });
 
+       worktime_ready();
   $("#formservice").validate({
   rules:{
   "tourreport[contractname]":{required:true,maxlength:200},
@@ -327,11 +353,21 @@
         
     })
 
+    var delete_row_content = '<input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " />';
+
     var zuanjin_content='&nbsp;<div class="input-prepend"><span class="add-on">进尺</span><input class="input-mini" id="workcontent_drillfootage" name="workcontent_drillfootage" type="text" onblur="compute_content(this)"/></div>&nbsp;<div class="input-prepend"><span class="add-on">钻头</span><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">转速</span><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed" type="text" />&nbsp;</div><div class="input-prepend"><span class="add-on">泵量</span><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">泵压</span><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure" type="text" /></div>';
     var quxin_content= '&nbsp;<div class="input-prepend"><span class="add-on">岩心长度</span><input class="input-mini" id="corelength" name="corelength" type="text" onblur="length_content(this)" />&nbsp;&nbsp;</div>&nbsp;<div class="input-prepend"><span class="add-on">残留岩心长度</span><input class="input-mini" id="coreleftlength" name="coreleftlength" type="text" />&nbsp;&nbsp;</div>';
 
     var newline_content='<div class="control-group"><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-prepend"><span class="add-on">工作内容</span><select class="input-small" id="workcontent" name="workcontent" onchange="content_change(this)"><option value="下钻" selected="selected">下钻</option><option value="钻进">钻进</option><option value="取心">取心</option><option value="起钻">起钻</option><option value="事故处理">事故处理</option><option value="停待">停待</option><option value="下套管">下套管</option><option value="测井">测井</option><option value="孔深校正">孔深校正</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></div></div>';
     
+    function worktime_ready()
+    {
+        $(".time_picker").timepicker({
+            minuteStep:1,
+            showSeconds:false,
+            showMeridian:false
+          });
+    }
 
   function change_time()
   {
@@ -346,7 +382,7 @@
     }
     else if($("#tourreport_starttime").val()=="16:00")
     {
-        $("#tourreport_finishtime").val("23:59");
+        $("#tourreport_finishtime").val("00:00");
     }
 
   }
@@ -357,24 +393,29 @@
     if($(obj).val()=="钻进")
     {
       $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
+      $(obj).parent("div").after(delete_row_content);
       $(obj).parent("div").after(zuanjin_content);
     }
     else if ($(obj).val() == "取心")
     {
       $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
+      $(obj).parent("div").after(delete_row_content);
       $(obj).parent("div").after(quxin_content);
     }
     else
     {
       $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
+      $(obj).parent("div").after(delete_row_content);
     }
 
   }
 
+
   function add_line()
   {
-   // alert($("#_line_container div").first());
-   $("#_thelast").before($("#_line_container div").first().clone());
+    // alert($("#_line_container div").first());
+    $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
+    worktime_ready();
   }
 
   function compute_content(obj)
@@ -388,7 +429,6 @@
        
     }
     //alert($(obj).val()); 
-
     //alert("on mouse up event");
   }
 
@@ -401,6 +441,12 @@
       $("input[name='corelength']").each(function(i){result += parseInt($(this).val());});
       $("#tourreport_tourcore").val(result);
     }
+  }
+
+
+  function deleteRow(obj)
+  {
+    $(obj).parent("div[class='control-group']").remove();
   }
 
   </script>
