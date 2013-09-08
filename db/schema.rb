@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822172302) do
+ActiveRecord::Schema.define(:version => 20130908152322) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -284,6 +284,10 @@ ActiveRecord::Schema.define(:version => 20130822172302) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "status"
+    t.integer  "lastdeep"
+    t.integer  "currentdeep"
+    t.string   "intrumenttakeover"
+    t.string   "takeoverremark"
   end
 
   create_table "tourreportworkcontents", :force => true do |t|

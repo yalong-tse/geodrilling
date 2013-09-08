@@ -12,7 +12,11 @@ class Tourreport < ActiveRecord::Base
   # tourleader : 班长
   # tourshift : 本班进尺
   # status : 班报状态
-  attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status
+  # intrumenttakeover : 钻具交接
+  # takeoverremark 交接说明
+  # lastdeep 接班孔深
+  # currentdeep 交班孔深
+  attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status, :lastdeep, :currentdeep, :intrumenttakeover, :takeoverremark
   # 属于哪个钻孔
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
   has_many :tourreportworkcontent
