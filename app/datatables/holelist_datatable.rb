@@ -24,9 +24,10 @@ private
         h(hole.holenumber),
         h(hole.contract.name),
         h(hole.designdeep),
-        h(hole.designdiameter),
+        h(hole.actualdeep),
+        h(hole.designcoreratio),
+        h(hole.actualcoreratio),
         h(hole.startdate.strftime("%Y-%m-%d")),
-        h(hole.finishdate.strftime("%Y-%m-%d")),
         h(hole_status_treat(hole.status)),
         h(detail_button(hole))
       ]

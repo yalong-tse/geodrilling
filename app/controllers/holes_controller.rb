@@ -20,6 +20,13 @@ class HolesController < ApplicationController
     end
   end
 
+  def tourreports
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: HolelisttourreportDatatable.new(view_context) }
+    end
+  end
+
   # GET /holes/1
   # GET /holes/1.json
   #

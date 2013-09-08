@@ -48,7 +48,7 @@
   </li>
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(holes_list_path) || current_page?(tourreports_path) || current_page?(tourreports_indexformodify_path))}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(tourreports_indexformodify_path))}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-edit"></i>
       <span>钻孔管理</span>
@@ -77,8 +77,8 @@
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报修改')), tourreports_indexformodify_path %>
       </li>
 
-      <li <%= active_page?(tourreports_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报查询')), tourreports_path %>
+      <li <%= active_page?(holes_tourreports_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报查询')), holes_tourreports_path %>
       </li>
 
     </ul>
