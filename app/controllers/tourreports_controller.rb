@@ -37,10 +37,7 @@ class TourreportsController < ApplicationController
   def new
     @tourreport = Tourreport.new
     @hole = Hole.find(params[:holeid])
-
     #@holes = Hole.unclosed
-    @tourreportworkcontent = Tourreportworkcontent.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @tourreport }
@@ -56,6 +53,12 @@ class TourreportsController < ApplicationController
   # POST /tourreports.json
   def create
     @tourreport = Tourreport.new(params[:tourreport])
+
+    params[:workcontent_starttime].each_index do |i|
+      logger.info params[:workcontent_starttime][i]
+      logger.info(params[:workcontent][i])
+      logger.info(params[:workcontent_finishtime][i])
+    end  
 
     respond_to do |format|
       if @tourreport.save

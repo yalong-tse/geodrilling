@@ -219,78 +219,78 @@
               
    <div class="control-group">
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_starttime, nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_finishtime, nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
+      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
     </div>
   </div>
   <div class="control-group">
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_starttime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_finishtime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-medium", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
+      <%= select_tag("workcontent[]" , options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-medium", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">进尺</span>
-      <%=text_field_tag :workcontent_drillfootage ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+      <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
     </div>
     <div class="input-prepend">
       <span class="add-on">钻头规格</span>
-      <%=text_field_tag :workcontent_drillbit ,nil, :class=>"input-mini" %>
+      <%=text_field_tag "workcontent_drillbit[]" ,nil, :class=>"input-mini" %>
   </div>
     <div class="input-prepend">
       <span class="add-on">转速</span>
-      <%=text_field_tag :workcontent_rotatespeed ,nil, :class=>"input-mini" %>
+      <%=text_field_tag "workcontent_rotatespeed[]" ,nil, :class=>"input-mini" %>
     </div>
     <div class="input-prepend">
       <span class="add-on">泵量</span>
-      <%=text_field_tag :workcontent_pumpquantity ,nil, :class=>"input-mini" %>
+      <%=text_field_tag "workcontent_pumpquantity[]" ,nil, :class=>"input-mini" %>
     </div>
     <div class="input-prepend">
       <span class="add-on">泵压</span>
-      <%=text_field_tag :workcontent_pumppressure,nil, :class=>"input-mini" %>
+      <%=text_field_tag "workcontent_pumppressure[]",nil, :class=>"input-mini" %>
     </div>
   </div>
   <div class="control-group">
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_starttime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_finishtime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-medium" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
+      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-medium" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">岩心长度</span>
-      <%= text_field_tag :corelength, nil,:class=>"input-mini" ,:onblur=>"length_content(this)" %>&nbsp;&nbsp;
+      <%= text_field_tag "corelength[]", nil,:class=>"input-mini" ,:onblur=>"length_content(this)" %>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">残留岩心长度</span>
-      <%= text_field_tag :coreleftlength,nil, :class=>"input-mini" %>&nbsp;&nbsp;
+      <%= text_field_tag "coreleftlength[]",nil, :class=>"input-mini" %>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group">
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_starttime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag :workcontent_finishtime,nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-medium" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
+      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-medium" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group" id="_thelast">
@@ -326,9 +326,9 @@
 
   $("#tourreport_tourdate").datepicker({format:'yyyy-mm-dd'});
 
-  $("input[class='time_picker input-mini'][name='workcontent_finishtime']").bind("change",function(){$(this).parent().parent("div[class='control-group']").next().find("input[class='time_picker input-mini']").val($(this).val());});
+  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",function(){$(this).parent().parent("div[class='control-group']").next().find("input[class='time_picker input-mini']").val($(this).val());});
 
-  $("input[class='time_picker input-mini'][name='workcontent_starttime']").bind("change",function(){$(this).parent().parent("div[class='control-group']").find("input[class='time_picker input-mini']").val($(this).val());});
+  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",function(){$(this).parent().parent("div[class='control-group']").find("input[class='time_picker input-mini']").val($(this).val());});
 
   $("#formservice").validate({
   rules:{
@@ -372,8 +372,8 @@
 
     var delete_row_content = '<input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " />';
 
-    var zuanjin_content='&nbsp;<div class="input-prepend"><span class="add-on">进尺</span><input class="input-mini" id="workcontent_drillfootage" name="workcontent_drillfootage" type="text" onblur="compute_content(this)"/></div>&nbsp;<div class="input-prepend"><span class="add-on">钻头规格</span><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">转速</span><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed" type="text" />&nbsp;</div><div class="input-prepend"><span class="add-on">泵量</span><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">泵压</span><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure" type="text" /></div>';
-    var quxin_content= '&nbsp;<div class="input-prepend"><span class="add-on">岩心长度</span><input class="input-mini" id="corelength" name="corelength" type="text" onblur="length_content(this)" />&nbsp;&nbsp;</div>&nbsp;<div class="input-prepend"><span class="add-on">残留岩心长度</span><input class="input-mini" id="coreleftlength" name="coreleftlength" type="text" />&nbsp;&nbsp;</div>';
+    var zuanjin_content='&nbsp;<div class="input-prepend"><span class="add-on">进尺</span><input class="input-mini" id="workcontent_drillfootage" name="workcontent_drillfootage[]" type="text" onblur="compute_content(this)"/></div>&nbsp;<div class="input-prepend"><span class="add-on">钻头规格</span><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit[]" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">转速</span><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed[]" type="text" />&nbsp;</div><div class="input-prepend"><span class="add-on">泵量</span><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity[]" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">泵压</span><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure[]" type="text" /></div>';
+    var quxin_content= '&nbsp;<div class="input-prepend"><span class="add-on">岩心长度</span><input class="input-mini" id="corelength" name="corelength[]" type="text" onblur="length_content(this)" />&nbsp;&nbsp;</div>&nbsp;<div class="input-prepend"><span class="add-on">残留岩心长度</span><input class="input-mini" id="coreleftlength" name="coreleftlength[]" type="text" />&nbsp;&nbsp;</div>';
 
     var newline_content='<div class="control-group"><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-prepend"><span class="add-on">工作内容</span><select class="input-small" id="workcontent" name="workcontent" onchange="content_change(this)"><option value="下钻" selected="selected">下钻</option><option value="钻进">钻进</option><option value="取心">取心</option><option value="起钻">起钻</option><option value="事故处理">事故处理</option><option value="停待">停待</option><option value="下套管">下套管</option><option value="测井">测井</option><option value="孔深校正">孔深校正</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></div></div>';
     
@@ -441,7 +441,7 @@
     if(pattern.test($(obj).val()))
     {
       var summary=0;
-      $("input[name='workcontent_drillfootage']").each(function(i){summary+=parseInt($(this).val());});
+      $("input[name='workcontent_drillfootage[]']").each(function(i){summary+=parseInt($(this).val());});
       $("#tourreport_tourshift").val(summary);
        
     }
@@ -455,7 +455,7 @@
     if(pattern.test($(obj).val()))
     {
       var result = 0;
-      $("input[name='corelength']").each(function(i){result += parseInt($(this).val());});
+      $("input[name='corelength[]']").each(function(i){result += parseInt($(this).val());});
       $("#tourreport_tourcore").val(result);
     }
   }

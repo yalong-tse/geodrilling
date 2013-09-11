@@ -18,15 +18,15 @@
           </tr>
           <tr>
             <td><b>班报日期</b></td>
-            <td><%=@tourreport.tourdate%></td>
+            <td><%=@tourreport.tourdate.strftime("%Y-%m-%d")%></td>
           </tr>
           <tr>
             <td><b>开始时间</b></td>
-            <td><%=@tourreport.starttime %></td>
+            <td><%=@tourreport.starttime.strftime("%H:%M") %></td>
           </tr>
           <tr>
             <td><b>结束时间</b></td>
-            <td><%=@tourreport.finishtime %></td>
+            <td><%=@tourreport.finishtime.strftime("%H:%M") %></td>
           </tr>
           <tr>
             <td><b>项目经理</b></td>
