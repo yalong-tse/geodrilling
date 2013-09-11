@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  starttime: 2013-09-11 15:21:03
+  finishtime: 2013-09-11 15:21:03
+  content: MyString
+  drilllength: 1
+  drillbit: MyString
+  rotatespeed: MyString
+  pumpquantity: MyString
+  pumppressure: MyString
+  corelength: 1
+  coreleftlength: 1
+  tourreportid: 1
+  holeid: 1
+
+two:
+  starttime: 2013-09-11 15:21:03
+  finishtime: 2013-09-11 15:21:03
+  content: MyString
+  drilllength: 1
+  drillbit: MyString
+  rotatespeed: MyString
+  pumpquantity: MyString
+  pumppressure: MyString
+  corelength: 1
+  coreleftlength: 1
+  tourreportid: 1
+  holeid: 1
