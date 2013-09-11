@@ -12,7 +12,7 @@ class HolesController < ApplicationController
   end
 
 
-  # 需要的另外一个list, for 班报填写的钻孔列表
+  # 需要的另外一个list, for 班报填写的钻孔列表界面
   def list
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +20,7 @@ class HolesController < ApplicationController
     end
   end
 
+  # 用来班报查询的钻孔列表界面
   def tourreports
     respond_to do |format|
       format.html # index.html.erb

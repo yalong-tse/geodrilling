@@ -21,7 +21,8 @@
   <div class="control-group">
     <%= f.label "钻孔编号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :holenumber , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
+      <%=f.hidden_field :holeid, :value=>@hole.id %>
+      <%= text_field_tag :holenumber, nil , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
     </div>
   </div>
   </div>
@@ -30,7 +31,7 @@
   <div class="control-group">
     <%= f.label "合同名称", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :contractname, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
+      <%= text_field_tag :contractname, nil, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
     </div>
   </div>
   </div>
@@ -225,7 +226,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-small" , :onchange=>"content_change(this)"  )%>
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
     </div>
   </div>
   <div class="control-group">
@@ -237,7 +238,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-small", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-medium", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">进尺</span>
@@ -269,7 +270,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-small" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-medium" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
     <div class="input-prepend">
       <span class="add-on">岩心长度</span>
@@ -289,7 +290,7 @@
     </div>
     <div class="input-prepend">
       <span class="add-on">工作内容</span>
-      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-small" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
+      <%= select_tag(:workcontent,options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-medium" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
     </div>
   </div>
   <div class="control-group" id="_thelast">
@@ -343,6 +344,9 @@
   "tourreport[finishtime]":{required:true},
   "tourreport[tourcore]":{number:true},
   "tourreport[tourshift]":{number:true},
+  "tourreport[intrumenttakeover]":{required:true},
+  "tourreport[lastdeep]":{required:true,number:true},
+  "tourreport[currentdeep]":{required:true,number:true},
   },
   messages:{
      "tourreport[contractname]":{required:"合同名称不能为空",maxlength:"合同名称不能超过200字符"},
@@ -357,6 +361,9 @@
      "tourreport[finishtime]":{required:"结束时间不能为空"},
      "tourreport[tourcore]":{number:"必须输入数字"},
      "tourreport[tourshit]":{number:"必须输入数字"},
+     "tourreport[intrumenttakeover]":{required:"请输入钻具交接的内容"},
+     "tourreport[lastdeep]":{required:"请输入接班孔深",number:"必须输入数字"},
+     "tourreport[currentdeep]":{required:"请输交班孔深",number:"必须输入数字"},
   }
  });
 
@@ -406,7 +413,7 @@
       $(obj).parent("div").after(delete_row_content);
       $(obj).parent("div").after(zuanjin_content);
     }
-    else if ($(obj).val() == "取心")
+    else if ($(obj).val() == "取心" || $(obj).val()=="起下钻、取心" || $(obj).val()=="起钻、取心")
     {
       $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
       $(obj).parent("div").after(delete_row_content);

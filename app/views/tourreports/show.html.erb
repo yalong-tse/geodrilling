@@ -1,65 +1,70 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title, "班报详情") %>
 
-<p>
-  <b>Holeid:</b>
-  <%= @tourreport.holeid %>
-</p>
+<div class="page-section">
+  <div class="container">
+    <div class="span8">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th width="30%">名称</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>合同名称</b></td>
+            <td><%=@tourreport.hole.contract.name if @tourreport.hole %></td>
+          </tr>
+          <tr>
+            <td><b>班报日期</b></td>
+            <td><%=@tourreport.tourdate%></td>
+          </tr>
+          <tr>
+            <td><b>开始时间</b></td>
+            <td><%=@tourreport.starttime %></td>
+          </tr>
+          <tr>
+            <td><b>结束时间</b></td>
+            <td><%=@tourreport.finishtime %></td>
+          </tr>
+          <tr>
+            <td><b>项目经理</b></td>
+            <td><%=@tourreport.administrator %></td>
+          </tr>
+          <tr>
+            <td><b>班长</b></td>
+            <td><%=@tourreport.tourleader %></td>
+          </tr>
+          <tr>
+            <td><b>记录员</b></td>
+            <td><%=@tourreport.recorder %></td>
+          </tr>
+          <tr>
+            <td><b>本班进尺</b></td>
+            <td><%=@tourreport.tourshift %></td>
+          </tr>
+          <tr>
+            <td><b>本班取心</b></td>
+            <td><%=@tourreport.tourcore %></td>
+          </tr>
+          <tr>
+            <td><b>纯钻时长</b></td>
+            <td><%=@tourreport.tourdrillingtime %></td>
+          </tr>
+          <tr>
+            <td><b>辅助时长</b></td>
+            <td><%=@tourreport.tourauxiliarytime %></td>
+          </tr>
+          <tr>
+            <td><b>备注</b></td>
+            <td><%=@tourreport.remark %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Tourdate:</b>
-  <%= @tourreport.tourdate %>
-</p>
-
-<p>
-  <b>Starttime:</b>
-  <%= @tourreport.starttime %>
-</p>
-
-<p>
-  <b>Finishtime:</b>
-  <%= @tourreport.finishtime %>
-</p>
-
-<p>
-  <b>Administrator:</b>
-  <%= @tourreport.administrator %>
-</p>
-
-<p>
-  <b>Tourleader:</b>
-  <%= @tourreport.tourleader %>
-</p>
-
-<p>
-  <b>Recorder:</b>
-  <%= @tourreport.recorder %>
-</p>
-
-<p>
-  <b>Tourshift:</b>
-  <%= @tourreport.tourshift %>
-</p>
-
-<p>
-  <b>Tourcore:</b>
-  <%= @tourreport.tourcore %>
-</p>
-
-<p>
-  <b>Tourdrillingtime:</b>
-  <%= @tourreport.tourdrillingtime %>
-</p>
-
-<p>
-  <b>Tourauiliarytime:</b>
-  <%= @tourreport.tourauxiliarytime %>
-</p>
-
-<p>
-  <b>Remark:</b>
-  <%= @tourreport.remark %>
-</p>
-
-
-<%= link_to 'Edit', edit_tourreport_path(@tourreport) %> |
-<%= link_to 'Back', tourreports_path %>
+<%= link_to '编辑', edit_tourreport_path(@tourreport) %> |
+<%= link_to '返回', tourreports_path %>
