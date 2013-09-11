@@ -1,3 +1,4 @@
+#encoding: utf-8
 class TourreportsController < ApplicationController
 
   # GET /tourreports
@@ -54,7 +55,33 @@ class TourreportsController < ApplicationController
   def create
     @tourreport = Tourreport.new(params[:tourreport])
 
+    @contentarr = Array.new
+    h = 0
+    k = 0 
     params[:workcontent_starttime].each_index do |i|
+      workcontent = Workcontent.new
+      workcontent.starttime = params[:workcontent_starttime][i]
+      workcontent.finishtime = params[:workcontent_finishtime][i]
+      workcontent.content = params[:workcontent][i]
+
+      if(params[:workcontent][i]=="钻进")
+        workcontent.drilllength = params[:workcontent_drillfootage][h]
+        workcontent.drillbit = params[:workcontent_drillbit][h]
+        workcontent.rotatespeed = params[:workcontent_rotatespeed][h]
+        workcontent.pumpquantity = params[:workcontent_pumpquantity][h]
+        workcontent.pumppressure = params[:workcontent_pumppressure][h]
+        h+=1
+      end
+
+      if (params[:workcontent][i] == "取心" || params[:workcontent][i] == "起下钻、取心" || params[:workcontent][i] == "起钻、取心")
+        workcontent.corelength = params[:corelength][k]
+        workcontent.coreleftlength = params[:coreleftlength][k]
+        k +=1
+      end
+
+      workcontent.save
+      @contentarr << workcontent
+
       logger.info params[:workcontent_starttime][i]
       logger.info(params[:workcontent][i])
       logger.info(params[:workcontent_finishtime][i])

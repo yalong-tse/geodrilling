@@ -13,7 +13,7 @@ class Workcontent < ActiveRecord::Base
   attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid
 
   belongs_to :hole , :class_name=>"Hole" , :foreign_key=>"holeid"
-  belongs_to :tourreport ,:class_name="Tourreport" , :foreign_key=>"tourreportid"
+  belongs_to :tourreport , :class_name=>"Tourreport" , :foreign_key=>"tourreportid"
 
   def self.getbytourereport(tourreportid)
     if tourreportid

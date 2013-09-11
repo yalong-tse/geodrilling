@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908152322) do
+ActiveRecord::Schema.define(:version => 20130911072103) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -348,5 +348,22 @@ ActiveRecord::Schema.define(:version => 20130908152322) do
 
   add_index "users", ["account"], :name => "index_users_on_account", :unique => true
   add_index "users", ["department_id"], :name => "index_users_on_department_id"
+
+  create_table "workcontents", :force => true do |t|
+    t.time     "starttime"
+    t.time     "finishtime"
+    t.string   "content"
+    t.integer  "drilllength"
+    t.string   "drillbit"
+    t.string   "rotatespeed"
+    t.string   "pumpquantity"
+    t.string   "pumppressure"
+    t.integer  "corelength"
+    t.integer  "coreleftlength"
+    t.integer  "tourreportid"
+    t.integer  "holeid"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
 end
