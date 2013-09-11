@@ -11,4 +11,15 @@
 #coreleftlength 残留岩心长度
 class Workcontent < ActiveRecord::Base
   attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid
+
+  belongs_to :hole , :class_name=>"Hole" , :foreign_key=>"holeid"
+  belongs_to :tourreport ,:class_name="Tourreport" , :foreign_key=>"tourreportid"
+
+  def self.getbytourereport(tourreportid)
+    if tourreportid
+      where("tourreportid=?",tourreportid).order("created_at desc")
+    else
+      order("created_at desc")
+    end
+  end
 end
