@@ -13,7 +13,8 @@ class Hole < ActiveRecord::Base
   #actualcoreratio, 实际岩心采取率
   #designbook , 设计书
   #drillingpurpose , 钻探目的
-  #status , 钻孔状态, 1-执行中 , 2-终孔 , 3-停工， 4-续作
+  #status , 钻孔状态, 0-待执行 1-执行中 , 2-终孔 , 3-停工， 4-续作 
+  #说明：新建钻孔为待执行，钻孔配置完设备之后是执行中
   attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id
 
   attr_reader :statusstr
@@ -29,7 +30,11 @@ class Hole < ActiveRecord::Base
 
   # 选出所有已经关闭的钻孔
   scope :closed , :conditions=>{:status=>2}
-  scope :unclosed , :conditions=>{:status=>1}
+  # 所有未配置的钻孔
+  scope :undeployed , :conditions=>{:status=>0}
+
+  scope :unclosed , :conditions=>"status=0 or status=1"
+
 
   def self.getbyholenumber(holenumber,contract_name)
     where("holenumber=? and contract.name=?",holenumber , contract_name)
@@ -38,6 +43,8 @@ class Hole < ActiveRecord::Base
   def statusstr
    result = ""
    case status
+   when 0
+     result = "待执行"
    when 1
      result = "执行中"
    when 2

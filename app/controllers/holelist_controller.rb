@@ -2,7 +2,7 @@
 class HolelistController < ApplicationController
 
   def index
-    @holes_list = Hole.unclosed.order('startdate desc')
+    @holes_list = Hole.unclosed.order('status asc ,startdate desc')
     #@rigmachine = Rigmachine.unused
     #@drilltower = Drilltower.unused
     #@pump = Pump.unused
@@ -39,6 +39,11 @@ class HolelistController < ApplicationController
     @deployment.pump_id = pumpid
     @deployment.rigmachine_id = rigid
     @deployment.drilltower_id = towerid
+    hole = Hole.find(params[:holeid]) if params[:holeid]
+    # 更改钻孔的状态为"正在执行"
+    hole.status = 1
+    hole.save
+
     respond_to do |format|
       if @deployment.save
         format.html {redirect_to :action=>"index", notice:"钻孔配置成功"}

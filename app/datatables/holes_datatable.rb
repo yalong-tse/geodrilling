@@ -43,6 +43,8 @@ private
   def hole_status_treat(args)
     code = ""
     case args
+    when 0
+    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
     when 1 
     code << "<span class='label label-success arrowed-in'>执行中</span>";
     when 2 

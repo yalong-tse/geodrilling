@@ -18,6 +18,8 @@ module ApplicationHelper
   def hole_status_treat(args)
     code = ""
     case args
+    when 0
+      code << "<span class='label label-inverse'>待执行</span>"
     when 1
       code << "<span class='label label-success'>正在执行</span>"
     when 2

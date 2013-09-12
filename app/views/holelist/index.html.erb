@@ -10,6 +10,7 @@
     <th>钻塔</th>
     <th>泥浆泵</th>
     <th>使用材料</th>
+    <th>状态</th>
     <th>操作</th>
   </tr>
 </thead>
@@ -24,6 +25,7 @@
     <td><%= hole_drilltower hole.id %></td>
     <td><%= hole_pump hole.id %></td>
     <td>&nbsp;</td>
+    <td><%= hole_status_treat hole.status %></td>
     <td><%= hole_deployment(hole) %></td>
   </tr>
 <% end %>

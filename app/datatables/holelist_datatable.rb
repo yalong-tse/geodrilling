@@ -44,6 +44,8 @@ private
   def hole_status_treat(args)
     code = ""
     case args
+    when 0
+    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
     when 1 
     code << "<span class='label label-success arrowed-in'>执行中</span>";
     when 2 
@@ -61,7 +63,7 @@ private
   end
 
   def fetch_holes
-    holes = Hole.order("#{sort_column} #{sort_direction}")
+    holes = Hole.where("status=1").order("#{sort_column} #{sort_direction}")
     holes = holes.page(page).per_page(per_page)
     if params[:sSearch].present?
       holes = holes.where("minearea like :search or holenumber like :search ", search: "%#{params[:sSearch]}%")
