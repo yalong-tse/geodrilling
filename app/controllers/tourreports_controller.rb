@@ -55,6 +55,10 @@ class TourreportsController < ApplicationController
   def create
     @tourreport = Tourreport.new(params[:tourreport])
 
+    thehole = Hole.find(@tourreport.holeid) if @tourreport.holeid 
+    thehole.actualdeep = @tourreport.currentdeep 
+    thehole.save
+
     @contentarr = Array.new
     h = 0
     k = 0 
@@ -63,6 +67,8 @@ class TourreportsController < ApplicationController
       workcontent.starttime = params[:workcontent_starttime][i]
       workcontent.finishtime = params[:workcontent_finishtime][i]
       workcontent.content = params[:workcontent][i]
+      workcontent.holeid = params[:tourreport][:holeid]
+      workcontent.tourreport = @tourreport
 
       if(params[:workcontent][i]=="钻进")
         workcontent.drilllength = params[:workcontent_drillfootage][h]
