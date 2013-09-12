@@ -8,10 +8,14 @@
         <thead>
           <tr>
             <th width="30%">名称</th>
-            <th>内容</th>
+            <th>详细内容</th>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><b>钻孔编号</b></td>
+            <td><%=@tourreport.hole.holenumber if @tourreport.hole %></td>
+          </tr>
           <tr>
             <td><b>合同名称</b></td>
             <td><%=@tourreport.hole.contract.name if @tourreport.hole %></td>
@@ -62,6 +66,61 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+  <div class="space-24"></div>
+  <h5 class="header smaller lighter green">工作内容</h5>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-header">
+          <h5>班报工作内容</h5>
+          <span class="widget-toolbar">
+            <a href="#" data-action="collapse"><i class="icon-chevron-up"></i></a>
+          </span>
+        </div>
+        <div class="widget-body">
+          <div class="widget-main">
+            <div class="row-fluid" id="_line_container">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>工作内容</th>
+            <th>进尺</th>
+            <th>岩心长度</th>
+            <th>残留岩心长度</th>
+            <th>钻头规格</th>
+            <th>转速</th>
+            <th>泵量</th>
+            <th>泵压</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contentarr.each do |content| %>
+            <tr>
+              <td><%=content.starttime.strftime("%H:%M") %></td>
+              <td><%=content.finishtime.strftime("%H:%M") %></td>
+              <td><%=content.content %></td>
+              <td><%=content.drilllength %></td>
+              <td><%=content.corelength %></td>
+              <td><%=content.coreleftlength %></td>
+              <td><%=content.drillbit %></td>
+              <td><%=content.rotatespeed %></td>
+              <td><%=content.pumpquantity %></td>
+              <td><%=content.pumppressure %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

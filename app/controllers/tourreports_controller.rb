@@ -26,7 +26,8 @@ class TourreportsController < ApplicationController
   # GET /tourreports/1.json
   def show
     @tourreport = Tourreport.find(params[:id])
-
+    @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @tourreport }

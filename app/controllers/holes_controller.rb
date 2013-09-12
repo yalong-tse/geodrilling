@@ -47,7 +47,7 @@ class HolesController < ApplicationController
     #@hole.contract = params[:contract_id]
     #logger.info "------------------------------------"
     #logger.info params[:contract_id]
-    @contracts = Contract.unclosed
+    @contracts = Contract.find(:all,:conditions=>"status=0")
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @hole }
@@ -63,12 +63,18 @@ class HolesController < ApplicationController
   # POST /holes.json
   def create
     @hole = Hole.new(params[:hole])
+    # 更改合同的状态, 如果合同为"待执行"，则修改为“执行中”
+    contract = Contract.find(params[:hole][:contract_id])
+    if (contract.status == 0)
+      contract.status = 1
+      contract.save
+    end
     #默认钻孔的状态是 1， 为正在执行
     @hole.status = 1
     @hole.save_file(params[:attachment]) if params[:attachment]
-    logger.info "the attachment is #{params[:attachment]}"
-    logger.info "the hole info is #{@hole}"
-    logger.info "the contract id is #{params[:hole][:contract_id]}"
+    #logger.info "the attachment is #{params[:attachment]}"
+    #logger.info "the hole info is #{@hole}"
+    #logger.info "the contract id is #{params[:hole][:contract_id]}"
     #@hole.contract_id = params[:contract_id]
     respond_to do |format|
       if @hole.save
