@@ -22,6 +22,7 @@
     <th>本班取心</th>
     <th>纯钻时间</th>
     <th>辅助时间</th>
+    <th>操作</th>
   </tr>
 </thead>
 <tbody>
@@ -37,7 +38,7 @@
 <script language="javascript">
   $(function(){
    var oTable1=$("#_tourreport_table").dataTable({
-        "aoColumns":[{"bSortable":false},null,{"bSortable":false},{"bSortable":false},null,null,null,null,null,null,null ],
+     "aoColumns":[{"bSortable":false},null,{"bSortable":false},{"bSortable":false},null,null,null,null,null,null,null,{"bSortable":false} ],
         "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
@@ -62,5 +63,11 @@
     });
 
   });
+
+  function open_tourreports(url)
+  {
+    window.location.href=url;
+  }
+
 </script>
 <% end %>

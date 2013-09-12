@@ -1,8 +1,13 @@
-<% content_for(:title, "班报日历") %>
+<% content_for(:title, "班报日历" ) %>
 <% content_for(:page_header_description , "查看班报日历") %>
 <%= content_for :page_specific_stylesheets do %>
   <%= stylesheet_link_tag 'fullcalendar' %>
 <% end %>
+<div class="page-header position-relative">
+  <h5>
+      <%="钻孔编号为："+ Hole.find(params[:holeid]).holenumber %>
+  </h5>
+</div><!--/.page-header-->
 
 <div class="row-fluid">
   <div class="span10">
@@ -17,5 +22,5 @@
   <%= javascript_include_tag 'bootbox.min' %>
 <% end %>
 <% content_for :inline_javascripts do %>
-<%= make_calendar_for_tourreport(1) %> 
+<%= make_calendar_for_tourreport(params[:holeid]) %> 
 <% end %>

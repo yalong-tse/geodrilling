@@ -37,11 +37,11 @@ module ScheduleHelper
   # 根据钻孔得到班报的表列表，在calendar 上进行显示
   # 只需查询当月的班报情况就可以了
   def make_calendar_for_tourreport(holeid)
-    @tourreport = Tourreport.find(:all);
+    @tourreport = Tourreport.find(:all,:conditions=>["holeid=?",holeid]);
     events_block = "events:["
     @tourreport.each do |tour| 
       datesplit = tour.tourdate.to_s().split('-')
-      events_block << " {title: '#{tour.hole.holenumber}, #{tour.administrator},进尺 #{tour.tourshift}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) },"
+      events_block << " {title: '接班#{tour.lastdeep},进尺#{tour.tourshift},交班#{tour.currentdeep}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) },"
     end
     events_block = events_block.chop
     events_block << "]"

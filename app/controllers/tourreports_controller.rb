@@ -96,7 +96,7 @@ class TourreportsController < ApplicationController
 
     respond_to do |format|
       if @tourreport.save
-        format.html { redirect_to @tourreport, notice: 'Tourreport was successfully created.' }
+        format.html { redirect_to @tourreport, notice: '班报成功保存' }
         format.json { render json: @tourreport, status: :created, location: @tourreport }
       else
         format.html { render action: "new" }
