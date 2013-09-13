@@ -41,7 +41,7 @@ module ScheduleHelper
     events_block = "events:["
     @tourreport.each do |tour| 
       datesplit = tour.tourdate.to_s().split('-')
-      events_block << " {title: '接班#{tour.lastdeep},进尺#{tour.tourshift},交班#{tour.currentdeep},id#{tour.id}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) },"
+      events_block << " {title: '接班#{tour.lastdeep},进尺#{tour.tourshift},交班#{tour.currentdeep}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) , id:'#{tour.id}'},"
     end
     events_block = events_block.chop
     events_block << "]"
@@ -64,12 +64,12 @@ module ScheduleHelper
             #{events_block},
             eventClick: function(calEvent,jsEvent,view)
             {
-              //alert(calEvent.title);
-              var str = calEvent.title;
-              var i = str.indexOf("id");
-              var idstr = str.substring(i+2);
+              //alert(calEvent.id);
+              //var str = calEvent.title;
+              //var i = str.indexOf("id");
+              //var idstr = str.substring(i+2);
               //alert(idstr); 
-              window.open("#{tourreports_path}/"+idstr);
+              window.open("#{tourreports_path}/"+calEvent.id);
 
             }
 		});
