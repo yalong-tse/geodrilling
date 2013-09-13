@@ -60,8 +60,8 @@
         <%=f.label "钻塔" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
-            <input type="hidden" id="drilltowerid" name="drilltowerid" value="" />
-            <input type="text" id="drilltower" name="drilltower", class="input-large" onclick="javascript:open_drilltower_modal();" ><i class="icon-leaf"></i>
+            <input type="hidden" id="drilltowerid" name="drilltowerid" value="<%=@deployment.drilltower_id if @deployment && @deployment.drilltower_id  %>" />
+            <input type="text" id="drilltower" name="drilltower", class="input-large" onclick="javascript:open_drilltower_modal();" value="<%= "设备编号:" + @deployment.drilltower.devicenumber if @deployment && @deployment.drilltower  %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
@@ -72,8 +72,8 @@
         <%=f.label "钻机" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
-            <input type="hidden" id="rigmachineid" name="rigmachineid" value="" />
-            <input type="text" id="rigmachine" name="rigmachine", class="input-large" onclick="javascript:open_rigmachine_modal();" ><i class="icon-leaf"></i>
+            <input type="hidden" id="rigmachineid" name="rigmachineid" value="<%=@deployment.rigmachine_id if @deployment && @deployment.rigmachine_id%>" />
+            <input type="text" id="rigmachine" name="rigmachine", class="input-large" onclick="javascript:open_rigmachine_modal();" value="<%="设备编号" + @deployment.rigmachine.devicenumber if @deployment && @deployment.rigmachine %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
@@ -86,8 +86,8 @@
         <%=f.label "泥浆泵" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
-            <input type="hidden" id="pumpid" name="pumpid" value="" />
-            <input type="text" id="pump" name="pump" class="input-large" onclick="javascript:open_pump_modal();"><i class="icon-leaf"></i>
+            <input type="hidden" id="pumpid" name="pumpid" value="<%=@deployment.pump if @deployment && @deployment.pump_id %>" />
+            <input type="text" id="pump" name="pump" class="input-large" onclick="javascript:open_pump_modal();" value="<%="设备编号："+@deployment.pump.devicenumber if @deployment && @deployment.pump %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
