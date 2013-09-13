@@ -2,7 +2,317 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.tab-content  iframe {
-    height: 100%;
+    height: 400px;
     width: 100%;
     display: block;
+}
+.p-bottom-height {
+    margin-bottom: 7px;
+}
+
+@font-face {
+    font-family: 'nui';
+    src: font-url('163/neteasefont-regular.eot');
+    src: font-url('163/neteasefont-regular.eot#iefix') format('embedded-opentype'),
+    font-url('163/neteasefont-regular.woff') format('woff'),
+    font-url('163/neteasefont-regular.ttf') format('truetype'),
+    font-url('163/neteasefont-regular.svg#neteasefontregular') format('svg')
+}
+html, body {
+    height: 100%;
+}
+.nb {
+    position: relative;
+    font-size: 12px;
+}
+.kb {
+    width: 70px;
+    write-space: nowrap;
+    position: absolute;
+    line-height: 24px;
+    color: #999;
+}
+.jp {
+    padding-left: 100px;
+    line-height: 24px;
+    position: relative;
+    write-space: normal;
+}
+.nui-ico-next {
+    width:13px;
+    height:12px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMBAMAAABLmSrqAAAAA3NCSVQICAjb4U/gAAAAElBMVEX///9mZmZmZmZmZmZmZmZmZmahgyBVAAAABnRSTlMARHeIu//wKLP7AAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzE2LzEyPWnB/wAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAxSURBVAiZY2BgYBBigABXBQhtGgShmUOhAqpAgVAwUIDSBhCFwVB1KFwGVwiXQRiIAYl2CFoQXdB/AAAAAElFTkSuQmCC) no-repeat
+}
+.rj {
+    position: absolute;
+    left: 348px;
+    top: 171px;
+}
+.mu {
+    width: 240px;
+    height: auto;
+    float: left;
+    margin-right: 29px;
+    position: relative;
+}
+.jr {
+    height: 16px;
+    color: #999;
+    font-size: 12px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.nui {
+    border-radius: 3px 3px 0 0;
+    padding-right: 28px;
+    border: 1px solid #bbb;
+    background: #fff;
+    line-height: 1.666;
+    height: 20px;
+    padding: 3px 8px;
+    position: relative;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.1) inset;
+}
+.nui:focus {
+    border-color: #36c;
+    outline: 0;
+}
+.nui-ipt-placeholder {
+    position: absolute;
+    left: 9px;
+    top: 0;
+    line-height: 26px;
+    color: #ccc;
+    cursor: text;
+    height: 90%;
+    overflow: hidden;
+}
+.nui-ipt-input {
+    padding: 0!important;
+    margin: 0;
+    font-size: 12px!important;
+    border: 0!important;
+    background: transparent;
+    outline: 0!important;
+}
+.nui-ipt-input:focus {
+    outline: 0px!important;
+    border-color: rgb(0,0,0)!important;
+    background-color: #fff!important;
+    color: rgb(0,0,0)!important;
+    border: 0px!important;
+    -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0)!important;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0)!important;
+}
+.nui-ipt-iconBtn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 8px;
+    top: 6px;
+    cursor: pointer;
+    outline: 0;
+}
+.nui-ipt-focus {
+    border-color: #36c;
+    outline: 0;
+}
+.nui-ico {
+    position: absolute;
+    top: 0;
+    font-wight: normal;
+    text-align: center;
+    overflow: hidden;
+    font-family: nui!important;
+    font-size: 12px;
+    line-height: normal!important;
+
+}
+.nui-ico-search {
+    width:13px;
+    height:13px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANBAMAAACAxflPAAAAA3NCSVQICAjb4U/gAAAAIVBMVEX////5+fn39/fx8fHl5eXk4+Ph4eHd3d3T0tLQz8/MzMyXEQjSAAAAC3RSTlMA/////////////312fdUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzIzLzEyTRdLHQAAAE9JREFUCJljYBDrahNgYGBgnrVq1WQgLblcQX0lUCCrgIGhKoGBoUuBgUGrgYFhFVCOawGCD5MHqV8VANG/aglQEdC8qFUODCDAAqUZXBgAkf4Vu0W1iVAAAAAASUVORK5CYII=)
+}
+.nui-ico-search:hover {
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAA3NCSVQICAjb4U/gAAAAPFBMVEX////l5eXe3t7d3d3FxcWZmZmRkZGPj4+HhoeFhYV4eHh2dnZMTExMS0xKSko+Pj49PT0+PT44ODgzMzNIbSS8AAAAFHRSTlMA/////////////////////////7rhY6kAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzIzLzEyTRdLHQAAAGBJREFUCJlVjdsOgCAMQwsThQmo9P//VZiXaB+anHRdAbiYW4kOpmnn0DENcBtVIMpjpImrnShj90oxEpbujVcdbN3Km2Xr6d1L4+dO9fBKzp+9rmCLsbaalgcvhR8hBJyhVwRurSNczgAAAABJRU5ErkJggg==)
+}
+.hc {
+    width: 238px;
+    height: 269px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid #cecece;
+    border-top-width: 0;
+    background-color: #FFF;
+    zoom: 1;
+    border-radius: 0 0 3px 3px;
+}
+.nui-scroll {
+    position: relative;
+    overflow: auto;
+}
+.nui-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+.nui-scroll::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+.nui-scroll::-webkit-scrollbar-track:hover {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.01);
+}
+.nui-scroll::-webkit-scrollbar-track:active {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.nui-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+.nui-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+.nui-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1);
+}
+.nui-scroll::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.6);
+}
+.nui-tree {
+    margin-left: 0;
+    overflow: visible;
+}
+.nui-tree-item {
+    clear: both;
+    font-size: 12px;
+    light-height: 1.666;
+    position: relative;
+    zoom: 1;
+}
+.nui-tree-item-label {
+    padding-left: 12px;
+    color: #555;
+    padding: 3px 4px 3px 12px;
+    display: block;
+    position: relative;
+    zoom: 1;
+}
+.nui-tree-item-label:hover {
+    cursor: pointer;
+    background: #f5f5f5;
+}
+a {
+    text-decoration: none;
+}
+.nui-tree-item-text{
+    word-break: break-all;
+    word-wrap: break-word;
+    position: relative;
+    z-index: 1;
+}
+.nD {
+    width: 240px;
+    height: auto;
+    float: left;
+    position: relative;
+}
+.jR {
+    height: 16px;
+    padding: 6px 0;
+    line-height: 16px;
+    color: #999;
+    font-size: 12px;
+    position: relative;
+}
+.nui-txt-link {
+    write-space: nowrap;
+    position: absolute;
+    right: -3px;
+    top: 4px;
+    font-size: 12px !important;
+    outline: 0;
+    cursor: pointer;
+    padding: 2px 4px 4px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #41a489;
+}
+.jS {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid #cecece;
+    height: 296px;
+    border-radius: 3px;
+    background-color: #FFF;
+}
+.nui-tree-item-ext {
+    width: 15px;
+    height: 14px;
+    overflow: hidden;
+    right: 10px;
+    top: 6px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    color: #555;
+}
+.nui-ico-prev {
+    width:13px;
+    height:12px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMBAMAAABLmSrqAAAAA3NCSVQICAjb4U/gAAAAElBMVEX///9mZmZmZmZmZmZmZmZmZmahgyBVAAAABnRSTlMARHeIu//wKLP7AAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzE2LzEyPWnB/wAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAzSURBVAiZY2BgYBJgAANVBzDFFGoA4QZBuQoQbigIBDCYQmlmqDIG02AIjRBwgAqAzAUAj1QIWSPBHx8AAAAASUVORK5CYII=) no-repeat
+}
+.nui-ico-next {
+    width:13px;
+    height:12px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMBAMAAABLmSrqAAAAA3NCSVQICAjb4U/gAAAAElBMVEX///9mZmZmZmZmZmZmZmZmZmahgyBVAAAABnRSTlMARHeIu//wKLP7AAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzE2LzEyPWnB/wAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAxSURBVAiZY2BgYBBigABXBQhtGgShmUOhAqpAgVAwUIDSBhCFwVB1KFwGVwiXQRiIAYl2CFoQXdB/AAAAAElFTkSuQmCC) no-repeat
+}
+ul, ol {
+    list-style: none;
+}
+ul, ol, li, p {
+    margin: 0;
+    padding: 0;
+}
+.fp {
+    height: 22px;
+    line-height: 22px;
+    position: relative;
+}
+.cV {
+    width: 206px;
+    height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    text-indent: 8px;
+    color: #555;
+    cursor: default;
+}
+.cf {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    color: #555;
+    visibility: hidden;
+}
+.cf:hover {
+    color: #000;
+}
+.cF {
+    background-color: #f5f5f5;
+}
+.cF .cf {
+    visibility: visible;
 }
