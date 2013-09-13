@@ -41,11 +41,10 @@ module ScheduleHelper
     events_block = "events:["
     @tourreport.each do |tour| 
       datesplit = tour.tourdate.to_s().split('-')
-      events_block << " {title: '接班#{tour.lastdeep},进尺#{tour.tourshift},交班#{tour.currentdeep}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) },"
+      events_block << " {title: '接班#{tour.lastdeep},进尺#{tour.tourshift},交班#{tour.currentdeep},id#{tour.id}',start:new Date(#{datesplit[0]},#{datesplit[1]}-1,#{datesplit[2]}) },"
     end
     events_block = events_block.chop
     events_block << "]"
-
 
     code =<<-END_OF_CODE
 	$(document).ready(function() {
@@ -62,7 +61,17 @@ module ScheduleHelper
 				right: 'month,basicWeek,basicDay'
 			},
 			editable: true,
-            #{events_block}
+            #{events_block},
+            eventClick: function(calEvent,jsEvent,view)
+            {
+              //alert(calEvent.title);
+              var str = calEvent.title;
+              var i = str.indexOf("id");
+              var idstr = str.substring(i+2);
+              //alert(idstr); 
+              window.open("#{tourreports_path}/"+idstr);
+
+            }
 		});
 	});
     END_OF_CODE
