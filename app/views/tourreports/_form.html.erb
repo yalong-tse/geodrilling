@@ -320,15 +320,42 @@
 <% end %>
 <% content_for :inline_javascripts do %>
   <script type="text/javascript">
-    $(function(){
+
+
+    var Fun_finishtime = function(){$(this).parent().parent("div[class='control-group']").next().find("input[class='time_picker input-mini']").val($(this).val());}
+
+    var Fun_starttime = function(){$(this).parent().parent("div[class='control-group']").find("input[class='time_picker input-mini']").val($(this).val());}
+
+    var Fun_computetime = function(){
+
+    var drilltime = "00:00";
+    var auxtime = "00:00";
+
+    $("select[name='workcontent[]']").each(function(i){ 
+      var _starttime = $(this).parent().parent("div[class='control-group']").find("input[name='workcontent_starttime[]']").val();
+      var _endtime = $(this).parent().parent("div[class='control-group']").find("input[name='workcontent_finishtime[]']").val();
+      var _span = compute_time(_starttime,_endtime);
+
+      if($(this).val()=="钻进") 
+      {
+        drilltime = add_time(drilltime,_span);
+        $("#tourreport_tourdrillingtime").val(drilltime);
+      }
+      else
+      {
+        auxtime = add_time(auxtime,_span);
+        $("#tourreport_tourauxiliarytime").val(auxtime);
+      }
+    });
+  }
+    
+
+  $(function(){
 
   worktime_ready();
+  refresh_event();
 
   $("#tourreport_tourdate").datepicker({format:'yyyy-mm-dd'});
-
-  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",function(){$(this).parent().parent("div[class='control-group']").next().find("input[class='time_picker input-mini']").val($(this).val());});
-
-  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",function(){$(this).parent().parent("div[class='control-group']").find("input[class='time_picker input-mini']").val($(this).val());});
 
   $("#formservice").validate({
   rules:{
@@ -424,15 +451,32 @@
       $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
       $(obj).parent("div").after(delete_row_content);
     }
-
+    refresh_event();
   }
 
+  function refresh_event()
+  {
+  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
+  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",Fun_finishtime);
+
+  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").unbind("change",Fun_starttime);
+  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",Fun_starttime);
+
+  $("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
+  $("input[class='time_picker input-mini']").bind("change",Fun_computetime);
+  $("select[name='workcontent[]']").unbind("change",Fun_computetime);
+  $("select[name='workcontent[]']").bind("change",Fun_computetime);
+
+  }
 
   function add_line()
   {
     // alert($("#_line_container div").first());
     $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
     worktime_ready();
+    refresh_event();
+    $("input[class='time_picker input-mini']").trigger("change");
+
   }
 
   function compute_content(obj)
@@ -464,7 +508,42 @@
   function deleteRow(obj)
   {
     $(obj).parent("div[class='control-group']").remove();
+    refresh_event();
+    $("input[class='time_picker input-mini']").trigger("change");
   }
+
+  function compute_time(startstr,finishstr)
+  {
+        var _starttime_ms = Date.parse("2013/09/13 " + startstr);
+        var _endtime_ms = Date.parse("2013/09/13 " + finishstr);
+        var _span = _endtime_ms - _starttime_ms;
+        var hours = Math.floor(_span/(3600*1000));
+        var leave = _span%(3600*1000);
+        var minutes = Math.floor(leave/(60*1000));
+        if(minutes<10)
+        {
+          return hours+":0"+minutes;
+        }
+        else
+        {
+          return hours+":"+minutes;
+        }
+    
+  }
+  function add_time(time1,time2)
+  {
+    var timearr1 = time1.split(":");
+    var timearr2 = time2.split(":");
+    var hoursum = parseInt(timearr1[0]) + parseInt(timearr2[0]);
+    var minutesum = parseInt(timearr1[1]) + parseInt(timearr2[1]);
+    var hourleft = Math.floor(minutesum/60);
+    var minutesleft = minutesum%60;
+    var hourtotal = hoursum + hourleft;
+    if (minutesleft <10)
+      return hourtotal + ":0" + minutesleft;
+    else
+      return hourtotal + ":" + minutesleft;
+  } 
 
   </script>
 <% end %>
