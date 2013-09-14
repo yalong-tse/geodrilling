@@ -211,6 +211,14 @@ html, body {
 a {
     text-decoration: none;
 }
+/*去除掉bootstrap中的a:hover样式*/
+a:hover {
+    text-decoration: none;
+    color: #555;
+}
+#removeall:hover {
+    color: #41a489;
+}
 .nui-tree-item-text{
     word-break: break-all;
     word-wrap: break-word;

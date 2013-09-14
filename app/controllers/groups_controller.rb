@@ -20,6 +20,8 @@ class GroupsController < ApplicationController
   end
 
   def new
+    # 找到所有的没有分组的用户及他们所属的部门
+    @users = User.all - User.joins(:groups).where("groups.id IS NOT NULL")
     
   end
 end

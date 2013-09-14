@@ -16,68 +16,14 @@
 
         <div class="nui-tree" id="left_tree">
 
-          <div class="nui-tree-item">
-            <a id="left_1" href="javascript: void(0)" class="nui-tree-item-label" title="张三(铁科院)">
-              <span class="nui-tree-item-text">张三</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-          <div class="nui-tree-item">
-            <a id="left_2" href="javascript: void(0)" class="nui-tree-item-label" title="李斯(工管中心)">
-              <span class="nui-tree-item-text">李斯</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_3" href="javascript: void(0)" class="nui-tree-item-label" title="王五(工管中心)">
-              <span class="nui-tree-item-text">王五</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_4" href="javascript: void(0)" class="nui-tree-item-label" title="张柳(工管中心)">
-              <span class="nui-tree-item-text">张柳</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_5" href="javascript: void(0)" class="nui-tree-item-label" title="李鹏达(工管中心)">
-              <span class="nui-tree-item-text">李鹏达</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_6" href="javascript: void(0)" class="nui-tree-item-label" title="张三(工管中心)">
-              <span class="nui-tree-item-text">张三</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_7" href="javascript: void(0)" class="nui-tree-item-label" title="刘芳(工管中心)">
-              <span class="nui-tree-item-text">刘芳</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_8" href="javascript: void(0)" class="nui-tree-item-label" title="张震(工管中心)">
-              <span class="nui-tree-item-text">张震</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
-
-	  <div class="nui-tree-item">
-            <a id="left_9" href="javascript: void(0)" class="nui-tree-item-label" title="王一函(工管中心)">
-              <span class="nui-tree-item-text">王一函</span>
-              <span class="nui-ico nui-tree-item-ext" style="display: none;">y</span>
-            </a>
-          </div>
+          <% @users.each do |user| %>
+            <div class="nui-tree-item">
+              <a id="left_<%= user.id %>" href="javascript:void(0)" class="nui-tree-item-label" title="<%= user.name %>">
+                <span class="nui-tree-item-text"><%= user.name %></span>
+                <span class="nui-ico nui-tree-item-ext" style="display:none;">y</span>
+              </a>
+            </div>
+          <% end %>
 
         </div>
       </div>
