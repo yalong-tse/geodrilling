@@ -14,11 +14,12 @@ class TourreportsController < ApplicationController
   end
 
   def indexformodify
-    @tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
+    #@tourreports = Tourreport.paginate(:page=>params[:page],:per_page=>5).all
 
+    @holeid = params[:holeid]
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @tourreports }
+      format.json { render json: TourreportsmodifyDatattable.new(view_context,params[:holeid]) }
     end
   end
 

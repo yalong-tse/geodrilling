@@ -28,6 +28,13 @@ class HolesController < ApplicationController
     end
   end
 
+  # for 班报修改的钻孔列表页面
+  def tourreportsmodify
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: HolelistmodifyDatatable.new(view_context) }
+    end
+  end
   # GET /holes/1
   # GET /holes/1.json
   #

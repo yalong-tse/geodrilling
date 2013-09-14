@@ -1,0 +1,77 @@
+<% content_for(:title,"班报修改") %>
+<% content_for(:page_header_description, "用来班报修改的钻孔列表") %>
+<div class="row-fluid">
+<table class="table table-striped" id="_hole_table">
+<thead>
+  <tr>
+    <th>孔号</th>
+    <th>合同名称</th>
+    <th>设计深度</th>
+    <th>当前深度</th>
+    <th>设计岩心采取率</th>
+    <th>实际岩心采取率</th>
+    <th>开始日期</th>
+    <th>钻孔状态</th>
+    <th>操作</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+
+<% content_for :inline_javascripts do %>
+<script language="javascript">
+  $(function(){
+    $("a").bind('ajax:success',function(event,data,status,xhr){
+      ("#_minearea").html(data.minearea);
+    }).bind('ajax:error',function(event,xhr,status,error){});
+
+    $("div.dt-search").html("<input id='dt-search-input' type='text''><button id='dt-search-btn' class='btn btn-mini'><i class='icon-search'></i></button>");
+
+    $("#dt-search-btn").click(function(){
+      var filterString = $('#dt-search-input').val();
+      oTable1.fnFilter(filterString);
+    });
+  });
+
+   var oTable1=$("#_hole_table").dataTable({
+        "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false} ],
+        "bProcessing":true,
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=holes_tourreportsmodify_path(:format=>:json) %>",
+        "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" },
+        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        }
+     );
+
+
+  function open_tourreports(url)
+  {
+    window.location.href=url;
+  }
+
+  function new_tourreports(url)
+  {
+    window.location.href=url;
+  }
+
+  function open_schedule_tourreports(url)
+  {
+    window.location.href=url;
+  }
+</script>
+<% end %>
