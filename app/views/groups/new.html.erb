@@ -1,4 +1,23 @@
+<%= content_for :inline_stylesheets do %>
+  <style type="text/css">
+    #button-toolbar {
+      position: absolute;
+      display: inline-block;
+      left: 100px;
+    }
+    div.rdisplay {
+      postion: relative;
+    }
+  </style>
+<% end %>
 
+<div class="row rdisplay">
+  <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
+  <div id="button-toolbar">
+    <button class="btn btn-mini btn-success">保存</button>
+  </div>
+</div>
+<div>
 <dl class="nb">
   <dt class="kb">选择人员</dt>
   <dd class="jp">
@@ -49,6 +68,7 @@
     </div>
   </dd>
 </dl>
+</div>
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(document).ready(function() {

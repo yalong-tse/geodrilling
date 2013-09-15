@@ -1,3 +1,6 @@
+<div class="row add-bottom-height">
+  <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
+</div>
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
@@ -25,5 +28,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to t('labels.new'), new_group_path, :class=>"btn btn-primary" %>
+<%= link_to t('labels.new'), new_group_path(groupflag: groupflag), :class=>"btn btn-primary" %>
 <%= submit_tag t('labels.destroy'), :class => "btn" %>
