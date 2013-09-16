@@ -3,7 +3,8 @@
     #button-toolbar {
       position: absolute;
       display: inline-block;
-      left: 100px;
+      left: 110px;
+      top: 0px;
     }
     div.rdisplay {
       postion: relative;
@@ -14,7 +15,8 @@
 <div class="row rdisplay">
   <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
   <div id="button-toolbar">
-    <button class="btn btn-mini btn-success">保存</button>
+    <button id="btn-save" class="btn btn-mini btn-success">保存</button>
+    <%= link_back :class => "btn btn-mini" %>
   </div>
 </div>
 <div>
@@ -55,14 +57,14 @@
       </div>
       <div class="jS nui-scroll">
         <ul id="addGroupListUL">
-				<!--
-                                    <li class="fp" id="glist_li_1">
+	  <!--
+              <li class="fp" id="glist_li_1">
                 <p class="cV">张三</p>
                 <a href="javascript:void(0)" class="cf" title="移除">
                   <b class="nui-ico">g</b>
                 </a>
               </li>
-				-->
+	  -->
         </ul>
       </div>
     </div>
@@ -128,7 +130,19 @@
 
     });
 
-  });
+    var user_ids="";
+    $("#btn-save").click(function() {
+      $("#addGroupListUL").children().each(function(i) {
+        // console.log(i+": " + $(this).attr("id"));
+        user_ids += $(this).attr("id") + ",";
+        //console.log(user_ids);
+      });
+      console.log(user_ids);
+    });
+
+  });//end of jquery document ready
+
+  
 </script>
 
 <% end %>
