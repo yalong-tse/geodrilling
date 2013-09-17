@@ -12,7 +12,7 @@
   </style>
 <% end %>
 
-<div class="row rdisplay">
+<div class="rdisplay">
   <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
   <div id="button-toolbar">
     <button id="btn-save" class="btn btn-mini btn-success">保存</button>
@@ -71,9 +71,20 @@
   </dd>
 </dl>
 </div>
+<div id="alert_modal" role="dialog" class="modal hide fade">
+  <div class="modal-header">
+    <h3>提示</h3>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button id="close_modal" class="btn btn-primary">关闭</button>
+  </div>
+</div>
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(document).ready(function() {
+
     $('input.nui-ipt-input[type="text"]').focus(function() {
       $(this).prev().css("display", "none");
       $('#search').addClass("nui-ipt-focus");
@@ -132,14 +143,24 @@
 
     var user_ids="";
     $("#btn-save").click(function() {
+      user_ids = "";
       $("#addGroupListUL").children().each(function(i) {
         // console.log(i+": " + $(this).attr("id"));
-        user_ids += $(this).attr("id") + ",";
+
+        user_ids += $(this).attr("id").substr(6) + ","; // 去除id中的right_部分，只保留数字
         //console.log(user_ids);
       });
+      if(user_ids == "") {
+        $("#alert_modal").modal('show');
+      }
       console.log(user_ids);
     });
 
+
+
+    $("#close_modal").click(function() {
+      $("#alert_modal").modal('hide');
+    });
   });//end of jquery document ready
 
   
