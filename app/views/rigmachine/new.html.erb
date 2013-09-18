@@ -1,12 +1,23 @@
-<div class="page-header">
-  <h5>
-  <ul class="breadcrumb warn warn-info">
-    <li>设备管理<span class="divider">/</span></li>
-    <li><a href="<%=equipment_stockin_path %>">设备入库</a><span class="divider">/</span></li>
-    <li>钻机入库单</li>
-  </ul>
-  </h5>
-</div>
+<% content_for(:title, "设备管理﹥钻机入库") %>
+<% content_for(:page_header_description, "钻塔入库") %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min" %>
+  <%= stylesheet_link_tag "chosen" %>
+  <%= stylesheet_link_tag 'datepicker' %>
+<% end %>
+
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+  <%= javascript_include_tag 'fuelux/fuelux.spinner.min' %>
+  <%= javascript_include_tag 'date-time/moment.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
+  <%= javascript_include_tag 'date-time/daterangepicker.min' %>
+  <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
+<% end %>
+
 <%= form_for @rigmachine, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
   <% if @rigmachine.errors.any? %>
     <div id="error_explanation">
@@ -19,13 +30,30 @@
     </div>
   <% end %>
 
+  <div class="row-fluid">
+  <div class="span6">
+  <div class="control-group">
+    <%= f.label "设备编号", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :devicenumber , :class=>"input-large" %>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "钻机型号", :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :rigmodel , :class=>"input-large" %>
     </div>
   </div>
+  </div>
+  </div>
   
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "钻孔直径", :class=>"control-label" %>
     <div class="controls">
@@ -34,25 +62,40 @@
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
+
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "钻机功率", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :rigPower , :class=>"input-large" %><span class="add-on">KW</span>
+        <%= f.text_field :rigPower , :class=>"input-large" %><span class="add-on">kW</span>
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
+
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "钻孔深度", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :righoleDeep , :class=>"input-large" %><span class="add-on">米</span>
+        <%= f.text_field :righoleDeep , :class=>"input-large" %><span class="add-on">m</span>
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
+
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "钻机重量", :class=>"control-label" %>
     <div class="controls">
@@ -61,7 +104,12 @@
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
+
+  <div class="row-fluid">
+  <div class="span6">
   <div class="control-group">
     <%= f.label "转速", :class=>"control-label" %>
     <div class="controls">
@@ -70,12 +118,14 @@
       </div>
     </div>
   </div>
+  </div>
+  </div>
 
   <div class="control-group">
     <%= f.label "外观尺寸", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)x宽(mm)x高(mm)</span>
+        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)×宽(mm)×高(mm)</span>
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@
   <div class="row-fluid">
   <div class="span12">
   <div class="control-group">
-    <%= f.label "孔号" ,:class=>"control-label" %>
+    <%= f.label "钻孔编号" ,:class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :holenumber , :class=>"input-xxlarge" %>
     </div>
@@ -109,7 +109,7 @@
   <div class="control-group">
     <%= f.label "钻探目的" ,:class=>"control-label"%>
     <div class="controls">
-      <%= f.select :drillingpurpose , options_for_select(Hole::DRILLINGPURPOSE), :class=>"text_field"%>
+      <%= f.select :drillingpurpose , options_for_select(Hole::DRILLINGPURPOSE), :class=>"text_field"%><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="请下拉选择钻探目的" >?<span>
     </div>
   </div>
   </div>
@@ -170,6 +170,7 @@
 
   $(function(){
 
+  $(".ace-popover").popover();
   $('#_hole_file').ace_file_input({
         no_file:'未选择文件 ...',
         btn_choose:'选择',
