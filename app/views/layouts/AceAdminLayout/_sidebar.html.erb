@@ -208,20 +208,21 @@
     </a>
 
     <ul class="submenu">
-      <li <%= active_page?(users_main_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t("headers.system.people.manage") )), users_main_path %>
-      </li>
 
       <li <%= active_page?(department_tree_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.department.manage'))), department_tree_path %>
       </li>
 
-      <li <%= active_page?(roles_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.role.manage'))), roles_path %>
+      <li <%= active_page?(users_main_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t("headers.system.people.manage") )), users_main_path %>
       </li>
 
       <li <%= active_page?(groups_main_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.group.index'))), groups_main_path %>
+      </li>
+
+      <li <%= active_page?(roles_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.role.manage'))), roles_path %>
       </li>
 
       <li <%= active_page?(dictionary_index_path) %>>

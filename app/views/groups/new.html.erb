@@ -1,4 +1,25 @@
+<%= content_for :inline_stylesheets do %>
+  <style type="text/css">
+    #button-toolbar {
+      position: absolute;
+      display: inline-block;
+      left: 110px;
+      top: 0px;
+    }
+    div.rdisplay {
+      postion: relative;
+    }
+  </style>
+<% end %>
 
+<div class="rdisplay">
+  <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
+  <div id="button-toolbar">
+    <button id="btn-save" class="btn btn-mini btn-success">保存</button>
+    <%= link_back :class => "btn btn-mini" %>
+  </div>
+</div>
+<div>
 <dl class="nb">
   <dt class="kb">选择人员</dt>
   <dd class="jp">
@@ -36,22 +57,34 @@
       </div>
       <div class="jS nui-scroll">
         <ul id="addGroupListUL">
-				<!--
-                                    <li class="fp" id="glist_li_1">
+	  <!--
+              <li class="fp" id="glist_li_1">
                 <p class="cV">张三</p>
                 <a href="javascript:void(0)" class="cf" title="移除">
                   <b class="nui-ico">g</b>
                 </a>
               </li>
-				-->
+	  -->
         </ul>
       </div>
     </div>
   </dd>
 </dl>
+</div>
+<div id="alert_modal" role="dialog" class="modal hide fade">
+  <div class="modal-header">
+    <h3>提示</h3>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button id="close_modal" class="btn btn-primary">关闭</button>
+  </div>
+</div>
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(document).ready(function() {
+
     $('input.nui-ipt-input[type="text"]').focus(function() {
       $(this).prev().css("display", "none");
       $('#search').addClass("nui-ipt-focus");
@@ -108,7 +141,29 @@
 
     });
 
-  });
+    var user_ids="";
+    $("#btn-save").click(function() {
+      user_ids = "";
+      $("#addGroupListUL").children().each(function(i) {
+        // console.log(i+": " + $(this).attr("id"));
+
+        user_ids += $(this).attr("id").substr(6) + ","; // 去除id中的right_部分，只保留数字
+        //console.log(user_ids);
+      });
+      if(user_ids == "") {
+        $("#alert_modal").modal('show');
+      }
+      console.log(user_ids);
+    });
+
+
+
+    $("#close_modal").click(function() {
+      $("#alert_modal").modal('hide');
+    });
+  });//end of jquery document ready
+
+  
 </script>
 
 <% end %>

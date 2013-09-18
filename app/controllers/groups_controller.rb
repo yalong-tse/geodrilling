@@ -4,7 +4,8 @@ class GroupsController < ApplicationController
 
   def index
     logger.info "-----------------#{params[:groupflag]}"
-    @users = Group.find_by_groupflag(params[:groupflag]).users
+    @group = Group.find_by_groupflag(params[:groupflag])
+    @users = @group.users
     # @users1 = Group.find_by_groupflag(1).users # 项目经理
     # @users2 = Group.find_by_groupflag(2).users # 机长
     # @users3 = Group.find_by_groupflag(3).users # 班长
@@ -20,8 +21,16 @@ class GroupsController < ApplicationController
   end
 
   def new
+    logger.debug "*******************#{params[:groupflag]}"
+    @group = Group.find_by_groupflag(params[:groupflag])
     # 找到所有的没有分组的用户及他们所属的部门
     @users = User.all - User.joins(:groups).where("groups.id IS NOT NULL")
     
   end
+
+  def groupflag
+    params[:groupflag]
+  end
+
+  helper_method :groupflag
 end
