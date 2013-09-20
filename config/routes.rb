@@ -50,6 +50,7 @@ Geodrilling::Application.routes.draw do
 
   get "drilltower/show"
   get "drilltower/resume"
+  get "drilltower/download"
 
   get "equipment/stockin"
 

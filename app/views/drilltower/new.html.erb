@@ -18,7 +18,7 @@
   <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
 <% end %>
 
-<%= form_for @drilltower, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
+<%= form_for @drilltower, :url=>{:action=>"create"} ,:html=>{:multipart=>true,:class=>"form-horizontal" } do |f| %>
   <% if @drilltower.errors.any? %>
     <div id="error_explanation">
       <h2> <%=pluralize(@drilltower.errors.count, "error") %> 错误由于：</h2>
@@ -185,18 +185,26 @@
   </div>
   </div>
 
+  <div class="row-fluid">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "图片", :class=>"control-label" %>
     <div class="controls">
-     <i class="icon-folder-open"></i><%= f.file_field :picture,:class=>"text" %>
+      <input name="picture" type="file" class="input-medium" id="_drilltower_picture" />
     </div>
   </div>
+  </div>
+  </div>
 
+  <div class="row-fluid">
+  <div class="span5">
   <div class="control-group">
     <%= f.label "备注", :class=>"control-label" %>
     <div class="controls">
       <%= f.text_area :remark , :rows=>"4", :cols=>"20" , :class=>"input-xxlarge" %>
     </div>
+  </div>
+  </div>
   </div>
 
   <div class="form-actions">
@@ -209,6 +217,36 @@
 
   $(function(){
   $(".ace-popover").popover();
+
+  $('#_drilltower_picture').ace_file_input({
+        no_file:'未选择文件 ...',
+        btn_choose:'选择',
+        btn_change:'重新选择',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+        });
+
+  $("#new_drilltower").validate({
+  rules:{
+  "drilltower[devicenumber]":{required:true,maxlength:500},
+  "drilltower[model]":{required:true, maxlength:50},
+  "drilltower[weight]":{required:true},
+  "drilltower[manufacture]":{required:true},
+  "drilltower[manufactureContact]":{required:true},
+  },
+  messages:{
+     "drilltower[devicenumber]":{required:"设备编号不能为空",maxlength:"设备编号不能超过500字符"},
+     "drilltower[model]":{required:"钻塔型号不能为空", maxlength:"钻塔型号不能超过50字符"},
+     "drilltower[weight]":{required:"钻孔重量不能为空"},
+     "drilltower[manufacture]":{required:"厂商不能为空"},
+     "drilltower[manufactureContact]":{required:"厂商联系方式不能为空"},
+  }
+ });
 
 });
 </script>

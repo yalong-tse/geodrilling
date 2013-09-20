@@ -53,9 +53,8 @@ class RigmachineController < ApplicationController
 
   def download
     @attachment = Attachment.find(params[:id]) if params[:id]
-#    logger.info("the id is : #{params[:id]}")
     filename ="#{@attachment.savepath}/#{@attachment.savefilename}"
-#    logger.info("the filename is #{filename}")
     send_file filename if filename
   end
+
 end

@@ -1,37 +1,62 @@
-<div class="page-header">
-  <h3>设备管理/设备入库/钻塔入库单查看</h3>
-</div>
-<p id="notice"> <%= notice %> </p>
-<dl class="dl-horizontal">
-  <dt><strong>钻塔型号</strong></dt>
-  <dd><%= @drilltower.model %> </dd>
-  <dt><strong>钻塔高度</strong></dt>
-  <dd><%= @drilltower.height %> </dd>
-  <dt><strong>钻塔深度</strong></dt>
-  <dd><%= @drilltower.deep %> </dd>
-  <dt><strong>钻塔有效载荷</strong></dt>
-  <dd><%= @drilltower.effectiveload %> </dd>
-  <dt><strong>提升钻杆根数与长度</strong></dt>
-  <dd><%= @drilltower.pipequantityAndLenght %> </dd>
-  <dt><strong>滑车组数与减轻负荷倍数</strong></dt>
-  <dd><%= @drilltower.sheaveQuantity %> </dd>
-  <dt><strong>钻塔顶宽尺寸</strong></dt>
-  <dd><%= @drilltower.topsize %> </dd>
-  <dt><strong>钻塔重量</strong></dt>
-  <dd><%= @drilltower.weight %> </dd>
-  <dt><strong>钻塔工作台高度</strong></dt>
-  <dd><%= @drilltower.workbenchHeight %> </dd>
-  <dt><strong>钻塔图片</strong></dt>
-  <dd>
-  <ul class="thumbnails">
-    <li class="span2">
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title,"钻塔入库单详情") %>
+
+<div class="container">
+  <table class="table table-hover">
+    <tr>
+      <th>项目名称</th>
+      <th>内容</th>
+    </tr>
+    <tr>
+      <td>设备编号</td>
+      <td><%= @drilltower.devicenumber%></td>
+    </tr>
+    <tr>
+      <td>钻塔型号</td>
+      <td><%= @drilltower.model %></td>
+    </tr>
+    <tr>
+      <td>钻塔高度</td>
+      <td><%= @drilltower.height %></td>
+    </tr>
+    <tr>
+      <td>钻塔深度</td>
+      <td><%= @drilltower.deep %></td>
+    </tr>
+    <tr>
+      <td>钻塔有效载荷</td>
+      <td><%= @drilltower.effectiveload %></td>
+    </tr>
+    <tr>
+      <td>提升钻杆根数与长度</td>
+      <td><%= @drilltower.pipequantityAndLenght %></td>
+    </tr>
+    <tr>
+      <td>滑车组数与减轻负荷倍数</td>
+      <td><%= @drilltower.sheaveQuantity %></td>
+    </tr>
+    <tr>
+      <td>钻塔顶宽尺寸</td>
+      <td><%= @drilltower.topsize %></td>
+    </tr>
+    <tr>
+      <td>钻塔重量</td>
+      <td><%= @drilltower.weight %></td>
+    </tr>
+    <tr>
+      <td>钻塔工作台高度</td>
+      <td><%= @drilltower.workbenchHeight %></td>
+    </tr>
+    <tr>
+      <td>钻塔图片</td>
+      <td>
       <div class="thumbnail">
-        <img data-src="holder.js/260x180" alt="钻塔图片" src="/assets/zuanta.jpg"/>
+        <img data-src="holder.js/260x180" alt="钻塔图片" src="<%=drilltower_download_path + "?id=" + @drilltower.attachment.id.to_s %>"/>
       </div>
-   </li>
- </ul>
- </dd>
-</dl>
+      </td>
+    </tr>
+  </table>
+</div>
 <div class="form-actions">
   <%= link_to "返回" , {:controller=>"equipment", :action=>"index"} , :class=>"btn" %>
 </div>

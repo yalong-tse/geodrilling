@@ -10,6 +10,7 @@ class DrilltowerController < ApplicationController
 
   def create
     @drilltower = Drilltower.new(params[:drilltower])
+    @drilltower.save_file(params[:picture]) if params[:picture]
     respond_to do |format|
       if @drilltower.save
         format.html {redirect_to :action=>"show", :id=>@drilltower , notice: '钻塔数据成功保存'}
@@ -49,6 +50,12 @@ class DrilltowerController < ApplicationController
     respond_to do |format|
       format.html
     end 
+  end
+
+  def download
+    @attachment = Attachment.find(params[:id]) if params[:id]
+    filename ="#{@attachment.savepath}/#{@attachment.savefilename}"
+    send_file filename if filename
   end
 
 end

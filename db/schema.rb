@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920033825) do
+ActiveRecord::Schema.define(:version => 20130920081244) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20130920033825) do
     t.boolean  "status"
     t.boolean  "groupstatus"
     t.decimal  "rigmachineid",          :precision => 10, :scale => 0
+    t.integer  "attachment_id"
   end
 
   create_table "equipment", :force => true do |t|
