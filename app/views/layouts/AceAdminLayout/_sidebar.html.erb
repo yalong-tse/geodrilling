@@ -85,32 +85,9 @@
   <% end %>
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(archive_contract_path) || current_page?(archive_hole_path) || current_page?(archive_tourreport_path))}" do %>
-    <a href="#" class="dropdown-toggle">
-      <i class="icon-tasks"></i>
-      <span>档案管理</span>
-
-      <b class="arrow icon-angle-down"></b>
-    </a>
-
-    <ul class="submenu">
-      <li <%= active_page?(archive_contract_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同归档')), archive_contract_path %>
-      </li>
-
-      <li <%= active_page?(archive_hole_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔')), archive_hole_path %>
-      </li>
-
-      <li <%= active_page?(archive_tourreport_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报')), archive_tourreport_path %>
-      </li>
-
-    </ul>
-  <% end %>
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) || current_page?(equipment_stockout_path) || current_page?(equipment_discard_path) ||current_page?(equipment_group_path) )}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) ||  current_page?(equipment_discard_path) ||current_page?(equipment_group_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-bell"></i>
       <span>设备管理</span>
@@ -127,12 +104,8 @@
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备入库')), equipment_stockin_path %>
       </li>
 
-      <li <%= active_page?(equipment_stockout_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备出库')), equipment_stockout_path %>
-      </li>
-
       <li <%= active_page?(equipment_discard_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备报废')), equipment_discard_path %>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>设备处理')), equipment_discard_path %>
       </li>
       
       <li <%= active_page?(equipment_group_path) %>>
@@ -198,6 +171,32 @@
 
     </ul>
   <% end %>
+
+  
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(archive_contract_path) || current_page?(archive_hole_path) || current_page?(archive_tourreport_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-tasks"></i>
+      <span>档案管理</span>
+
+      <b class="arrow icon-angle-down"></b>
+    </a>
+
+    <ul class="submenu">
+      <li <%= active_page?(archive_contract_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同归档')), archive_contract_path %>
+      </li>
+
+      <li <%= active_page?(archive_hole_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔')), archive_hole_path %>
+      </li>
+
+      <li <%= active_page?(archive_tourreport_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>班报')), archive_tourreport_path %>
+      </li>
+
+    </ul>
+  <% end %>
+
 
   <%= content_tag :li, :class => "#{active_menu?(current_page?(users_main_path) || current_page?(department_tree_path) || current_page?(roles_path) || current_page?(dictionary_index_path) || current_page?(useroperation_index_path) || current_page?(groups_index_path))}" do %>
     <a href="#" class="dropdown-toggle">
