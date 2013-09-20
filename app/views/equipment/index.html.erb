@@ -97,7 +97,7 @@
   $(function(){
 
    var oTable1=$("#_rigmachine_table").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null],
+     "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
@@ -115,7 +115,7 @@
     );
         
    var oTable2=$("#_drilltower_table").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null,null,null],
+     "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
@@ -133,7 +133,7 @@
      );
 
    var oTable3=$("#_pump_table").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,null],
+        "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,

@@ -28,8 +28,25 @@ private
         h(rigmachine.rotatingSpeed),
         h(rigmachine.pipeDiameter),
         h(rigmachine.manufacture),
-        h(rigmachine.status)
+        h(getstatus(rigmachine))
       ]
+    end
+  end
+
+  def getstatus(rigmachine)
+    if rigmachine
+      deployment = Deployment.where(:rigmachine_id=>rigmachine.id).first
+      if(deployment)
+        hole = Hole.find(deployment.hole_id) 
+        if hole
+          return "钻孔编号：" + hole.holenumber
+        else
+          return "空闲"
+        end
+      else
+        return "空闲"
+      end
+
     end
   end
 

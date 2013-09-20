@@ -30,8 +30,23 @@ private
         h(tower.topsize),
         h(tower.weight),
         h(tower.manufacture),
-        h(tower.status)
+        h(getstatus(tower))
       ]
+    end
+  end
+
+  def getstatus(tower)
+    if tower
+      deployment = Deployment.where(:drilltower_id=>tower.id).first
+      if deployment
+          if (deployment.hole)
+            return "钻孔编号:"+ deployment.hole.holenumber 
+          else
+            return "空闲"
+          end
+      else
+        return "空闲"
+      end
     end
   end
 

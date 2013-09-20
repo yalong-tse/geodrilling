@@ -31,8 +31,23 @@ private
         h(pump.pressure),
         h(pump.overallsize),
         h(pump.pressure),
-        h(pump.status)
+        h(getstatus(pump))
       ]
+    end
+  end
+
+  def getstatus(pump)
+    if pump 
+      deployment = Deployment.where(:pump_id=>pump.id).first
+      if deployment
+          if (deployment.hole)
+            return "钻孔编号:"+ deployment.hole.holenumber 
+          else
+            return "空闲"
+          end
+      else
+        return "空闲"
+      end
     end
   end
 
