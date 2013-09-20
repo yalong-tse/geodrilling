@@ -15,8 +15,9 @@ class Rigmachine < ActiveRecord::Base
   # status 占用状态
   # name 名称
   # devicenumber  设备编号
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed ,:name , :devicenumber , :status 
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed,:name, :devicenumber, :status,:attachment_id
 
+  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
   has_one :pump , :foreign_key=>"rigmachineid"
   has_one :drilltower, :foreign_key=>"rigmachineid"
   
@@ -24,6 +25,16 @@ class Rigmachine < ActiveRecord::Base
 
   # 所有未占用的钻机
   scope :unused , where("status=0 or status is null")
+
+  def save_file(file)
+    if !file.nil?
+      @attachment = Attachment.new
+      rename = @attachment.save_att(file)
+      logger.info("the rename is #{rename}");
+      @attachment.save
+      self.attachment_id = @attachment.id
+    end
+  end
 
 end
 

@@ -10,6 +10,8 @@ class RigmachineController < ApplicationController
 
   def create
     @rigmachine = Rigmachine.new(params[:rigmachine])
+    @rigmachine.save_file(params[:picture]) if params[:picture]
+    logger.info "-----------------------------"
     respond_to do |format|
       if @rigmachine.save
         format.html {redirect_to :action=>"show" , :id=>@rigmachine , notice:"钻机数据保存成功"}
@@ -47,5 +49,13 @@ class RigmachineController < ApplicationController
       format.html
       format.json {render json: @rigmachine}
     end
+  end
+
+  def download
+    @attachment = Attachment.find(params[:id]) if params[:id]
+#    logger.info("the id is : #{params[:id]}")
+    filename ="#{@attachment.savepath}/#{@attachment.savefilename}"
+#    logger.info("the filename is #{filename}")
+    send_file filename if filename
   end
 end
