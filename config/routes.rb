@@ -27,6 +27,7 @@ Geodrilling::Application.routes.draw do
 
   get "pump/show"
   get "pump/resume"
+  get "pump/download"
 
   get "rigmachine/index"
 

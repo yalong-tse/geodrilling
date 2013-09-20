@@ -17,7 +17,7 @@
   <%= javascript_include_tag 'date-time/daterangepicker.min' %>
   <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
 <% end %>
-<%= form_for @pump, :url=>{:action=>"create"} ,:html=>{:class=>"form-horizontal" } do |f| %>
+<%= form_for @pump, :url=>{:action=>"create"} ,:html=>{:multipart=>true,:class=>"form-horizontal" } do |f| %>
   <% if @pump.errors.any? %>
     <div id="error_explanation">
       <h2> <%=pluralize(@pump.errors.count, "error") %> 错误由于：</h2>
@@ -185,7 +185,7 @@
   <div class="control-group">
     <%= f.label "图片", :class=>"control-label" %>
     <div class="controls">
-     <i class="icon-folder-open"></i><%= f.file_field :picture,:class=>"text" %>
+      <input name="picture" type="file" class="input-medium" id="_pump_picture" />
     </div>
   </div>
   </div>
@@ -212,6 +212,40 @@
 
   $(function(){
   $(".ace-popover").popover();
+
+  $('#_pump_picture').ace_file_input({
+        no_file:'未选择文件 ...',
+        btn_choose:'选择',
+        btn_change:'重新选择',
+        droppable:false,
+        onchange:null,
+        thumbnail:false //| true | large
+        //whitelist:'gif|png|jpg|jpeg'
+        //blacklist:'exe|php'
+        //onchange:''
+        //
+        });
+
+  $("#new_pump").validate({
+  rules:{
+  "pump[devicenumber]":{required:true,maxlength:500},
+  "pump[pumpmodel]":{required:true, maxlength:50},
+  "pump[power]":{required:true},
+  "pump[pressure]":{required:true},
+  "pump[weight]":{required:true},
+  "pump[manufacture]":{required:true},
+  "pump[manufactureContact]":{required:true},
+  },
+  messages:{
+     "pump[devicenumber]":{required:"设备编号不能为空",maxlength:"设备编号不能超过500字符"},
+     "pump[pumpmodel]":{required:"泥浆泵型号不能为空", maxlength:"泥浆泵型号不能超过50字符"},
+     "pump[power]":{required:"泥浆泵功率不能为空"},
+     "pump[pressure]":{required:"泥浆泵压力不能为空"},
+     "pump[weight]":{required:"泥浆泵重量不能为空"},
+     "pump[manufacture]":{required:"厂商不能为空"},
+     "pump[manufactureContact]":{required:"厂商联系方式不能为空"},
+  }
+ });
 
 });
 </script>

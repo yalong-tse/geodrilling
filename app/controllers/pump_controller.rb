@@ -10,6 +10,7 @@ class PumpController < ApplicationController
 
   def create
     @pump = Pump.new(params[:pump])
+    @pump.save_file(params[:picture]) if params[:picture]
     respond_to do |format|
       if @pump.save
         format.html {redirect_to :action=>"show", :id=>@pump , notice:"泥浆泵数据保存成功"}
@@ -48,4 +49,11 @@ class PumpController < ApplicationController
       format.json {render json: @pump}
     end
   end
+
+  def download
+    @attachment = Attachment.find(params[:id]) if params[:id]
+    filename ="#{@attachment.savepath}/#{@attachment.savefilename}"
+    send_file filename if filename
+  end
+
 end
