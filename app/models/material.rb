@@ -6,5 +6,5 @@ class Material < ActiveRecord::Base
   # price 采购价格
   # stockdate 入库日期
   # recorder 记录人
-  attr_accessible :count, :model, :name, :price, :recorder, :remark, :stockdate, :materialtype
+  attr_accessible :count, :model, :name, :price, :recorder, :remark, :stockdate, :materialtype, :manufacture
 end

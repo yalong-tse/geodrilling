@@ -1,5 +1,23 @@
 <% content_for(:page_header_description, "输入字典项的内容") %>
-<%= form_for(:dictionary, :url=>dictionary_create_path(@dictionary), :html=>{:class=>"form-horizontal"} )  do |f|  %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min" %>
+  <%= stylesheet_link_tag "chosen" %>
+  <%= stylesheet_link_tag 'datepicker' %>
+<% end %>
+
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+  <%= javascript_include_tag 'fuelux/fuelux.spinner.min' %>
+  <%= javascript_include_tag 'date-time/moment.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
+  <%= javascript_include_tag 'date-time/daterangepicker.min' %>
+  <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
+<% end %>
+
+<%= form_for(@dictionary, :url=>dictionary_create_path(@dictionary), :html=>{:class=>"form-horizontal"} )  do |f|  %>
   <% if @dictionary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dictionary.errors.count, "error") %> prohibited this contract from being saved:</h2>
@@ -15,25 +33,25 @@
   <div class="control-group">
     <%= f.label "字典项" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :item , :class=>"input-xxlarge",:placeholder=>"起钻" %>
+      <%= f.text_field :item , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入字典的内容" >?<span>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "字典类型" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select :dictype ,options_for_select(Dictionary::DICTYPE), :class=>"input-xxlarge",:placeholder=>"起钻" %>
+      <%= f.select :dictype ,options_for_select(Dictionary::DICTYPE), :class=>"input-large" %> <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="选择字典的类型" >?<span>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "顺序号" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :priority , :class=>"input-large",:placeholder=>"10" %>
+      <%= f.text_field :priority , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入字典的顺序号，同一类型的按照顺序号排序" >?<span>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "备注" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_area :remark, :class=>"input-large", :rows=>"4",:placeholder=>"10" %>
+      <%= f.text_area :remark, :class=>"input-large", :rows=>"4" %>
     </div>
   </div>
 
@@ -41,4 +59,26 @@
     <button class="btn btn-primary" type="submit"><i class="icon-ok bigger-110"></i>新增字典项</button>
     <%= link_back :class=>'btn' %>
   </div>
+<% end %>
+<%= content_for :inline_javascripts do %>
+  <script type="text/javascript">
+
+  $(function(){
+  $(".ace-popover").popover();
+
+  $("#new_dictionary").validate({
+  rules:{
+  "dictionary[item]":{required:true,maxlength:500},
+  "dictionary[dictype]":{required:true, maxlength:50},
+  "dictionary[priority]":{required:true,digits:true},
+  },
+  messages:{
+     "dictionary[item]":{required:"字典项目不能为空",maxlength:"设备编号不能超过500字符"},
+     "dictionary[dictype]":{required:"字典类型不能为空", maxlength:"泥浆泵型号不能超过50字符"},
+     "dictionary[priority]":{required:"顺序号不能为空",digits:"顺序号必须为整数"},
+  }
+ });
+
+});
+</script>
 <% end %>

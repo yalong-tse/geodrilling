@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920094628) do
+ActiveRecord::Schema.define(:version => 20130921155516) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20130920094628) do
     t.datetime "updated_at",                                  :null => false
     t.string   "materialtype"
     t.string   "model"
+    t.string   "manufacture"
   end
 
   create_table "permissions", :force => true do |t|
