@@ -1,4 +1,9 @@
-<%content_for(:title,"设备报废") %>
+<%content_for(:title,"设备处理") %>
+<% content_for(:page_header_description, "进行设备处理的界面") %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'jquery.gritter.css' %>
+<% end %>
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">钻机</a></li>
@@ -7,36 +12,30 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="tab1">
-      <table class="table table-hover table-striped table-bordered ">
+      <table id="_rigmachine_table" class="table table-hover table-striped table-bordered ">
+        <thead>
         <tr>
+          <th>设备编号</th>
           <th>钻机型号</th>
           <th>钻机重量</th>
           <th>钻孔深度</th>
           <th>钻机功率</th>
           <th>转速</th>
           <th>钻孔直径</th>
-          <th>外观尺寸</th>
           <th>厂商</th>
+          <th>状态</th>
           <th>操作</th>
         </tr>
-        <% @rigmachine.each do |rig| %>
-          <tr>
-            <td> <%=rig.rigmodel %> </td>
-            <td> <%=rig.rigweight %> </td>
-            <td> <%=rig.righoleDeep %> </td>
-            <td> <%=rig.rigPower %> </td>
-            <td> <%=rig.rotatingSpeed %> </td>
-            <td> <%=rig.pipeDiameter %> </td>
-            <td> <%=rig.overallsize %> </td>
-            <td> <%=rig.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning" data-target="#_discard_modal" data-toggle="modal">报废申请</button></td>
-          </tr>
-        <% end %>
+      </thead>
+      <tbody>
+      </tbody>
       </table>
     </div>
     <div class="tab-pane active" id="tab2">
-      <table class="table table-hover table-striped table-bordered">
+      <table id="_drilltower_table" class="table table-hover table-striped table-bordered">
+        <thead>
         <tr>
+          <th>设备编号</th>
           <th>型号</th>
           <th>有效载荷</th>
           <th>深度</th>
@@ -46,27 +45,19 @@
           <th>顶宽尺寸</th>
           <th>重量</th>
           <th>厂商</th>
+          <th>状态</th>
           <th>操作</th>
         </tr>
-        <% @drilltower.each do |tower| %>
-          <tr>
-            <td> <%= tower.model %> </td>
-            <td> <%= tower.effectiveload %> </td>
-            <td> <%= tower.deep %> </td>
-            <td> <%= tower.height %> </td>
-            <td> <%= tower.pipequantityAndLenght %> </td>
-            <td> <%= tower.sheaveQuantity %> </td>
-            <td> <%= tower.topsize %> </td>
-            <td> <%= tower.weight %> </td>
-            <td> <%= tower.manufacture %> </td>
-            <td><button class="btn btn-small btn-warning" data-target="#_discard_modal" data-toggle="modal">报废申请</button></td>
-          </tr>
-        <% end %>
+      </thead>
+      <tbody>
+      </tbody>
       </table>
     </div>
     <div class="tab-pane" id="tab3">
-      <table class="table table-hover table-striped table-bordered">
+      <table id="_pump_table" class="table table-hover table-striped table-bordered">
+        <thead>
         <tr>
+          <th>设备编号</th>
           <th>型号</th>
           <th>缸径</th>
           <th>缸数</th>
@@ -77,23 +68,12 @@
           <th>功率</th>
           <th>压力</th>
           <th>外观尺寸</th>
+          <th>状态</th>
           <th>操作</th>
         </tr>
-        <% @pump.each do |pump| %>
-          <tr>
-            <td> <%= pump.pumpmodel %>  </td>
-            <td> <%= pump.pumpDiameter %>  </td>
-            <td> <%= pump.pumplineNumber %>  </td>
-            <td> <%= pump.stroke %>  </td>
-            <td> <%= pump.traffic %>  </td>
-            <td> <%= pump.weight %>  </td>
-            <td> <%= pump.power %>  </td>
-            <td> <%= pump.pressure %>  </td>
-            <td> <%= pump.overallsize %>  </td>
-            <td> <%= pump.pressure %>  </td>
-            <td><button class="btn btn-small btn-warning" data-target="#_discard_modal" data-toggle="modal">报废申请</button></td>
-          </tr>
-        <% end %>
+      </thead>
+      <tbody>
+      </tbody>
       </table>
 
     </div>
@@ -121,3 +101,84 @@
     <a href="#" class="btn btn-primary">确定</a>
   </div>
 </div>
+<br />
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+<% content_for :inline_javascripts do %>
+<script language="javascript">
+  $(function(){
+
+   var oTable1=$("#_rigmachine_table").dataTable({
+     "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
+        "bProcessing":true,
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=rigmachine_discard_path(:format=>:json) %>",
+        "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" },
+        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+    }
+    );
+        
+   var oTable2=$("#_drilltower_table").dataTable({
+     "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
+        "bProcessing":true,
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=drilltower_discard_path(:format=>:json) %>",
+        "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" },
+        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        }
+     );
+
+   var oTable3=$("#_pump_table").dataTable({
+        "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
+        "bProcessing":true,
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=pump_discard_path(:format=>:json) %>",
+        "oLanguage":{
+        "sLengthMenu":"每页 _MENU_",
+        "sZeroRecords":"对不起,没有数据",
+        "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
+        "sSearch": "检索",
+        "sProcessing": "系统正在处理...",
+        "sInfoFiltered":"(过滤_MAX_数据)" },
+        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        }
+     );
+
+  })
+
+  function rigmachine_resume(devicenumber)
+  {
+    window.location.href="<%=rigmachine_resume_path %>?devicenumber="+devicenumber
+  }
+
+  function drilltower_resume(devicenumber)
+  {
+    window.location.href="<%=drilltower_resume_path %>?devicenumber="+devicenumber
+  }
+
+  function pump_resume(devicenumber)
+  {
+    window.location.href="<%=pump_resume_path %>?devicenumber="+devicenumber
+  }
+</script>
+<% end %>

@@ -8,6 +8,13 @@ class RigmachineController < ApplicationController
     end
   end
 
+  def discard 
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json {render json: RigmachinesdiscardDatatable.new(view_context) }
+    end
+  end
+
   def create
     @rigmachine = Rigmachine.new(params[:rigmachine])
     @rigmachine.save_file(params[:picture]) if params[:picture]

@@ -8,6 +8,13 @@ class DrilltowerController < ApplicationController
     end
   end
 
+  def discard 
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json {render json: DrilltowersdiscardDatatable.new(view_context) }
+    end
+  end
+
   def create
     @drilltower = Drilltower.new(params[:drilltower])
     @drilltower.save_file(params[:picture]) if params[:picture]

@@ -8,6 +8,14 @@ class PumpController < ApplicationController
     end
   end
 
+  # 设备处理的返回的JSON
+  def discard 
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json {render json: PumpsdiscardDatatable.new(view_context) }
+    end
+  end
+
   def create
     @pump = Pump.new(params[:pump])
     @pump.save_file(params[:picture]) if params[:picture]

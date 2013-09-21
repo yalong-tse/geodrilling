@@ -28,6 +28,7 @@ Geodrilling::Application.routes.draw do
   get "pump/show"
   get "pump/resume"
   get "pump/download"
+  get "pump/discard"
 
   get "rigmachine/index"
 
@@ -40,6 +41,7 @@ Geodrilling::Application.routes.draw do
   get "rigmachine/show"
   get "rigmachine/resume"
   get "rigmachine/download"
+  get "rigmachine/discard"
 
   get "drilltower/index"
 
@@ -52,6 +54,7 @@ Geodrilling::Application.routes.draw do
   get "drilltower/show"
   get "drilltower/resume"
   get "drilltower/download"
+  get "drilltower/discard"
 
   get "equipment/stockin"
 
