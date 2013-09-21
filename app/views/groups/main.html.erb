@@ -60,7 +60,7 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane in active" id="dropdown1" data-src="/groups/index?groupflag=1">
-      <iframe frameborder="0" src="/groups/index?groupflag=1"></iframe>
+      <iframe id="iframe1" frameborder="0" src="/groups/index?groupflag=1"></iframe>
     </div>
     <div class="tab-pane" id="dropdown2" data-src="/groups/index?groupflag=2">
       <iframe frameborder="0" src=""></iframe>
@@ -103,12 +103,6 @@
 <% content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(function() {
-    //$('#myTab a[href="#tab2"]').click(function(e) {
-      //e.preventDefault();
-      //$(this).tab('show');
-      //$('#tab2').load('/users/main');
-    //});
-//    $("body").append("<div class='modal'></div>");
     $('#myTab a[href="#dropdown1"]').click(function(e){
       openiframe("#dropdown1");
     });

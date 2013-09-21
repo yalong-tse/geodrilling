@@ -2,14 +2,17 @@
 class GroupsController < ApplicationController
   layout "iframe_group", :only => [:index, :new]
 
+  def create
+    Group.save_users(params[:userids], params[:groupflag])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
-    logger.info "-----------------#{params[:groupflag]}"
     @group = Group.find_by_groupflag(params[:groupflag])
     @users = @group.users
-    # @users1 = Group.find_by_groupflag(1).users # 项目经理
-    # @users2 = Group.find_by_groupflag(2).users # 机长
-    # @users3 = Group.find_by_groupflag(3).users # 班长
-    # @users4 = Group.find_by_groupflag(4).users # 班员
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }

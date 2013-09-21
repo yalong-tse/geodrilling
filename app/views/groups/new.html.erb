@@ -15,7 +15,7 @@
 <div class="rdisplay">
   <span class="label label-large label-yellow arrowed-right"><%= @group.name %></span>
   <div id="button-toolbar">
-    <button id="btn-save" class="btn btn-mini btn-success">保存</button>
+    <%= link_to "保存", "javascript:void(0)", :id=>"btn-save", :class=>"btn btn-mini btn-success" %>
     <%= link_back :class => "btn btn-mini" %>
   </div>
 </div>
@@ -146,8 +146,21 @@
           $("div.my-modal", top.document).show(100);
           $("#modal-content", top.document).show(400);
         }
+      } else {
+        // 提交user_ids到server
+        $.post("<%= groups_path %>",
+               {
+                 "userids": user_ids,
+                 "authenticity_token": "<%= form_authenticity_token %>",
+                 "groupflag": <%= @group.groupflag %>
+               },
+               function(data) {
+                //
+               }
+              );
+        console.log(user_ids);
       }
-      console.log(user_ids);
+
     });
 
 
