@@ -71,16 +71,7 @@
   </dd>
 </dl>
 </div>
-<div id="alert_modal" role="dialog" class="modal hide fade">
-  <div class="modal-header">
-    <h3>提示</h3>
-  </div>
-  <div class="modal-body">
-  </div>
-  <div class="modal-footer">
-    <button id="close_modal" class="btn btn-primary">关闭</button>
-  </div>
-</div>
+
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -151,16 +142,15 @@
         //console.log(user_ids);
       });
       if(user_ids == "") {
-        $("#alert_modal").modal('show');
+        if(!$("div.my-modal", top.document).is(":visible")) {
+          $("div.my-modal", top.document).show(100);
+          $("#modal-content", top.document).show(400);
+        }
       }
       console.log(user_ids);
     });
 
 
-
-    $("#close_modal").click(function() {
-      $("#alert_modal").modal('hide');
-    });
   });//end of jquery document ready
 
   

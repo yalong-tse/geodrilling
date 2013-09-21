@@ -1,4 +1,36 @@
 <% provide(:title, '系统管理') %>
+<%= content_for :inline_stylesheets do %>
+  <style type="text/css">
+    .my-modal {
+      position: absolute;
+      left: 0;
+      right: 0;
+      /*top: 0;*/
+      top: -45px;
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.4;
+      filter: alpha(opacity=40); /* For IE8 and earlier */
+      z-index: 1000;  /* Important to set this */
+      display: none;
+    }
+    #modal-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 400px;
+      height: 200px;
+      margin: auto;
+      padding: 20px;
+      background-color: #FFF;
+      border: 4px solid #333;
+      z-index: 1001; /* Important to set this higner than .modal */
+      display: none;
+    }
+  </style>
+<% end %>
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab">
@@ -53,6 +85,21 @@
   </div>
 </div>
 
+<div class="my-modal"></div>
+<div id="modal-content" role="dialog">
+  <div class="modal-header">
+    <h3>提示</h3>
+  </div>
+  <div class="modal-body">
+    <div class="alert">
+      尚未选择任何人员!请选择!
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="close-modal" class="btn btn-primary">关闭</button>
+  </div>
+</div>
+
 <% content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(function() {
@@ -61,6 +108,7 @@
       //$(this).tab('show');
       //$('#tab2').load('/users/main');
     //});
+//    $("body").append("<div class='modal'></div>");
     $('#myTab a[href="#dropdown1"]').click(function(e){
       openiframe("#dropdown1");
     });
@@ -81,6 +129,25 @@
         $(paneID+" iframe").attr("src", src);
       //}
     });
+
+    $("#close-modal").click(function() {
+      //close the modal
+      if($("div.my-modal").is(":visible"))
+      {
+        $("div.my-modal").delay(200).hide(100);
+        $("#modal-content").hide(200);
+      }
+    });
+
+    $("#modal-content").click(function(e) {
+      // If you put the modal content inside modal background you need to
+      // stop propagation of the click event so that clicking inside the
+      // modal content doesn't close the modal
+
+      // Prevent click event to bubble up to div.modal
+      // e.stopPropagation();
+    });
+
   });
   function openiframe(paneID)
   {
