@@ -1,3 +1,4 @@
-var a = $("#dropdown1", window.parent.document).attr("data-src");
-$("#iframe1", window.parent.document).attr("src", a);
+var groupflag = <%= params[:groupflag] %>;
+var a = $("#dropdown"+groupflag, window.parent.document).attr("data-src");
+$("#iframe"+groupflag, window.parent.document).attr("src", a);
 
