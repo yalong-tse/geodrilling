@@ -38,6 +38,7 @@ class TourreportsController < ApplicationController
   # 以表格的样式展示班报
   def details
     @tourreport = Tourreport.find(params[:id])
+    @deployment = Deployment.find(:first,:conditions=>["hole_id=?",params[:id]])
     @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
     
     respond_to do |format|

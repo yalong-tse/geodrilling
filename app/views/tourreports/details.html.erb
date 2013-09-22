@@ -150,26 +150,26 @@ mso-hansi-theme-font:minor-latin'>钻进班报表记录样式</span></b><b style
 normal'><span lang=EN-US style='font-size:16.0pt'><o:p></o:p></span></b></p>
 
 <p class=MsoNormal style='text-indent:35.0pt;mso-char-indent-count:2.5'><span
-lang=EN-US style='font-size:12.0pt'>ZK1300</span>
+  lang=EN-US style='font-size:12.0pt'><%=@tourreport.hole.holenumber if @tourreport.hole %></span>
 <span style='mso-spacerun:yes'>&nbsp;</span></span></u><span
 lang=EN-US style='font-size:12.0pt'><span
 style='mso-spacerun:yes'>&nbsp;</span><span
 style='mso-spacerun:yes'></span><u><span
-style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;</span>10<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;</span><%=@deployment.rigmachine.devicenumber if @deployment && @deployment.rigmachine  %><span
 style='mso-spacerun:yes'>&nbsp; </span></u></span><span class="tablehead">号钻机</span><u><span lang=EN-US
-style='font-size:12.0pt'>2012 </span></u><span style='font-size:12.0pt;
+style='font-size:12.0pt'><%=@tourreport.tourdate.strftime("%Y") %></span></u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
 Calibri;mso-hansi-theme-font:minor-latin'>年</span><u><span style='font-size:
-12.0pt'> <span lang=EN-US>5</span></span></u><span style='font-size:12.0pt;
+  12.0pt'> <span lang=EN-US><%=@tourreport.tourdate.strftime("%m") %></span></span></u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
 Calibri;mso-hansi-theme-font:minor-latin'>月</span><u><span lang=EN-US
-style='font-size:12.0pt'> 10 </span></u><span style='font-size:12.0pt;
+  style='font-size:12.0pt'><%=@tourreport.tourdate.strftime("%d") %></span></u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
-Calibri;mso-hansi-theme-font:minor-latin'>日至</span><u><span lang=EN-US
-style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp; </span>16:00 </span></u><span
+Calibri;mso-hansi-theme-font:minor-latin'>日<%= @tourreport.starttime.strftime("%H:%M")%>至</span><u><span lang=EN-US
+  style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp; </span><%=@tourreport.finishtime.strftime("%H:%M")%> </span></u><span
 style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;
 mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
 minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>时</span><u><span
@@ -202,14 +202,14 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   <p class=MsoNormal align=center style='text-align:center'><span
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
   mso-fareast-theme-font:minor-fareast'>工<span lang=EN-US><span
-  style='mso-spacerun:yes'>&nbsp; </span></span>作<span lang=EN-US><span
-  style='mso-spacerun:yes'>&nbsp; </span></span>内<span lang=EN-US><span
-  style='mso-spacerun:yes'>&nbsp; </span></span>容<span lang=EN-US><o:p></o:p></span></span></p>
+  style='mso-spacerun:yes'> </span></span>作<span lang=EN-US><span
+  style='mso-spacerun:yes'> </span></span>内<span lang=EN-US><span
+  style='mso-spacerun:yes'> </span></span>容<span lang=EN-US><o:p></o:p></span></span></p>
   </td>
   <td width=49 rowspan=2 valign=top style='width:36.75pt;border:solid windowtext 1.0pt;
   border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal align=center style='text-align:center'><span class=GramE><span
+  <p class=MsoNormal align="center" style='text-align:center'><span class=GramE><span
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
   mso-fareast-theme-font:minor-fareast'>上余</span></span><span lang=EN-US
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
@@ -1600,9 +1600,9 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   0cm;mso-para-margin-right:-.52gd;mso-para-margin-bottom:0cm;mso-para-margin-left:
   -.48gd;mso-para-margin-bottom:.0001pt;text-align:center'><span lang=EN-US
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'>5.14<o:p></o:p></span></p>
+  mso-fareast-theme-font:minor-fareast'><%=@tourreport.tourshift%><o:p></o:p></span></p>
   </td>
-  <td width=63 valign=top style='width:47.25pt;border-top:none;border-left:
+  <td width="83" valign=top style='width:47.25pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
@@ -1622,7 +1622,7 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   0cm;mso-para-margin-right:-.52gd;mso-para-margin-bottom:0cm;mso-para-margin-left:
   -.48gd;mso-para-margin-bottom:.0001pt;text-align:center'><span lang=EN-US
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'>4.86<o:p></o:p></span></p>
+  mso-fareast-theme-font:minor-fareast'><%=@tourreport.tourcore%><o:p></o:p></span></p>
   </td>
   <td width=119 colspan=2 valign=top style='width:89.4pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -1695,7 +1695,7 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   <p class=MsoNormal><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
   Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;
   mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;
-  mso-hansi-theme-font:minor-latin'>李金伟</span><span lang=EN-US
+  mso-hansi-theme-font:minor-latin'><%=@tourreport.administrator%></span><span lang=EN-US
   style='font-size:9.0pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:
   minor-fareast'><o:p></o:p></span></p>
   </td>
@@ -1801,7 +1801,7 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:22.35pt'>
   <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;
-  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>邓光<span
+    mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'><%=@tourreport.tourleader%><span
   lang=EN-US><o:p></o:p></span></span></p>
   </td>
   <td width=63 valign=top style='width:47.25pt;border-top:none;border-left:
@@ -1815,15 +1815,15 @@ lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></spa
   width=77><p class='MsoNormal'>&nbsp;</td>
  </tr>
  <tr style='mso-yfti-irow:13;mso-yfti-lastrow:yes;height:21.0pt'>
-  <td width=56 valign=top style='width:42.0pt;border-top:none;border-left:none;
+  <td width=56 valign=top style='width:52.0pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:21.0pt'>
   <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;
-  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>段义<span
+    mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'><%=@tourreport.recorder%><span
   lang=EN-US><o:p></o:p></span></span></p>
   </td>
-  <td width=63 valign=top style='width:47.25pt;border-top:none;border-left:
+  <td width=63 valign=top style='width:52pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:21.0pt'>
@@ -1875,7 +1875,7 @@ minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>�
 style='font-size:12.0pt'> </span></u><u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
-Calibri;mso-hansi-theme-font:minor-latin'>李金伟</span></u><u><span lang=EN-US
+Calibri;mso-hansi-theme-font:minor-latin'><%=@tourreport.administrator %></span></u><u><span lang=EN-US
 style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp; </span><span
 style='mso-spacerun:yes'>&nbsp;</span></span></u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
@@ -1894,7 +1894,7 @@ Calibri;mso-hansi-theme-font:minor-latin'>接班班长：</span><u><span lang=EN
 style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp; </span></span></u><span
 class=GramE><u><span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:
 Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
-minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>何双慈</span></u></span><u><span
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'><%=@tourreport.tourleader%></span></u></span><u><span
 lang=EN-US style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp;&nbsp;
 </span></span></u><span lang=EN-US style='font-size:12.0pt'><span
 style='mso-spacerun:yes'>&nbsp;&nbsp;</span></span><span style='font-size:12.0pt;
@@ -1904,7 +1904,7 @@ Calibri;mso-hansi-theme-font:minor-latin'>班记录员：</span><u><span
 style='font-size:12.0pt'> </span></u><u><span style='font-size:12.0pt;
 font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
-Calibri;mso-hansi-theme-font:minor-latin'>邓光</span></u><u><span lang=EN-US
+Calibri;mso-hansi-theme-font:minor-latin'><%=@tourreport.recorder%></span></u><u><span lang=EN-US
 style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp;&nbsp; </span></span></u><span
 lang=EN-US style='font-size:12.0pt'><span
 style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;</span><span
