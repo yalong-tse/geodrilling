@@ -30,7 +30,7 @@
         <label class="nui-ipt-placeholder" style="">搜索人员...</label>
         <input class="nui-ipt-input" type="text" style="width: 202px;"></input>
         <span class="nui-ipt-iconBtn">
-          <b class="nui-ico nui-ico-search"></b>
+          <b id="search-area" class="nui-ico nui-ico-search"></b>
         </span>
       </div>
       <div class="hc nui-scroll">
@@ -81,11 +81,8 @@
 
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
-  var leftTree;
   $(document).ready(function() {
-
-    leftTree = $("#left_tree").html();
-
+    var searcharea = $("#search-area");
     $('input.nui-ipt-input[type="text"]').focus(function() {
       $(this).prev().css("display", "none");
       $('#search').addClass("nui-ipt-focus");
@@ -94,14 +91,18 @@
       if($("#search input[type='text']").val() == "")
       {
         $(this).prev().css("display", "");
-        $("#left_tree").html(leftTree);
+
+        $("#left_tree").css("display", "");
+        $('#left_tree div').each(function(i) {
+          $(this).css("display", "");
+        });
         $("#empty_user").css("display", "none");
       } else {
         $(this).prev().css("display", "none");
       }
       $('#search').removeClass("nui-ipt-focus");
     });
-    
+
     $('a.nui-tree-item-label').hover(
       function() {
         $(this).children('span.nui-ico.nui-tree-item-ext').show();
@@ -115,10 +116,8 @@
       var b = $(this).attr('id').substr(5);
       // 判断右侧的div中是否已经有该人员，如果有，没有任何操作，没有，增加
       if($('#right_'+b).length == 0) {
-	//alert(b);
 	$('#addGroupListUL').append("<li class='fp' id='right_"+ b + "'><p class='cV'>"+a+"</p><a href='javascript:void(0)' class='cf' title='移除'><b class='nui-ico'>g</b></a></li>");
       }
-      //alert(a);
     });
     $('#addGroupListUL').on('mouseenter', 'li.fp', function() {
       $(this).addClass('cF');
@@ -133,34 +132,46 @@
       $('#addGroupListUL').empty();
     });
 
-    var searchStr = "";
+    // 删除检索框内的内容
+    $("#search-area").click(function() {
+      if(!$("#search input[type='text']").val() == "") {
+        displayUser();
+        removeSearchArea(searcharea);
+      }
+    });
 
     $("#search input[type='text']").keyup(function() {
+
       var c = $(this).val();
-      if(c != searchStr) {
-        searchStr = c;
-        // fire event
-        $('#left_tree div').each(function(i) {
-	  if($(this).text().indexOf(c) < 0) {
-	    $(this).remove();
-            //$(this).css("display", "none");
-	  }
-        });
 
+      if(c != "") {
+        searcharea.removeClass("nui-ico-search");
+        searcharea.addClass("nui-ico-close");
+        searcharea.text("x");
       } else {
-        // do nothing
-      }
-      if(c.trim() == "" ) {
-        $("#left_tree").html(leftTree);
+        removeSearchArea(searcharea);
       }
 
-      if($("#left_tree").html().trim() == "") {
+      var j = 0;
+      $('#left_tree div').each(function(i) {
+	if($(this).find("span.nui-tree-item-text").text().indexOf(c) < 0) { // 如果不包含检索的内容
+	  //$(this).remove();
+          $(this).css("display", "none");
+	} else {
+          $(this).css("display", "");
+        }
+        if($(this).is(":visible")) {
+          j++;
+        }
+      });
+
+      if(j == 0) {
         $("#empty_user").css("display", "");
       } else {
         $("#empty_user").css("display", "none");
       }
 
-    });
+    }); // end of search input[type='text'] keyup function
 
     var user_ids="";
     $("#btn-save").click(function() {
@@ -185,23 +196,34 @@
                 //
                }
               );
-        console.log(user_ids);
+        //console.log(user_ids);
       }
 
     });
 
     $("#empty_user a").click(function() {
       displayUser();
+      removeSearchArea(searcharea);
     });
 
   });//end of jquery document ready
 
   function displayUser(){
     $("#empty_user").css("display", "none");
-    $("#left_tree").html(leftTree);
+    $("#left_tree").css("display", "");
+    $('#left_tree div').each(function(i) {
+        $(this).css("display", "");
+    });
     var searchIpt = $("#search input[type='text']");
     searchIpt.val("");
     searchIpt.prev().css("display", "");
+  }
+
+  // 删除检索框中的内容
+  function removeSearchArea(obj) {
+    obj.removeClass("nui-ico-close");
+    obj.addClass("nui-ico-search");
+    obj.text("");
   }
 </script>
 
