@@ -47,6 +47,13 @@
           <% end %>
 
         </div>
+
+        <div id="empty_user" style="display: none;">
+           <div class="nui-assistBlock nui-block Q">
+             没有符合条件的人员 [<a href="javascript: void(0)" class="back txt-link">返回</a>]
+           </div>
+        </div>
+
       </div>
       <div id="clearfix"></div>
     </div>
@@ -74,16 +81,27 @@
 
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
+  var leftTree;
   $(document).ready(function() {
+
+    leftTree = $("#left_tree").html();
 
     $('input.nui-ipt-input[type="text"]').focus(function() {
       $(this).prev().css("display", "none");
       $('#search').addClass("nui-ipt-focus");
     });
     $('input.nui-ipt-input[type="text"]').focusout(function() {
-      $(this).prev().css("display", "");
+      if($("#search input[type='text']").val() == "")
+      {
+        $(this).prev().css("display", "");
+        $("#left_tree").html(leftTree);
+        $("#empty_user").css("display", "none");
+      } else {
+        $(this).prev().css("display", "none");
+      }
       $('#search').removeClass("nui-ipt-focus");
     });
+    
     $('a.nui-tree-item-label').hover(
       function() {
         $(this).children('span.nui-ico.nui-tree-item-ext').show();
@@ -116,6 +134,7 @@
     });
 
     var searchStr = "";
+
     $("#search input[type='text']").keyup(function() {
       var c = $(this).val();
       if(c != searchStr) {
@@ -126,8 +145,18 @@
 	    $(this).remove();
 	  }
         });
+
       } else {
         // do nothing
+      }
+      if(c.trim() == "" ) {
+        $("#left_tree").html(leftTree);
+      }
+
+      if($("#left_tree").html().trim() == "") {
+        $("#empty_user").css("display", "");
+      } else {
+        $("#empty_user").css("display", "none");
       }
 
     });
@@ -136,10 +165,7 @@
     $("#btn-save").click(function() {
       user_ids = "";
       $("#addGroupListUL").children().each(function(i) {
-        // console.log(i+": " + $(this).attr("id"));
-
         user_ids += $(this).attr("id").substr(6) + ","; // 去除id中的right_部分，只保留数字
-        //console.log(user_ids);
       });
       if(user_ids == "") {
         if(!$("div.my-modal", top.document).is(":visible")) {
@@ -151,8 +177,8 @@
         $.post("<%= groups_path %>",
                {
                  "userids": user_ids,
-                 "authenticity_token": "<%= form_authenticity_token %>",
-                 "groupflag": <%= @group.groupflag %>
+                 "groupflag": <%= @group.groupflag %>,
+                 "authenticity_token": "<%= form_authenticity_token %>"
                },
                function(data) {
                 //
@@ -163,10 +189,19 @@
 
     });
 
+    $("#empty_user a").click(function() {
+      displayUser();
+    });
 
   });//end of jquery document ready
 
-  
+  function displayUser(){
+    $("#empty_user").css("display", "none");
+    $("#left_tree").html(leftTree);
+    var searchIpt = $("#search input[type='text']");
+    searchIpt.val("");
+    searchIpt.prev().css("display", "");
+  }
 </script>
 
 <% end %>

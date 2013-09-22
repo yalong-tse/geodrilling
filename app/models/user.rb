@@ -81,7 +81,13 @@ class User < ActiveRecord::Base
     user.password = user.password_confirmation = "1"
   end
 
+  # 查找全部可以用于分组的用户
+  def self.get_users_for_groups
+    User.includes(:department).where("departments.id IS NOT NULl") - User.joins(:groups).where("groups.id IS NOT NULL")
+  end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 end
+

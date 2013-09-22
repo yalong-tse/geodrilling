@@ -327,3 +327,32 @@ ul, ol, li, p {
 .add-bottom-height {
     padding-bottom: 10px;
 }
+.nui-assistBlock {
+    margin-bottom: 10px;
+    color: #666;
+    border-color: #e7e7cd;
+    background-color: #ffffe1;
+}
+.nui-block {
+    font-size: 12px;
+    border: 1px solid #bdbdbd;
+    position: relative;
+    zoom: 1;
+}
+.Q {
+    border-width: 1px 0;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+.back {
+    color: #41a489;
+    text-decoration: none;
+}
+.back:hover {
+    color: #41a489;
+}

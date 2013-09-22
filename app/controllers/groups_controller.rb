@@ -24,11 +24,10 @@ class GroupsController < ApplicationController
   end
 
   def new
-    logger.debug "*******************#{params[:groupflag]}"
     @group = Group.find_by_groupflag(params[:groupflag])
     # 找到所有的没有分组的用户及他们所属的部门
-    @users = User.all - User.joins(:groups).where("groups.id IS NOT NULL")
-    
+    @users = User.get_users_for_groups
+
   end
 
   def groupflag
