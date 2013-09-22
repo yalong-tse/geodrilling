@@ -74,6 +74,8 @@ Geodrilling::Application.routes.draw do
   post "archive/holearchive"
 
   get "tourreports/indexformodify"
+  get "tourreports/details"
+
   resources :tourreports
 
   get "holelist/index"
