@@ -1,11 +1,15 @@
+<%= render partial: "layouts/flash_messages", flash: flash %>
 <% content_for(:title,"材料库存>材料查看") %>
 <div class="container">
   <div class="span9">
-    <h4>材料入库详情</h4>
   <table class="table table-hover">
     <tr>
       <th>项目名称</th>
-      <th>值</th>
+      <th>内容</th>
+    </tr>
+    <tr>
+      <td>钻孔</td>
+      <td><%="钻孔编号：" + @material.hole.holenumber + "，合同名称：" + @material.hole.contract.name %></td>
     </tr>
     <tr>
       <td>材料名称</td>
@@ -18,10 +22,6 @@
     <tr>
       <td>材料单价</td>
       <td><%=@material.price %></td>
-    </tr>
-    <tr>
-      <td>材料类型</td>
-      <td><%=@material.materialtype %></td>
     </tr>
     <tr>
       <td>材料数量</td>
