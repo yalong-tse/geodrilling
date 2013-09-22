@@ -136,6 +136,14 @@ html, body {
 .nui-ico-search:hover {
     background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAA3NCSVQICAjb4U/gAAAAPFBMVEX////l5eXe3t7d3d3FxcWZmZmRkZGPj4+HhoeFhYV4eHh2dnZMTExMS0xKSko+Pj49PT0+PT44ODgzMzNIbSS8AAAAFHRSTlMA/////////////////////////7rhY6kAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAFnRFWHRDcmVhdGlvbiBUaW1lADEwLzIzLzEyTRdLHQAAAGBJREFUCJlVjdsOgCAMQwsThQmo9P//VZiXaB+anHRdAbiYW4kOpmnn0DENcBtVIMpjpImrnShj90oxEpbujVcdbN3Km2Xr6d1L4+dO9fBKzp+9rmCLsbaalgcvhR8hBJyhVwRurSNczgAAAABJRU5ErkJggg==)
 }
+.nui-ico-close {
+    left: 4px;
+    top: -2px;
+    color: #ccc;
+}
+.nui-ico-hover {
+    
+}
 .hc {
     width: 238px;
     height: 269px;
@@ -252,6 +260,10 @@ a:hover {
     border-radius: 4px;
     color: #41a489;
 }
+.nui-txt-link:hover {
+    color: #FFF!important;
+    background-color: #41a489;
+}
 .jS {
     overflow-x: hidden;
     overflow-y: auto;
@@ -326,4 +338,33 @@ ul, ol, li, p {
 }
 .add-bottom-height {
     padding-bottom: 10px;
+}
+.nui-assistBlock {
+    margin-bottom: 10px;
+    color: #666;
+    border-color: #e7e7cd;
+    background-color: #ffffe1;
+}
+.nui-block {
+    font-size: 12px;
+    border: 1px solid #bdbdbd;
+    position: relative;
+    zoom: 1;
+}
+.Q {
+    border-width: 1px 0;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+.back {
+    color: #41a489;
+    text-decoration: none;
+}
+.back:hover {
+    color: #41a489;
 }

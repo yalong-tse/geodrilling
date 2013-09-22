@@ -2,14 +2,17 @@
 class GroupsController < ApplicationController
   layout "iframe_group", :only => [:index, :new]
 
+  def create
+    Group.save_users(params[:userids], params[:groupflag])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
-    logger.info "-----------------#{params[:groupflag]}"
     @group = Group.find_by_groupflag(params[:groupflag])
     @users = @group.users
-    # @users1 = Group.find_by_groupflag(1).users # 项目经理
-    # @users2 = Group.find_by_groupflag(2).users # 机长
-    # @users3 = Group.find_by_groupflag(3).users # 班长
-    # @users4 = Group.find_by_groupflag(4).users # 班员
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
@@ -21,11 +24,10 @@ class GroupsController < ApplicationController
   end
 
   def new
-    logger.debug "*******************#{params[:groupflag]}"
     @group = Group.find_by_groupflag(params[:groupflag])
     # 找到所有的没有分组的用户及他们所属的部门
-    @users = User.all - User.joins(:groups).where("groups.id IS NOT NULL")
-    
+    @users = User.get_users_for_groups
+
   end
 
   def groupflag

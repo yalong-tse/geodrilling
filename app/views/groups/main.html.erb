@@ -7,7 +7,8 @@
       right: 0;
       /*top: 0;*/
       top: -45px;
-      bottom: 0;
+      /*bottom: 0;*/
+      bottom: -200px;
       background-color: #000;
       opacity: 0.4;
       filter: alpha(opacity=40); /* For IE8 and earlier */
@@ -60,13 +61,13 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane in active" id="dropdown1" data-src="/groups/index?groupflag=1">
-      <iframe frameborder="0" src="/groups/index?groupflag=1"></iframe>
+      <iframe id="iframe1" frameborder="0" src="/groups/index?groupflag=1"></iframe>
     </div>
     <div class="tab-pane" id="dropdown2" data-src="/groups/index?groupflag=2">
-      <iframe frameborder="0" src=""></iframe>
+      <iframe id="iframe2" frameborder="0" src=""></iframe>
     </div>
     <div class="tab-pane" id="dropdown3" data-src="/groups/index?groupflag=3">
-      <iframe frameborder="0" src=""></iframe>
+      <iframe id="iframe3" frameborder="0" src=""></iframe>
     </div>
 
     <div class="tab-pane" id="tab2" data-src="">
@@ -103,12 +104,6 @@
 <% content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(function() {
-    //$('#myTab a[href="#tab2"]').click(function(e) {
-      //e.preventDefault();
-      //$(this).tab('show');
-      //$('#tab2').load('/users/main');
-    //});
-//    $("body").append("<div class='modal'></div>");
     $('#myTab a[href="#dropdown1"]').click(function(e){
       openiframe("#dropdown1");
     });
