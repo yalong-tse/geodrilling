@@ -35,6 +35,17 @@ class TourreportsController < ApplicationController
     end
   end
 
+  # 以表格的样式展示班报
+  def details
+    @tourreport = Tourreport.find(params[:id])
+    @deployment = Deployment.find(:first,:conditions=>["hole_id=?",params[:id]])
+    @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @tourreport }
+    end
+  end
   # GET /tourreports/new
   # GET /tourreports/new.json
   def new

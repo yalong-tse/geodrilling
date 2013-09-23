@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921155516) do
+ActiveRecord::Schema.define(:version => 20130922024635) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20130921155516) do
     t.string   "materialtype"
     t.string   "model"
     t.string   "manufacture"
+    t.integer  "holeid"
   end
 
   create_table "permissions", :force => true do |t|

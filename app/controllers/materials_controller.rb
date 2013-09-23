@@ -4,11 +4,10 @@ class MaterialsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @materials }
+      format.json { render json: MaterialsDatatable.new(view_context) }
     end
   end
 

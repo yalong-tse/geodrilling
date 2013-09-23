@@ -1,6 +1,6 @@
 #encoding: utf-8
 class TourreportsDatatable
-  delegate :params, :h,:link_to,:tourreports_path,:logger, to: :@view
+  delegate :params, :h,:link_to,:tourreports_path,:tourreports_details_path, :logger, to: :@view
 
   def initialize(view,holeid)
     @view = view
@@ -43,7 +43,7 @@ private
 
   def detail_button(report)
     code = "<div class=\"inline position-relative btn-group\">"
-    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + tourreports_path+"/"+report.id.to_s + "\")' rel=\"tooltip\" title=\"班报详情\")'><i class=\"icon-list bigger-120\"></i></button>"
+    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + tourreports_details_path+"?id="+report.id.to_s + "\")' rel=\"tooltip\" title=\"班报详情\")'><i class=\"icon-list bigger-120\"></i></button>"
     code << "</div>"
     code.html_safe
   end
