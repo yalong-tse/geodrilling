@@ -1,6 +1,6 @@
 #encoding: utf-8
 class GroupsController < ApplicationController
-  layout "iframe_group", :only => [:index, :new]
+  layout "iframe_group", :only => [:index, :new, :deploy]
 
   def create
     Group.save_users(params[:userids], params[:groupflag])
@@ -16,6 +16,18 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
+    end
+  end
+
+  # 配组
+  def deploy
+    a = params[:groupflag].to_i + 1
+    @user = User.find(params[:user_id])
+    @group = Group.find_by_groupflag(a)
+    @users = @group.users
+    logger.debug "-------------#{a}"
+    respond_to do |format|
+      format.html # deploy.html.erb
     end
   end
 

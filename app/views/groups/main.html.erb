@@ -35,52 +35,23 @@
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab">
-    <li class="dropdown active">
-      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-        人员分组
-        <b class="caret"></b>
-      </a>
 
-      <ul class="dropdown-menu dropdown-info">
-        <li>
-          <a data-toggle="tab" href="#dropdown1">项目经理</a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#dropdown2">机长</a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#dropdown3">班长</a>
-        </li>
-      </ul>
-    </li>
-
-    <li><a href="#tab2" data-toggle="tab">项目经理配置</a></li>
-    <li><a href="#tab3" data-toggle="tab">机组配置</a></li>
-
+    <li class="active"><a href="#tab1" data-toggle="tab">项目经理</a></li>
+    <li><a href="#tab2" data-toggle="tab">机长</a></li>
+    <li><a href="#tab3" data-toggle="tab">班长</a></li>
 
   </ul>
   <div class="tab-content">
-    <div class="tab-pane in active" id="dropdown1" data-src="/groups/index?groupflag=1">
+
+    <div class="tab-pane in active" id="tab1" data-src="/groups/index?groupflag=1">
       <iframe id="iframe1" frameborder="0" src="/groups/index?groupflag=1"></iframe>
     </div>
-    <div class="tab-pane" id="dropdown2" data-src="/groups/index?groupflag=2">
+
+    <div class="tab-pane" id="tab2" data-src="/groups/index?groupflag=2">
       <iframe id="iframe2" frameborder="0" src=""></iframe>
     </div>
-    <div class="tab-pane" id="dropdown3" data-src="/groups/index?groupflag=3">
-      <iframe id="iframe3" frameborder="0" src=""></iframe>
-    </div>
-
-    <div class="tab-pane" id="tab2" data-src="">
-      <p>
-        <span class="label label-large label-yellow arrowed-right">项目经理配置</span>
-      </p>
-      <iframe frameborder="0" src=""></iframe>
-    </div>
-    <div class="tab-pane" id="tab3" data-src="">
-      <p>
-        <span class="label label-large label-yellow arrowed-right">机组配置</span>
-      </p>
-      <iframe frameborder="0" src=""></iframe>
+    <div class="tab-pane" id="tab3" data-src="/groups/index?groupflag=3">
+      <iframe id="ifame3" frameborder="0" src=""></iframe>
     </div>
 
   </div>
@@ -104,18 +75,19 @@
 <% content_for :inline_javascripts do %>
 <script type="text/javascript">
   $(function() {
-    $('#myTab a[href="#dropdown1"]').click(function(e){
-      openiframe("#dropdown1");
+
+    $('#myTab a[href="#tab1"]').click(function() {
+      openiframe("#tab1");
     });
-    $('#myTab a[href="#dropdown2"]').click(function(e){
-      openiframe("#dropdown2");
+
+    $('#myTab a[href="#tab2"]').click(function() {
+      openiframe("#tab2");
     });
-    $('#myTab a[href="#dropdown3"]').click(function(e){
-      openiframe("#dropdown3");
+
+    $('#myTab a[href="#tab3"]').click(function() {
+      openiframe("#tab3");
     });
-    $('#myTab a[href="#dropdown4"]').click(function(e){
-      openiframe("#dropdown4");
-    });
+
     $("#myTabs").bind("show", function(e) {
       paneID = $(e.target).attr("href");
       src = $(paneID).attr("data-src");

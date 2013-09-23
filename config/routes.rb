@@ -1,6 +1,7 @@
 Geodrilling::Application.routes.draw do
   get "groups/index"
   get "groups/main"
+  get "groups/deploy"
   resources :groups
 
   get "useroperation/index"
