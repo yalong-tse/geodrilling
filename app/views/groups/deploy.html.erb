@@ -186,9 +186,10 @@
         }
       } else {
         // 提交user_ids到server
-        $.post("<%= groups_path %>",
+        $.post("<%= groups_saveleader_path %>",
                {
                  "userids": user_ids,
+                 "leaderid": <%= @user.id %>,
                  "groupflag": <%= @group.groupflag %>,
                  "authenticity_token": "<%= form_authenticity_token %>"
                },

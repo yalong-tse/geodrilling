@@ -9,6 +9,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def saveleader
+    User.save_leader(params[:userids], params[:leaderid])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
     @group = Group.find_by_groupflag(params[:groupflag])
     @users = @group.users
