@@ -1,1 +1,231 @@
-<%= params[:user_id] %>
+<%= content_for :inline_stylesheets do %>
+  <style type="text/css">
+    #button-toolbar {
+      position: absolute;
+      display: inline-block;
+      left: 110px;
+      top: 0px;
+    }
+    div.rdisplay {
+      postion: relative;
+    }
+  </style>
+<% end %>
+
+<div class="rdisplay">
+  <span class="label label-large label-yellow arrowed-right"><%= @user.name %></span>
+  <div id="button-toolbar">
+    <%= link_to "保存", "javascript:void(0)", :id=>"btn-save", :class=>"btn btn-mini btn-success" %>
+    <%= link_back :class => "btn btn-mini" %>
+  </div>
+</div>
+<div>
+<dl class="nb">
+  <dt class="kb">选择<%= @group.name %></dt>
+  <dd class="jp">
+    <b class="nui-ico-next rj"></b>
+    <div class="mu">
+      <div class="jr">所有<%= @group.name %></div>
+      <div id="search" class="nui">
+        <label class="nui-ipt-placeholder" style="">搜索人员...</label>
+        <input class="nui-ipt-input" type="text" style="width: 202px;"></input>
+        <span class="nui-ipt-iconBtn">
+          <b id="search-area" class="nui-ico nui-ico-search"></b>
+        </span>
+      </div>
+      <div class="hc nui-scroll">
+
+        <div class="nui-tree" id="left_tree">
+
+          <% @users.each do |user| %>
+            <div class="nui-tree-item">
+              <a id="left_<%= user.id %>" href="javascript:void(0)" class="nui-tree-item-label" title="<%= user.name %>">
+                <span class="nui-tree-item-text"><%= user.name %></span>
+                <span class="nui-ico nui-tree-item-ext" style="display:none;">y</span>
+              </a>
+            </div>
+          <% end %>
+
+        </div>
+
+        <div id="empty_user" style="display: none;">
+           <div class="nui-assistBlock nui-block Q">
+             没有符合条件的人员 [<a href="javascript: void(0)" class="back txt-link">返回</a>]
+           </div>
+        </div>
+
+      </div>
+      <div id="clearfix"></div>
+    </div>
+    <div class="nD">
+      <div class="jR">
+        <a id="removeall" href="javascript: void(0)" class="nui-txt-link">移除全部</a>
+        已添加到该组的人员
+      </div>
+      <div class="jS nui-scroll">
+        <ul id="addGroupListUL">
+	  <!--
+              <li class="fp" id="glist_li_1">
+                <p class="cV">张三</p>
+                <a href="javascript:void(0)" class="cf" title="移除">
+                  <b class="nui-ico">g</b>
+                </a>
+              </li>
+	  -->
+        </ul>
+      </div>
+    </div>
+  </dd>
+</dl>
+</div>
+
+<%= content_for :inline_javascripts do %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var searcharea = $("#search-area");
+    $('input.nui-ipt-input[type="text"]').focus(function() {
+      $(this).prev().css("display", "none");
+      $('#search').addClass("nui-ipt-focus");
+    });
+    $('input.nui-ipt-input[type="text"]').focusout(function() {
+      if($("#search input[type='text']").val() == "")
+      {
+        $(this).prev().css("display", "");
+
+        $("#left_tree").css("display", "");
+        $('#left_tree div').each(function(i) {
+          $(this).css("display", "");
+        });
+        $("#empty_user").css("display", "none");
+      } else {
+        $(this).prev().css("display", "none");
+      }
+      $('#search').removeClass("nui-ipt-focus");
+    });
+
+    $('a.nui-tree-item-label').hover(
+      function() {
+        $(this).children('span.nui-ico.nui-tree-item-ext').show();
+      },
+      function() {
+        $(this).children('span.nui-ico.nui-tree-item-ext').hide();
+      }
+    );
+    $('a.nui-tree-item-label').click(function(){
+      var a = $(this).children('span.nui-tree-item-text').text();
+      var b = $(this).attr('id').substr(5);
+      // 判断右侧的div中是否已经有该人员，如果有，没有任何操作，没有，增加
+      if($('#right_'+b).length == 0) {
+	$('#addGroupListUL').append("<li class='fp' id='right_"+ b + "'><p class='cV'>"+a+"</p><a href='javascript:void(0)' class='cf' title='移除'><b class='nui-ico'>g</b></a></li>");
+      }
+    });
+    $('#addGroupListUL').on('mouseenter', 'li.fp', function() {
+      $(this).addClass('cF');
+    });
+    $('#addGroupListUL').on('mouseleave', 'li.fp', function() {
+      $(this).removeClass("cF");
+    });
+    $('#addGroupListUL').on('click', 'a.cf', function() {
+      $(this).parent().remove();
+    });
+    $('#removeall').click(function(){
+      $('#addGroupListUL').empty();
+    });
+
+    // 删除检索框内的内容
+    $("#search-area").click(function() {
+      if(!$("#search input[type='text']").val() == "") {
+        displayUser();
+        removeSearchArea(searcharea);
+      }
+    });
+
+    $("#search input[type='text']").keyup(function() {
+
+      var c = $(this).val();
+
+      if(c != "") {
+        searcharea.removeClass("nui-ico-search");
+        searcharea.addClass("nui-ico-close");
+        searcharea.text("x");
+      } else {
+        removeSearchArea(searcharea);
+      }
+
+      var j = 0;
+      $('#left_tree div').each(function(i) {
+	if($(this).find("span.nui-tree-item-text").text().indexOf(c) < 0) { // 如果不包含检索的内容
+	  //$(this).remove();
+          $(this).css("display", "none");
+	} else {
+          $(this).css("display", "");
+        }
+        if($(this).is(":visible")) {
+          j++;
+        }
+      });
+
+      if(j == 0) {
+        $("#empty_user").css("display", "");
+      } else {
+        $("#empty_user").css("display", "none");
+      }
+
+    }); // end of search input[type='text'] keyup function
+
+    var user_ids="";
+    $("#btn-save").click(function() {
+      user_ids = "";
+      $("#addGroupListUL").children().each(function(i) {
+        user_ids += $(this).attr("id").substr(6) + ","; // 去除id中的right_部分，只保留数字
+      });
+      if(user_ids == "") {
+        if(!$("div.my-modal", top.document).is(":visible")) {
+          $("div.my-modal", top.document).show(100);
+          $("#modal-content", top.document).show(400);
+        }
+      } else {
+        // 提交user_ids到server
+        $.post("<%= groups_path %>",
+               {
+                 "userids": user_ids,
+                 "groupflag": <%= @group.groupflag %>,
+                 "authenticity_token": "<%= form_authenticity_token %>"
+               },
+               function(data) {
+                //
+               }
+              );
+        //console.log(user_ids);
+      }
+
+    });
+
+    $("#empty_user a").click(function() {
+      displayUser();
+      removeSearchArea(searcharea);
+    });
+
+  });//end of jquery document ready
+
+  function displayUser(){
+    $("#empty_user").css("display", "none");
+    $("#left_tree").css("display", "");
+    $('#left_tree div').each(function(i) {
+        $(this).css("display", "");
+    });
+    var searchIpt = $("#search input[type='text']");
+    searchIpt.val("");
+    searchIpt.prev().css("display", "");
+  }
+
+  // 删除检索框中的内容
+  function removeSearchArea(obj) {
+    obj.removeClass("nui-ico-close");
+    obj.addClass("nui-ico-search");
+    obj.text("");
+  }
+</script>
+
+<% end %>
+
