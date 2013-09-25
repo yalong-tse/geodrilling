@@ -8,4 +8,8 @@ class Group < ActiveRecord::Base
       User.find(userid).update_attributes(:group_ids => group.id)
     end
   end
+
+  def self.get_all_admin
+    users = Group.find_by_groupflag(1).users
+  end
 end
