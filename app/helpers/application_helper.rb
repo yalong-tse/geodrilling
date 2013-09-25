@@ -308,4 +308,18 @@ module ApplicationHelper
     end
   end
 
+  def get_leader_member
+    result = ""
+    Group.get_all_leader.each do |leader|
+      
+      result<< "<option>" + leader.name + " [";
+        leader.members.each do |user|
+          result << user.name + " "
+        end
+
+      result <<  "]"  + "</option>"
+    end
+    return result.html_safe;
+  end
+
 end

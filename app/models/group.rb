@@ -9,4 +9,12 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def self.get_all_admin
+    users = Group.find_by_groupflag(1).users
+  end
+
+  def self.get_all_leader
+    users = Group.find_by_groupflag(2).users
+  end
+
 end
