@@ -12,6 +12,7 @@
       <th>联系方式</th>
       <th>所属部门</th>
       <% if !(params[:groupflag] == '3') %>
+        <th>配组<%= @groupson.name %></th>
         <th>操作</th>
       <% end %>
     </tr>
@@ -26,6 +27,11 @@
       <td><%= user.department.name %></td>
       <% if !(params[:groupflag] == '3') %>
         <!--<td><button class="btn btn-minier btn-info tooltip-success" title="人员配组"><i class="icon-group"></i></button></td>-->
+        <td>
+          <% user.members.each do |member| %>
+            <i class="icon-user"></i><%= member.name %> 
+          <% end %>
+        </td>
         <td><%= link_to "<i class='icon-group'></i>".html_safe, {:controller => "groups", :action => "deploy", :groupflag => params[:groupflag], :user_id => user.id}, :class => "btn btn-minier btn-info tooltip-success", :title => "人员配组"%></td>
       <% end %>
     </tr>

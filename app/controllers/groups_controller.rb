@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.find_by_groupflag(params[:groupflag])
+    @groupson = Group.find_by_groupflag(params[:groupflag].to_i + 1) unless params[:groupflag] == '3'
     @users = @group.users
 
     respond_to do |format|
@@ -31,7 +32,7 @@ class GroupsController < ApplicationController
     a = params[:groupflag].to_i + 1
     @user = User.find(params[:user_id])
     @group = Group.find_by_groupflag(a)
-    @users = @group.users
+    @users = @group.users.where(:leaderid => nil)  # 查找未配组的人员
     logger.debug "-------------#{a}"
     respond_to do |format|
       format.html # deploy.html.erb
