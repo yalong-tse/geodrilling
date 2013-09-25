@@ -8,4 +8,5 @@ class Group < ActiveRecord::Base
       User.find(userid).update_attributes(:group_ids => group.id)
     end
   end
+
 end

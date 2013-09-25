@@ -39,7 +39,7 @@
       <div class="control-group">
         <%= f.label "机长" ,:class=>"control-label" %>
         <div class="controls">
-          <%=f.select(:user, options_for_select({"机长一"=>"1", "机长二"=>"2"}) , :class=>"chzn-select" , :prompt=>"请选择...")  %>
+          <%=f.select(:user, options_for_select(Group) , :class=>"chzn-select" , :prompt=>"请选择...")  %>
         </div>
       </div>
     </div>
