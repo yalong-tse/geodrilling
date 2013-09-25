@@ -1,0 +1,4 @@
+var groupflag = <%= params[:groupflag] %>;
+var a = $("#tab"+groupflag, window.parent.document).attr("data-src");
+$("#iframe"+groupflag, window.parent.document).attr("src", a);
+

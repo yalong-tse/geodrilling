@@ -25,7 +25,7 @@
   <dd class="jp">
     <b class="nui-ico-next rj"></b>
     <div class="mu">
-      <div class="jr">所有<%= @group.name %></div>
+      <div class="jr">所有未配组<%= @group.name %></div>
       <div id="search" class="nui">
         <label class="nui-ipt-placeholder" style="">搜索人员...</label>
         <input class="nui-ipt-input" type="text" style="width: 202px;"></input>
@@ -186,10 +186,11 @@
         }
       } else {
         // 提交user_ids到server
-        $.post("<%= groups_path %>",
+        $.post("<%= groups_saveleader_path %>",
                {
                  "userids": user_ids,
-                 "groupflag": <%= @group.groupflag %>,
+                 "leaderid": <%= @user.id %>,
+                 "groupflag": <%= params[:groupflag] %>,
                  "authenticity_token": "<%= form_authenticity_token %>"
                },
                function(data) {

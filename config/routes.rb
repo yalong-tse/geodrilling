@@ -2,6 +2,7 @@ Geodrilling::Application.routes.draw do
   get "groups/index"
   get "groups/main"
   get "groups/deploy"
+  post "groups/saveleader"
   resources :groups
 
   get "useroperation/index"

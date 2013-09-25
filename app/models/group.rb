@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  attr_accessible :name, :groupflag, :userids
+  attr_accessible :name, :groupflag, :userids, :leaderid
   has_and_belongs_to_many :users
 
   def self.save_users(userids, groupflag)

@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, :through => :assignments
   has_and_belongs_to_many :groups
+  has_many :members, class_name: "User", foreign_key: "leaderid"
+  belongs_to :leader, class_name: "User", foreign_key: "leaderid"
 
-  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id
+  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid
   attr_accessor :password
 
   before_save :encrypt_password
@@ -84,6 +86,13 @@ class User < ActiveRecord::Base
   # 查找全部可以用于分组的用户
   def self.get_users_for_groups
     User.includes(:department).where("departments.id IS NOT NULl") - User.joins(:groups).where("groups.id IS NOT NULL")
+  end
+
+  # 人员配组，将机长分配给项目经理或班长分配给机长
+  def self.save_leader(userids, leaderid)
+    userids.split(/,/).each do |userid|
+      User.find(userid).update_attributes(:leaderid => leaderid)
+    end
   end
 
   def has_role?(role_sym)
