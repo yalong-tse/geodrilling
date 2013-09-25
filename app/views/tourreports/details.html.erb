@@ -144,9 +144,7 @@ div.WordSection1
 <div class=WordSection1 style='layout-grid:15.6pt'>
 <p class=MsoNormal style='text-indent:297.15pt;mso-char-indent-count:18.5'><b
 style='mso-bidi-font-weight:normal'><span style='font-size:16.0pt;font-family:
-宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
-宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;
-mso-hansi-theme-font:minor-latin'>钻进班报表记录样式</span></b><b style='mso-bidi-font-weight:
+宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>钻进班报表记录</span></b><b style='mso-bidi-font-weight:
 normal'><span lang=EN-US style='font-size:16.0pt'><o:p></o:p></span></b></p>
 
 <p class=MsoNormal style='text-indent:15.0pt;mso-char-indent-count:2.5'><span
@@ -167,7 +165,7 @@ normal'><span lang=EN-US style='font-size:16.0pt'><o:p></o:p></span></b></p>
   <span lang=EN-US style='font-size:12.0pt'><%=@tourreport.tourdate.strftime("%d") %></span></u>
 <span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>日<%= @tourreport.starttime.strftime("%H:%M")%>至</span><u>
   <span lang=EN-US style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp; </span><%=@tourreport.finishtime.strftime("%H:%M")%> </span></u><span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>时</span><u>
-  <span style='font-size:12.0pt'> </span></u><u><span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>中</span></u><u>
+  <span style='font-size:12.0pt'> </span></u><u><span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'><%= morning_or_noon(@tourreport.starttime.strftime("%H:%M"))  %></span></u><u>
   <span style='font-size:12.0pt'> </span></u><span style='font-size:12.0pt;font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>班</span>
 <span lang=EN-US style='font-size:12.0pt'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span>
 <span lang=EN-US style='mso-bidi-font-size:10.5pt;font-family:黑体'><o:p></o:p></span></p>
@@ -714,33 +712,23 @@ normal'><span lang=EN-US style='font-size:16.0pt'><o:p></o:p></span></b></p>
   border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;
   mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:24.9pt'>
-  <p class=MsoNormal><span class=GramE><span style='mso-bidi-font-size:10.5pt;
-  font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>纯钻</span></span><u><span
-  style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'> <span lang=EN-US><%=@tourreport.tourdrillingtime%> </span></span></u><span
-  style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'>辅助<u> <span lang=EN-US><%=@tourreport.tourauxiliarytime%><span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span></p>
-  <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;
-  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>孔内<u><span
-  lang=EN-US><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  style='mso-spacerun:yes'>&nbsp;</span></span></u>设备<u><span lang=EN-US><span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span></p>
-  <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;
-  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>其它<u><span
-  lang=EN-US> 3:10</span></u>合计<u> <span lang=EN-US>8:00<span
-  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span></p>
+  <p class=MsoNormal><span class=GramE><span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>纯钻</span></span>
+  <u><span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'> <span lang=EN-US><%=@tourreport.tourdrillingtime%> </span></span></u>
+  <span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>辅助<u> <span lang=EN-US><%=@tourreport.tourauxiliarytime%><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span>
+  </p>
+  <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>孔内<u><span lang=EN-US><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <span style='mso-spacerun:yes'>&nbsp;</span></span></u>设备<u><span lang=EN-US>
+        <span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span>
+  </p>
+  <p class=MsoNormal><span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>其它<u><span lang=EN-US> 3:10</span></u>合计<u> <span lang=EN-US>8:00 <span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></u></span>
+  </p>
   </td>
-  <td width=42 colspan=2 rowspan=3 valign=top style='width:31.6pt;border-top:
-  none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:24.9pt'>
-  <p class=MsoNormal style='text-indent:5.25pt;mso-char-indent-count:.5'><span
-  style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'>钻<span lang=EN-US><o:p></o:p></span></span></p>
-  <p class=MsoNormal style='text-indent:5.25pt;mso-char-indent-count:.5'><span
-  style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
-  mso-fareast-theme-font:minor-fareast'>具<span lang=EN-US><o:p></o:p></span></span></p>
+
+  <td width="42" colspan="2" rowspan="3" valign="top" style='width:31.6pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:24.9pt'>
+  <p class=MsoNormal style='text-indent:5.25pt;mso-char-indent-count:.5'>
+    <span  style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast'>钻<span lang=EN-US><o:p></o:p></span></span>
+  </p>
+  <p class=MsoNormal style='text-indent:5.25pt;mso-char-indent-count:.5'><span style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体; mso-fareast-theme-font:minor-fareast'>具<span lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal style='text-indent:5.25pt;mso-char-indent-count:.5'><span
   style='mso-bidi-font-size:10.5pt;font-family:宋体;mso-fareast-font-family:宋体;
   mso-fareast-theme-font:minor-fareast'>交<span lang=EN-US><o:p></o:p></span></span></p>

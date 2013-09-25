@@ -45,7 +45,7 @@
   <div class="control-group">
     <%= f.label "材料名称", :class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:name,options_for_select(Dictionary.material.collect{|d| [d.item,d.id]}),{:class=>"input-large"} ) %>
+      <%= f.select(:name,options_for_select(Dictionary.material.collect{|d| [d.item,d.item]}),{:class=>"input-large"} ) %>
     </div>
   </div>
   </div>

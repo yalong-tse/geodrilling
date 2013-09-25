@@ -294,5 +294,18 @@ module ApplicationHelper
       link_to args.attachment.filename,holes_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success" 
     end
   end
-  
+ 
+ # 判断是否 早班、中班 和 晚班的方法 
+  def morning_or_noon(hour)
+    if(hour)
+      if(hour == "00:00")
+        return "早"
+      elsif (hour=="08:00")
+        return "中"
+      else
+        return "晚"
+      end
+    end
+  end
+
 end

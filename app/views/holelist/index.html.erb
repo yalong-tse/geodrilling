@@ -9,7 +9,6 @@
     <th>钻机</th>
     <th>钻塔</th>
     <th>泥浆泵</th>
-    <th>使用材料</th>
     <th>状态</th>
     <th>操作</th>
   </tr>
@@ -24,7 +23,6 @@
     <td><%= hole_rigmachine hole.id %></td>
     <td><%= hole_drilltower hole.id %></td>
     <td><%= hole_pump hole.id %></td>
-    <td>&nbsp;</td>
     <td><%= hole_status_treat hole.status %></td>
     <td><%= hole_deployment(hole) %></td>
   </tr>
@@ -45,10 +43,7 @@
 
   $(function(){
     var oTable1 = $("#_table_holes").dataTable({
-      "aoColumns" :[null,null,null,null,null,null,
-      {"bSortable":false},
-      {"bSortable":false}
-      ],
+      "aoColumns":[null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
       "bAutoWidth" : false,
       "oLanguage":{
         "sLengthMenu":"每页 _MENU_",
@@ -58,14 +53,10 @@
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" },
-        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
     });
 
     $("div.dt-search").html("<input id='dt-search-input' type='text''><button id='dt-search-btn' class='btn btn-mini'><i class='icon-search'></i></button>");
-    $("#dt-search-btn").click(function(){
-      var filterString = $('#dt-search-input').val();
-      oTable1.fnFilter(filterString);
-    });
+
   })
 </script>
 <% end %>
