@@ -39,7 +39,6 @@
   $(function(){
    var oTable1=$("#_tourreport_table").dataTable({
      "aoColumns":[{"bSortable":false},null,{"bSortable":false},{"bSortable":false},null,null,null,null,null,null,null,{"bSortable":false} ],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=tourreports_path(:format=>:json, :holeid=>@holeid ) %>",

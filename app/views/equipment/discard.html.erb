@@ -131,7 +131,6 @@
 
    var oTable1=$("#_rigmachine_table").dataTable({
      "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=rigmachine_discard_path(:format=>:json) %>",
@@ -143,13 +142,12 @@
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" },
-        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        "sDom": "<'row-fluid'<'span6'l><'span6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'p>>"
     }
     );
         
    var oTable2=$("#_drilltower_table").dataTable({
      "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=drilltower_discard_path(:format=>:json) %>",
@@ -161,13 +159,12 @@
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" },
-        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        "sDom": "<'row-fluid'<'span6'l><'span6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'p>>"
         }
      );
 
    var oTable3=$("#_pump_table").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,{"bSortable":false},{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=pump_discard_path(:format=>:json) %>",
@@ -179,7 +176,7 @@
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" },
-        "sDom": "<'row-fluid'<'span6 offset6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'pl>>"
+        "sDom": "<'row-fluid'<'span6'l><'span6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'p>>"
         }
      );
 

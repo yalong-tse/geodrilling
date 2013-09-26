@@ -40,7 +40,6 @@
 
    var oTable1=$("#_materials_table").dataTable({
         "aoColumns":[null,null,null,null,null,null,null],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=materials_path(:format=>:json) %>",

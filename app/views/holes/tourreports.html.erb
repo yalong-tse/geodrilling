@@ -42,7 +42,6 @@
 
    var oTable1=$("#_hole_table").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false} ],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=holes_tourreports_path(:format=>:json) %>",

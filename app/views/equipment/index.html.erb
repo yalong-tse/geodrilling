@@ -98,7 +98,6 @@
 
    var oTable1=$("#_rigmachine_table").dataTable({
      "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=rigmachine_index_path(:format=>:json) %>",
@@ -116,7 +115,6 @@
         
    var oTable2=$("#_drilltower_table").dataTable({
      "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=drilltower_index_path(:format=>:json) %>",
@@ -134,7 +132,6 @@
 
    var oTable3=$("#_pump_table").dataTable({
         "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
-        "bProcessing":true,
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=pump_index_path(:format=>:json) %>",
