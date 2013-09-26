@@ -308,11 +308,11 @@ module ApplicationHelper
     end
   end
 
+  # 得到所有的机长，以及机长下属的所有班长
   def get_leader_member
     result = ""
     Group.get_all_leader.each do |leader|
-      
-      result<< "<option>" + leader.name + " [";
+      result<< "<option> " +"机长:" + leader.name + " [班长：";
         leader.members.each do |user|
           result << user.name + " "
         end
@@ -321,5 +321,29 @@ module ApplicationHelper
     end
     return result.html_safe;
   end
+
+  # 得到每个设备的状态 
+  def get_device_status(obj)
+    if obj 
+      if(obj.is_a?(Rigmachine))
+         deployment = Deployment.where(:rigmachine_id=>obj.id).first
+      elsif (obj.is_a?(Drilltower))
+         deployment = Deployment.where(:drilltower_id =>obj.id).first
+      elsif (obj.is_a?(Pump))
+        deployment = Deployment.where(:pump_id=>obj.id).first
+      end
+      if(deployment)
+        hole = Hole.find(deployment.hole_id) 
+        if hole
+          return "钻孔编号：" + hole.holenumber
+        else
+          return "空闲"
+        end
+      else
+        return "空闲"
+      end
+    end
+  end
+
 
 end

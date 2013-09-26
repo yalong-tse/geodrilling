@@ -135,7 +135,7 @@
             <td><%= rig.rotatingSpeed %></td>
             <td><%= rig.pipeDiameter %></td>
             <td><%= rig.manufacture%></td>
-            <td><%= rig.status%></td>
+            <td><%= get_device_status(rig) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -189,7 +189,7 @@
             <td><%= tower.topsize%></td>
             <td><%= tower.weight%></td>
             <td><%= tower.manufacture%></td>
-            <td><%= tower.status%></td>
+            <td><%= get_device_status(tower)%></td>
           </tr>
         <% end %>
       </tbody>
@@ -245,7 +245,7 @@
             <td><%= pump.power %></td>
             <td><%= pump.pressure %></td>
             <td><%= pump.overallsize %></td>
-            <td><%= pump.status %></td>
+            <td><%= get_device_status(pump) %></td>
           </tr>
         <% end %>
       </tbody>
