@@ -113,4 +113,26 @@ class ContractsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # for fusionchart 
+  def chart
+    dai_number = Contract.where("status=0").count
+    zhi_number = Contract.where("status=1").count
+    finish_number = Contract.where("status=2").count
+    gui_number = Contract.where("status=3").count
+    @chartxml= "<graph caption='合同状态统计' xAxisName='合同' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+    @chartxml << "<set name='待执行'" + "value='" + dai_number.to_s + "' />";
+    @chartxml << "<set name='正在执行'" + "value='" + zhi_number.to_s + "' />";
+    @chartxml << "<set name='已完成'" + "value='" + finish_number.to_s + "' />";
+    @chartxml << "<set name='已归档'" + "value='" + gui_number.to_s + "' />";
+    @chartxml << "</graph>";
+    @chartxml = @chartxml.html_safe
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @chartxml}
+      format.xml { render xml: @chartxml}
+    end
+
+  end
 end

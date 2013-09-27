@@ -1,0 +1,33 @@
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title,"合同统计") %>
+<% content_for(:page_header_description, "合同统计功能") %>
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'FusionCharts' %>
+<% end %>
+
+<div class="page-section">
+  <div class="container">
+    <div class="span12">
+      <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="300" height="150" id="Column3D" >
+			   <param name="movie" value="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=450" />
+               <param name="FlashVars" value="&dataXML=<%=@chartxml%>">
+			   <param name="quality" value="high" />
+               <embed src="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@chartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= link_to contracts_path,:class=>"btn btn-primary btn-small" do  %>返回 <i class="icon-arrow-left icon-on-right"></i> <% end %>
+</div>
+<%= content_for :inline_javascripts do %>
+  <script type="text/javascript">
+
+  $(function(){
+
+  });
+  </script>
+<% end %>
