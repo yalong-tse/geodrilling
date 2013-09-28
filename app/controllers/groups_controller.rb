@@ -17,9 +17,12 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @group = Group.find_by_groupflag(params[:groupflag])
-    @groupson = Group.find_by_groupflag(params[:groupflag].to_i + 1) unless params[:groupflag] == '3'
-    @users = @group.users
+    # @group = Group.find_by_groupflag(params[:groupflag])
+    # @groupson = Group.find_by_groupflag(params[:groupflag].to_i + 1) unless params[:groupflag] == '3'
+    # @users = @group.users
+
+    @groupson = User.user_position(params[:groupflag].to_i + 1) unless params[:groupflag] == '3'
+    @users = User.where(:position => params[:groupflag])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,8 +34,10 @@ class GroupsController < ApplicationController
   def deploy
     a = params[:groupflag].to_i + 1
     @user = User.find(params[:user_id])
-    @group = Group.find_by_groupflag(a)
-    @users = @group.users.where(:leaderid => nil)  # 查找未配组的人员
+    # @group = Group.find_by_groupflag(a)
+    # @users = @group.users.where(:leaderid => nil)  # 查找未配组的人员
+    @groupson = User.user_position(params[:groupflag].to_i + 1) unless params[:groupflag] == '3'
+    @users = User.where(:position => a, :leaderid => nil)
     logger.debug "-------------#{a}"
     respond_to do |format|
       format.html # deploy.html.erb

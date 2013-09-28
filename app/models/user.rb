@@ -10,15 +10,17 @@ class User < ActiveRecord::Base
   has_many :members, class_name: "User", foreign_key: "leaderid"
   belongs_to :leader, class_name: "User", foreign_key: "leaderid"
 
-  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid
+  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid, :position
   attr_accessor :password
 
   before_save :encrypt_password
   before_save :normalize_blank_values
   before_validation :normalize_blank_values
 
+  # 性别/学历/岗位
   SEXS = [["男",1], ["女",2]]
   EDUCATION = ["大专","本科","硕士","博士","博士后"]
+  POSITION = [["项目经理", 1], ["机长", 2], ["班长", 3]]
 
   validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?
   validates :account, presence: true, :if => :is_appuser?
@@ -97,6 +99,17 @@ class User < ActiveRecord::Base
 
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
+  def self.user_position(groupflag)
+    case groupflag
+    when 1
+      "项目经理"
+    when 2
+      "机长"
+    when 3
+      "班长"
+    end
   end
 end
 

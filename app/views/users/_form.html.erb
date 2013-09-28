@@ -74,6 +74,18 @@
             </div>
           </div>
         </div>
+
+        <div class="span6">
+          <div class="control-group">
+            <%= f.label :position, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.select :position, User::POSITION, {:prompt => t('prompt.select')}, {:class=>"input-medius"} %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
         <div class="span6">
           <div class="control-group">
             <%= f.label :mobile, :class => 'control-label' %>
@@ -82,9 +94,6 @@
             </div>
           </div>
         </div>
-      </div>
-      
-      <div class="row-fluid">
         <div class="span6">
           <div class="control-group">
             <%= f.label :officephone, :class => 'control-label' %>
@@ -93,6 +102,10 @@
             </div>
           </div>
         </div>
+
+      </div>
+
+      <div class="row-fluid">
         <div class="span6">
           <div class="control-group">
             <%= f.label :email, :class => 'control-label' %>
@@ -101,9 +114,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row-fluid">
         <div class="span6">
           <div class="control-group">
             <div class="controls">
@@ -114,13 +124,18 @@
             </div>
           </div>
         </div>
-        <div class="span6">
+        
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+
           <div id="account_field" class="control-group hidden">
             <%= f.label :account, :class => 'control-label' %>
             <div class="controls">
               <%= f.text_field :account %>
             </div>
           </div>
+
         </div>
       </div>
 

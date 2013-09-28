@@ -7,7 +7,7 @@
       <th class="center" width="5%"><%= check_box_tag "selectAll" %><span class="lbl"></span></th>
       <th width="10%"><%= User.human_attribute_name("name") %></th>
       <th width="5%"><%= User.human_attribute_name("sex") %></th>
-      <th width="10%"><%= User.human_attribute_name("duty") %></th>
+      <th width="10%"><%= User.human_attribute_name("position") %></th>
       <th width="10%"><%= t '.contactway' %></th>
       <th width="20%"><%= t 'labels.handle' %></th>
     </tr>
@@ -18,7 +18,7 @@
         <td class="center"><%= check_box_tag "users[]", user.id %><span class="lbl"></span></td>
         <td><%= user.name %></td>
         <td><%= human_sex(user) %></td>
-        <td><%= user.duty %></td>
+        <td><%= user_position(user) %></td>
         <td><%= contactway(user) %></td>
         <td class="td-actions">
           <div class="inline position-relative btn-group">
