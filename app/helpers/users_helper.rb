@@ -25,7 +25,7 @@ module UsersHelper
   def user_dynatree(args)
     code = <<-DHTMLXTREE
       var tree = new dhtmlXTreeObject("#{args[:tree_id]}", "100%", "100%", 0);
-      tree.setImagePath("/assets/dhtmlxtree/imgs/csh_dhx_skyblue/");
+      tree.setImagePath("/assets/dhtmlxtree/imgs/");
       var jsonObject = #{Department.to_dhtmlxtree_node.to_json}
       tree.loadJSONObject(jsonObject);
       tree.attachEvent("onClick", function(itemId) {
