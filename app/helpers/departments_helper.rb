@@ -54,10 +54,10 @@ module DepartmentsHelper
       menu.setIconsPath("/assets/common/");
       menu.renderAsContextMenu();
       menu.attachEvent("onClick", onButtonClick);
-      menu.loadXMLString("<menu id='0'><item text='添加同级部门' id='addnewitemnext' img='red.gif' /><item text='添加子部门' id='addchilditem' img='green.gif' /><item text='删除该部门' id='deleteitem' img='blue.gif' /></menu>");
+      menu.loadXMLString("<menu id='0'><item text='添加同级部门' id='addnewitemnext' img='plus.png' /><item text='添加子部门' id='addchilditem' img='sitemap.png' /><item text='删除该部门' id='deleteitem' img='remove.png' /></menu>");
 
       var tree = new dhtmlXTreeObject("#{args[:tree_id]}", "100%", "100%", 0);
-      tree.setImagePath("/assets/dhtmlxtree/imgs/csh_dhx_skyblue/");
+      tree.setImagePath("/assets/dhtmlxtree/imgs/");
       tree.enableContextMenu(menu);
       tree.attachEvent("onBeforeContextMenu", function(itemId) {
         if(tree.hasChildren(itemId) > 0) {
