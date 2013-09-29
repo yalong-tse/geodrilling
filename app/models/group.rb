@@ -10,12 +10,16 @@ class Group < ActiveRecord::Base
     end
   end
 
+  # 取得全部项目经理
   def self.get_all_admin
-    users = Group.find_by_groupflag(1).users
+    # users = Group.find_by_groupflag(1).users
+    users = User.where(:position => 1)
   end
 
+  # 取得全部机长
   def self.get_all_leader
-    users = Group.find_by_groupflag(2).users
+    # users = Group.find_by_groupflag(2).users
+    users = User.where(:position => 2)
   end
 
   # for 班报界面使用
