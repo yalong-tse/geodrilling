@@ -239,13 +239,21 @@ module ApplicationHelper
 
   # 根据holeid 获取 钻孔的机长
   def hole_administrator(holeid)
-#    d = Deployment.getDeployByHoleId(holeid)
+    result =""
     d = Deployment.find_by_hole_id holeid
-#    logger.info "the deploy is #{d}"
     if d
-      return d.user.name if d.user
+      if d.user
+        result << d.user.name
+        if (d.user.members)
+          result << "["
+          d.user.members.each do |m|
+            result << m.name + " "
+          end
+          result << "]"
+        end
+      end
     else
-      return ""
+      return result 
     end
   end
 
@@ -312,7 +320,7 @@ module ApplicationHelper
   def get_leader_member
     result = ""
     Group.get_all_leader.each do |leader|
-      result<< "<option> " +"机长:" + leader.name + " [班长：";
+      result<< "<option value='" + leader.id.to_s + "'>" +"机长:" + leader.name + " [班长：";
         leader.members.each do |user|
           result << user.name + " "
         end
@@ -344,6 +352,7 @@ module ApplicationHelper
       end
     end
   end
+
 
 
 end

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Group < ActiveRecord::Base
   attr_accessible :name, :groupflag, :userids, :leaderid
   has_and_belongs_to_many :users
@@ -15,6 +16,15 @@ class Group < ActiveRecord::Base
 
   def self.get_all_leader
     users = Group.find_by_groupflag(2).users
+  end
+
+  # for 班报界面使用
+  def self.getmembers(user)
+    if(user && user.members)
+      user.members.collect{|m| ["机长:" + user.name + ",班长: " + m.name, m.id ]}
+    else
+      ""
+    end
   end
 
 end

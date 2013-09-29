@@ -39,6 +39,7 @@ class Hole < ActiveRecord::Base
   def self.getbyholenumber(holenumber,contract_name)
     where("holenumber=? and contract.name=?",holenumber , contract_name)
   end
+
   # virtual attribute
   def statusstr
    result = ""

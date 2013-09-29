@@ -17,49 +17,28 @@
 
 
 <div class="row-fluid">
-  <div class="span5">
+  <div class="span10">
   <div class="control-group">
-    <%= f.label "钻孔编号", :class=>"control-label" %>
+    <%= f.label "钻孔信息", :class=>"control-label" %>
     <div class="controls">
       <%=f.hidden_field :holeid, :value=>@hole.id %>
-      <%= text_field_tag :holenumber, nil , :class=>"text_field", :value=>@hole.holenumber , :readonly=>true %>
-    </div>
-  </div>
-  </div>
-
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "合同名称", :class=>"control-label" %>
-    <div class="controls">
-      <%= text_field_tag :contractname, nil, :class=>"text_field", :value=>@hole.contract.name ,:readonly=>true %>
+      <%= text_field_tag "", nil , :class=>"input-xxlarge", :value=>"合同名称：" + @hole.contract.name + "，钻孔编号：" +  @hole.holenumber , :readonly=>true %>
     </div>
   </div>
   </div>
 </div>
 
 <div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "项目经理", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :administrator , :class=>"text_field" , :value=>"机长" , :readonly=>true%>
-    </div>
-  </div>
-  </div>
-
   <div class="span5">
   <div class="control-group">
     <%= f.label "班长" , :class=>"control-label" %>
     <div class="controls">
-     <%= f.select(:tourleader, options_for_select([["班长一"],["班长二"],["班长三"]]),:class=>"text_field", :cols=>"3", :prompt=>"选择班长") %>
+      <%=f.hidden_field :administrator, :value=>@deployment.user.nil?? "":@deployment.user.id %>
+      <%= f.select(:tourleader, options_for_select(Group.getmembers(@deployment.user)),:class=>"input-large", :cols=>"3" ) %>
     </div>
   </div>
   </div>
 
-</div>
-
-
-<div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "班报日期", :class=>"control-label" %>
@@ -70,6 +49,10 @@
     </div>
   </div>
   </div>
+</div>
+
+
+<div class="row-fluid">
 
   <div class="span5">
   <div class="control-group">

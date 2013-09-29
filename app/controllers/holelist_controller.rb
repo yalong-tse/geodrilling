@@ -6,10 +6,8 @@ class HolelistController < ApplicationController
     #@rigmachine = Rigmachine.unused
     #@drilltower = Drilltower.unused
     #@pump = Pump.unused
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @holes }
     end
   end
 
@@ -29,16 +27,24 @@ class HolelistController < ApplicationController
 
   # 钻孔配置的保存功能
   def create 
-    @deployment = Deployment.new(params[:deployment])
+    holeid = params[:holeid]
+    if(holeid)
+      @deployment = Deployment.find_by_hole_id(holeid)
+      if(@deployment.nil?)
+        @deployment = Deployment.new
+      end
+    end
     rigid = params[:rigmachineid]
     pumpid = params[:pumpid]
     towerid = params[:drilltowerid]
-    holeid = params[:holeid]
+    userid = params[:userid]
+
     #logger.info("the rigid is #{rigid}, the pumpid is #{pumpid}, the towerid is #{towerid}");
     @deployment.hole_id = holeid
     @deployment.pump_id = pumpid
     @deployment.rigmachine_id = rigid
     @deployment.drilltower_id = towerid
+    @deployment.user_id = userid
     hole = Hole.find(params[:holeid]) if params[:holeid]
     # 更改钻孔的状态为"正在执行"
     hole.status = 1

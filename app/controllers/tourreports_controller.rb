@@ -52,6 +52,7 @@ class TourreportsController < ApplicationController
     @tourreport = Tourreport.new
     @hole = Hole.find(params[:holeid])
     #@holes = Hole.unclosed
+    @deployment = Deployment.find_by_hole_id(params[:holeid]) if params[:holeid]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @tourreport }

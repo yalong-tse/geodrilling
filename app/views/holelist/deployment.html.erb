@@ -43,7 +43,7 @@
         <%= f.label "机长和班长" ,:class=>"control-label" %>
         <div class="controls">
           <div class="input-append">
-            <select  class="input-xxlarge"><%= get_leader_member %></select><span class="add-on"><i class="icon-group"></i></span>
+            <select name="userid" id="userid" class="input-xxlarge"><%= get_leader_member %></select><span class="add-on"><i class="icon-group"></i></span>
           </div>
         </div>
       </div>
@@ -287,6 +287,9 @@
 
   $(function(){
     $(".chzn-select").chosen();
+    <% if @deployment %>
+    $("#userid").val("<%=@deployment.user_id %>");
+    <% end %>
 
   $("#formservice").validate({
     rules:{
