@@ -59,13 +59,20 @@
   </div>
   <div class="span9">
     <!-- Body content -->
-    <iframe id="_iframe" src="<%= department_path(@department) %>" width="100%" height="100%" frameborder="0" onload="autoResize('_iframe')"></iframe>
+    <iframe id="_iframe" width="100%" height="100%" frameborder="0"></iframe>
   </div>
 </div>
 
 <%= content_for :inline_javascripts do %>
 <script type="text/javascript">
   <!--
+  $(function(){
+    // 注意:添加onload事件应该在设置src之前,不然命中了浏览器的缓存的话,onload可能来不及触发
+    $("#_iframe").load(function(){
+      autoResize('_iframe');
+    });
+    $("#_iframe").attr("src", "<%= department_path(@department) %>");
+  });
   function autoResize(id) {
     var newheight;
     var newwidth;
