@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130924103004) do
+ActiveRecord::Schema.define(:version => 20130928091617) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -350,6 +350,7 @@ ActiveRecord::Schema.define(:version => 20130924103004) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "leaderid"
+    t.integer  "position"
   end
 
   add_index "users", ["account"], :name => "index_users_on_account", :unique => true

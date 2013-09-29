@@ -53,6 +53,17 @@ module UsersHelper
     end
   end
 
+  def user_position(user)
+    case user.position
+    when 1
+      "项目经理"
+    when 2
+      "机长"
+    when 3
+      "班长"
+    end
+  end
+
   def is_appuser(user)
     if user.isappuser?
       "是"
