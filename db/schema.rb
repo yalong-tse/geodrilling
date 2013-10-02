@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130928091617) do
+ActiveRecord::Schema.define(:version => 20131002003706) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -286,13 +286,22 @@ ActiveRecord::Schema.define(:version => 20130928091617) do
     t.string   "tourdrillingtime"
     t.string   "tourauxiliarytime"
     t.string   "remark"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "status"
     t.integer  "lastdeep"
     t.integer  "currentdeep"
     t.string   "intrumenttakeover"
     t.string   "takeoverremark"
+    t.string   "holeaccidenttime"
+    t.string   "deviceaccidenttime"
+    t.string   "othertime"
+    t.string   "totaltime"
+    t.string   "projectmanager"
+    t.string   "lastleader"
+    t.string   "nextleader"
+    t.string   "centralizer"
+    t.string   "antideviation"
   end
 
   create_table "tourreportworkcontents", :force => true do |t|
@@ -371,6 +380,14 @@ ActiveRecord::Schema.define(:version => 20130928091617) do
     t.integer  "holeid"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "upmore"
+    t.string   "corename"
+    t.string   "coregrade"
+    t.string   "corenumber"
+    t.string   "drillbittype"
+    t.string   "drillbitnumber"
+    t.string   "enlargertype"
+    t.string   "enlargernumber"
   end
 
 end

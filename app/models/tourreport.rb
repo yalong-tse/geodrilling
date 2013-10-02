@@ -16,7 +16,16 @@ class Tourreport < ActiveRecord::Base
   # takeoverremark 交接说明
   # lastdeep 接班孔深
   # currentdeep 交班孔深
-  attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status, :lastdeep, :currentdeep, :intrumenttakeover, :takeoverremark
+  # holeaccidenttime, 孔内事故时间
+  # deviceaccidenttime, 设备事故时间
+  # othertime, 其他时长
+  # totaltime, 合计时长
+  # projectmanager ,项目经理
+  # lastleader 上一个班长，交班班长
+  # nextleader 下一个班长，接班班长
+  # centralizer 扶正器长
+  # antideviation 防斜措施
+  attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status, :lastdeep, :currentdeep, :intrumenttakeover, :takeoverremark, :holeaccidenttime,:deviceaccidenttime,:othertime,:totaltime,:projectmanager,:lastleader,:nextleader,:centralizer,:antideviation
   # 属于哪个钻孔
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
   has_many :tourreportworkcontent

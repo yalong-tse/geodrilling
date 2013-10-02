@@ -9,8 +9,16 @@
 #pumppressure 泵压
 #corelength 取心长度
 #coreleftlength 残留岩心长度
+#upmore 上余
+#corename 岩心名称
+#coregrade 岩心等级
+#corenumber 岩心编号
+#drillbittype 钻头类型
+#drillbitnumber 钻头编号
+#enlargertype 扩孔器类型
+#enlargernumber 扩孔器编号
 class Workcontent < ActiveRecord::Base
-  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid
+  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid ,:upmore,:corename ,:coregrade , :corenumber ,:drillbittype,:drillbitnumber ,:enlargertype,:enlargernumber
 
   belongs_to :hole , :class_name=>"Hole" , :foreign_key=>"holeid"
   belongs_to :tourreport , :class_name=>"Tourreport" , :foreign_key=>"tourreportid"
