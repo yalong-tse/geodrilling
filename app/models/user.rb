@@ -92,8 +92,15 @@ class User < ActiveRecord::Base
 
   # 人员配组，将机长分配给项目经理或班长分配给机长
   def self.save_leader(userids, leaderid)
-    userids.split(/,/).each do |userid|
-      User.find(userid).update_attributes(:leaderid => leaderid)
+    logger.debug "------------------------userid=#{userids};leaderid=#{leaderid}"
+    if userids == "" then
+      User.find(leaderid).members.each do |user|
+        user.update_attributes(:leaderid => nil)
+      end
+    else
+      userids.split(/,/).each do |userid|
+        User.find(userid).update_attributes(:leaderid => leaderid)
+      end
     end
   end
 

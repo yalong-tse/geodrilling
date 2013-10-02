@@ -133,12 +133,11 @@
                   <th>编号</th>
                   <th>长度</th>
                   <th>残留</th>
-                  <th>残留</th>
                   <th>规格</th>
                   <th>类型</th>
                   <th>编号</th>
-                  <th>类型</th>
                   <th>编号</th>
+                  <th>类型</th>
                   <th>压力</th>
                   <th>转速</th>
                   <th>泵量</th>
@@ -156,138 +155,59 @@
                     <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_corename[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_coregrade[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_corenumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_corelength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_coreleftlength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_drillbit[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_drillbittype[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_drillbitnumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_enlargernumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_enlargertype[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_pumppressure[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_rotatespeed[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
-                    </td>
-                    <td>
-                    <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                    <%=text_field_tag "workcontent_pumpquantity[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                   </tr>
                 </tbody>
               </table>
 
-   <div class="control-group">
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">工作内容</span>
-      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">工作内容</span>
-      <%= select_tag("workcontent[]" , options_for_select(Tourreport::WORKITEM , :selected=>"钻进"), :class=>"input-medium", :onchange=>"content_change(this)")%>&nbsp;&nbsp;
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">进尺</span>
-      <%=text_field_tag "workcontent_drillfootage[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">钻头规格</span>
-      <%=text_field_tag "workcontent_drillbit[]" ,nil, :class=>"input-mini" %>
-  </div>
-    <div class="input-prepend">
-      <span class="add-on">转速</span>
-      <%=text_field_tag "workcontent_rotatespeed[]" ,nil, :class=>"input-mini" %>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">泵量</span>
-      <%=text_field_tag "workcontent_pumpquantity[]" ,nil, :class=>"input-mini" %>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">泵压</span>
-      <%=text_field_tag "workcontent_pumppressure[]",nil, :class=>"input-mini" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">工作内容</span>
-      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM,:selected=>"取心"), :class=>"input-medium" , :onchange=>"content_change(this)" )%>&nbsp;&nbsp;
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">岩心长度</span>
-      <%= text_field_tag "corelength[]", nil,:class=>"input-mini" ,:onblur=>"length_content(this)" %>&nbsp;&nbsp;
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">残留岩心长度</span>
-      <%= text_field_tag "coreleftlength[]",nil, :class=>"input-mini" %>&nbsp;&nbsp;
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_starttime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-append bootstrap-timepicker">
-      <%= text_field_tag "workcontent_finishtime[]",nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
-    </div>
-    <div class="input-prepend">
-      <span class="add-on">工作内容</span>
-      <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM, :selected=>"起钻"),:class=>"input-medium" ,:onchange=>"content_change(this)" )%>&nbsp;&nbsp;
-    </div>
-  </div>
   <div class="control-group" id="_thelast">
-    <input type="button" class="btn btn-info" onClick="add_line()" value="添加+"/>
+    <input type="button" class="btn btn-info btn-small" onClick="add_line()" value="添加+"/>
   </div>
               
             </div>
