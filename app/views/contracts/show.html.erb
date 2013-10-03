@@ -2,78 +2,80 @@
 <% content_for(:title,"合同详情") %>
 <% content_for(:page_header_description, "合同详情情况，请确认") %>
 
-<div class="page-section">
-  <div class="container">
-    <div class="span8">
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="widget-box transparent">
+        <div class="widget-header widget-header-flat">
+          <h5 class="lighter">
+            <i class="icon-star green"></i>
+            合同详细情况
+          </h5>
+
+          <div class="widget-toolbar">
+            <a href="#" data-action="collapse">
+              <i class="icon-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="widget-body">
+          <div class="widget-main no-padding">
       <table class="table table-hover table-bordered">
         <thead>
-          <tr>
-            <th width="20%">名称</th>
-            <th>内容</th>
-          </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>合同编号</strong></td>
-              <td><%= @contract.contractno %></td>
-          </tr>
-          <tr>
-            <td><strong>合同名称</strong></td>
-              <td><%= @contract.name %></td>
+            <td width="15%"><strong>合同编号</strong></td>
+            <td width="25%"><span class="text-error"><%= @contract.contractno %></span></td>
+            <td width="15%"><strong>合同状态</strong></td>
+            <td width="35%"><span class="text-error"><%= contract_status_treat @contract.status %></span></td>
           </tr>
           <tr>
             <td><strong>项目名称</strong></td>
-              <td><%= @contract.projectname %></td>
+            <td><span class="text-error"><%= @contract.projectname %></span></td>
+            <td width="15%"><strong>合同名称</strong></td>
+            <td width="35%"><span class="text-error"><%= @contract.name %></span></td>
           </tr>
           <tr>
             <td><strong>项目所在地</strong></td>
-              <td><%= @contract.projectaddr %></td>
+            <td colspan="3"><span class="text-error"><%= @contract.projectaddr %></span></td>
           </tr>
           <tr>
             <td><strong>合同业主</strong></td>
-              <td><%= @contract.owner %></td>
-          </tr>
-          <tr>
+            <td><span class="text-error"><%= @contract.owner %></span></td>
             <td><strong>合同乙方</strong></td>
-            <td><%= @contract.buyerparty %></td>
+            <td><span class="text-error"><%= @contract.buyerparty %></span></td>
           </tr>
           <tr>
               <td><strong>签订日期</strong></td>
-              <td><%= @contract.signdate %></td>
+              <td><span class="text-error"><%= @contract.signdate %></span></td>
+              <td><strong>资金来源</strong></td>
+              <td><span class="text-error"><%= contract_fundsource @contract.fundsource %></span></td>
           </tr>
           <tr>
               <td><strong>开始日期</strong></td>
-              <td><%= @contract.startdate %></td>
-          </tr>
-          <tr>
+              <td><span class="text-error"><%= @contract.startdate %></span></td>
               <td><strong>完工日期</strong></td>
-              <td><%= @contract.finishdate %></td>
-          </tr>
-          <tr>
-              <td><strong>合同状态</strong></td>
-              <td><%= contract_status @contract.status %></td>
-          </tr>
-          <tr>
-              <td><strong>资金来源</strong></td>
-              <td><%= contract_fundsource @contract.fundsource %></td>
+              <td><span class="text-error"><%= @contract.finishdate %></span></td>
           </tr>
           <tr>
               <td><strong>合同金额</strong></td>
-              <td><%= @contract.contractamount %></td>
-          </tr>
-          <tr>
+              <td><span class="text-error"><%= @contract.contractamount %></span></td>
               <td><strong>合同附件</strong></td>
-              <td><%=contract_attachment_dealing @contract %></td>
+              <td><span class="text-error"><%=contract_attachment_dealing @contract %></span></td>
           </tr>
           <tr>
              <td><strong>合同备注</strong></td>
-             <td><%= @contract.remark %></td>
+             <td colspan="3"><span class="text-error"><%= @contract.remark %></span></td>
           </tr>
         </tbody>
       </table>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="form-actions">
   <%= link_to edit_contract_path(@contract) ,:class=>"btn btn-purple btn-small" do %>编辑 <i class="icon-edit icon-on-right"></i><% end %> |

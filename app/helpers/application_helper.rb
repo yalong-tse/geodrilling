@@ -58,13 +58,13 @@ module ApplicationHelper
     code = ""
     case args
     when 0
-    code << "<span class='label label-inverse'>待执行</span>";
+    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
     when 1
-    code << "<span class='label label-warning'>正在执行</span>";
+    code << "<span class='label label-warning arrowed-in'>正在执行</span>";
     when 2
-    code << "<span class='label label-success'>已经完成</span>";
+    code << "<span class='label label-success arrowed-in'>已经完成</span>";
     when 3
-    code <<  "<span class='label label-info'>已经归档</span>";
+    code <<  "<span class='label label-info arrowed-in'>已经归档</span>";
     end
     code.html_safe
   end

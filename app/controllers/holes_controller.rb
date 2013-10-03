@@ -64,6 +64,7 @@ class HolesController < ApplicationController
   # GET /holes/1/edit
   def edit
     @hole = Hole.find(params[:id])
+    @contracts = Contract.find(:all,:conditions=>"status=0 or status=1")
   end
 
   # POST /holes
