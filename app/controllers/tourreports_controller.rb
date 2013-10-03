@@ -25,18 +25,8 @@ class TourreportsController < ApplicationController
 
   # GET /tourreports/1
   # GET /tourreports/1.json
-  def show
-    @tourreport = Tourreport.find(params[:id])
-    @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @tourreport }
-    end
-  end
-
   # 以表格的样式展示班报
-  def details
+  def show
     @tourreport = Tourreport.find(params[:id])
     @deployment = Deployment.find(:first,:conditions=>["hole_id=?",params[:id]])
     @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
@@ -46,6 +36,7 @@ class TourreportsController < ApplicationController
       format.json { render json: @tourreport }
     end
   end
+
   # GET /tourreports/new
   # GET /tourreports/new.json
   def new
@@ -73,7 +64,6 @@ class TourreportsController < ApplicationController
     thehole.actualdeep = @tourreport.currentdeep 
     thehole.save
 
-    @contentarr = Array.new
     params[:workcontent_starttime].each_index do |i|
       workcontent = Workcontent.new
       workcontent.starttime = params[:workcontent_starttime][i]
@@ -99,7 +89,6 @@ class TourreportsController < ApplicationController
       workcontent.holeid = params[:tourreport][:holeid]
       workcontent.tourreport = @tourreport
       workcontent.save
-      @contentarr << workcontent
 
       logger.info params[:workcontent_starttime][i]
       logger.info(params[:workcontent][i])

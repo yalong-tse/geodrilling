@@ -46,6 +46,7 @@
   <div class="control-group">
     <%= f.label "班长" , :class=>"control-label" %>
     <div class="controls">
+      <%=f.hidden_field :projectmanager, :value=>(@deployment.user.nil? || @deployment.user.leader.nil?)? "":@deployment.user.leader.id %>
       <%=f.hidden_field :administrator, :value=>@deployment.user.nil?? "":@deployment.user.id %>
       <%= f.select(:tourleader, options_for_select(Group.getmembers(@deployment.user)),:class=>"input-large" ) %>
       <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="下拉选择这个班的班长" >?<span>

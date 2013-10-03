@@ -17,8 +17,9 @@
 #drillbitnumber 钻头编号
 #enlargertype 扩孔器类型
 #enlargernumber 扩孔器编号
+#holedeep 孔深
 class Workcontent < ActiveRecord::Base
-  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid ,:upmore,:corename ,:coregrade , :corenumber ,:drillbittype,:drillbitnumber ,:enlargertype,:enlargernumber
+  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid ,:upmore,:corename ,:coregrade , :corenumber ,:drillbittype,:drillbitnumber ,:enlargertype,:enlargernumber,:holedeep
 
   belongs_to :hole , :class_name=>"Hole" , :foreign_key=>"holeid"
   belongs_to :tourreport , :class_name=>"Tourreport" , :foreign_key=>"tourreportid"
