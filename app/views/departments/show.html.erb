@@ -1,19 +1,36 @@
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag "ace-append" %>
+<% end %>
+
 <%= render partial: "layouts/flash_messages" %>
 
-<dl class="dl-horizontal">
-  <dt><%= Department.human_attribute_name("depcode") %></dt>
-  <dd><%= @department.depcode %></dd>
-  <dt><%= Department.human_attribute_name("name") %></dt>
-  <dd><%= @department.name %></dd>
-  <dt><%= Department.human_attribute_name("head") %></dt>
-  <dd><%= @department.head %></dd>
-  <dt><%= Department.human_attribute_name("phone") %></dt>
-  <dd><%= @department.phone %></dd>
-  <dt><%= Department.human_attribute_name("address") %></dt>
-  <dd><%= @department.address %></dd>
-  <dt><%= Department.human_attribute_name("remark") %></dt>
-  <dd><%= @department.remark %></dd>
-</dl>
+<div class="profile-user-info profile-user-info-striped">
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("depcode") %></div>
+    <div class="profile-info-value"><span><%= @department.depcode %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("name") %></div>
+    <div class="profile-info-value"><span><%= @department.name %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("head") %></div>
+    <div class="profile-info-value"><span><%= @department.head %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("phone") %></div>
+    <div class="profile-info-value"><span><%= @department.phone %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("address") %></div>
+    <div class="profile-info-value"><span><%= @department.address %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= Department.human_attribute_name("remark") %></div>
+    <div class="profile-info-value"><span><%= @department.remark %></span></div>
+  </div>
+</div>
+
 <div class="form-actions">
 <%= link_to t('labels.edit'), edit_department_path(@department), :class => "btn btn-primary" %>
 </div>
