@@ -1,58 +1,65 @@
 <%= render partial: "layouts/flash_messages", flash: flash %>
 <% content_for(:title,"钻机入库单详情") %>
-<div class="container">
-  <table class="table table-hover">
+
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="widget-box transparent">
+        <div class="widget-header widget-header-flat">
+          <h5 class="lighter">
+            <i class="icon-star green"></i>
+            钻机入库单详情
+          </h5>
+
+          <div class="widget-toolbar">
+            <a href="#" data-action="collapse">
+              <i class="icon-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="widget-body">
+          <div class="widget-main no-padding">
+      <table class="table table-hover table-bordered">
+        <thead>
+        </thead>
+        <tbody>
     <tr>
-      <th>项目名称</th>
-      <th>内容</th>
-    </tr>
-    <tr>
-      <td>设备编号</td>
-      <td><%= @rigmachine.devicenumber%></td>
-    </tr>
-    <tr>
-      <td>钻机型号</td>
-      <td><%= @rigmachine.rigmodel%></td>
+      <td width="15%">设备编号</td>
+      <td width="25%"><span class="text-error"><%= @rigmachine.devicenumber%></span></td>
+      <td width="15%">钻机型号</td>
+      <td width="35%"><span class="text-error"><%= @rigmachine.rigmodel%></span></td>
     </tr>
     <tr>
       <td>钻孔直径</td>
-      <td><%= @rigmachine.pipeDiameter %></td>
-    </tr>
-    <tr>
+      <td><span class="text-error"><%= @rigmachine.pipeDiameter %>mm</span></td>
       <td>钻机功率</td>
-      <td><%= @rigmachine.rigPower %></td>
+      <td><span class="text-error"><%= @rigmachine.rigPower %>kW</span></td>
     </tr>
     <tr>
       <td>钻孔深度</td>
-      <td><%= @rigmachine.righoleDeep %></td>
-    </tr>
-    <tr>
+      <td><span class="text-error"><%= @rigmachine.righoleDeep %>m</span></td>
       <td>钻机重量</td>
-      <td><%= @rigmachine.rigweight %></td>
+      <td><span class="text-error"><%= @rigmachine.rigweight %>kg</span></td>
     </tr>
     <tr>
       <td>转速</td>
-      <td><%= @rigmachine.rotatingSpeed %></td>
-    </tr>
-    <tr>
+      <td><span class="text-error"><%= @rigmachine.rotatingSpeed %>r/min</span></td>
       <td>外观尺寸</td>
-      <td><%= @rigmachine.overallsize %></td>
+      <td><span class="text-error"><%= @rigmachine.overallsize %>(长(mm)×宽(mm)×高(mm))</span></td>
     </tr>
     <tr>
       <td>厂商</td>
-      <td><%= @rigmachine.manufacture %></td>
-    </tr>
-    <tr>
+      <td><span class="text-error"><%= @rigmachine.manufacture %></span></td>
       <td>厂商联系方式</td>
-      <td><%= @rigmachine.manufactureContact %></td>
+      <td><span class="text-error"><%= @rigmachine.manufactureContact %></span></td>
     </tr>
     <tr>
       <td>备注</td>
-      <td><%= @rigmachine.remark %></td>
+      <td colspan="3"><%= @rigmachine.remark %></td>
     </tr>
     <tr>
       <td>图片</td>
-      <td>
+      <td colspan="3">
         <ul class="thumbnails">
           <li class="span2">
             <div class="thumbnail">
@@ -63,5 +70,11 @@
      </td>
     </tr>
   </table>
-</div>
-</div>
+
+        </tbody>
+      </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
