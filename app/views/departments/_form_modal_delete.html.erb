@@ -1,0 +1,19 @@
+<div id="delete_modal" class="modal hide fade">
+  <div class="modal-header widget-header widget-header-flat">
+    <h3>系统提示</h3>
+    <div class="widget-toolbar">
+      <label>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </label>
+    </div>
+  </div>
+  <div class="modal-body widget-body">
+    <p class="text-error">确认删除操作?</p><p class="text-warning"><strong>注意:</strong>该部门下的所有用户将同时被删除!</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-undo"></i>取消</button>
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+    <%= link_to "<i class='icon-ok'></i>确认".html_safe, "/departments/", :id=>"delete_department", :class=>"btn btn-primary", :method => :delete, :remote => true %>
+    <!--<button class="btn btn-primary"><i class="icon-ok"></i>确认</button>-->
+  </div>
+</div>

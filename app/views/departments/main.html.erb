@@ -24,33 +24,8 @@
   <%= hide_modal %>
 <% end %>
 
-<div id="modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>请填写部门名称</h3>
-  </div>
-  <div class="modal-body">
-    <p><input id="dep_name" type="text" placeholder="请填写部门名称..." /></p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-    <button class="btn btn-primary">保存</button>
-  </div>
-</div>
-
-<div id="delete_modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>系统提示</h3>
-  </div>
-  <div class="modal-body">
-    <p>确认删除操作?<br><p class="text-warning"><strong>注意:</strong>该部门下的所有用户将同时被删除!</p></p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-    <button class="btn btn-primary">确认</button>
-  </div>
-</div>
+<%= render 'form_modal' %>
+<%= render 'form_modal_delete' %>
 
 <div class="row-fluid">
   <div class="span3">

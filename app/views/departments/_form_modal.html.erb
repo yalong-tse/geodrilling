@@ -1,0 +1,69 @@
+<div id="modal" class="modal hide fade">
+  <%= form_for(@department_new, :html => {:class=>"form-horizontal"}, :remote => true) do |f| %>
+  <%= f.hidden_field :parent_id, :id=>"parent_id" %>
+  <input type="hidden" name="newitemnext" id="newitemnext" />
+  <input type="hidden" name="selectitem" id="selectitem" />
+  <div class="modal-header widget-header widget-header-flat">
+    <h3>新增部门</h3>
+    <div class="widget-toolbar">
+      <label>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </label>
+    </div>
+  </div>
+  <div class="modal-body widget-body">
+    <% if @department_new.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@department_new.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+        <% @department_new.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :depcode, "<span class='required-field'>*</span>#{Department.human_attribute_name(:depcode)}".html_safe, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :depcode %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :name, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :head, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :head %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :phone, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :phone %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :address, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :address %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :remark, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :remark %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-undo"></i>取消</button>
+    <button class="btn btn-primary"><i class="icon-ok"></i>保存</button>
+  </div>
+  <% end %>
+</div>

@@ -9,7 +9,7 @@ class Department < ActiveRecord::Base
   # address, 地址
   # remark, 备注
   has_ancestry
-  attr_accessible :name, :depcode, :head, :phone, :address, :remark, :parent, :parent_id
+  attr_accessible :name, :depcode, :head, :phone, :address, :remark, :parent, :parent_id, :newitemnext, :selectitem
   has_many :users, :dependent => :destroy
   
   def to_node
