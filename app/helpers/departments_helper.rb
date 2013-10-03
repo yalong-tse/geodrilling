@@ -40,11 +40,26 @@ module DepartmentsHelper
     code = <<-DHTMLXTREE
       function onButtonClick(menuitemId, type) {
         var id = tree.contextID;
-        tree.setItemColor(id, menuitemId.split('_')[1]);
+        //tree.setItemColor(id, menuitemId.split('_')[1]);
         //alert(menuitemId);
+
         if(menuitemId == 'deleteitem') {
+          $('#delete_department').attr("href", "/departments/"+id);
           $('#delete_modal').modal('show');
-        } else {
+        } else if (menuitemId == "addnewitemnext") {
+          var parentid = tree.getParentId(id);
+          if (parentid == '0') {
+            $('#parent_id').val('');
+          } else {
+            $('#parent_id').val(parentid);
+          }
+          $('#selectitem').val(id);
+          $('#newitemnext').val('1'); // 增加新同级部门
+          $('#modal').modal('show');
+        } else if (menuitemId == "addchilditem") {
+          $('#parent_id').val(id);
+          $('#selectitem').val(id);
+          $('#newitemnext').val('0');
           $('#modal').modal('show');
         }
       }

@@ -1,3 +1,4 @@
+# encoding:utf-8
 class DepartmentsController < ApplicationController
   layout 'iframe', :only => [:index, :show, :edit]
   
@@ -19,6 +20,8 @@ class DepartmentsController < ApplicationController
   def main
     @department = Department.roots.first
     @departments = Department.arrange
+    # 新增同级部门或者新增子部门
+    @department_new = Department.new
     respond_to do |format|
       format.html
       format.js
@@ -55,12 +58,14 @@ class DepartmentsController < ApplicationController
   # POST /departments
   # POST /departments.json/
   def create
+    logger.debug "-------------------parent_id=#{params[:department][:parent_id]}"
     @department = Department.new(params[:department])
 
     respond_to do |format|
       if @department.save
         format.html { redirect_to @department, notice: t('activerecord.successful.messages.created', :model => @department.class.model_name.human) }
         format.json { render json: @department, status: :created, location: @department }
+        format.js {}
       else
         format.html { render action: "new" }
         format.json { render json: @department.errors, status: :unprocessable_entity }
@@ -87,12 +92,14 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
+    logger.debug "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&destroy=#{params[:id]}"
     @department = Department.find(params[:id])
     @department.destroy
 
     respond_to do |format|
       format.html { redirect_to departments_url }
       format.json { head :no_content }
+      format.js {}
     end
   end
 end

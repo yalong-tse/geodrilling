@@ -1,0 +1,12 @@
+var selectitemid = <%= params[:selectitem] %>;
+var newitemid = <%= @department.id %>;
+var parent_id = <%= params[:department][:parent_id] %>;
+var newitem_name = "<%= @department.name %>";
+var newitemnext = "<%= params[:newitemnext] %>";
+$("#modal").modal('hide');
+if( newitemnext == "1") { // 添加新同级部门
+  tree.insertNewNext(selectitemid, newitemid, newitem_name, 0,0,0,0,"SELECT");
+} else { // 添加新子部门
+  tree.insertNewChild(parent_id,newitemid,newitem_name,0,0,0,0,"SELECT");
+}
+$("#_iframe").attr("src", "<%= department_path(@department) %>");
