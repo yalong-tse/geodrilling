@@ -150,12 +150,12 @@
                     <td>&nbsp;&nbsp;</td>
                     <td>
                       <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+                        <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>"00:00" %><span class="add-on"><i class="icon-time"></i></span>
                       </div>
                     </td>
                     <td>
                     <div class="input-append bootstrap-timepicker">
-                    <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>"00:00" %><span class="add-on"><i class="icon-time"></i></span>
                     </div>
                     </td>
                     <td>
@@ -599,6 +599,9 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
     {
         $("#tourreport_finishtime").val("00:00");
     }
+
+    $("input[name='workcontent_starttime[]']").val($("#tourreport_starttime").val());
+    $("input[name='workcontent_finishtime[]']").val($("#tourreport_starttime").val());
 
   }
 

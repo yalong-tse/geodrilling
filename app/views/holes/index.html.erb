@@ -20,75 +20,6 @@
 </table>
 </div>
 
-<div id="_holes_modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-    <h5>钻孔详情</h5>
-  </div>
-  <div class="modal-body">
-<table class="table table-striped table-hover table-bordered">
-  <tr>
-    <td>矿区</td>
-    <td id="_minearea"></td>
-  </tr>
-  <tr>
-    <td>钻孔编号</td>
-    <td id="_holenumber"></td>
-  </tr>
-  <tr>
-    <td>设计终孔深度</td>
-    <td id="_designdeep"></td>
-  </tr>
-  <tr>
-    <td>当前深度</td>
-    <td id="_actualdeep"></td>
-  </tr>
-  <tr>
-    <td>设计终孔直径</td>
-    <td id="_designdiameter"></td>
-  </tr>
-  <tr>
-    <td>实际钻孔直径</td>
-    <td id="_actualdiameter"></td>
-  </tr>
-  <tr>
-    <td>设计钻孔顶角</td>
-    <td id="_designapexangle"></td>
-  </tr>
-  <tr>
-    <td>实际钻孔顶角</td>
-    <td id="_actualapexangle"></td>
-  </tr>
-  <tr>
-    <td>设计岩心采取率</td>
-    <td id="_designcoreratio"></td>
-  </tr>
-  <tr>
-    <td>实际岩心采取率</td>
-    <td id="_actualcoreratio"></td>
-  </tr>
-  <tr>
-    <td>钻探目的</td>
-    <td id="_drillingpurpose"></td>
-  </tr>
-  <tr>
-    <td>钻孔状态</td>
-    <td id="_status"></td>
-  </tr>
-  <tr>
-    <td>设计书</td>
-    <td id="_designbook"></td>
-  </tr>
-  <tr>
-    <td>备注</td>
-    <td id="_remark"></td>
-  </tr>
-</table>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-info" data-dismiss="modal"><i class="icon-reply"></i>关闭</button>
-  </div>
-</div>
 <% content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.dataTables.min' %>
   <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
@@ -128,23 +59,7 @@
 
   function open_detail(url)
   {
-    $.getJSON(url,{},function(data){
-      $("#_holes_modal").modal();
-      $("#_minearea").html(data.minearea);
-      $("#_holenumber").html(data.holenumber);
-      $("#_designdeep").html(data.designdeep);
-      $("#_actualdeep").html(data.actualdeep);
-      $("#_designdiameter").html(data.designdiameter);
-      $("#_actualdiameter").html(data.actualdiameter);
-      $("#_designapexangle").html(data.designapexangle);
-      $("#_actualapexangle").html(data.actualapexangle);
-      $("#_designcoreratio").html(data.designcoreratio);
-      $("#_actualcoreratio").html(data.actualcoreratio);
-      $("#_drillingpurpose").html(data.drillingpurpose);
-      $("#_status").html(data.statusstr);
-      $("#_remark").html(data.remark);
-      $("#_designbook").html(data.attachmentstr);
-    });
+    window.location.href=url;
   }
 
   function open_tourreports(url)

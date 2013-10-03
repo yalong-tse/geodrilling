@@ -1,71 +1,90 @@
 <%= render partial: "layouts/flash_messages", flash: flash %>
 <% content_for(:title,"钻孔详情") %>
-<div class="page-section">
-  <div class="container">
-    <div class="span8">
-      <table class="table table-hover table-bordered">
-        <thead>
+
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="widget-box transparent">
+        <div class="widget-header widget-header-flat">
+          <h5 class="lighter">
+            <i class="icon-star green"></i>
+            钻孔详细情况
+          </h5>
+
+          <div class="widget-toolbar">
+            <a href="#" data-action="collapse">
+              <i class="icon-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="widget-body">
+          <div class="widget-main no-padding">
+          <table class="table table-hover table-bordered">
+            <thead></thead>
+            <tbody>
           <tr>
-            <th width="30%">名称</th>
-            <th>内容</th>
+            <td width="15%"><strong>孔号</strong></td>
+            <td width="25%"><span class="text-error"><%= @hole.holenumber %></span></td>
+            <td width="15%"><strong>钻孔状态</strong></td>
+            <td width="35%"><span class="text-error"><%= hole_status_treat(@hole.status) %></span></td>
           </tr>
-        </thead>
-        <tbody>
           <tr>
             <td><strong>矿区</strong></td>
-            <td><%= @hole.minearea %></td>
-          </tr>
-          <tr>
-            <td><strong>所属合同</strong></td>
-            <td><%= @hole.contract.name %></td>
-          </tr>
-          <tr>
-            <td><strong>孔号</strong></td>
-            <td><%= @hole.holenumber %></td>
+            <td><span class="text-error"><%= @hole.minearea %></span></td>
+            <td width="15%"><strong>合同名称</strong></td>
+            <td width="35%"><span class="text-error"><%= @hole.contract.name %></span></td>
           </tr>
           <tr>
             <td><strong>设计钻孔深度</strong></td>
-            <td><%= @hole.designdeep %></td>
+            <td><span class="text-error"><%= @hole.designdeep %></span></td>
+            <td><strong>实际钻孔深度</strong></td>
+            <td><span class="text-error"><%= @hole.actualdeep %></span></td>
           </tr>
           <tr>
             <td><strong>设计钻孔直径</strong></td>
-            <td><%= @hole.designdiameter %></td>
+            <td><span class="text-error"><%= @hole.designdiameter %></span></td>
+            <td><strong>实际钻孔直径</strong></td>
+            <td><span class="text-error"><%= @hole.actualdiameter %></span></td>
           </tr>
           <tr>
             <td><strong>设计终孔顶角</strong></td>
-            <td><%= @hole.designapexangle %></td>
+            <td><span class="text-error"><%= @hole.designapexangle %></span></td>
+            <td><strong>实际终孔顶角</strong></td>
+            <td><span class="text-error"><%= @hole.actualapexangle %></span></td>
           </tr>
           <tr>
             <td><strong>设计岩心采取率</strong></td>
-            <td><%= @hole.designcoreratio %></td>
+            <td><span class="text-error"><%= @hole.designcoreratio %></span></td>
+            <td><strong>实际岩心采取率</strong></td>
+            <td><span class="text-error"><%= @hole.actualcoreratio %></span></td>
           </tr>
           <tr>
             <td><strong>开孔日期</strong></td>
-            <td><%= @hole.startdate %></td>
-          </tr>
-          <tr>
+            <td><span class="text-error"><%= @hole.startdate %></span></td>
             <td><strong>终孔日期</strong></td>
-            <td><%= @hole.finishdate %></td>
+            <td><span class="text-error"><%= @hole.finishdate %></span></td>
           </tr>
           <tr>
             <td><strong>地层情况</strong></td>
-            <td><%= @hole.geologysituation %></td>
+            <td colspan="3"><span class="text-error"><%= @hole.geologysituation %></span></td>
           </tr>
           <tr>
             <td><strong>设计书附件</strong></td>
-            <td><%=hole_attachment_dealing @hole %></td>
+            <td colspan="3"><span class="text-error"><%=hole_attachment_dealing @hole %></span></td>
           </tr>
           <tr>
             <td><strong>钻探目的</strong></td>
-            <td><%= @hole.drillingpurpose %></td>
+            <td><span class="text-error"><%= @hole.drillingpurpose %></span></td>
           </tr>
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="form-actions">
-  <%= link_to edit_hole_path(@hole),:class=>"btn" do  %><i class="icon-pencil"></i>编辑<% end %> |
   <%= link_to holes_path,:class=>"btn btn-primary" do %><i class="icon-reply"></i>返回<% end %>
 </div>
