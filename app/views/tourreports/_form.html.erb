@@ -112,9 +112,10 @@
           <div class="widget-main">
             <div class="row-fluid" id="_line_container">
               
-              <table class="table table-striped table-bordered">
+              <table class="table table-striped table-bordered" id="_workcontent_table">
                 <thead>
                   <tr>
+                  <th rowspan="2">操作</th>
                   <th colspan="2" style="text-align:center" >时间</th>
                   <th rowspan="2">工作内容</th>
                   <th rowspan="2">上余</th>
@@ -145,14 +146,19 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td>&nbsp;&nbsp;</td>
                     <td>
-                    <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" %>
+                      <div class="input-append bootstrap-timepicker">
+                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+                      </div>
                     </td>
                     <td>
-                    <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" %>
+                    <div class="input-append bootstrap-timepicker">
+                    <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" %><span class="add-on"><i class="icon-time"></i></span>
+                    </div>
                     </td>
                     <td>
-                    <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" , :onchange=>"content_change(this)"  )%>
+                    <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" )%>
                     </td>
                     <td>
                     <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
@@ -216,7 +222,6 @@
       </div>
     </div>
   </div>
-
 
 
 
@@ -288,6 +293,81 @@
 <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
+    <%= f.label "孔内事故" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :holeaccidenttime , :class=>"input-large" , :readonly=>true %><span class="add-on">h</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "设备事故" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :deviceaccidenttime , :class=>"input-large" , :readonly=>true %><span class="add-on">h</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+<div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "其他时长" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :othertime , :class=>"input-large" , :readonly=>true %><span class="add-on">h</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "合计时长" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :totaltime , :class=>"input-large" , :readonly=>true %><span class="add-on">h</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+<div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "交班班长" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :lastleader , :class=>"input-large" %><span class="add-on"><i class="icon-group"></i></span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "交班班长" , :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :nextleader, :class=>"input-large" %><span class="add-on"><i class="icon-group"></i></span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+<div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
     <%= f.label "接班孔深" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
@@ -303,6 +383,33 @@
     <div class="controls">
       <div class="input-append">
       <%= f.text_field :currentdeep, :class=>"input-large" %><span class="add-on">m</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+
+<div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "扶正器长" ,:class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :centralizer , :class=>"input-large" %>
+      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入扶正器长的内容，没有则为空" >?<span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "防斜措施" , :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+      <%= f.text_field :antideviation, :class=>"input-large" %>
+      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入防斜措施，没有则为空" >?<span>
       </div>
     </div>
   </div>
@@ -360,18 +467,23 @@
   <script type="text/javascript">
 
 
-    var Fun_finishtime = function(){$(this).parent().parent("div[class='control-group']").next().find("input[class='time_picker input-mini']").val($(this).val());}
+    var Fun_finishtime = function(){$(this).parent("div").parent("td").parent("tr").next("tr").find("input[class='time_picker input-mini']").val($(this).val());}
 
-    var Fun_starttime = function(){$(this).parent().parent("div[class='control-group']").find("input[class='time_picker input-mini']").val($(this).val());}
+    var Fun_starttime = function(){$(this).parent("div").parent("td").parent("tr").find("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").val($(this).val());}
 
     var Fun_computetime = function(){
 
     var drilltime = "00:00";
     var auxtime = "00:00";
+    var holetime = "00:00";
+    var devicetime = "00:00";
+    var othertime = "00:00";
+    var totaltime = "00:00";
 
     $("select[name='workcontent[]']").each(function(i){ 
-      var _starttime = $(this).parent().parent("div[class='control-group']").find("input[name='workcontent_starttime[]']").val();
-      var _endtime = $(this).parent().parent("div[class='control-group']").find("input[name='workcontent_finishtime[]']").val();
+
+      var _starttime = $(this).parent("td").parent("tr").find("input[name='workcontent_starttime[]']").val();
+      var _endtime = $(this).parent("td").parent("tr").find("input[name='workcontent_finishtime[]']").val();
       var _span = compute_time(_starttime,_endtime);
 
       if($(this).val()=="钻进") 
@@ -379,11 +491,33 @@
         drilltime = add_time(drilltime,_span);
         $("#tourreport_tourdrillingtime").val(drilltime);
       }
-      else
+      else if ($(this).val() == "取心" || $(this).val()=="起下钻、取心" || $(this).val()=="起钻、取心" || $(this).val()=="下钻" || $(this).val()=="起钻")
       {
         auxtime = add_time(auxtime,_span);
         $("#tourreport_tourauxiliarytime").val(auxtime);
       }
+      else if($(this).val()=="孔内事故")
+      {
+        holetime = add_time(holetime,_span);
+        $("#tourreport_holeaccidenttime").val(holetime);
+      }
+      else if ($(this).val()=="设备事故")
+      {
+        devicetime = add_time(devicetime,_span);
+        $("#tourreport_deviceaccidenttime").val(devicetime);
+      }
+      else 
+      {
+        othertime = add_time(othertime,_span);
+        $("#tourreport_othertime").val(othertime);
+      }
+
+      totaltime = add_time(drilltime,auxtime);
+      totaltime = add_time(totaltime,holetime);
+      totaltime = add_time(totaltime,devicetime);
+      totaltime = add_time(totaltime,othertime);
+      $("#tourreport_totaltime").val(totaltime);
+
     });
   }
     
@@ -437,12 +571,8 @@
         
     })
 
-    var delete_row_content = '<input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " />';
+var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " /></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime[]" type="text" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime[]" type="text" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><select class="input-medium" id="workcontent" name="workcontent[]" ><option value="钻进">钻进</option><option value="起下钻、取心">起下钻、取心</option><option value="起钻、取心">起钻、取心</option><option value="起钻">起钻</option><option value="下钻" selected="selected">下钻</option><option value="取心">取心</option><option value="孔内事故">孔内事故</option><option value="设备事故">设备事故</option><option value="停待">停待</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></td><td><input class="input-mini" id="workcontent_upmore" name="workcontent_upmore[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drilllength" name="workcontent_drilllength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_holedeep" name="workcontent_holedeep[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corename" name="workcontent_corename[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_coregrade" name="workcontent_coregrade[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corenumber" name="workcontent_corenumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corelength" name="workcontent_corelength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_coreleftlength" name="workcontent_coreleftlength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbittype" name="workcontent_drillbittype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbitnumber" name="workcontent_drillbitnumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargernumber" name="workcontent_enlargernumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargertype" name="workcontent_enlargertype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity[]" onblur="compute_content(this)" type="text" /></td></tr>';
 
-    var zuanjin_content='&nbsp;<div class="input-prepend"><span class="add-on">进尺</span><input class="input-mini" id="workcontent_drillfootage" name="workcontent_drillfootage[]" type="text" onblur="compute_content(this)"/></div>&nbsp;<div class="input-prepend"><span class="add-on">钻头规格</span><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit[]" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">转速</span><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed[]" type="text" />&nbsp;</div><div class="input-prepend"><span class="add-on">泵量</span><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity[]" type="text" /></div>&nbsp;<div class="input-prepend"><span class="add-on">泵压</span><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure[]" type="text" /></div>';
-    var quxin_content= '&nbsp;<div class="input-prepend"><span class="add-on">岩心长度</span><input class="input-mini" id="corelength" name="corelength[]" type="text" onblur="length_content(this)" />&nbsp;&nbsp;</div>&nbsp;<div class="input-prepend"><span class="add-on">残留岩心长度</span><input class="input-mini" id="coreleftlength" name="coreleftlength[]" type="text" />&nbsp;&nbsp;</div>';
-
-    var newline_content='<div class="control-group"><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime" type="text" /><span class="add-on"><i class="icon-time"></i></span></div><div class="input-prepend"><span class="add-on">工作内容</span><select class="input-small" id="workcontent" name="workcontent" onchange="content_change(this)"><option value="下钻" selected="selected">下钻</option><option value="钻进">钻进</option><option value="取心">取心</option><option value="起钻">起钻</option><option value="事故处理">事故处理</option><option value="停待">停待</option><option value="下套管">下套管</option><option value="测井">测井</option><option value="孔深校正">孔深校正</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></div></div>';
     
     function worktime_ready()
     {
@@ -471,29 +601,7 @@
 
   }
 
-
-  function content_change(obj)
-  {
-    if($(obj).val()=="钻进")
-    {
-      $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
-      $(obj).parent("div").after(delete_row_content);
-      $(obj).parent("div").after(zuanjin_content);
-    }
-    else if ($(obj).val() == "取心" || $(obj).val()=="起下钻、取心" || $(obj).val()=="起钻、取心")
-    {
-      $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
-      $(obj).parent("div").after(delete_row_content);
-      $(obj).parent("div").after(quxin_content);
-    }
-    else
-    {
-      $(obj).parent("div").nextAll().each(function(i){$(this).remove();});
-      $(obj).parent("div").after(delete_row_content);
-    }
-    refresh_event();
-  }
-
+  
   function refresh_event()
   {
   $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
@@ -504,6 +612,7 @@
 
   $("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
   $("input[class='time_picker input-mini']").bind("change",Fun_computetime);
+
   $("select[name='workcontent[]']").unbind("change",Fun_computetime);
   $("select[name='workcontent[]']").bind("change",Fun_computetime);
 
@@ -512,7 +621,8 @@
   function add_line()
   {
     // alert($("#_line_container div").first());
-    $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
+    // $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
+    $("#_workcontent_table").append(new_line);
     worktime_ready();
     refresh_event();
     $("input[class='time_picker input-mini']").trigger("change");
@@ -521,16 +631,20 @@
 
   function compute_content(obj)
   {
-    var pattern = /^([0-9])+$/;
-    if(pattern.test($(obj).val()))
-    {
-      var summary=0;
-      $("input[name='workcontent_drillfootage[]']").each(function(i){summary+=parseInt($(this).val());});
-      $("#tourreport_tourshift").val(summary);
-       
-    }
-    //alert($(obj).val()); 
-    //alert("on mouse up event");
+      var pattern = /^([0-9])+$/;
+      var drillsummary=0;
+      $("input[name='workcontent_drilllength[]']").each(function(i){
+          if($(this).val()!=undefined && $(this).val()!="" &&  pattern.test($(this).val()) ) 
+          drillsummary+=parseInt($(this).val());
+      });
+
+      $("#tourreport_tourshift").val(drillsummary);
+      var coresummary = 0;
+      $("input[name='workcontent_corelength[]']").each(function(i){
+          if($(this).val()!=undefined && $(this).val()!="" && pattern.test($(this).val()) ) 
+          coresummary+=parseInt($(this).val());
+       });
+      $("#tourreport_tourcore").val(coresummary);
   }
 
   function length_content(obj)
@@ -547,9 +661,9 @@
 
   function deleteRow(obj)
   {
-    $(obj).parent("div[class='control-group']").remove();
+    $(obj).parent("td").parent("tr").remove();
     refresh_event();
-    $("input[class='time_picker input-mini']").trigger("change");
+   $("input[class='time_picker input-mini']").trigger("change");
   }
 
   function compute_time(startstr,finishstr)
@@ -570,6 +684,7 @@
         }
     
   }
+
   function add_time(time1,time2)
   {
     var timearr1 = time1.split(":");

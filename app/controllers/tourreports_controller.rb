@@ -74,31 +74,30 @@ class TourreportsController < ApplicationController
     thehole.save
 
     @contentarr = Array.new
-    h = 0
-    k = 0 
     params[:workcontent_starttime].each_index do |i|
       workcontent = Workcontent.new
       workcontent.starttime = params[:workcontent_starttime][i]
       workcontent.finishtime = params[:workcontent_finishtime][i]
       workcontent.content = params[:workcontent][i]
+      workcontent.upmore = params[:workcontent_upmore][i]
+      workcontent.drilllength = params[:workcontent_drilllength][i]
+      workcontent.holedeep = params[:workcontent_holedeep][i]
+      workcontent.corename = params[:workcontent_corename][i]
+      workcontent.coregrade = params[:workcontent_coregrade][i]
+      workcontent.corenumber = params[:workcontent_corenumber][i]
+      workcontent.corelength = params[:workcontent_corelength][i]
+      workcontent.coreleftlength = params[:workcontent_coreleftlength][i]
+      workcontent.drillbit = params[:workcontent_drillbit][i]
+      workcontent.drillbittype = params[:workcontent_drillbittype][i]
+      workcontent.drillbitnumber = params[:workcontent_drillbitnumber][i]
+      workcontent.enlargernumber = params[:workcontent_enlargernumber][i]
+      workcontent.enlargertype = params[:workcontent_enlargertype][i]
+      workcontent.pumppressure = params[:workcontent_pumppressure][i]
+      workcontent.rotatespeed = params[:workcontent_rotatespeed][i]
+      workcontent.pumpquantity = params[:workcontent_pumpquantity][i]
+      
       workcontent.holeid = params[:tourreport][:holeid]
       workcontent.tourreport = @tourreport
-
-      if(params[:workcontent][i]=="钻进")
-        workcontent.drilllength = params[:workcontent_drillfootage][h]
-        workcontent.drillbit = params[:workcontent_drillbit][h]
-        workcontent.rotatespeed = params[:workcontent_rotatespeed][h]
-        workcontent.pumpquantity = params[:workcontent_pumpquantity][h]
-        workcontent.pumppressure = params[:workcontent_pumppressure][h]
-        h+=1
-      end
-
-      if (params[:workcontent][i] == "取心" || params[:workcontent][i] == "起下钻、取心" || params[:workcontent][i] == "起钻、取心")
-        workcontent.corelength = params[:corelength][k]
-        workcontent.coreleftlength = params[:coreleftlength][k]
-        k +=1
-      end
-
       workcontent.save
       @contentarr << workcontent
 
