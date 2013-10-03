@@ -1,27 +1,47 @@
 <%= render partial: "layouts/flash_messages", flash: flash %>
 
-<dl class="dl-horizontal">
-  <dt><%= User.human_attribute_name("name") %></dt>
-  <dd><%= @user.name %></dd>
-  <dt><%= User.human_attribute_name("sex") %></dt>
-  <dd><%= human_sex @user %></dd>
-  <dt><%= User.human_attribute_name("birthday") %></dt>
-  <dd><%= @user.birthday %></dd>
-  <dt><%= User.human_attribute_name("duty") %></dt>
-  <dd><%= @user.duty %></dd>
-  <dt><%= User.human_attribute_name("education") %></dt>
-  <dd><%= @user.education %></dd>
-  <dt><%= User.human_attribute_name("mobile") %></dt>
-  <dd><%= @user.mobile %></dd>
-  <dt><%= User.human_attribute_name("officephone") %></dt>
-  <dd><%= @user.officephone %></dd>
-  <dt><%= User.human_attribute_name("email") %></dt>
-  <dd><%= @user.email %></dd>
-  <dt><%= User.human_attribute_name("isappuser") %></dt>
-  <dd><%= is_appuser @user %></dd>
-  <dt><%= User.human_attribute_name("department") %></dt>
-  <dd><%= @user.department.name %></dd>
-</dl>
+<div class="profile-user-info profile-user-info-striped">
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("name") %></div>
+    <div class="profile-info-value"><span><%= @user.name %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("sex") %></div>
+    <div class="profile-info-value"><span><%= @user.sex %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("birthday") %></div>
+    <div class="profile-info-value"><span><%= @user.birthday %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("duty") %></div>
+    <div class="profile-info-value"><span><%= @user.duty %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("education") %></div>
+    <div class="profile-info-value"><span><%= @user.education %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("mobile") %></div>
+    <div class="profile-info-value"><span><%= @user.mobile %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("officephone") %></div>
+    <div class="profile-info-value"><span><%= @user.officephone %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("email") %></div>
+    <div class="profile-info-value"><span><%= @user.email %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("isappuser") %></div>
+    <div class="profile-info-value"><span><%= is_appuser @user %></span></div>
+  </div>
+  <div class="profile-info-row">
+    <div class="profile-info-name"><%= User.human_attribute_name("department") %></div>
+    <div class="profile-info-value"><span><%= @user.department.name %></span></div>
+  </div>
+</div>
 
 <div class="form-actions">
 <%= link_to t('labels.edit'), edit_department_user_path(@department,@user), :class => "btn" %>

@@ -31,9 +31,6 @@
             <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: t('prompt.confirm.delete') } do %>
               <i class="icon-trash bigger-120"></i>
             <% end %>
-            <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-warning" do %>
-              <i class="icon-flag bigger-120"></i>
-            <% end %>
           </div>
         </td>
       </tr>
