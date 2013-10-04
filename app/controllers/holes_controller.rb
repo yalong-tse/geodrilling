@@ -128,4 +128,15 @@ class HolesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # 关孔的操作
+  def close
+    @hole = Hole.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @hole }
+    end
+
+  end
+  
 end

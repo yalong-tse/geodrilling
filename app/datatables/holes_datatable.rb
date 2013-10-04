@@ -1,6 +1,6 @@
 #encoding: utf-8
 class HolesDatatable
-  delegate :params, :h,:hole_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h,:hole_path, :holes_close_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
 
   def initialize(view)
     @view = view
@@ -36,6 +36,9 @@ private
   def detail_button(hole)
     code = "<div class=\"inline position-relative btn-group\">"
     code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\"" + hole_path(hole)  + "\")' rel=\"tooltip\" title=\"查看详情\")'><i class=\"icon-eye-open bigger-120\"></i></button>"
+    if(hole.status.nil? || hole.status==1)
+      code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\""+ holes_close_path + "?id="+hole.id.to_s+"\")' rel=\"tooltip\" title=\"钻孔终孔\")'><i class=\"icon-cogs bigger-120\"></i></button>"
+    end
     code << "</div>"
     code.html_safe
   end

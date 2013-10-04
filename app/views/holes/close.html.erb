@@ -1,0 +1,93 @@
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title,"钻孔终孔操作") %>
+
+<%= form_for(:hole,:url=>holes_path(@hole) ,:html=>{:multipart=>true,:class=>"form-horizontal",:id=>"formservice"}) do |f| %>
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="widget-box transparent">
+        <div class="widget-header widget-header-flat">
+          <h5 class="lighter">
+            <i class="icon-star green"></i>
+            钻孔终孔操作
+          </h5>
+
+          <div class="widget-toolbar">
+            <a href="#" data-action="collapse">
+              <i class="icon-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="widget-body">
+          <div class="widget-main no-padding">
+          <table class="table table-hover table-bordered">
+            <thead></thead>
+            <tbody>
+          <tr>
+            <td width="15%"><strong>孔号</strong></td>
+            <td width="25%"><span class="text-error"><%= @hole.holenumber %></span></td>
+            <td width="15%"><strong>钻孔状态</strong></td>
+            <td width="35%"><span class="text-error"><%= hole_status_treat(@hole.status) %></span></td>
+          </tr>
+          <tr>
+            <td><strong>矿区</strong></td>
+            <td><span class="text-error"><%= @hole.minearea %></span></td>
+            <td width="15%"><strong>合同名称</strong></td>
+            <td width="35%"><span class="text-error"><%= @hole.contract.name %></span></td>
+          </tr>
+
+          <tr>
+            <td><strong>地层情况</strong></td>
+            <td colspan="3"><span class="text-error"><%= @hole.geologysituation %></span></td>
+          </tr>
+          <tr>
+            <td><strong>设计书附件</strong></td>
+            <td colspan="3"><span class="text-error"><%=hole_attachment_dealing @hole %></span></td>
+          </tr>
+          <tr>
+            <td><strong>钻探目的</strong></td>
+            <td><span class="text-error"><%= @hole.drillingpurpose %></span></td>
+          </tr>
+          <tr>
+            <td><strong>实际钻孔深度</strong></td>
+            <td><span class="text-error"><%=f.text_field :actualdeep, :class=>"input-medium",:value=>@hole.actualdeep %></span></td>
+            <td><strong>设计钻孔深度</strong></td>
+            <td><span class="text-error"><%= @hole.designdeep %></span></td>
+          </tr>
+          <tr>
+            <td><strong>实际钻孔直径</strong></td>
+            <td><%=f.text_field :actualdiameter, :class=>"input-medium", :value=>@hole.designdiameter%></td>
+            <td><strong>设计钻孔直径</strong></td>
+            <td><span class="text-error"><%= @hole.designdiameter %></span></td>
+          </tr>
+          <tr>
+            <td><strong>实际终孔顶角</strong></td>
+            <td><span class="text-error"><%=f.text_field :acutalapexangle, :class=>"input-medium",:value=>@hole.designapexangle %></span></td>
+            <td><strong>设计终孔顶角</strong></td>
+            <td><span class="text-error"><%= @hole.designapexangle %></span></td>
+          </tr>
+          <tr>
+            <td><strong>实际岩心采取率</strong></td>
+            <td><span class="text-error"><%=f.text_field :actualcoreratio , :class=>"input-medium" , :value=>@hole.designcoreratio %></span></td>
+            <td><strong>设计岩心采取率</strong></td>
+            <td><span class="text-error"><%= @hole.designcoreratio %></span></td>
+          </tr>
+          <tr>
+            <td><strong>终孔日期</strong></td>
+            <td><span class="text-error"><%=f.text_field :finishdate , :class=>"input-medium" ,:value=>Time.now.strftime("%Y-%m-%d") %></span></td>
+            <td><strong>开孔日期</strong></td>
+            <td><span class="text-error"><%= @hole.startdate %></span></td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="form-actions">
+    <%= f.submit "钻孔终孔" ,:class=>"btn btn-primary" %> 
+</div>
+<% end %>

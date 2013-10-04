@@ -14,8 +14,16 @@ class Hole < ActiveRecord::Base
   #designbook , 设计书
   #drillingpurpose , 钻探目的
   #status , 钻孔状态, 0-待执行 1-执行中 , 2-终孔 , 3-停工， 4-续作 
+  #opennoticeatt_id 开孔通知书
+  #closenoticeatt_id 终孔通知书
+  #curvetableatt_id 钻孔弯曲度测量记录表
+  #measuretableatt_id 钻具丈量及孔深误差记录表
+  #coretransferdoc_id 岩矿心移交验收单
+  #tourreporttransferdoc_id 原始记录报表移交清单
+  #qualitychecktable_id 钻孔质量验收评定表
+  #tourreporttabledoc_id 钻孔班报表
   #说明：新建钻孔为待执行，钻孔配置完设备之后是执行中
-  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id
+  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id, :opennoticeatt_id , :closenoticeatt_id , :curvetableatt_id , :measuretableatt_id, :coretransferdoc_id , :tourreporttransferdoc_id , :qualitychecktable_id ,:tourreporttabledoc_id
 
   attr_reader :statusstr
   attr_reader :attachmentstr
