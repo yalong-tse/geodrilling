@@ -29,6 +29,14 @@ class Hole < ActiveRecord::Base
   attr_reader :attachmentstr
   belongs_to :contract,:class_name=>"Contract" ,:foreign_key=>"contract_id"
   belongs_to :attachment,:class_name=>"Attachment",:foreign_key=>"attachment_id"
+  belongs_to :opennotice, :class_name=>"Attachment" , :foreign_key=>"opennoticeatt_id"
+  belongs_to :closenotice, :class_name=>"Attachment" , :foreign_key=>"closenoticeatt_id"
+  belongs_to :curvetable, :class_name=>"Attachment" , :foreign_key=>"curvetableatt_id"
+  belongs_to :measuretable, :class_name=>"Attachment" , :foreign_key=>"measuretableatt_id"
+  belongs_to :coretansferdoc, :class_name=>"Attachment" , :foreign_key=>"coretransferdoc_id"
+  belongs_to :tourreporttansferdoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttransferdoc_id"
+  belongs_to :qualitychecktable, :class_name=>"Attachment" , :foreign_key=>"qualitychecktable_id"
+  belongs_to :tourreporttabledoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttabledoc_id"
 
 #  attr_accessor :statusstr
 
@@ -86,6 +94,69 @@ class Hole < ActiveRecord::Base
       @attachment.save
       self.attachment_id = @attachment.id
     end
+  end
+
+  #关孔操作时其他附件的保存办法,在参数中一起传递过来
+  def save_closefile(opennotice,closenotice,curvetable,measuretable,coretransfer,tourreporttransfer,qualitycheck,tourreporttable)
+    if(!opennotice.nil?)
+      opennoticeatt = Attachment.new
+      opennoticeatt.save_att(opennotice)
+      opennoticeatt.save
+      self.opennoticeatt_id = opennoticeatt.id
+    end
+
+    if(!closenotice.nil?)
+      closenoticeatt = Attachment.new
+      closenoticeatt.save_att(closenotice)
+      closenoticeatt.save
+      self.closenoticeatt_id = closenoticeatt.id
+    end
+
+    if(!curvetable.nil?)
+      curvetableatt = Attachment.new
+      curvetableatt.save_att(curvetable)
+      curvetableatt.save
+      self.curvetableatt_id = curvetableatt.id
+    end
+
+    if(!measuretable.nil?)
+      measuretableatt = Attachment.new
+      measuretableatt.save_att(measuretable)
+      measuretableatt.save
+      self.measuretableatt_id = measuretableatt.id
+    end
+
+    if(!coretransfer.nil?)
+      coretransferatt = Attachment.new
+      coretransferatt.save_att(coretransfer)
+      coretransferatt.save
+      self.coretransferdoc_id = coretransferatt.id
+    end
+
+    if(!tourreporttransfer.nil?)
+      tourreporttransferatt = Attachment.new
+      tourreporttransferatt.save_att(tourreporttransfer)
+      tourreporttransferatt.save
+      self.tourreporttransferdoc_id = tourreporttransferatt.id
+    end
+
+    if(!qualitycheck.nil?)
+      qualitycheckatt = Attachment.new
+      qualitycheckatt.save_att(qualitycheck)
+      qualitycheckatt.save
+      self.qualitychecktable_id = qualitycheckatt.id
+    end
+
+    if(!tourreporttable.nil?)
+      tourreporttableatt= Attachment.new
+      tourreporttableatt.save_att(tourreporttable)
+      tourreporttableatt.save
+      self.tourreporttabledoc_id = tourreporttableatt.id
+    end
+    # 设置钻孔状态
+    self.status=2
+
+
   end
 
   # 增加 as_json 方法

@@ -298,8 +298,8 @@ module ApplicationHelper
 
   # 处理钻孔的附件
   def hole_attachment_dealing(args)
-    if(args && args.attachment)
-      link_to args.attachment.filename,holes_download_path+"?id=#{args.attachment.id}", :class=>args[:class]||="alert alert-success" 
+    if(args)
+      link_to Attachment.find(args).filename,holes_download_path+"?id=#{args}", :class=>"alert alert-success" 
     end
   end
  

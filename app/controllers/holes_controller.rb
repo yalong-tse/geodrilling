@@ -105,9 +105,11 @@ class HolesController < ApplicationController
   # PUT /holes/1.json
   def update
     @hole = Hole.find(params[:id])
+    @hole.save_closefile(params[:opennoticeatt],params[:closenoticeatt],params[:curvetableatt],params[:measuretableatt],params[:coretransferdoc],params[:tourreporttransferdoc],params[:qualitychecktable],params[:tourreporttabledoc])
+    @hole.save
 
     respond_to do |format|
-      if @hole.update_attributes(params[:hole])
+      if @hole.update_attributes(params[:hole]) 
         format.html { redirect_to @hole, notice: 'Hole was successfully updated.' }
         format.json { head :no_content }
       else
@@ -136,7 +138,6 @@ class HolesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @hole }
     end
-
   end
   
 end
