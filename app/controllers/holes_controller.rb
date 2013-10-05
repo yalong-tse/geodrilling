@@ -1,3 +1,4 @@
+#encoding: utf-8
 class HolesController < ApplicationController
 
   # GET /holes
@@ -105,12 +106,22 @@ class HolesController < ApplicationController
   # PUT /holes/1.json
   def update
     @hole = Hole.find(params[:id])
-    @hole.save_closefile(params[:opennoticeatt],params[:closenoticeatt],params[:curvetableatt],params[:measuretableatt],params[:coretransferdoc],params[:tourreporttransferdoc],params[:qualitychecktable],params[:tourreporttabledoc])
-    @hole.save
+    if(params[:opennoticeatt] || params[:closenoticeatt])
+      @hole.save_closefile(params[:opennoticeatt],params[:closenoticeatt],params[:curvetableatt],params[:measuretableatt],params[:coretransferdoc],params[:tourreporttransferdoc],params[:qualitychecktable],params[:tourreporttabledoc])
+      @hole.save
+      # 释放占用的设备和人员
+      Deployment.find_by_hole_id(@hole.id).destroy if (Deployment.find_by_hole_id(@hole.id))
+      # 如果合同的钻孔都已经关闭，则需要关闭合同
+      closeholenumber = Hole.where("status=2 and contract_id=?",@hole.contract_id).count
+      holenumber = Hole.where("contract_id=?",@hole.contract_id).count
+      if(closeholenumber == holenumber)
+        @hole.contract.close
+      end
+    end
 
     respond_to do |format|
       if @hole.update_attributes(params[:hole]) 
-        format.html { redirect_to @hole, notice: 'Hole was successfully updated.' }
+        format.html { redirect_to @hole, notice: '钻孔状态成功更新.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

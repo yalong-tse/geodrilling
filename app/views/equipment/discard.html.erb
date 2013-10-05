@@ -99,25 +99,28 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
     <h5>设备报废申请单</h5>
   </div>
+
   <div class="modal-body">
-<table class="table table-striped table-hover table-bordered">
-  <tr>
+    <form name="_theform" action="" method="post">
+    <table class="table table-striped table-hover table-bordered">
+    <tr>
     <td>处理日期</td>
-    <td><input class="input-large"/></td>
-  </tr>
-  <tr>
+    <td><input name="discarddate" id="_discarddate" class="input-large" value="<%=Time.now.strftime("%Y-%m-%d")%>"/></td>
+    </tr>
+    <tr>
     <td>处理类型</td>
-    <td><%= select_tag("discard", options_for_select(Material::DISCARD_TYPE), {:class=>"input-xlarge"}) %></td>
-  </tr>
-  <tr>
+    <td><%= select_tag("discardtype", options_for_select(Material::DISCARD_TYPE), {:class=>"input-xlarge"}) %></td>
+    </tr>
+    <tr>
     <td>处理原因</td>
-    <td><textarea class="input-xlarge" rows="5"></textarea></td>
-  </tr>
-</table>
+    <td><textarea name="discardreason" id="_discardreason" class="input-xlarge" rows="5"></textarea></td>
+    </tr>
+    </table>
+    </form>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal">关闭</button>
-    <a href="#" class="btn btn-primary">确定</a>
+    <a href="#" class="btn btn-primary" onclick="modal_close()" >确定</a>
   </div>
 </div>
 <br />
@@ -195,6 +198,101 @@
   function pump_resume(devicenumber)
   {
     window.location.href="<%=pump_resume_path %>?devicenumber="+devicenumber
+  }
+
+  var _id;
+  var _type="";
+
+  // 钻塔modal
+  function drilltower_modal(id)
+  {
+    $("#_discard_modal").modal();
+    _id = id;
+    _type = "drilltower";
+  }
+
+  // drilltower ajax 提交
+  function drilltower_post()
+  {
+    $.post("<%=drilltower_dismiss_path%>?id="+_id,
+    {
+      discarddate:$("#_discarddate").val(),
+      discardtype:$("#discardtype").val(),
+      discardreason:$("#_discardreason").val()
+    },
+    function(result){
+      if(result=="true")
+      {
+        oTable2.fnReloadAjax();
+      }
+    });
+  }
+
+  //rigmachine 的ajax 提交 
+  function rigmachine_post()
+  {
+    $.post("<%=rigmachine_dismiss_path%>?id="+_id,
+    {
+      discarddate:$("#_discarddate").val(),
+      discardtype:$("#discardtype").val(),
+      discardreason:$("#_discardreason").val()
+    },
+    function(result){
+      if(result=="true")
+      {
+        oTable1.fnReloadAjax();
+      }
+    });
+  }
+
+  //pump 的ajax 提交 
+  function pump_post()
+  {
+    $.post("<%=pump_dismiss_path%>?id="+_id,
+    {
+      discarddate:$("#_discarddate").val(),
+      discardtype:$("#discardtype").val(),
+      discardreason:$("#_discardreason").val()
+    },
+    function(result){
+      if(result=="true")
+      {
+        oTable3.fnReloadAjax();
+      }
+    });
+  }
+
+  // 钻机modal
+  function rigmachine_modal(id)
+  {
+    $("#_discard_modal").modal();
+    _id = id;
+    _type = "rigmachine";
+  }
+  // 泥浆泵modal
+  function pump_modal(id)
+  {
+    $("#_discard_modal").modal();
+    _id = id;
+    _type = "pump";
+  }
+
+  //判断调用哪个ajax的方法
+  function modal_close()
+  {
+    $("#_discard_modal").modal("hide");
+    if(_type=="rigmachine")
+    {
+      rigmachine_post();
+    }
+    else if(_type=="drilltower")
+    {
+      drilltower_post();
+    }
+    else 
+    {
+      pump_post();
+    }
   }
 </script>
 <% end %>

@@ -64,4 +64,14 @@ class RigmachineController < ApplicationController
     send_file filename if filename
   end
 
+  #设备处理的方法
+  def dismiss
+    logger.info("=======================");
+    @rigmachine = Rigmachine.find(params[:id])
+    @rigmachine.update_attributes(:discarddate=>params[:discarddate],:discardtype=>params[:discardtype],:discardreason=>params[:discardreason])
+    # 更改设备的状态
+    @rigmachine.update_attributes(:status=>false);
+    render :text=>"true"
+  end
+
 end

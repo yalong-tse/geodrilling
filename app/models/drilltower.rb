@@ -17,10 +17,13 @@ class Drilltower < ActiveRecord::Base
   # workbenchHeight 工作台高度
   # name 名称
   # devicenumber 设备编号
-  # status 占用状态
+  # status 占用状态该字段为boolean ,  nil --可用， true 可用， false不用, 1-可用，0-不可用 
   # groupstatus  设备配组状态
   # rigmachine 配组的钻机ID
-  attr_accessible :basePlatformsize, :deep, :effectiveload, :height, :manufacture, :manufactureContact, :model, :picture, :pipequantityAndLenght, :remark, :sheaveQuantity, :topsize, :weight, :workbenchHeight, :name, :devicenumber , :status, :groupstatus, :rigmachineid,:attachment_id
+  # discarddate 处理日期
+  # discardtype 处理类型
+  # discardreason 处理原因
+  attr_accessible :basePlatformsize, :deep, :effectiveload, :height, :manufacture, :manufactureContact, :model, :picture, :pipequantityAndLenght, :remark, :sheaveQuantity, :topsize, :weight, :workbenchHeight, :name, :devicenumber , :status, :groupstatus, :rigmachineid,:attachment_id,:discarddate,:discardtype,:discardreason
 
   belongs_to :rigmachine ,:class_name=>"Rigmachine", :foreign_key=>"rigmachineid"
   belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 

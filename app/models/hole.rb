@@ -156,7 +156,6 @@ class Hole < ActiveRecord::Base
     # 设置钻孔状态
     self.status=2
 
-
   end
 
   # 增加 as_json 方法

@@ -17,7 +17,9 @@ class Contract < ActiveRecord::Base
 
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}
-  scope :unclosed , :conditions => {:status=>1}
+  scope :unclosed , :conditions => "status=0 or status=1" 
+  scope :archived, :conditions=>{:status=>3}
+  scope :closed, :conditions=>{:status=>2}
 
   STATUS=[["待执行",0], ["执行中",1],["已完成",2],["已经归档",3]]
 
@@ -39,6 +41,16 @@ class Contract < ActiveRecord::Base
 #    @contract.status=3;
 #    @contract.save
     @contract.update_attribute(:status,3)
+  end
+
+  # 实例的关闭方法
+  def close
+    update_attribute(:status,2)
+  end
+
+  # 实例的归档方法
+  def archive
+    update_attribute(:status,3)
   end
 
   def self.getowner

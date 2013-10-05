@@ -42,9 +42,11 @@ private
         hole = Hole.find(deployment.hole_id) 
         if hole
           return "钻孔编号：" + hole.holenumber
-        else
-          return "空闲"
         end
+      elsif (rigmachine.status==false)
+        return "已处理"
+      elsif (rigmachine.status==true)
+        return "空闲"
       else
         return "空闲"
       end
@@ -53,7 +55,7 @@ private
   end
 
   def open_modal(rigmachine)
-    code = '<button class="btn btn-mini btn-warning" data-target="#_discard_modal" data-toggle="modal">处理申请</button>'
+    code = '<button class="btn btn-mini btn-warning" onclick="rigmachine_modal('+rigmachine.id.to_s+')">处理申请</button>'
     code.html_safe
   end
 

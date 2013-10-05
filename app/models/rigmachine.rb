@@ -12,10 +12,13 @@ class Rigmachine < ActiveRecord::Base
   # rigmodel 钻机型号
   # rigweight 钻机重量
   # rotatingSpeed 转速 
-  # status 占用状态
+  # status 占用状态 boolean 类型 ,0 false ---不可用 ，1,true ---可用
   # name 名称
   # devicenumber  设备编号
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed,:name, :devicenumber, :status,:attachment_id
+  # discarddate 处理日期
+  # discardtype 处理类型
+  # discardreason 处理原因
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed,:name, :devicenumber, :status,:attachment_id,:discarddate,:discardtype,:discardreason
 
   belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
   has_one :pump , :foreign_key=>"rigmachineid"
