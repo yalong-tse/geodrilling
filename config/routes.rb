@@ -123,6 +123,8 @@ Geodrilling::Application.routes.draw do
   end
   resources :sessions
 
+  get "departments/dynamic_tree"
+
   resources :departments do
     resources :users do
       collection do
@@ -133,6 +135,7 @@ Geodrilling::Application.routes.draw do
 
   match '/department_tree', :to => 'departments#main'
   get '/users/main'
+
 
 #  root :to=>"contracts#index"
   root :to => "sessions#new"
