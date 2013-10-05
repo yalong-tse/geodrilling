@@ -62,7 +62,7 @@ private
   end
 
   def fetch_contracts
-    contracts = Contract.order("#{sort_column} #{sort_direction}")
+    contracts = Contract.unclosed.order("#{sort_column} #{sort_direction}")
     logger.info("#{sort_column} #{sort_direction}")
     contracts = contracts.page(page).per_page(per_page)
     if params[:sSearch].present?

@@ -103,15 +103,14 @@ class ContractsController < ApplicationController
     end
   end
 
-  # 关闭合同
-  def close
+  # 归档合同的方法,for ajax method
+  def archive
 #    @contract = Contract.find_by_contractno(params[:contractno])
     logger.info("the contractno is #{params[:contractno]}")
-    Contract.close(params[:contractno])
-    respond_to do |format|
-      format.html { redirect_to contracts_url }
-      format.json { head :no_content }
-    end
+    @contract = Contract.find_by_contractno(params[:contractno])
+    @contract.archive if @contract
+    #Contract.close(params[:contractno])
+    render :text=>"true"
   end
   
   # for fusionchart 

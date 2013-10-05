@@ -40,7 +40,7 @@ class Contract < ActiveRecord::Base
     @contract = Contract.where(:contractno=>contractno).first
 #    @contract.status=3;
 #    @contract.save
-    @contract.update_attribute(:status,3)
+    @contract.update_attribute(:status,2)
   end
 
   # 实例的关闭方法

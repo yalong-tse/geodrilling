@@ -101,7 +101,6 @@
   </div>
 
   <div class="modal-body">
-    <form name="_theform" action="" method="post">
     <table class="table table-striped table-hover table-bordered">
     <tr>
     <td>处理日期</td>
@@ -109,14 +108,13 @@
     </tr>
     <tr>
     <td>处理类型</td>
-    <td><%= select_tag("discardtype", options_for_select(Material::DISCARD_TYPE), {:class=>"input-xlarge"}) %></td>
+    <td><%= select_tag("discardtype", options_for_select(Material::DISCARD_TYPE), {:class=>"input-large"}) %></td>
     </tr>
     <tr>
     <td>处理原因</td>
     <td><textarea name="discardreason" id="_discardreason" class="input-xlarge" rows="5"></textarea></td>
     </tr>
     </table>
-    </form>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal">关闭</button>
@@ -223,7 +221,10 @@
     function(result){
       if(result=="true")
       {
-        oTable2.fnReloadAjax();
+        //alert("111111");
+        $("#_drilltower_table").dataTable.fnDraw(false);
+        $("#_drilltower_table").dataTable.fnReloadAjax();
+        $("#_drilltower_table").dataTable.fnPageChange("first",1);
       }
     });
   }
@@ -240,7 +241,8 @@
     function(result){
       if(result=="true")
       {
-        oTable1.fnReloadAjax();
+        $("#_rigmachine_table").dataTable.fnDraw();
+        $("#_rigmachine_table").dataTable.fnReloadAjax();
       }
     });
   }
@@ -257,7 +259,9 @@
     function(result){
       if(result=="true")
       {
-        oTable3.fnReloadAjax();
+        $("#_pump_table").dataTable.fnDraw();
+        $("#_pump_table").dataTable.fnReloadAjax();
+        $
       }
     });
   }

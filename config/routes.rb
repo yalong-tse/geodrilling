@@ -93,7 +93,7 @@ Geodrilling::Application.routes.draw do
   get "holes/close"
   get "contracts/indexforclose"
   get "contracts/download"
-  get "contracts/close"
+  post "contracts/archive"
   get "contracts/chart"
 
   get "schedule/index"

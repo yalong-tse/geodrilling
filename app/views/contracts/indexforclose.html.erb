@@ -1,5 +1,9 @@
 <% content_for(:title, "合同关闭") %>
 <% content_for(:page_header_description, "关闭已经施工完成的合同") %>
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'jquery.gritter.css' %>
+<% end %>
 <table id="_table_contract" class="table table-striped table-bordered table-hover">
   <thead>
   <tr>
@@ -17,20 +21,23 @@
 </thead>
 <tbody></tbody>
 </table>
-<br />
 </div>
-<div id="_close_modal" class="modal hide fade widget-box">
-  <div class="model-header widget-header widget-header-flat">
-    <h5>您确认需要关闭该钻孔吗</h5>
-    <div class="widget-toolbar">
-      <label>
+<div id="_close_modal" class="modal hide fade">
+  <div class="model-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-     </label>
-    </div>
+    <h5>您确认需要归档该合同吗</h5>
   </div>
-  <div class="modal-body widget-body">
-    <p> 合同名称:<span id="_contract_name" class="label label-important"></span></p>
-    <p> 项目名称:<span id="_project_name"class="label label-important"></span></p>
+  <div class="modal-body">
+    <table class="table table-striped table-hover table-bordered">
+      <tr>
+        <td width="30%">合同名称</td>
+        <td width="70%"><span id="_contract_name" class="label label-important"></span></td>
+      </tr>
+      <tr>
+        <td>项目名称</td>
+        <td><span id="_project_name"class="label label-important"></span></td>
+      </tr>
+    </table>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal"><i class="icon-undo"></i>否</button>
@@ -82,8 +89,20 @@
   function close_contract()
   {
     //alert("the contractno is:"+ _contractno);
-    window.location.href="<%=contracts_close_path%>?contractno=" + _contractno;
+
+    $.post("<%=contracts_archive_path%>?contractno="+ _contractno,
+    {
+    },
+    function(result){
+      if(result=="true")
+      {
+        alert("111");
+        $("#_close_modal").modal("hide");
+        $("#_table_contract").dataTable.fnDraw();
+        $("#_table_contract").dataTable.fnReloadAjax();
+      }
+    });
+
   }
 </script>
-
 <% end %>
