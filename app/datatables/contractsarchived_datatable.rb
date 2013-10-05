@@ -1,5 +1,5 @@
 #encoding: utf-8
-class ContractscloseDatatable
+class ContractsarchivedDatatable
   delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
 
   def initialize(view)
@@ -28,8 +28,7 @@ private
         h(contract.contractamount),
         h(regtime(contract.startdate)),
         h(regtime(contract.finishdate)),
-        h(contract_status_treat(contract.status)),
-        h(operation_dealing(contract))
+        h(contract_status_treat(contract.status))
       ]
     end
   end
@@ -70,7 +69,7 @@ private
   end
 
   def fetch_contracts
-    contracts = Contract.closed.order("#{sort_column} #{sort_direction}")
+    contracts = Contract.archived.order("#{sort_column} #{sort_direction}")
     logger.info("#{sort_column} #{sort_direction}")
     contracts = contracts.page(page).per_page(per_page)
     if params[:sSearch].present?
