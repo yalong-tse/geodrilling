@@ -15,12 +15,15 @@ class Pump < ActiveRecord::Base
   #traffic 流量
   #weight 重量
   #remark 备注
-  #status 设备占用状态
+  #status 设备占用状态 boolean类型， 1,true 可用， 0，false--不可用
   #groupstatus  配组状态
   #rigmachine 配组的钻机的ID
   #name 设备名称
   #devicenumber 设备编号
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :power, :pressure, :pumpDiameter, :pumplineNumber, :pumpmodel, :remark, :stroke, :strokeTimes, :traffic, :weight, :name , :devicenumber, :status, :groupstatus ,:rigmachineid
+  #discarddate 处理日期
+  #discardtype 处理类型
+  #discardreason 处理原因
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :power, :pressure, :pumpDiameter, :pumplineNumber, :pumpmodel, :remark, :stroke, :strokeTimes, :traffic, :weight, :name , :devicenumber, :status, :groupstatus ,:rigmachineid,:discarddate,:discardtype,:discardreason
 
   belongs_to :rigmachine , :class_name=>"Rigmachine" , :foreign_key=>"rigmachineid"
   belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 

@@ -64,4 +64,15 @@ class PumpController < ApplicationController
     send_file filename if filename
   end
 
+
+  #设备处理的方法
+  def dismiss
+    logger.info("=======================");
+    @pump = Pump.find(params[:id])
+    @pump.update_attributes(:discarddate=>params[:discarddate],:discardtype=>params[:discardtype],:discardreason=>params[:discardreason])
+    # 更改设备的状态
+    @pump.update_attributes(:status=>false);
+    render :text=>"true"
+  end
+
 end

@@ -22,6 +22,7 @@ Geodrilling::Application.routes.draw do
   get "pump/index"
 
   post "pump/create"
+  post "pump/dismiss"
 
   get "pump/new"
 
@@ -35,6 +36,7 @@ Geodrilling::Application.routes.draw do
   get "rigmachine/index"
 
   post "rigmachine/create"
+  post "rigmachine/dismiss"
 
   get "rigmachine/new"
 
@@ -48,6 +50,7 @@ Geodrilling::Application.routes.draw do
   get "drilltower/index"
 
   post "drilltower/create"
+  post "drilltower/dismiss"
 
   get "drilltower/new"
 

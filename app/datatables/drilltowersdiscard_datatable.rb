@@ -43,9 +43,11 @@ private
       if deployment
           if (deployment.hole)
             return "钻孔编号:"+ deployment.hole.holenumber 
-          else
-            return "空闲"
           end
+      elsif (tower.status==true)
+            return "空闲"
+      elsif (tower.status==false)
+            return "已处理"
       else
         return "空闲"
       end
@@ -53,7 +55,7 @@ private
   end
 
   def open_modal(tower)
-    code = '<button class="btn btn-mini btn-warning" data-target="#_discard_modal" data-toggle="modal">处理申请</button>'
+    code = '<button class="btn btn-mini btn-warning" onclick="drilltower_modal('+tower.id.to_s+');">处理申请</button>'
     code.html_safe
   end
 
