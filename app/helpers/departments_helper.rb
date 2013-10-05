@@ -82,8 +82,14 @@ module DepartmentsHelper
         }
         return true;
       });
-      var jsonObject = #{Department.to_dhtmlxtree_node.to_json}
-      tree.loadJSONObject(jsonObject);
+      // Dynamic Loading
+      tree.setXMLAutoLoading("departments/dynamic_tree");
+      tree.setDataMode("json");
+      tree.loadJSON("departments/dynamic_tree?id=0");
+
+      // Load Once
+      // var jsonObject = #{Department.to_dhtmlxtree_node.to_json}
+      // tree.loadJSONObject(jsonObject);
       tree.attachEvent("onClick", function(nodeId){
         $('#_iframe').attr("src","/departments/"+nodeId);
         return true;

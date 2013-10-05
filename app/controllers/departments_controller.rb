@@ -102,4 +102,12 @@ class DepartmentsController < ApplicationController
       format.js {}
     end
   end
+
+  def dynamic_tree
+    logger.debug "dynamic_tree ************************#{params[:id]}"
+    @department_tree = Department.dynamic_dhtmlxtree(params[:id])
+    respond_to do |format|
+      format.json {render json: @department_tree}
+    end
+  end
 end

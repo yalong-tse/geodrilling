@@ -38,4 +38,40 @@ class Department < ActiveRecord::Base
     end
   end
 
+  def self.dynamic_dhtmlxtree(id)
+    if id.to_i == 0 then
+      a = {:id => 0,:item => []}
+      Department.roots.each do |d|
+        b = {}
+        if d.has_children? then
+          b[:id] = d.id
+          b[:child] = 1
+          b[:text] = d.name
+          a[:item] << b
+        else
+          b[:id] = d.id
+          b[:text] = d.name
+          a[:item] << b
+        end
+      end
+    else
+      dept = Department.find(id)
+      a = {:id => dept.id, :text => dept.name, :child => 1, :item => []}
+      dept.children.each do |d|
+        b = {}
+        if d.has_children? then
+          b[:id] = d.id
+          b[:child] = 1
+          b[:text] = d.name
+          a[:item] << b
+        else
+          b[:id] = d.id
+          b[:text] = d.name
+          a[:item] << b
+        end
+      end
+    end
+    return a
+  end
+
 end
