@@ -13,12 +13,13 @@ class ArchiveController < ApplicationController
   # 合同归档的操作
   def contractarchive
   end
+
   #列出所有已经关闭的钻孔
   def hole
-    @holes = Hole.closed.paginate(:page=>params[:page],:per_page=>5)
+#    @holes = Hole.closed.paginate(:page=>params[:page],:per_page=>5)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @holes }
+      format.json { render json: HolesarchiveDatatable.new(view_context) }
     end
   end
 
