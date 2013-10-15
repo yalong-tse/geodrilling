@@ -26,8 +26,8 @@ private
         h(report.tourdate.strftime("%Y-%m-%d")),
         h(report.starttime.strftime("%H:%M")),
         h(report.finishtime.strftime("%H:%M")),
-        h(report.administrator),
-        h(report.tourleader),
+        h(User.find(report.administrator).name),
+        h(User.find(report.tourleader).name),
         h(report.recorder),
         h(report.tourshift),
         h(report.tourcore),
@@ -44,7 +44,7 @@ private
 
   def detail_button(report)
     code = "<div class=\"inline position-relative btn-group\">"
-    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + edit_tourreport_path+"/"+report.id.to_s + "\")' rel=\"tooltip\" title=\"班报修改\")'><i class=\"icon-list bigger-120\"></i></button>"
+    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + edit_tourreport_path(report) + "\")' rel=\"tooltip\" title=\"班报修改\")'><i class=\"icon-list bigger-120\"></i></button>"
     code << "</div>"
     code.html_safe
   end

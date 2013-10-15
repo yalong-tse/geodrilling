@@ -19,7 +19,7 @@ class TourreportsController < ApplicationController
     @holeid = params[:holeid]
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: TourreportsmodifyDatattable.new(view_context,params[:holeid]) }
+      format.json { render json: TourreportsmodifyDatatable.new(view_context,params[:holeid]) }
     end
   end
 
