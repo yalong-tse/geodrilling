@@ -2,6 +2,7 @@
 <table id= "_table_tourreports" class="table table-striped">
   <thead>
   <tr>
+    <th>钻孔编号</th>
     <th>班报日期</th>
     <th>开始时间</th>
     <th>结束时间</th>
@@ -15,24 +16,8 @@
     <th>操作</th>
   </tr>
 </thead>
-
-<% @tourreports.each do |tourreport| %>
-  <tr>
-    <td><%= tourreport.tourdate %></td>
-    <td><%= formattime(tourreport.starttime.to_s) %></td>
-    <td><%= formattime(tourreport.finishtime.to_s) %></td>
-    <td><%= tourreport.administrator %></td>
-    <td><%= tourreport.tourleader %></td>
-    <td><%= tourreport.recorder %></td>
-    <td><%= tourreport.tourshift %></td>
-    <td><%= tourreport.tourcore %></td>
-    <td><%= tourreport.tourdrillingtime %></td>
-    <td><%= tourreport.tourauxiliarytime %></td>
-    <td>
-      <%= link_to '修改', edit_tourreport_path(tourreport) ,:class=>"btn btn-small btn-info" %>
-    </td>
-  </tr>
-<% end %>
+<tbody>
+</tbody>
 </table>
 <% content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.dataTables.min' %>
@@ -41,22 +26,36 @@
 <% content_for :inline_javascripts do %>
 <script language="javascript">
   $(function(){
-    var oTable1 = $("#_table_tourreports").dataTable({
-      "aoColumns" :[null,null,null,null,null,null,null,null,null,
-      {"bSortable":false}
-      ],
-      "bAutoWidth" : false,
-      "oLanguage":{
+   var oTable1=$("#_table_tourreports").dataTable({
+     "aoColumns":[{"bSortable":false},null,{"bSortable":false},{"bSortable":false},null,null,null,null,null,null,null,{"bSortable":false} ],
+        "bServerSide":true,
+        "bAutoWidth" : false,
+        "sAjaxSource":"<%=tourreports_indexformodify_path(:format=>:json, :holeid=>@holeid ) %>",
+        "oLanguage":{
         "sLengthMenu":"每页 _MENU_",
         "sZeroRecords":"对不起,没有数据",
         "sInfo":"显示 _START_ 到 _END_ ,总计_TOTAL_数据",
-        "sInfoEmpty":"显示 0 到 0 , 总计0条数据",
+        "sInfoEmpty":"显示 0 到 0 , 总计0数据",
         "sSearch": "检索",
         "sProcessing": "系统正在处理...",
         "sInfoFiltered":"(过滤_MAX_数据)" },
         "sDom": "<'row-fluid'<'span6'l><'span6'<'dt-search'>>r>t<'row-fluid'<'span4'i><'span8'p>>"
-      });
+        }
+     );
+
+    $("div.dt-search").html("<input id='dt-search-input' type='text''><button id='dt-search-btn' class='btn btn-mini'><i class='icon-search'></i></button>");
+
+    $("#dt-search-btn").click(function(){
+      var filterString = $('#dt-search-input').val();
+      oTable1.fnFilter(filterString);
+    });
+
   })
+
+  function open_tourreports(url)
+  {
+    window.location.href=url;
+  }
 
 </script>
 <% end %>

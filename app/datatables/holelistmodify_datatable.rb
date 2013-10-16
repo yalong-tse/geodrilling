@@ -1,7 +1,7 @@
 #encoding: utf-8
 # 钻孔列表用于修改班报的功能
 class HolelistmodifyDatatable
-  delegate :params, :h,:hole_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h,:hole_path, :tourreports_indexformodify_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
 
   def initialize(view)
     @view = view
@@ -36,7 +36,7 @@ private
 
   def detail_button(hole)
     code = "<div class=\"inline position-relative btn-group\">"
-    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + tourreports_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"修改班报\")'><i class=\"icon-list bigger-120\"></i></button>"
+    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + tourreports_indexformodify_path+"?holeid="+hole.id.to_s + "\")' rel=\"tooltip\" title=\"修改班报\")'><i class=\"icon-list bigger-120\"></i></button>"
     code << "</div>"
     code.html_safe
   end

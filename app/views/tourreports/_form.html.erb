@@ -146,6 +146,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <% @contentarr.each do |content| %>
                   <tr>
                     <td>&nbsp;&nbsp;</td>
                     <td>
@@ -210,6 +211,7 @@
                     <%=text_field_tag "workcontent_pumpquantity[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
                     </td>
                   </tr>
+                <% end %>
                 </tbody>
               </table>
 
