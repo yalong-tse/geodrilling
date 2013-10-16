@@ -44,7 +44,7 @@ private
 
   def detail_button(report)
     code = "<div class=\"inline position-relative btn-group\">"
-    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + edit_tourreport_path(report) + "\")' rel=\"tooltip\" title=\"班报修改\")'><i class=\"icon-list bigger-120\"></i></button>"
+    code << "<button class=\"btn btn-mini btn-info tooltip-success\" onclick='open_tourreports(\"" + edit_tourreport_path(report) + "\")' rel=\"tooltip\" title=\"班报修改\")'><i class=\"icon-edit bigger-120\"></i></button>"
     code << "</div>"
     code.html_safe
   end

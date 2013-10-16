@@ -28,7 +28,7 @@ class TourreportsController < ApplicationController
   # 以表格的样式展示班报
   def show
     @tourreport = Tourreport.find(params[:id])
-    @deployment = Deployment.find(:first,:conditions=>["hole_id=?",params[:id]])
+    #@deployment = Deployment.find(:first,:conditions=>["hole_id=?",params[:id]])
     @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
     
     respond_to do |format|
@@ -53,6 +53,10 @@ class TourreportsController < ApplicationController
   # GET /tourreports/1/edit
   def edit
     @tourreport = Tourreport.find(params[:id])
+    @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
+    @hole = Hole.find(@tourreport.holeid)
+    #@holes = Hole.unclosed
+    @deployment = Deployment.find_by_hole_id(@tourreport.holeid) if @tourreport.holeid 
   end
 
   # POST /tourreports
