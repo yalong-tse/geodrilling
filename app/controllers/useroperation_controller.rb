@@ -1,5 +1,5 @@
 class UseroperationController < ApplicationController
-
+  load_and_authorize_resource
 
   def index
     @useroperations = Useroperation.all
