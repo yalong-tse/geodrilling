@@ -103,6 +103,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # dynamic autoloading tree node
   def dynamic_tree
     logger.debug "dynamic_tree ************************#{params[:id]}"
     @department_tree = Department.dynamic_dhtmlxtree(params[:id])

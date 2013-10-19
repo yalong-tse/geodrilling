@@ -19,7 +19,11 @@
 <% end %>
 
 <%= content_for :inline_javascripts do %>
-  <%= dhtmlxtree_dynatree(:tree_id => "dynatree") %>
+  <% if can? :department_modify, Department %>
+    <%= dhtmlxtree_dynatree(:tree_id => "dynatree") %>
+  <% else %>
+    <%= dhtmlxtree_dynatree2(:tree_id => "dynatree") %>
+  <% end %>
   <%= init_modal %>
   <%= hide_modal %>
 <% end %>

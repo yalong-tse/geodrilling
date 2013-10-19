@@ -201,9 +201,11 @@
 
     <ul class="submenu">
 
+      <% if can? :department_read, Department %>
       <li <%= active_page?(department_tree_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.department.manage'))), department_tree_path %>
       </li>
+      <% end %>
 
       <li <%= active_page?(users_main_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t("headers.system.people.manage") )), users_main_path %>
