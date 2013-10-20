@@ -1,3 +1,35 @@
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'datepicker' %>
+<% end %>
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.2.custom.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+  <%= javascript_include_tag 'date-time/locales/bootstrap-datepicker.zh-CN' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+<% end %>
+<% content_for :inline_javascripts do %>
+  <%= make_datepicker("#user_birthday") %>
+  <%= hide_modal %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#personal_setting").click(function() {
+        $("#modal").modal('show');
+      });
+      $("#update_password").click(function() {
+        if($("#update_password").is(":checked")) {
+          $("#old_pw").attr("class", "control-group");
+          $("#new_pw").attr("class", "control-group");
+          $("#new_pw_repeat").attr("class", "control-group");
+        } else {
+          $("#old_pw").attr("class", "control-group hidden");
+          $("#new_pw").attr("class", "control-group hidden");
+          $("#new_pw_repeat").attr("class", "control-group hidden");
+        }
+      });
+    });
+  </script>
+<% end %>
+
 <div class="navbar navbar-inverse">
 <div class="navbar-inner">
 <div class="container-fluid">
@@ -12,23 +44,20 @@
 
 <li class="light-blue user-profile">
   <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
-    								<span id="user_info">
-                                <small> 欢迎您,</small>
-                                <%= current_user.account %>
-								</span>
+    <span id="user_info">
+      <small> 欢迎您,</small>
+      <%= current_user.account %>
+    </span>
     <i class="icon-caret-down"></i>
   </a>
 
   <ul class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer" id="user_menu">
     <li>
-      <a href="#">
-        <i class="icon-cog"></i>
-        个人设置
-      </a>
-    </li>
+      <% unless @login_user.account == 'admin' %>
+      <%= link_to "<i class='icon-cog'></i>个人设置".html_safe, "javascript: void(0)", :id => "personal_setting"%>
 
-    <li class="divider"></li>
-
+      <li class="divider"></li>
+    <% end %>
     <li>
     <a href="<%= logout_path %>">
       <i class="icon-off"></i>
@@ -41,3 +70,99 @@
 </div><!--/.container-fluid-->
 </div><!--/.navbar-inner-->
 </div>
+
+<% unless @login_user.account == 'admin' %>
+<!--个人设置 -->
+<div id="modal" class="modal hide fade">
+  <%= form_for @login_user, :url => department_user_path(@login_user.department, @login_user), :html => {:class => "form-horizontal"}, :remote => true do |f| %>
+    <div class="modal-header widget-header widget-header-flat">
+      <h3>个人设置</h3>
+      <div class="widget-toolbar">
+        <label>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </label>
+      </div>
+    </div>
+    <div class="modal-body widget-body">
+      <div class="control-group">
+        <%= f.label :name, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :sex, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.select :sex, User::SEXS, {}, :class=>"input-mini" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :birthday, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :birthday %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :duty, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :duty %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :education, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.select :education, User::EDUCATION, {:prompt => t('prompt.select')}, {:class=>"input-medium"} %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :mobile, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :mobile %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :officephone, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :officephone %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :email, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <!-- 修改用户密码 -->
+      <div class="control-group">
+        <div class="controls">
+          <input type="checkbox" id="update_password" name="test" />
+          <span class="lbl">修改密码</span>
+        </div>
+      </div>
+      <div class="control-group hidden" id="old_pw">
+        <label class="control-label">原始密码</label>
+        <div class="controls">
+          <%= f.text_field :officephone %>
+        </div>
+      </div>
+      <div class="control-group hidden" id="new_pw">
+        <label class="control-label">新密码</label>
+        <div class="controls">
+          <%= f.text_field :officephone %>
+        </div>
+      </div>
+      <div class="control-group hidden" id="new_pw_repeat">
+        <label class="control-label">重复新密码</label>
+        <div class="controls">
+          <%= f.text_field :officephone %>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-undo"></i>取消</button>
+      <button class="btn btn-primary"><i class="icon-ok"></i>保存</button>
+    </div>
+
+  <% end %>
+</div>
+<% end %>

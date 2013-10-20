@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url #, :notice => "You need to log in first."
       return false
     else
+      @login_user = User.find(session[:user_id])
       return true
     end
   end
