@@ -4,7 +4,9 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th class="center" width="5%"><%= check_box_tag "selectAll" %><span class="lbl"></span></th>
+      <% if can? :delete, User %>
+        <th class="center" width="5%"><%= check_box_tag "selectAll" %><span class="lbl"></span></th>
+      <% end %>
       <th width="10%"><%= User.human_attribute_name("name") %></th>
       <th width="5%"><%= User.human_attribute_name("sex") %></th>
       <th width="10%"><%= User.human_attribute_name("position") %></th>
@@ -15,21 +17,29 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td class="center"><%= check_box_tag "users[]", user.id %><span class="lbl"></span></td>
+        <% if can? :delete, User %>
+          <td class="center"><%= check_box_tag "users[]", user.id %><span class="lbl"></span></td>
+        <% end %>
         <td><%= user.name %></td>
         <td><%= human_sex(user) %></td>
         <td><%= user_position(user) %></td>
         <td><%= contactway(user) %></td>
         <td class="td-actions">
           <div class="inline position-relative btn-group">
-            <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-success tooltip-success", :rel => "tooltip", 'title'=>"查看" do %>
-              <i class="icon-eye-open bigger-120"></i>
+            <% if can? :read, user %>
+              <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-success tooltip-success", :rel => "tooltip", 'title'=>"查看" do %>
+                <i class="icon-eye-open bigger-120"></i>
+              <% end %>
             <% end %>
-            <%= link_to edit_department_user_path(@department, user), :class => "btn btn-mini btn-info" do %>
-              <i class="icon-edit bigger-120"></i>
+            <% if can? :modify, user %>
+              <%= link_to edit_department_user_path(@department, user), :class => "btn btn-mini btn-info" do %>
+                <i class="icon-edit bigger-120"></i>
+              <% end %>
             <% end %>
-            <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: t('prompt.confirm.delete') } do %>
-              <i class="icon-trash bigger-120"></i>
+            <% if can? :delete, user %>
+              <%= link_to department_user_path(@department, user), :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: t('prompt.confirm.delete') } do %>
+                <i class="icon-trash bigger-120"></i>
+              <% end %>
             <% end %>
           </div>
         </td>
@@ -38,7 +48,11 @@
   </tbody>
 </table>
 <br />
-<%= link_to t('labels.new'), new_department_user_path, :class => "btn btn-primary" %>
-<%= submit_tag t('labels.destroy'), :class => "btn" %>
+<% if can? :add, User %>
+  <%= link_to t('labels.new'), new_department_user_path, :class => "btn btn-primary" %>
+<% end %>
+<% if can? :delete, User %>
+  <%= submit_tag t('labels.destroy'), :class => "btn" %>
+<% end %>
 
 <% end %>

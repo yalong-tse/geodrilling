@@ -44,6 +44,8 @@
 </div>
 
 <div class="form-actions">
-<%= link_to t('labels.edit'), edit_department_user_path(@department,@user), :class => "btn" %>
+<% if can? :modify, @user %>
+  <%= link_to t('labels.edit'), edit_department_user_path(@department,@user), :class => "btn" %>
+<% end %>
 <%= link_to t('labels.back'), department_users_path(@department), :class=>"btn btn-primary" %>
 </div>

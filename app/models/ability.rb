@@ -8,6 +8,11 @@ class Ability
     alias_action :main, :show, :dynamic_tree, :to => :department_read
     alias_action :department_read, :create, :edit, :update, :destroy, :to => :department_modify
 
+    alias_action :index, :show, :to => :read  # 查看
+    alias_action :read, :new, :create, :to => :add # 新增
+    alias_action :read, :edit, :update, :to => :modify # 修改
+    alias_action :read, :destroy, :destroy_multiple, :to => :delete # 删除
+
     if user.account == 'admin'  # admin 用户不属于任何部门
       can :manage, :all
     end
