@@ -44,6 +44,7 @@ class TourreportsController < ApplicationController
     @hole = Hole.find(params[:holeid])
     #@holes = Hole.unclosed
     @deployment = Deployment.find_by_hole_id(params[:holeid]) if params[:holeid]
+    @contentarr = [Workcontent.new]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @tourreport }
@@ -54,6 +55,7 @@ class TourreportsController < ApplicationController
   def edit
     @tourreport = Tourreport.find(params[:id])
     @contentarr = Workcontent.find(:all, :conditions=>["tourreportid=?",params[:id]])
+
     @hole = Hole.find(@tourreport.holeid)
     #@holes = Hole.unclosed
     @deployment = Deployment.find_by_hole_id(@tourreport.holeid) if @tourreport.holeid 
