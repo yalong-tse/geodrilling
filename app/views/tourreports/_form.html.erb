@@ -46,9 +46,13 @@
   <div class="control-group">
     <%= f.label "班长" , :class=>"control-label" %>
     <div class="controls">
-      <%=f.hidden_field :projectmanager, :value=>(@deployment.user.nil? || @deployment.user.leader.nil?)? "":@deployment.user.leader.id %>
-      <%=f.hidden_field :administrator, :value=>@deployment.user.nil?? "":@deployment.user.id %>
-      <%= f.select(:tourleader, options_for_select(Group.getmembers(@deployment.user)),:class=>"input-large" ) %>
+      <%=f.hidden_field :projectmanager, :value=>(@deplyment.nil? || @deployment.user.nil? || @deployment.user.leader.nil?)? "":@deployment.user.leader.id %>
+      <%=f.hidden_field :administrator, :value=>(@deployment.nil? || @deployment.user.nil?)? "":@deployment.user.id %>
+      <% if @deployment.nil? %>
+      <%= f.select(:tourleader, options_for_select(""), :class=>"input-large" ) %>
+      <% else  %>
+      <%= f.select(:tourleader, options_for_select(Group.getmembers(@deployment.user)), :class=>"input-large" ) %>
+      <% end %>
       <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="下拉选择这个班的班长" >?<span>
     </div>
   </div>
@@ -151,31 +155,31 @@
                     <td>&nbsp;&nbsp;</td>
                     <td>
                       <div class="input-append bootstrap-timepicker">
-                        <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>"00:00" %><span class="add-on"><i class="icon-time"></i></span>
+                        <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>content.starttime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                       </div>
                     </td>
                     <td>
                     <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>"00:00" %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>content.finishtime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                     </div>
                     </td>
                     <td>
-                    <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>"下钻"), :class=>"input-medium" )%>
+                    <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>content.content ), :class=>"input-medium" )%>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                      <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.upmore%>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                      <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.drilllength%>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                      <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.holedeep %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_corename[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                      <%=text_field_tag "workcontent_corename[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.corename %>
                     </td>
                     <td>
-                    <%=text_field_tag "workcontent_coregrade[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>
+                      <%=text_field_tag "workcontent_coregrade[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.coregrade%>
                     </td>
                     <td>
                     <%=text_field_tag "workcontent_corenumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" %>

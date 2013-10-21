@@ -57,6 +57,8 @@ class TourreportsController < ApplicationController
     @hole = Hole.find(@tourreport.holeid)
     #@holes = Hole.unclosed
     @deployment = Deployment.find_by_hole_id(@tourreport.holeid) if @tourreport.holeid 
+    logger.info "==========================="
+    logger.info @deployment
   end
 
   # POST /tourreports
