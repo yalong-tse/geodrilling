@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :members, class_name: "User", foreign_key: "leaderid"
   belongs_to :leader, class_name: "User", foreign_key: "leaderid"
 
-  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid, :position
+  attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid, :position, :oldpassword
   attr_accessor :password
 
   before_save :encrypt_password
@@ -24,13 +24,18 @@ class User < ActiveRecord::Base
 
   validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?
   validates :account, presence: true, :if => :is_appuser?
+#  validates :account, presence: true, :unless => :personal_setting?
   validate :unique_account_only_for_appuser, :if => :is_appuser?
-  
+
   # 下面的方式是在rails 4.0中使用的,在rails3.2.13中不支持condition的这种方式
   # validates_uniqueness_of :account, conditions: -> { where(isappuser: true) }, :if => :is_appuser?
 
+  def personal_setting?
+    isappuser?
+  end
+
   def unique_account_only_for_appuser
-    users = User.where("isappuser = ? AND account = ?", true, account)
+    users = User.where("isappuser = ? AND account = ? AND id != ?", true, account, id)
     unless users.empty?
       errors.add(:account, I18n.t("errors.messages.taken"))
     end
@@ -53,6 +58,7 @@ class User < ActiveRecord::Base
   def role_ids=(role_ids)
     # 只有是系统用户时才能添加角色，防止页面点击“是”后又改为“否”的特殊情况下，系统逻辑出错
     if :is_appuser
+      self.roles = []
       role_ids.each do |r_id|
         role = Role.find(r_id)
         self.roles << role

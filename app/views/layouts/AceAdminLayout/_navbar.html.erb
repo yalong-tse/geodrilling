@@ -17,13 +17,13 @@
       });
       $("#update_password").click(function() {
         if($("#update_password").is(":checked")) {
-          $("#old_pw").attr("class", "control-group");
+          //$("#old_pw").attr("class", "control-group");
           $("#new_pw").attr("class", "control-group");
-          $("#new_pw_repeat").attr("class", "control-group");
+          //$("#new_pw_repeat").attr("class", "control-group");
         } else {
-          $("#old_pw").attr("class", "control-group hidden");
+          //$("#old_pw").attr("class", "control-group hidden");
           $("#new_pw").attr("class", "control-group hidden");
-          $("#new_pw_repeat").attr("class", "control-group hidden");
+          //$("#new_pw_repeat").attr("class", "control-group hidden");
         }
       });
     });
@@ -70,11 +70,12 @@
 </div><!--/.container-fluid-->
 </div><!--/.navbar-inner-->
 </div>
-
+<div id="notice"></div>
 <% unless @login_user.account == 'admin' %>
 <!--个人设置 -->
 <div id="modal" class="modal hide fade">
   <%= form_for @login_user, :url => department_user_path(@login_user.department, @login_user), :html => {:class => "form-horizontal"}, :remote => true do |f| %>
+    <%= f.hidden_field :account %>
     <div class="modal-header widget-header widget-header-flat">
       <h3>个人设置</h3>
       <div class="widget-toolbar">
@@ -135,28 +136,28 @@
       <!-- 修改用户密码 -->
       <div class="control-group">
         <div class="controls">
-          <input type="checkbox" id="update_password" name="test" />
+          <input type="checkbox" id="update_password" name="ismodifypw" value="1" />
           <span class="lbl">修改密码</span>
         </div>
       </div>
-      <div class="control-group hidden" id="old_pw">
+      <!--<div class="control-group hidden" id="old_pw">
         <label class="control-label">原始密码</label>
         <div class="controls">
-          <%= f.text_field :officephone %>
+          <input type="password" name="oldpassword" >
         </div>
-      </div>
+      </div>-->
       <div class="control-group hidden" id="new_pw">
         <label class="control-label">新密码</label>
         <div class="controls">
-          <%= f.text_field :officephone %>
+          <%= f.password_field :password %>
         </div>
       </div>
-      <div class="control-group hidden" id="new_pw_repeat">
+      <!--<div class="control-group hidden" id="new_pw_repeat">
         <label class="control-label">重复新密码</label>
         <div class="controls">
-          <%= f.text_field :officephone %>
+          <%= f.password_field :password_confirmation %>
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-undo"></i>取消</button>

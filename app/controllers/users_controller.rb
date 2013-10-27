@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout 'iframe', :except => [:main,:destroy_multiple]
-  
+
   before_filter :load_department, :except => :main
 
   def main
@@ -73,7 +73,6 @@ class UsersController < ApplicationController
   def create
     @user = @department.users.build(params[:user])
     User.set_default_password(@user) if params[:user][:isappuser]
-    logger.debug "----------#{params[:user]}"
     respond_to do |format|
       if @user.save
         # format.html { redirect_to [@department, @user], notice: I18n.t('activerecord.successful.messages.created', :model => @user.class.model_name.human) }
@@ -91,16 +90,24 @@ class UsersController < ApplicationController
   # PUT departments/1/users/1
   # PUT departments/1/users/1.json
   def update
+    # logger.debug "********************#{params[:ismodifypw]}"
+    # logger.debug "*********oldpassword***********#{params[:oldpassword]}"
     @user = @department.users.find(params[:id])
-
+    unless params[:ismodifypw] == '1'
+      User.set_default_password(@user) if params[:user][:isappuser]
+    end
     respond_to do |format|
       if @user.update_attributes(params[:user])
         # format.html { redirect_to [@department, @user], notice: I18n.t('activerecord.successful.messages.updated', :model => @user.class.model_name.human) }
         format.html { redirect_to department_users_url, notice: t('activerecord.successful.messages.updated', :model => @user.class.model_name.human) }
         format.json { head :no_content }
+        format.js {}
       else
+        @roles = Role.all
+        @user_roles = @user.roles.collect{|r| r.id}
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end
