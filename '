@@ -155,12 +155,12 @@
                     <td>&nbsp;&nbsp;</td>
                     <td>
                       <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>(content.nil? || content.starttime.nil?)? "":content.starttime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>content.starttime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                       </div>
                     </td>
                     <td>
                     <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>(content.nil?|| content.finishtime.nil?)? "":content.finishtime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>content.finishtime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                     </div>
                     </td>
                     <td>
@@ -173,22 +173,22 @@
             <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.drilllength%>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.holedeep %>
+                      <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.holedeep %>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_corename[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.corename %>
+                      <%=text_field_tag "workcontent_corename[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.corename %>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_coregrade[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.coregrade%>
+                      <%=text_field_tag "workcontent_coregrade[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.coregrade%>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_corenumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.corenumber%>
+                      <%=text_field_tag "workcontent_corenumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.corenumber%>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_corelength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.corelength %>
+                      <%=text_field_tag "workcontent_corelength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.corelength %>
                     </td>
                     <td>
-            <%=text_field_tag "workcontent_coreleftlength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.coreleftlength %>
+                      <%=text_field_tag "workcontent_coreleftlength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.coreleftlength %>
                     </td>
                     <td>
                       <%=text_field_tag "workcontent_drillbit[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.drillbit %>

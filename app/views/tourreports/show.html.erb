@@ -90,8 +90,8 @@
                     <td colspan="2">出勤人员</td>
                     <td colspan="2">
                       <ul class="unstyled spaced">
-                        <li><i class="icon-group blue"></i><%=User.find(@tourreport.administrator).name%></li>
-                        <li><i class="icon-group blue"></i><%=User.find(@tourreport.tourleader).name%></li>
+                        <li><i class="icon-group blue"></i><% if @tourreport.administrator %><%=User.find(@tourreport.administrator).name%><% end %></li>
+                        <li><i class="icon-group blue"></i><% if @tourreport.tourleader %><%=User.find(@tourreport.tourleader).name%><% end %></li>
                         <li><i class="icon-group blue"></i><%=@tourreport.recorder%></li>
                       </ul>
                     </td>
@@ -113,8 +113,8 @@
                     <td colspan="2">说明</td>
                     <td colspan="18">
                       <ul class="inline">
-                        <i class="icon-circle green"></i> 项目经理:<%=User.find(@tourreport.projectmanager).name%>
-                        <i class="icon-circle green"></i> 机长:<%=User.find(@tourreport.administrator).name%>
+                      <i class="icon-circle green"></i> 项目经理:<% if @tourreport.projectmanager && !@tourreport.projectmanager==""  %> <%= User.find(@tourreport.projectmanager).name  %> <% end %>
+                      <i class="icon-circle green"></i> 机长:<% if @tourreport.administrator %><%=User.find(@tourreport.administrator).name%><%end %>
                         <i class="icon-circle green"></i> 班记录员:<%=@tourreport.recorder%>
                         <i class="icon-circle green"></i> 交班班长:<%=@tourreport.lastleader%>
                         <i class="icon-circle green"></i> 接班班长:<%=@tourreport.nextleader%>
