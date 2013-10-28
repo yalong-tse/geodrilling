@@ -1,2 +1,12 @@
 $("#modal").modal('hide');
-alert('修改成功!');
+//alert('修改成功!');
+$("#notice").html("<%= j(render partial: 'layouts/flash_messages') %>");
+var errors = '';
+<% @user.errors.full_messages.each do |msg| %>
+  errors += '<%= msg %>\n';
+<% end %>
+if (errors != ''){
+  alert(errors);
+} else {
+  alert('个人设置更新成功!');
+}

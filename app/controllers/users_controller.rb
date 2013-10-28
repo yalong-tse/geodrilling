@@ -105,6 +105,7 @@ class UsersController < ApplicationController
       else
         @roles = Role.all
         @user_roles = @user.roles.collect{|r| r.id}
+        # flash.now[:error] = "ceshi"
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
         format.js {}

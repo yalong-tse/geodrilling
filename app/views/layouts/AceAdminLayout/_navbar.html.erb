@@ -19,13 +19,16 @@
         if($("#update_password").is(":checked")) {
           //$("#old_pw").attr("class", "control-group");
           $("#new_pw").attr("class", "control-group");
-          //$("#new_pw_repeat").attr("class", "control-group");
+          $("#new_pw_repeat").attr("class", "control-group");
         } else {
           //$("#old_pw").attr("class", "control-group hidden");
           $("#new_pw").attr("class", "control-group hidden");
-          //$("#new_pw_repeat").attr("class", "control-group hidden");
+          $("#new_pw_repeat").attr("class", "control-group hidden");
         }
       });
+      //$("#my_form").bind("ajax:success", function(event, data, status, xhr) {
+      //  alert("个人设置更新成功!");
+      //});
     });
   </script>
 <% end %>
@@ -74,7 +77,7 @@
 <% unless @login_user.account == 'admin' %>
 <!--个人设置 -->
 <div id="modal" class="modal hide fade">
-  <%= form_for @login_user, :url => department_user_path(@login_user.department, @login_user), :html => {:class => "form-horizontal"}, :remote => true do |f| %>
+  <%= form_for @login_user, :url => department_user_path(@login_user.department, @login_user), :html => {:class => "form-horizontal", :id => "my_form"}, :remote => true do |f| %>
     <%= f.hidden_field :account %>
     <div class="modal-header widget-header widget-header-flat">
       <h3>个人设置</h3>
@@ -152,12 +155,12 @@
           <%= f.password_field :password %>
         </div>
       </div>
-      <!--<div class="control-group hidden" id="new_pw_repeat">
+      <div class="control-group hidden" id="new_pw_repeat">
         <label class="control-label">重复新密码</label>
         <div class="controls">
           <%= f.password_field :password_confirmation %>
         </div>
-      </div>-->
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-undo"></i>取消</button>
