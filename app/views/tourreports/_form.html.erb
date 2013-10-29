@@ -641,29 +641,31 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
 
   function compute_content(obj)
   {
-      var pattern = /^([0-9])+$/;
-      var drillsummary=0;
+      var pattern = /^\d+(\.\d+)?$/;
+      var drillsummary=0.00;
       $("input[name='workcontent_drilllength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" &&  pattern.test($(this).val()) ) 
-          drillsummary+=parseInt($(this).val());
+          {
+            drillsummary+=parseFloat($(this).val());
+          }
       });
 
       $("#tourreport_tourshift").val(drillsummary);
-      var coresummary = 0;
+      var coresummary = 0.00;
       $("input[name='workcontent_corelength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" && pattern.test($(this).val()) ) 
-          coresummary+=parseInt($(this).val());
+          coresummary+=parseFloat($(this).val());
        });
       $("#tourreport_tourcore").val(coresummary);
   }
 
   function length_content(obj)
   {
-    var pattern = /^([0-9])+$/;
+    var pattern = /^\d+(\.\d+)?$/;
     if(pattern.test($(obj).val()))
     {
       var result = 0;
-      $("input[name='corelength[]']").each(function(i){result += parseInt($(this).val());});
+      $("input[name='corelength[]']").each(function(i){result += parseFloat($(this).val()).toFixed(2);});
       $("#tourreport_tourcore").val(result);
     }
   }
