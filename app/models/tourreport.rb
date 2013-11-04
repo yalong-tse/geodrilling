@@ -36,12 +36,19 @@ class Tourreport < ActiveRecord::Base
   scope :archive, :conditions => {:status=>2}
 
   # 根据钻孔id 查询班报
-  def self.gettourreports(holenumber)
-    if holenumber
-      where("holeid =?", holenumber).order("holeid desc")
+  def self.gettourreports(holeid)
+    if holeid
+      where("holeid =?", holeid).order("holeid desc")
     else
       order("holeid desc")
     end
   end
 
+  def self.sumcore(holeid)
+    if holeid
+      sum(:tourcore,:conditions=>{:holeid=>holeid});
+    else
+      0
+    end
+  end
 end

@@ -1,0 +1,41 @@
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'chosen' %>
+  <%= stylesheet_link_tag 'bootstrap-timepicker' %>
+<% end %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="center" width="%5">钻孔编号</th>
+      <th class="center" width="30%">岩心采取率</th>
+      <th class="center" width="30%">平均机械钻速</th>
+      <th class="center" width="30%">回次转速</th>
+    </tr>
+  </thead>
+  <% @holes.each do |hole| %>
+    <tr>
+      <td class="center"><%= hole.holenumber %> </td>
+      <td><%= hole_coreratio_xml(hole) %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+  <tbody>
+  </tbody>
+</table>
+
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+  <%= javascript_include_tag 'fuelux/fuelux.spinner.min' %>
+  <%= javascript_include_tag 'date-time/moment.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+<% end %>
+<% content_for :inline_javascripts do %>
+  <script type="text/javascript">
+
+
+  </script>
+<% end %>

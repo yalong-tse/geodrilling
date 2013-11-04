@@ -141,4 +141,14 @@ class TourreportsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def holesreport
+    @holes = Hole.find(:all)
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+
+  end
 end
