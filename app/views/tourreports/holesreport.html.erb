@@ -6,15 +6,19 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th class="center" width="%5">钻孔编号</th>
-      <th class="center" width="30%">岩心采取率</th>
-      <th class="center" width="30%">平均机械钻速</th>
-      <th class="center" width="30%">回次转速</th>
+      <th class="center" width="%8">钻孔编号</th>
+      <th class="center" width="%5">合同名称</th>
+      <th class="center" width="%5">状态</th>
+      <th class="center" width="25%">岩心采取率</th>
+      <th class="center" width="25%">平均机械钻速</th>
+      <th class="center" width="25%">回次转速</th>
     </tr>
   </thead>
   <% @holes.each do |hole| %>
     <tr>
       <td class="center"><%= hole.holenumber %> </td>
+      <td class="center"><%= hole.contract.name %> </td>
+      <td class="center"><%= hole.statusstr %> </td>
       <td><%= hole_coreratio_xml(hole) %></td>
       <td><%= mech_speed(hole)%></td>
       <td><%= rec_speed(hole)%></td>

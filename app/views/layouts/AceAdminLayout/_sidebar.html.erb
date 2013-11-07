@@ -49,7 +49,7 @@
   </li>
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(holes_tourreportsmodify_path))}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) ||current_page?(holes_close_path)|| current_page?(tourreports_indexformodify_path) || current_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0) || current_page?(tourreports_path) || current_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0) ||current_page?(new_tourreport_path) || current_page?(holelist_deployment_path) || current_page?(holes_tourreportsmodify_path))}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-edit"></i>
       <span>钻孔管理</span>
@@ -62,23 +62,23 @@
         <%= link_to (raw('<i class="icon-double-angle-right"></i>新增钻孔')), new_hole_path %>
       </li>
 
-      <li <%= active_page?(holelist_index_path) %>>
+      <li <%= active_page?(holelist_index_path) %><%= active_page?(holelist_deployment_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔配备')), holelist_index_path %>
       </li>
 
-      <li <%= active_page?(holes_path) %>>
+      <li <%= active_page?(holes_path) %><%=active_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0)%> <%=active_page?(holes_close_path)%> >
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔查询')), holes_path %>
       </li>
 
-      <li <%= active_page?(holes_list_path) %>>
+      <li <%= active_page?(holes_list_path) %> <%=active_page?(new_tourreport_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报填写')), holes_list_path %>
       </li>
 
-      <li <%= active_page?(holes_tourreportsmodify_path) %>>
+      <li <%= active_page?(holes_tourreportsmodify_path) %> <%=active_page?(tourreports_indexformodify_path)%> <%=active_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0)%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报修改')), holes_tourreportsmodify_path %>
       </li>
 
-      <li <%= active_page?(holes_tourreports_path) %>>
+      <li <%= active_page?(holes_tourreports_path) %> <%=active_page?(tourreports_path)%> <%=active_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0 )%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报查询')), holes_tourreports_path %>
       </li>
 
@@ -88,7 +88,7 @@
 
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) ||  current_page?(equipment_discard_path) ||current_page?(equipment_group_path) )}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) ||  current_page?(equipment_discard_path) || current_page?(rigmachine_new_path) || current_page?(drilltower_new_path) || current_page?(pump_new_path) || current_page?(equipment_group_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-bell"></i>
       <span>设备管理</span>
@@ -101,7 +101,7 @@
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备库存')), equipment_index_path %>
       </li>
 
-      <li <%= active_page?(equipment_stockin_path) %>>
+      <li <%= active_page?(equipment_stockin_path) %> <%=active_page?(rigmachine_new_path)%> <%=active_page?(drilltower_new_path)%> <%=active_page?(pump_new_path)%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备入库')), equipment_stockin_path %>
       </li>
 
@@ -141,7 +141,7 @@
     </ul>
   <% end %>
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(contracts_chart_path))}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(contracts_chart_path) || current_page?(tourreports_holesreport_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-dashboard"></i>
       <span>统计分析</span>
@@ -156,10 +156,6 @@
 
       <li <%= active_page?(tourreports_holesreport_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔')), tourreports_holesreport_path %>
-      </li>
-
-      <li <%= active_page?(nil) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>材料')), nil %>
       </li>
 
       <li <%= active_page?(nil) %>>
