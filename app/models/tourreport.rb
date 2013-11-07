@@ -44,9 +44,50 @@ class Tourreport < ActiveRecord::Base
     end
   end
 
+  # 获取该孔的岩心采取长度
   def self.sumcore(holeid)
     if holeid
       sum(:tourcore,:conditions=>{:holeid=>holeid});
+    else
+      0
+    end
+  end
+
+
+  # 获取某个孔的所有的纯钻时长
+  def self.sum_drillingtime(holeid)
+    hours = 0;
+    minutes = 0;
+    if(holeid)
+      where("holeid=?",holeid).pluck(:tourdrillingtime).each do |thetime|
+        h,m = thetime.split(/:/)
+        hours=hours+h.to_i
+        minutes = minutes+m.to_i
+      end
+      # 此处会有小数
+      r = (minutes/60.0);
+      hours = hours+r;
+      return hours;
+      #sum(:tourdrillingtime, :conditions=>{:holeid=>holeid})
+    else
+      0
+    end
+  end
+
+  #获取该孔的所有辅助时长
+  def self.sum_auxtime(holeid)
+    hours = 0;
+    minutes = 0;
+    if(holeid)
+      #sum(:tourauxiliarytime,:conditions=>{:holeid=>holeid})
+      where("holeid=?",holeid).pluck(:tourauxiliarytime).each do |thetime|
+        h,m = thetime.split(/:/);
+        hours = hours+h.to_i;
+        minutes = minutes + m.to_i;
+      end
+      r = minutes/60.0;
+      hours = hours+r;
+      return hours;
     else
       0
     end
