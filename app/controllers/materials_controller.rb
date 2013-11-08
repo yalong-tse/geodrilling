@@ -14,8 +14,7 @@ class MaterialsController < ApplicationController
   #出库
   def stockout
     @materials = Material.all
-    @holes = Hole.all
-
+    #@holes = Hole.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @materials }
