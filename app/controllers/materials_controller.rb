@@ -66,7 +66,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: 'Material was successfully created.' }
+        format.html { redirect_to @material, notice: '新增材料成功.' }
         format.json { render json: @material, status: :created, location: @material }
       else
         format.html { render action: "new" }
@@ -82,7 +82,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.update_attributes(params[:material])
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
+        format.html { redirect_to @material, notice: '材料更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
