@@ -35,7 +35,7 @@
   <div class="control-group">
     <%= f.label "设备编号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :devicenumber , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="设备编号为该设备的唯一标识" >?<span>
+      <%= f.text_field :devicenumber , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -44,7 +44,7 @@
   <div class="control-group">
     <%= f.label "钻塔型号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :model , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入钻塔型号，例如：SG-17" >?<span>
+      <%= f.text_field :model , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -133,7 +133,7 @@
   <div class="control-group">
     <%= f.label "滑车总数与减轻负荷倍数", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :sheaveQuantity , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入滑车总数与减轻负荷倍数，例如：2×1.5" >?<span>
+      <%= f.text_field :sheaveQuantity , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -167,7 +167,7 @@
   <div class="control-group">
     <%= f.label "厂商", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :manufacture , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入厂商名称" >?<span>
+      <%= f.text_field :manufacture , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -179,7 +179,7 @@
   <div class="control-group">
     <%= f.label "厂商联系方式", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :manufactureContact , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入厂商联系方式" >?<span>
+      <%= f.text_field :manufactureContact , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -216,7 +216,6 @@
   <script type="text/javascript">
 
   $(function(){
-  $(".ace-popover").popover();
 
   $('#_drilltower_picture').ace_file_input({
         no_file:'未选择文件 ...',

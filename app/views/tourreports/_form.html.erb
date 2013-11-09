@@ -53,7 +53,6 @@
       <% else  %>
       <%= f.select(:tourleader, options_for_select(Group.getmembers(@deployment.user)), :class=>"input-large" ) %>
       <% end %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="下拉选择这个班的班长" >?<span>
     </div>
   </div>
   </div>
@@ -78,7 +77,6 @@
     <%= f.label "记录员" ,:class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :recorder ,:class=>"input-large" %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入班报的记录员" >?<span>
     </div>
   </div>
   </div>
@@ -89,7 +87,6 @@
     <div class="controls">
       <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME),{}, {:class=>"input-small",:onchange=>"change_time()"}) %>&nbsp;&nbsp;至&nbsp;
       <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {},{:class=>"input-small",:readonly=>true} ) %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="选择班报的时间，只需要选择开始时间即可" >?<span>
     </div>
   </div>
   </div>
@@ -404,7 +401,6 @@
     <div class="controls">
       <div class="input-append">
         <%= f.text_field :centralizer , :class=>"input-large" %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入扶正器长的内容，没有则为空" >?<span>
       </div>
     </div>
   </div>
@@ -416,7 +412,6 @@
     <div class="controls">
       <div class="input-append">
       <%= f.text_field :antideviation, :class=>"input-large" %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入防斜措施，没有则为空" >?<span>
       </div>
     </div>
   </div>
@@ -533,8 +528,6 @@
 
   worktime_ready();
   refresh_event();
-
-  $(".ace-popover").popover();
 
   $("#tourreport_tourdate").datepicker({format:'yyyy-mm-dd'});
 

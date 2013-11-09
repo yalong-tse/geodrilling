@@ -34,7 +34,7 @@
   <div class="control-group">
     <%= f.label "设备编号", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :devicenumber , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="设备编号为该设备的唯一标识" >?<span>
+      <%= f.text_field :devicenumber , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -43,7 +43,7 @@
   <div class="control-group">
     <%= f.label "泥浆泵型号", :class=>"control-label" %>
     <div class="controls">
-        <%= f.text_field :pumpmodel , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入泥浆泵型号，例如:BW-150" >?<span>
+        <%= f.text_field :pumpmodel , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -90,7 +90,7 @@
   <div class="control-group">
     <%= f.label "缸数", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :pumplineNumber , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入缸数" >?<span>
+      <%= f.text_field :pumplineNumber , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -152,7 +152,7 @@
   <div class="control-group">
     <%= f.label "厂商", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :manufacture , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入厂商名称" >?<span>
+      <%= f.text_field :manufacture , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -161,7 +161,7 @@
   <div class="control-group">
     <%= f.label "厂商联系方式", :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :manufactureContact , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入厂商联系方式" >?<span>
+      <%= f.text_field :manufactureContact , :class=>"input-large" %>
     </div>
   </div>
   </div>
@@ -211,7 +211,6 @@
   <script type="text/javascript">
 
   $(function(){
-  $(".ace-popover").popover();
 
   $('#_pump_picture').ace_file_input({
         no_file:'未选择文件 ...',

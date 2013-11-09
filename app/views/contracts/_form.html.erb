@@ -86,7 +86,7 @@
       <span style="margin-left:100px;width:18px;overflow:hidden;">  
         <%= select_tag("ownerselect", options_for_select(Contract.getowner.collect{|d|[d.owner]}), {:style=>"width:218px;margin-left:-100px",:onchange=>"setsibling(this)"}) %>
       </span>  
-    <%= f.text_field :owner, :style=>"width:170px;position:absolute;left:0px;" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="请填写业主名称或者下拉选择业主名称" >?<span>
+    <%= f.text_field :owner, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
   </div>
@@ -98,7 +98,7 @@
       <span style="margin-left:100px;width:18px;overflow:hidden;">  
         <%= select_tag("buyerselect", options_for_select(Contract.getbuyer.collect{|d|[d.buyerparty]}), {:style=>"width:218px;margin-left:-100px",:onchange=>"setsibling(this)"}) %>
       </span>
-      <%= f.text_field :buyerparty, :style=>"width:170px;position:absolute;left:0px;" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="请填写乙方名称或者下拉选择乙方名称" >?<span>
+      <%= f.text_field :buyerparty, :style=>"width:170px;position:absolute;left:0px;" %>
     </div>
   </div>
   </div>
@@ -110,7 +110,6 @@
     <%= f.label "资金来源" ,:class=>"control-label" %>
     <div class="controls">
       <%= f.select(:fundsource , options_for_select(Dictionary.fundsource.collect{|d|[d.item,d.id]}), :class=>"span4",:prompt=>"请选择") %>
-      <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="请下拉选择资金来源" >?<span>
     </div>
   </div>
   </div>
@@ -216,8 +215,6 @@
         //onchange:''
         //
         });
-
-  $(".ace-popover").popover();
 
   $("#new_contract").validate({
   rules:{
