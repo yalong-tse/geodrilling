@@ -7,7 +7,7 @@ class Material < ActiveRecord::Base
   # price 采购价格
   # stockdate 入库日期
   # recorder 记录人
-  attr_accessible :count, :model, :name, :price, :recorder, :remark, :stockdate, :materialtype, :manufacture , :holeid
+  attr_accessible :count, :model, :name, :price, :recorder, :remark, :stockdate, :materialtype, :manufacture , :holeid,:stockin
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
 
 end

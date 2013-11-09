@@ -62,6 +62,7 @@ class MaterialsController < ApplicationController
   # POST /materials.json
   def create
     @material = Material.new(params[:material])
+    @material.stockin = @material.count
 
     respond_to do |format|
       if @material.save
@@ -100,5 +101,18 @@ class MaterialsController < ApplicationController
       format.html { redirect_to materials_url }
       format.json { head :no_content }
     end
+  end
+
+  # 材料使用的ajax 提交的方法
+  def dismiss
+    @material = Material.find(params[:id])
+    stockout = (params[:stockout]).to_i
+    count = 0;
+
+    if stockout 
+      count = @material.count - stockout
+      @material.update_attributes(:count=>count)
+    end 
+    render :text=>count
   end
 end

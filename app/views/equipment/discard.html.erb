@@ -3,6 +3,7 @@
 <%= content_for :page_specific_stylesheets do %>
   <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
   <%= stylesheet_link_tag 'jquery.gritter.css' %>
+  <%= stylesheet_link_tag 'datepicker' %>
 <% end %>
 <div class="tabbable">
   <ul class="nav nav-tabs" id="_tabs">
@@ -104,7 +105,7 @@
     <table class="table table-striped table-hover table-bordered">
     <tr>
     <td>处理日期</td>
-    <td><input name="discarddate" id="_discarddate" class="input-large" value="<%=Time.now.strftime("%Y-%m-%d")%>"/></td>
+    <td><div class="input-append"><input name="discarddate" id="_discarddate" class="input-medium" value="<%=Time.now.strftime("%Y-%m-%d")%>"/><span class="add-on"><i class="icon-calendar"></i></span></div></td>
     </tr>
     <tr>
     <td>处理类型</td>
@@ -125,8 +126,19 @@
 <% content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.dataTables.min' %>
   <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.touch-punch.min' %>
+  <%= javascript_include_tag 'chosen.jquery.min' %>
+  <%= javascript_include_tag 'fuelux/fuelux.spinner.min' %>
+  <%= javascript_include_tag 'date-time/moment.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-datepicker.min' %>
+  <%= javascript_include_tag 'date-time/bootstrap-timepicker.min' %>
+  <%= javascript_include_tag 'date-time/daterangepicker.min' %>
+  <%= javascript_include_tag 'bootstrap-colorpicker.min' %>
 <% end %>
+
 <% content_for :inline_javascripts do %>
+<%= make_datepicker("#_discarddate") %>
 <script language="javascript">
   $(function(){
 

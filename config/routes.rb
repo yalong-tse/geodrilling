@@ -110,7 +110,7 @@ Geodrilling::Application.routes.draw do
   resources :contracts
 
   get "materials/stockout"
-  get "materials/discard"
+  post "materials/dismiss"
 
   resources :materials
 
