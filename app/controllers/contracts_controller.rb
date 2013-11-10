@@ -113,25 +113,108 @@ class ContractsController < ApplicationController
     render :text=>"true"
   end
   
+
   # for fusionchart 
   def chart
-    dai_number = Contract.where("status=0").count
-    zhi_number = Contract.where("status=1").count
-    finish_number = Contract.where("status=2").count
-    gui_number = Contract.where("status=3").count
-    @chartxml= "<graph caption='合同状态统计' xAxisName='合同' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
-    @chartxml << "<set name='待执行'" + "value='" + dai_number.to_s + "' />";
-    @chartxml << "<set name='正在执行'" + "value='" + zhi_number.to_s + "' />";
-    @chartxml << "<set name='已完成'" + "value='" + finish_number.to_s + "' />";
-    @chartxml << "<set name='已归档'" + "value='" + gui_number.to_s + "' />";
-    @chartxml << "</graph>";
-    @chartxml = @chartxml.html_safe
+    year = params[:year]
+    if year
+      year = Time.now.strftime("%Y").to_i
+    end
+
+    @statuschartxml = statuschart(year); 
+    @zijinchartxml = zijinchart(year);
+    @amountchartxml = amountchart;
+    @buyerchartxml = buyerchart(year);
+    @ownerchartxml = ownerchart(year);
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chartxml}
       format.xml { render xml: @chartxml}
     end
+  end
+
+
+  #按照合同状态查询 
+  def statuschart(year)
+
+    dai_number = Contract.where("status=0 and signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)).count
+    zhi_number = Contract.where("status=1 and signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)).count
+    finish_number = Contract.where("status=2 and signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)).count
+    gui_number = Contract.where("status=3 and signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)).count
+
+    chartxml= "<graph caption='合同状态统计' xAxisName='合同' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+    chartxml << "<set name='待执行' " + "value='" + dai_number.to_s + "' />";
+    chartxml << "<set name='正在执行' " + "value='" + zhi_number.to_s + "' />";
+    chartxml << "<set name='已完成' " + "value='" + finish_number.to_s + "' />";
+    chartxml << "<set name='已归档' " + "value='" + gui_number.to_s + "' />";
+    chartxml << "</graph>";
+    return chartxml.html_safe
+
+  end
+
+
+  #for 资金来源的统计,不直接返回页面
+  def zijinchart(year)
+
+    # 获取所有的资金来源
+    fundsources = Dictionary.fundsource
+    chartxml= "<graph caption='资金来源统计' xAxisName='资金来源' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+
+    fundsources.each do |f|
+      fundsource1 = Contract.where("fundsource=? and signdate<? and signdate>?",f.id,Time.mktime(year+1),Time.mktime(year)).count;
+      chartxml << "<set name='#{f.item}' " + "value='" + fundsource1.to_s + "' />";
+    end
+
+    chartxml << "</graph>";
+    return chartxml.html_safe
+
+  end 
+
+
+  def amountchart
+    miniyear = Contract.miniyear
+    currentyear = Time.now.strftime("%Y").to_i
+    chartxml= "<graph caption='合同金额统计' xAxisName='合同' yAxisName='金额' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+    for year in miniyear..currentyear
+      amount = Contract.sum(:contractamount,:conditions=>["signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)])
+      chartxml << "<set name='#{year}' " + "value='" + amount.to_s + "' />";
+    end
+    chartxml << "</graph>";
+    return chartxml.html_safe;
+
+  end
+
+  # 合同乙方统计, 不直接返回页面
+  def buyerchart(year)
+
+    # 获取所有的资金来源
+    buyers = Contract.getbuyer
+    chartxml= "<graph caption='合同乙方统计' xAxisName='乙方名称' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+
+    for b in buyers
+      buyer = Contract.where("buyerparty=? and signdate<? and signdate>?",b,Time.mktime(year+1),Time.mktime(year)).count;
+      chartxml << "<set name='#{b}'" + "value='" + buyer.to_s + "' />";
+    end
+
+    chartxml << "</graph>";
+    return  chartxml.html_safe
+
+  end
+
+  # 合同业主统计，不直接返回页面
+  def ownerchart(year)
+    # 获取所有的资金来源
+    owners = Contract.getowner
+    chartxml= "<graph caption='业主统计' xAxisName='业主名称' yAxisName='数量' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>";
+
+    for o in owners
+      owner = Contract.where("owner=? and signdate<? and signdate>?",o.owner,Time.mktime(year+1),Time.mktime(year)).count;
+      chartxml << "<set name='#{o.owner}'" + "value='" + owner.to_s + "' />";
+    end
+
+    chartxml << "</graph>";
+    return chartxml.html_safe
 
   end
 end

@@ -141,7 +141,7 @@
     </ul>
   <% end %>
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(contracts_chart_path) || current_page?(tourreports_holesreport_path) )}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(contractschart_path) || current_page?(tourreports_holesreport_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-dashboard"></i>
       <span>统计分析</span>
@@ -150,8 +150,8 @@
     </a>
 
     <ul class="submenu">
-      <li <%= active_page?(contracts_chart_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同统计')), contracts_chart_path %>
+      <li <%= active_page?(contractschart_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同统计')), contractschart_path + "?year=" + Time.now.strftime("%Y") %>
       </li>
 
       <li <%= active_page?(tourreports_holesreport_path) %>>

@@ -61,4 +61,14 @@ class Contract < ActiveRecord::Base
     Contract.select(:buyerparty).uniq
   end
 
+  # 最小的日期
+  def self.miniyear
+    _signdate = Contract.minimum(:signdate)
+    if _signdate
+      return _signdate.strftime("%Y").to_i
+    else
+      return 2010
+    end
+  end
+
 end

@@ -5,6 +5,21 @@
   <%= javascript_include_tag 'FusionCharts' %>
 <% end %>
 
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="control-group">
+    <label class="control-label" >选择年度</label>
+    <div class="controls">
+    <select name="year" id="_year" data-placeholder="下拉选择年度">
+      <% for year in 2009..2020 %>
+        <option value=<%=year%> <%="selected" if (year==Time.now.strftime("%Y").to_i) %>><%=year %></option>
+      <% end %>
+    </select>
+    </div>
+  </div>
+  </div>
+  </div>
+
 <div class="tabbable">
   <ul class="nav nav-tabs" id="_tabs">
     <li class="active">
@@ -21,29 +36,30 @@
     </li>
     <li> 
     <a href="#tab3" data-toggle="tab">
-      <i class="icon-rocket"></i>
+      <i class="green icon-rocket"></i>
       合同金额
     </a>
     </li>
     <li> 
     <a href="#tab4" data-toggle="tab">
-      <i class="icon-rocket"></i>
+      <i class="red icon-bell"></i>
       业主名称
     </a>
     </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
+      <div id="_tab1"></div>
 
 <div class="page-section">
   <div class="container">
     <div class="span12">
-      <div align="center">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="300" height="150" id="Column3D" >
+        <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="900" height="450" id="Column3D" >
 			   <param name="movie" value="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=450" />
-               <param name="FlashVars" value="&dataXML=<%=@chartxml%>">
+               <param name="FlashVars" value="&dataXML=<%=@statuschartxml%>">
 			   <param name="quality" value="high" />
-               <embed src="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@chartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+               <embed src="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@statuschartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
           </div>
     </div>
@@ -57,12 +73,12 @@
 <div class="page-section">
   <div class="container">
     <div class="span12">
-      <div align="center">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="300" height="150" id="Column3D" >
-			   <param name="movie" value="/FusionCharts/Column3D.swf?chartWidth=900&chartHeight=450" />
-               <param name="FlashVars" value="&dataXML=<%=@chartxml%>">
+        <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="900" height="450" id="Column3D" >
+			   <param name="movie" value="/FusionCharts/Column2D.swf?chartWidth=900&chartHeight=450" />
+               <param name="FlashVars" value="&dataXML=<%=@zijinchartxml%>">
 			   <param name="quality" value="high" />
-               <embed src="/FusionCharts/Column3D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@chartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+               <embed src="/FusionCharts/Column2D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@zijinchartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 			</object>
           </div>
     </div>
@@ -71,20 +87,60 @@
 
 
     </div>
+
+
     <div class="tab-pane" id="tab3">
-    </div>
-    <div class="tab-pane" id="tab4">
+
+
+<div class="page-section">
+  <div class="container">
+    <div class="span12">
+        <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="900" height="450" id="Column3D" >
+			   <param name="movie" value="/FusionCharts/Column3D.swf?chartWidth=900&chartHeight=450" />
+               <param name="FlashVars" value="&dataXML=<%=@amountchartxml%>">
+			   <param name="quality" value="high" />
+               <embed src="/FusionCharts/Column3D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@amountchartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+          </div>
     </div>
   </div>
 </div>
 
 
+
+    </div>
+
+    <div class="tab-pane" id="tab4">
+
+<div class="page-section">
+  <div class="container">
+    <div class="span12">
+        <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="900" height="450" id="Column3D" >
+			   <param name="movie" value="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=450" />
+               <param name="FlashVars" value="&dataXML=<%=@ownerchartxml%>">
+			   <param name="quality" value="high" />
+               <embed src="/FusionCharts/Pie2D.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@ownerchartxml%>" quality="high" width="900" height="420" name="Column3D" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </div> <!--tab content -->
+</div> <!-- tabbable -->
+
+
 <div class="form-actions">
   <%= link_to contracts_path,:class=>"btn btn-primary btn-small" do  %>返回 <i class="icon-arrow-left icon-on-right"></i> <% end %>
 </div>
+
 <%= content_for :inline_javascripts do %>
   <script type="text/javascript">
-
   $(function(){
 
   });

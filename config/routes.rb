@@ -95,7 +95,8 @@ Geodrilling::Application.routes.draw do
   get "contracts/indexforclose"
   get "contracts/download"
   post "contracts/archive"
-  get "contracts/chart"
+
+  get "/contractschart" => "contracts#chart", :as=>"contractschart"
 
   get "schedule/index"
 
