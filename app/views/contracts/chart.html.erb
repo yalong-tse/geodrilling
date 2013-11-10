@@ -7,15 +7,19 @@
 
   <div class="row-fluid">
     <div class="span10">
-      <div class="control-group">
-    <label class="control-label" >选择年度</label>
-    <div class="controls">
+        <div class="widget-body">
+          <div class="widget-main">
+            <form class="form-search">
+    <label class="control-label" >选择年度:</label>
     <select name="year" id="_year" data-placeholder="下拉选择年度">
       <% for year in 2009..2020 %>
-        <option value=<%=year%> <%="selected" if (year==Time.now.strftime("%Y").to_i) %>><%=year %></option>
+        <option value=<%=year%> <%="selected" if (year==@year) %>><%=year %></option>
       <% end %>
     </select>
-    </div>
+    <button onclick="queryfunction();" class="btn btn-purple btn-small">查询<i class="icon-search icon-on-right bigger-110"></i></button>
+    </form>
+
+  </div>
   </div>
   </div>
   </div>
@@ -144,5 +148,9 @@
   $(function(){
 
   });
+  function queryfunction()
+  {
+    windows.location.href="<%=contractschart_path %>?year="+$("#_year").val();
+  }
   </script>
 <% end %>

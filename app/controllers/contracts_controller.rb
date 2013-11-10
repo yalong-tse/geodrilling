@@ -117,10 +117,13 @@ class ContractsController < ApplicationController
   # for fusionchart 
   def chart
     year = params[:year]
-    if year
+    if year.nil?
       year = Time.now.strftime("%Y").to_i
+    else
+      year = year.to_i
     end
 
+    @year=year;
     @statuschartxml = statuschart(year); 
     @zijinchartxml = zijinchart(year);
     @amountchartxml = amountchart;
