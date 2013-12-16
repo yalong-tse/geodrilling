@@ -10,7 +10,7 @@
           钻孔编号：<span class="text-warning" style="text-decoration:underline"><%=@tourreport.hole.holenumber if @tourreport.hole %></span>
           <i class="icon-bell purple"></i>
           <span class="text-error" style="text-decoration:underline"><%=@deployment.rigmachine.devicenumber if @deployment && @deployment.rigmachine  %></span>号钻机
-          <span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%Y") %></span>年<span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%m") %></span>月<span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%d") %></span>日<span class="text-error" style="text-decoration:underline"><%= @tourreport.starttime.strftime("%H:%M")%></span>至<span class="text-error" style="text-decoration:underline"><%=@tourreport.finishtime.strftime("%H:%M")%></span>时<span class="text-error" style="text-decoration:underline"><%= morning_or_noon(@tourreport.starttime.strftime("%H:%M"))  %></span>班</span>
+          <span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%Y") %></span>年<span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%m") %></span>月<span class="text-error" style="text-decoration:underline"><%=@tourreport.tourdate.strftime("%d") %></span>日<span class="text-error" style="text-decoration:underline"><%= @tourreport.starttime.strftime("%H:%M")%></span>至<span class="text-error" style="text-decoration:underline"><%=@tourreport.finishtime.strftime("%H:%M")%></span>时
            </div>
         </div>
         <div class="widget-body">
