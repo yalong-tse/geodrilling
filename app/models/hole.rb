@@ -11,6 +11,8 @@ class Hole < ActiveRecord::Base
   #geologysituation, 地层情况
   #designcoreratio,设计岩心采取率
   #actualcoreratio, 实际岩心采取率
+  #designminecoreratio , 设计矿心采取率
+  #actualminecoreratio , 实际矿心采取率
   #designbook , 设计书
   #drillingpurpose , 钻探目的
   #status , 钻孔状态, 0-待执行 1-执行中 , 2-终孔 , 3-停工， 4-续作 
@@ -23,7 +25,7 @@ class Hole < ActiveRecord::Base
   #qualitychecktable_id 钻孔质量验收评定表
   #tourreporttabledoc_id 钻孔班报表
   #说明：新建钻孔为待执行，钻孔配置完设备之后是执行中
-  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id, :opennoticeatt_id , :closenoticeatt_id , :curvetableatt_id , :measuretableatt_id, :coretransferdoc_id , :tourreporttransferdoc_id , :qualitychecktable_id ,:tourreporttabledoc_id
+  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark,:attachment_id, :opennoticeatt_id , :closenoticeatt_id , :curvetableatt_id , :measuretableatt_id, :coretransferdoc_id , :tourreporttransferdoc_id , :qualitychecktable_id ,:tourreporttabledoc_id, :designminecoreratio, :actualminecoreratio
 
   attr_reader :statusstr
   attr_reader :attachmentstr
