@@ -29,6 +29,25 @@ class HolesController < ApplicationController
     end
   end
 
+  # 根据合同编号获取所有的钻孔列表的
+  # android 手机端使用的方法
+  def mobile
+    @holes = Hole.getbycontractno(params[:contractid])
+    @objs = Array.new
+    @holes.each do |h|
+      @objs <<
+      {
+        :id=> h.id,
+        :minearea =>h.minearea,
+        :holenumber=>h.holenumber
+      }
+    end
+    respond_to do |format|
+      format.html
+      format.json {render :json=> @objs}
+    end
+  end
+
   # for 班报修改的钻孔列表页面
   def tourreportsmodify
     respond_to do |format|

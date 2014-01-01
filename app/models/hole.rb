@@ -58,6 +58,12 @@ class Hole < ActiveRecord::Base
     where("holenumber=? and contract.name=?",holenumber , contract_name)
   end
 
+
+  # 根据合同编号得到所有的钻孔
+  def self.getbycontractno(contractid)
+    where("contract_id=?",contractid);
+  end
+
   # virtual attribute
   def statusstr
    result = ""
