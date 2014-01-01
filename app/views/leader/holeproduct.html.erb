@@ -13,7 +13,7 @@
     <th class="center">合同名称</th>
     <th class="center">甲方/业主</th>
     <th class="center">项目经理</th>
-    <th class="center">机长</th>
+    <th class="center">机长和班长</th>
     <th class="center">开钻日期</th>
     <th class="center">孔深</th>
     <th class="center">平均钻速</th>
@@ -29,7 +29,7 @@
       <td class="center"><%= hole_projectmanager(hole.id) %></td>
       <td class="center"><%= hole_administrator(hole.id) %></td>
       <td class="center"><%= hole.startdate.strftime("%Y-%m-%d") %></td>
-      <td class="center"><%= hole.actualdeep %></td>
+      <td class="center"><%= display_holes_chart(hole.designdeep,hole.actualdeep) %></td>
       <td class="center"><%= %></td>
       <td class="center"><%= hole_status_treat(hole.status) %></td>
     </tr>

@@ -25,7 +25,7 @@
       <td class="center"><%=contract.owner %></td>
       <td class="center"><%=contract_fundsource contract.fundsource %></td>
       <td class="center"><%= contract.contractamount %></td>
-      <td class="center"><%=contract_allholes_xml contract.id %></td>
+      <td class="center"><%=display_contract_allholes_chart contract.id %></td>
     </tr>
   <% end %>
 </tbody>
