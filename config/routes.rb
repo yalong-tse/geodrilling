@@ -1,4 +1,10 @@
 Geodrilling::Application.routes.draw do
+  get "leader/holeproduct"
+
+  get "leader/holefinish"
+
+  get "leader/contract"
+
   get "groups/index"
   get "groups/main"
   get "groups/deploy"

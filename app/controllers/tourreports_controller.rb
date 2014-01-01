@@ -143,7 +143,7 @@ class TourreportsController < ApplicationController
   end
 
   def holesreport
-    @holes = Hole.find(:all)
+    @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
 
     respond_to do |format|
       format.html

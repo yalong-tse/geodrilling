@@ -164,24 +164,24 @@
     </ul>
   <% end %>
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(contractschart_path) || current_page?(tourreports_holesreport_path) )}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(leader_contract_path) || current_page?(leader_holeproduct_path)  || current_page?(leader_holefinish_path) )}" do %>
     <a href="#" class="dropdown-toggle">
-      <i class="icon-dashboard"></i>
+      <i class="icon-beaker"></i>
       <span>领导查看</span>
       <b class="arrow icon-angle-down"></b>
     </a>
 
     <ul class="submenu">
-      <li <%= active_page?(tourreports_holesreport_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔生产情况')), tourreports_holesreport_path %>
+      <li <%= active_page?(leader_contract_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同情况')), leader_contract_path %>
       </li>
 
-      <li <%= active_page?(contractschart_path) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>合同统计')), contractschart_path + "?year=" + Time.now.strftime("%Y") %>
+      <li <%= active_page?(leader_holeproduct_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔生产情况')), leader_holeproduct_path %>
       </li>
 
-      <li <%= active_page?(nil) %>>
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>台月效率')), nil %>
+      <li <%= active_page?(leader_holefinish_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>已完成钻孔情况')), leader_holefinish_path %>
       </li>
 
     </ul>

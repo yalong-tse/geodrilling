@@ -1,0 +1,48 @@
+<% content_for(:title,"领导查看-合同情况") %>
+<% content_for(:page_header_description, "领导查看-合同情况") %>
+
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'chosen' %>
+  <%= stylesheet_link_tag 'bootstrap-timepicker' %>
+<% end %>
+<table class="table table-striped table-bordered table-hover">
+<thead>
+  <tr>
+    <th class="center">合同编号</th>
+    <th class="center">合同名称</th>
+    <th class="center">业主</th>
+    <th class="center">资金来源</th>
+    <th class="center">合同金额</th>
+    <th class="center">工作量</th>
+  </tr>
+</thead>
+<tbody>
+  <% @contracts.each do |contract| %>
+    <tr>
+    <td class="center"><%= contract.contractno %></td>
+      <td class="center"><%=contract.name %></td>
+      <td class="center"><%=contract.owner %></td>
+      <td class="center"><%=contract_fundsource contract.fundsource %></td>
+      <td class="center"><%= contract.contractamount %></td>
+      <td class="center"><%=contract_allholes_xml contract.id %></td>
+    </tr>
+  <% end %>
+</tbody>
+  <%= will_paginate @contracts %>
+</table>
+
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+
+<% content_for :inline_javascripts do %>
+<script language="javascript">
+  $(function(){
+
+    });
+  });
+
+</script>
+<% end %>

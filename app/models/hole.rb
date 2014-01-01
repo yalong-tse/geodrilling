@@ -60,7 +60,7 @@ class Hole < ActiveRecord::Base
 
 
   # 根据合同编号得到所有的钻孔
-  def self.getbycontractno(contractid)
+  def self.getbycontractid(contractid)
     where("contract_id=?",contractid);
   end
 

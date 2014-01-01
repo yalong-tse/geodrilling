@@ -32,7 +32,7 @@ class HolesController < ApplicationController
   # 根据合同编号获取所有的钻孔列表的
   # android 手机端使用的方法
   def mobile
-    @holes = Hole.getbycontractno(params[:contractid])
+    @holes = Hole.getbycontractid(params[:contractid])
     @objs = Array.new
     @holes.each do |h|
       @objs <<

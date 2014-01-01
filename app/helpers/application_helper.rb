@@ -8,6 +8,7 @@ module ApplicationHelper
     code << "})"
     javascript_tag(code);
   end
+
   #返回上一个页面
   def link_back(args)
     link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
@@ -53,6 +54,7 @@ module ApplicationHelper
     end
     code.html_safe
   end
+
   # 处理合同状态显示 helper
   def contract_status_treat(args)
     code = ""
@@ -250,6 +252,21 @@ module ApplicationHelper
             result << m.name + " "
           end
           result << "]"
+        end
+      end
+    else
+      return result 
+    end
+  end
+
+  # 根据钻孔id 获得钻孔的项目经理
+  def hole_projectmanager(holeid)
+    result =""
+    d = Deployment.find_by_hole_id holeid
+    if d
+      if d.user
+        if (d.user.leader)
+          result << d.user.leader.name
         end
       end
     else
