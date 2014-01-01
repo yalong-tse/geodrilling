@@ -1,6 +1,5 @@
 #encoding: utf-8
 require 'bcrypt'
-
 class User < ActiveRecord::Base
   include BCrypt
   belongs_to :department
@@ -11,6 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :leader, class_name: "User", foreign_key: "leaderid"
 
   attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid, :position, :oldpassword
+
   attr_accessor :password
 
   before_save :encrypt_password

@@ -12,23 +12,6 @@ class ContractsController < ApplicationController
     end
   end
 
-  # for 手机端的json数据
-  # url 必须以json 结尾
-  def mobile
-    @contracts = Contract.unclosed
-    @objs = Array.new
-    @contracts.each do |contract|
-      @objs << {
-        :id=>contract.id,
-        :contractno => contract.contractno,
-        :name =>contract.name
-      }
-    end
-    respond_to do |format|
-      format.xml
-      format.json {render :json=>@objs }
-    end
-  end
 
   # for 关闭合同的列表，只选出执行完毕的合同
   def indexforclose
