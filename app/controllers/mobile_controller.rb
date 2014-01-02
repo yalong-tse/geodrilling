@@ -89,8 +89,8 @@ class MobileController < ApplicationController
   # 提交的JSON 格式字符串
   def savetourreport
     logger.info "----------------------------------------------"
-    logger.info params[:email]
-    logger.info params[:password]
+    #logger.info params[:email]
+    #logger.info params[:password]
 
     @tourreport = Tourreport.new
     @tourreport.administrator = params[:administrator]
@@ -134,19 +134,18 @@ class MobileController < ApplicationController
       workcontent.pumppressure = params[:workcontent][i][:pumppressure]
       workcontent.holedeep = params[:workcontent][i][:holedeep]
       workcontent.tourreport= @tourreport
-      #workcontent.save
+      workcontent.save
     end
 
     respond_to do |format|
-      #if @tourreport.save
+      if @tourreport.save
         format.html 
         format.json { render :json=>{ :result => "success" } }
-      #else
-      #  format.html 
-      #  format.json { render :json => { :result => "failure" }  }
-      #end
+      else
+        format.html 
+        format.json { render :json => { :result => "failure" }  }
+      end
     end
-
   end
 
 end

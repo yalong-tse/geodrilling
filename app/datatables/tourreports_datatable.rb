@@ -25,8 +25,8 @@ private
         h(report.tourdate.strftime("%Y-%m-%d")),
         h(report.starttime.strftime("%H:%M")),
         h(report.finishtime.strftime("%H:%M")),
-        h(User.find(report.administrator).name),
-        h(User.find(report.tourleader).name),
+        h(finduser(report.administrator)),
+        h(finduser(report.tourleader)),
         h(report.recorder),
         h(report.tourshift),
         h(report.tourcore),
@@ -35,6 +35,18 @@ private
         h(detail_button(report))
       ]
     end
+  end
+
+  # 判断userid is nil 的情况
+  def finduser(userid)
+    if userid
+      if User.find(userid)
+        return User.find(userid).name
+      else
+        return ""
+       end
+    end
+    return ""
   end
 
   def tourreports
