@@ -251,6 +251,9 @@ module ApplicationHelper
           d.user.members.each do |m|
             result << m.name + " "
           end
+          # 去掉后侧空格
+          result = result.rstrip
+          #result.rstrip!
           result << "]"
         end
       end
@@ -341,7 +344,7 @@ module ApplicationHelper
         leader.members.each do |user|
           result << user.name + " "
         end
-
+      result = result.rstrip
       result <<  "]"  + "</option>"
     end
     return result.html_safe;
