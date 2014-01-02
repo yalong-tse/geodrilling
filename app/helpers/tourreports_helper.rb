@@ -35,11 +35,11 @@ module TourreportsHelper
     deep = hole.actualdeep.nil?? 1 : hole.actualdeep
     drillingtime = Tourreport.sum_drillingtime(hole.id)
     v = deep/drillingtime
-    chartxml = "<chart lowerLimit='0' upperLimit='30' lowerLimitDisplay='Bad' upperLimitDisplay='Good' palette='1' numberSuffix='m/h' showValue='1'>";
+    chartxml = "<chart lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' upperLimitDisplay='Good' palette='1' numberSuffix='m/h' showValue='1'>";
     chartxml << "<colorRange>"
-    chartxml << "<color minValue='0' maxValue='10' code='FF654F'/>"
-    chartxml << "<color minValue='20' maxValue='90' code='F6BD0F'/>"
-    chartxml << "<color minValue='30' maxValue='100' code='8BBA00'/>"
+    chartxml << "<color minValue='0' maxValue='100' code='FF654F'/>"
+    chartxml << "<color minValue='0' maxValue='50' code='F6BD0F'/>"
+    chartxml << "<color minValue='50' maxValue='100' code='8BBA00'/>"
     chartxml << "</colorRange>"
     chartxml << "<dials>"
     chartxml << "<dial value='#{v}' rearExtension='10'/>"

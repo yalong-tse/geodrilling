@@ -68,10 +68,14 @@ class TourreportsController < ApplicationController
   def create
     @tourreport = Tourreport.new(params[:tourreport])
 
+    #来自大平台的填报
+    @tourreport.source=1
+
     thehole = Hole.find(@tourreport.holeid) if @tourreport.holeid 
     thehole.actualdeep = @tourreport.currentdeep 
     thehole.save
 
+    # 工作内容的保存
     params[:workcontent_starttime].each_index do |i|
       workcontent = Workcontent.new
       workcontent.starttime = params[:workcontent_starttime][i]

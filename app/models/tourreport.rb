@@ -12,6 +12,7 @@ class Tourreport < ActiveRecord::Base
   # tourleader : 班长
   # tourshift : 本班进尺
   # status : 班报状态
+  # source : 来源类型，大平台还是mobile 平台， 1-大平台 2-Android移动平台
   # intrumenttakeover : 钻具交接
   # takeoverremark 交接说明
   # lastdeep 接班孔深

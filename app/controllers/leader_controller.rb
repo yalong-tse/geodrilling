@@ -30,4 +30,22 @@ class LeaderController < ApplicationController
     end
 
   end
+
+  # 年度统计表
+  def yearreport
+    
+    year = params[:year]
+    if year.nil?
+      year = Time.now.strftime("%Y").to_i
+    else
+      year = year.to_i
+    end
+
+    @year=year;
+    
+    respond_to do |format|
+      format.html
+    end
+
+  end
 end
