@@ -108,6 +108,7 @@ Geodrilling::Application.routes.draw do
   get "mobile/contracts"
   get "mobile/contractholes"
   get "mobile/getdeployments"
+  post "mobile/savetourreport"
 
   resources :teams
 
