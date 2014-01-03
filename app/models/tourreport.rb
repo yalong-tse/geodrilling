@@ -113,9 +113,16 @@ class Tourreport < ActiveRecord::Base
     end
   end
 
+  # 计算台月效率的方法,不知道是否正确
   def self.montheffiency(holeid)
-    hours = sum_totaltime(holeid)
-
+    summary = 0;
+    if (holeid && !holeid.nil?)
+      where("holeid=?",holeid).pluck(:tourshift).each do |tourshift|
+        summary = summary + tourshift.to_i
+      end
+      hours = sum_totaltime(holeid)
+      return (summary/hours) *30*24
+    end
   end
 
 end

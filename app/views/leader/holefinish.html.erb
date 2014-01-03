@@ -30,7 +30,7 @@
       <td class="center"><%= hole_administrator(hole.id) %></td>
       <td class="center"><%= hole.startdate.strftime("%Y-%m-%d") %></td>
       <td class="center"><%= hole.actualdeep %></td>
-      <td class="center"><%= %></td>
+      <td class="center"><%= Tourreport.montheffiency(hole.id) %></td>
       <td class="center"><%= hole_status_treat(hole.status) %></td>
     </tr>
   <% end %>
