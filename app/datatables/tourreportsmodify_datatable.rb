@@ -22,12 +22,12 @@ private
   def data
     tourreports.map do |report|
       [
-        h(report.hole.holenumber),
+        h(renderhole(report)),
         h(report.tourdate.strftime("%Y-%m-%d")),
         h(report.starttime.strftime("%H:%M")),
         h(report.finishtime.strftime("%H:%M")),
-        h(User.find(report.administrator).name),
-        h(User.find(report.tourleader).name),
+        h(finduser(report.projectmanager)),
+        h(finduser(report.administrator) + "/" + finduser(report.tourleader)),
         h(report.recorder),
         h(report.tourshift),
         h(report.tourcore),
@@ -36,6 +36,35 @@ private
         h(detail_button(report))
       ]
     end
+  end
+
+  # 判断userid is nil 的情况
+  def finduser(userid)
+    logger.info "the userid is #{userid}"
+    if userid && !userid.nil? && !userid.empty?
+      user = User.find(userid)
+      if user
+        return user.name
+      else
+        return ""
+       end
+    end
+    return ""
+  end
+
+  # 在钻孔编号后续增加图标，标识来源
+  def renderhole(report)
+    code = ""
+    if report
+      if report.source==1
+        code << "<i class='icon-file red bigger-120'></i> " + report.hole.holenumber
+      elsif report.source==2
+        code << "<i class='icon-cloud-upload green bigger-120'></i> " + report.hole.holenumber
+      else
+        code << "<i class='icon-file red bigger-120'></i> " + report.hole.holenumber
+      end
+    end
+    code.html_safe
   end
 
   def tourreports

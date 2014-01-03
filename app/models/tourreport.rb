@@ -93,4 +93,29 @@ class Tourreport < ActiveRecord::Base
       0
     end
   end
+
+  #获取该孔的所有总计时长
+  def self.sum_totaltime(holeid)
+    hours = 0;
+    minutes = 0;
+    if(holeid)
+      #sum(:tourauxiliarytime,:conditions=>{:holeid=>holeid})
+      where("holeid=?",holeid).pluck(:totaltime).each do |thetime|
+        h,m = thetime.split(/:/);
+        hours = hours+h.to_i;
+        minutes = minutes + m.to_i;
+      end
+      r = minutes/60.0;
+      hours = hours+r;
+      return hours;
+    else
+      0
+    end
+  end
+
+  def self.montheffiency(holeid)
+    hours = sum_totaltime(holeid)
+
+  end
+
 end

@@ -113,8 +113,8 @@
                     <td colspan="2">说明</td>
                     <td colspan="18">
                       <ul class="inline">
-                      <i class="icon-circle green"></i> 项目经理:<% if @tourreport.projectmanager && !@tourreport.projectmanager==""  %> <%= User.find(@tourreport.projectmanager).name  %> <% end %>
-                      <i class="icon-circle green"></i> 机长:<% if @tourreport.administrator %><%=User.find(@tourreport.administrator).name%><%end %>
+                      <i class="icon-circle green"></i> 项目经理:<% if @tourreport.projectmanager && !@tourreport.projectmanager.empty?  %> <%= User.find(@tourreport.projectmanager).name  %> <% end %>
+                      <i class="icon-circle green"></i> 机长:<% if @tourreport.administrator && !@tourreport.administrator.empty?%><%=User.find(@tourreport.administrator).name%><%end %>
                         <i class="icon-circle green"></i> 班记录员:<%=@tourreport.recorder%>
                         <i class="icon-circle green"></i> 交班班长:<%=@tourreport.lastleader%>
                         <i class="icon-circle green"></i> 接班班长:<%=@tourreport.nextleader%>
