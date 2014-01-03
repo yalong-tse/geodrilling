@@ -54,15 +54,26 @@
 <table class="table table-striped table-bordered table-hover">
 <thead>
   <tr>
-    <th class="center">合同编号</th>
-    <th class="center">合同名称</th>
-    <th class="center">业主</th>
-    <th class="center">资金来源</th>
-    <th class="center">合同金额</th>
-    <th class="center">工作量</th>
+    <th class="center" width="20%">统计项目</th>
+    <th class="center" width="80%">统计情况</th>
   </tr>
 </thead>
 <tbody>
+  <tr>
+    <td class="center">合同总数</td><td><%= contractyearcount @year%>个</td>
+  </tr>
+  <tr>
+    <td class="center">合同金额</td><td><%= amountcontract @year %> 元</td>
+  </tr>
+  <tr>
+    <td class="center">总工作量</td><td>1320米</td>
+  </tr>
+  <tr>
+    <td class="center">已完成钻孔数量</td><td> <%=holeyearcount @year%> 个</td>
+  </tr>
+  <tr>
+    <td class="center">完成进尺</td><td><%=amountholeshift @year %> 米</td>
+  </tr>
 </tbody>
 </table>
 

@@ -47,4 +47,27 @@ module LeaderHelper
     END_OF_CODE
     code.html_safe;
   end
+
+  # 计算年度的合同总额
+  def amountcontract(year)
+      amount = Contract.sum(:contractamount,:conditions=>["signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)])
+      return amount
+  end 
+
+  # 年度合同的个数
+  def contractyearcount(year)
+      yearcount = Contract.where("signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)).count;
+      return yearcount
+  end
+
+  def holeyearcount(year)
+      yearcount = Hole.where("startdate<? and finishdate>?",Time.mktime(year+1),Time.mktime(year)).count;
+      return yearcount;
+  end
+
+  def amountholeshift(year)
+      amount = Tourreport.sum(:tourshift,:conditions=>["tourdate<? and tourdate>?",Time.mktime(year+1),Time.mktime(year)])
+      return amount
+  end 
+
 end
