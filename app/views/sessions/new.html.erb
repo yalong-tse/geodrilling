@@ -1,27 +1,79 @@
 <%= content_for :inline_stylesheets do %>
   <style>
-    div#footer {
-      position: fixed;
-      bottom: 0px;
-      width: 100%;
-      background-color: #1F1D1D;
+    div#footer { 
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box; 
+      box-sizing: border-box; 
+      background: url("assets/background/dark.png"); 
+      height: 42px; 
+      width: 100%; 
+      padding: 0 20px; 
+      border-top: 4px solid #EF705B; 
+      position: absolute; 
+      bottom: 0; 
+      font-size: 11px; 
+      color: #fff; 
     }
+    
+    .copyrights { 
+      display: block; 
+      float: left; 
+      padding: 9px 0; 
+    }
+
+    .footer-links a { 
+      float: right; 
+      color: #fff; 
+      display: block; 
+      white-space: nowrap; 
+      border-left: 1px solid #464646; 
+      border-right: 1px solid #464646; 
+      padding: 9px 14px 8px 14px; 
+      line-height: 21px;
+    } 
+    
     div#wrapper {
       margin-bottom: 5em;
     }
+
     .baselayout {
-      background-image: url("<%= image_path('jp-mountain.jpg') %>");
+      background-image: url("<%= image_path('background/main.png') %>");
       background-size: cover;
     }
+
     .baselayout:before {
       display: none;
     }
+
+    #top { 
+      height: 48px; 
+      display: block; 
+    }
+    .fixed { 
+      position: fixed; 
+      height: 48px; 
+      font-size: 18px; 
+      color: #fff; 
+      width: 100%; 
+      z-index: 1039; 
+      background: url("/assets/background/dark.png"); 
+      padding: 0 20px; 
+      border-bottom: 4px solid #ef705b; 
+      -webkit-box-sizing: border-box; 
+      -moz-box-sizing: border-box; 
+      -ms-box-sizing: border-box; 
+      box-sizing: border-box; 
+    }
+    
   </style>
 <% end %>
-<div id="wrapper" class="container">
-  <div class="page-header">
-    <h1><%= t 'headers.project' %></h1>
+  <div id="top">
+  <div class="fixed">
+    <h3><%= t 'headers.project' %></h3>
   </div>
+  </div>
+
+<div id="wrapper" class="container">
 
   <div style="height: 100px;"></div>
 
@@ -66,7 +118,11 @@
 </div>
 
 <div id="footer">
-  <footer>
+  <div class="copyrights"> 
     <p style="text-align:center">&copy; <%= t("headers.company") %> <%= t "headers.year" %></p>
-  </footer>
+  </div>
+  <div class="footer-links">
+	<a href="" title=""><i class="icon-cogs"></i> 联系管理员</a>
+  </div>
+
 </div>

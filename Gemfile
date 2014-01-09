@@ -13,6 +13,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'seed_dumper'
 gem 'yaml_db'
+gem 'paperclip'
 
 # Active Record Nesting
 gem 'ancestry'
