@@ -9,11 +9,15 @@ class Contract < ActiveRecord::Base
   #projectaddr, 项目地址
   #fundsource ,资金来源
   #status的四种状态, 0-待执行,1-正在执行,2-已经完成,3-已经归档，只有已经完成的合同可以归档。
-  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount,:attachment_id
+  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets
   has_many :holes
 
-  #合同的附件
-  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
+  # 修改为使用 paperclip 来管理附件，一个合同可以有多个附件,
+  has_many :contractassets, :dependent=>:destroy
+  accepts_nested_attributes_for :contractassets, allow destroy =>true
+
+  #合同的附件, 不用自己发明轮子了
+  #belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
 
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}
