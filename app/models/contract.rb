@@ -10,11 +10,12 @@ class Contract < ActiveRecord::Base
   #fundsource ,资金来源
   #status的四种状态, 0-待执行,1-正在执行,2-已经完成,3-已经归档，只有已经完成的合同可以归档。
   attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets
+
   has_many :holes
 
   # 修改为使用 paperclip 来管理附件，一个合同可以有多个附件,
-  has_many :contractassets, :dependent=>:destroy
-  accepts_nested_attributes_for :contractassets, allow destroy =>true
+  has_many :contractassets, :dependent=>:destroy ,:class_name=>"Contractassets"
+  accepts_nested_attributes_for :contractassets ,:allow_destroy => true
 
   #合同的附件, 不用自己发明轮子了
   #belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
@@ -38,6 +39,7 @@ class Contract < ActiveRecord::Base
       self.attachment_id = @attachment.id
     end
   end
+
 
   def self.close(contractno)
     logger.info("the contractno is #{contractno}");

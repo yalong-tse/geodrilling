@@ -62,7 +62,11 @@
               <td><strong>合同金额</strong></td>
               <td><span class="text-error"><%= @contract.contractamount %>元</span></td>
               <td><strong>合同附件</strong></td>
-              <td><span class="text-error"><%=contract_attachment_dealing @contract %></span></td>
+              <td>
+                <%= @contract.contractassets.each do |asset| %>
+                  <%= asset.data_origin_file_name %>
+                <% end %>
+              </td>
           </tr>
           <tr>
              <td><strong>合同备注</strong></td>

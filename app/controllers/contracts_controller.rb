@@ -38,6 +38,8 @@ class ContractsController < ApplicationController
   # GET /contracts/new.json
   def new
     @contract = Contract.new
+    @contract.contractassets.build
+    @contract.contractassets.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +56,7 @@ class ContractsController < ApplicationController
   # POST /contracts.json
   def create
     @contract = Contract.new(params[:contract])
-    @contract.save_file(params[:attachment]) if params[:attachment]
+    #@contract.save_file(params[:attachment]) if params[:attachment]
     @contract.status=0
     respond_to do |format|
       if @contract.save
