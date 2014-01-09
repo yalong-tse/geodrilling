@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "Access denied. You are not authorized to access the requested page."
+    flash[:alert] = "访问拒绝. 您未授权访问该页面."
     redirect_to root_path and return
   end
   
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def login_required?
     unless session[:user_id]
-      flash[:notice]="You need to log in first."
+      flash[:notice]="请先登录系统."
       redirect_to root_url #, :notice => "You need to log in first."
       return false
     else

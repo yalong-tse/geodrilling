@@ -85,7 +85,15 @@ class ContractsController < ApplicationController
     end
   end
 
-  # 下载附件的方法
+
+  # Ajax 删除附件的方法
+  def deleteAttachment
+    @attachment = Contractassets.find(params[:id]) if params[:id]
+    @attachment.destroy
+    render :text=>"true"
+  end
+
+  # 下载附件的方法, 已经使用paperclip 代替了
   def download
     @attachment = Attachment.find(params[:id]) if params[:id]
 #    logger.info("the id is : #{params[:id]}")

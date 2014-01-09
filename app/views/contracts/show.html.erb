@@ -25,56 +25,57 @@
         </thead>
         <tbody>
           <tr>
-            <td width="15%"><strong>合同编号</strong></td>
+            <td width="15%" style="text-align:center"><strong>合同编号</strong></td>
             <td width="25%"><span class="text-error"><%= @contract.contractno %></span></td>
-            <td width="15%"><strong>合同状态</strong></td>
+            <td width="15%" style="text-align:center"><strong>合同状态</strong></td>
             <td width="35%"><span class="text-error"><%= contract_status_treat @contract.status %></span></td>
           </tr>
           <tr>
-            <td><strong>项目名称</strong></td>
+            <td style="text-align:center"><strong>项目名称</strong></td>
             <td><span class="text-error"><%= @contract.projectname %></span></td>
-            <td width="15%"><strong>合同名称</strong></td>
+            <td width="15%" style="text-align:center"><strong>合同名称</strong></td>
             <td width="35%"><span class="text-error"><%= @contract.name %></span></td>
           </tr>
           <tr>
-            <td><strong>项目所在地</strong></td>
+            <td style="text-align:center"><strong>项目所在地</strong></td>
             <td colspan="3"><span class="text-error"><%= @contract.projectaddr %></span></td>
           </tr>
           <tr>
-            <td><strong>合同业主</strong></td>
+            <td style="text-align:center"><strong>合同业主</strong></td>
             <td><span class="text-error"><%= @contract.owner %></span></td>
-            <td><strong>合同乙方</strong></td>
+            <td style="text-align:center"><strong>合同乙方</strong></td>
             <td><span class="text-error"><%= @contract.buyerparty %></span></td>
           </tr>
           <tr>
-              <td><strong>签订日期</strong></td>
+              <td style="text-align:center"><strong>签订日期</strong></td>
               <td><span class="text-error"><%= @contract.signdate %></span></td>
-              <td><strong>资金来源</strong></td>
+              <td style="text-align:center"><strong>资金来源</strong></td>
               <td><span class="text-error"><%= contract_fundsource @contract.fundsource %></span></td>
           </tr>
           <tr>
-              <td><strong>开始日期</strong></td>
+              <td style="text-align:center"><strong>开始日期</strong></td>
               <td><span class="text-error"><%= @contract.startdate %></span></td>
-              <td><strong>完工日期</strong></td>
+              <td style="text-align:center"><strong>完工日期</strong></td>
               <td><span class="text-error"><%= @contract.finishdate %></span></td>
           </tr>
           <tr>
-              <td><strong>合同金额</strong></td>
-              <td><span class="text-error"><%= @contract.contractamount %>元</span></td>
-              <td><strong>合同附件</strong></td>
-              <td>
-                <%= @contract.contractassets.each do |asset| %>
-                  <%= asset.data_origin_file_name %>
+              <td style="text-align:center"><strong>合同金额</strong></td>
+              <td colspan="3"><span class="text-error"><%= @contract.contractamount %>元</span></td>
+          </tr>
+          <tr>
+              <td style="text-align:center"><strong>合同附件</strong></td>
+              <td colspan="3">
+                <% @contract.contractassets.each do |att| %>
+                  <%=link_to att.data.url  do %><%= att.data_origin_file_name %><% end %>
                 <% end %>
               </td>
           </tr>
           <tr>
-             <td><strong>合同备注</strong></td>
+             <td style="text-align:center"><strong>合同备注</strong></td>
              <td colspan="3"><span class="text-error"><%= @contract.remark %></span></td>
           </tr>
         </tbody>
       </table>
-
           </div>
         </div>
       </div>

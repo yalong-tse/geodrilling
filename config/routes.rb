@@ -99,6 +99,7 @@ Geodrilling::Application.routes.draw do
   get "holes/close"
   get "contracts/indexforclose"
   get "contracts/download"
+  post "contracts/deleteAttachment"
   post "contracts/archive"
 
   get "/contractschart" => "contracts#chart", :as=>"contractschart"

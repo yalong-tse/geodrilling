@@ -1,5 +1,5 @@
 class Contractassets < ActiveRecord::Base
-  attr_accessible :contract_id, :data_content_type, :data_file_name, :data_file_size, :data_updated_at , :data_origin_file_name
+  attr_accessible :contract_id, :data_content_type, :data_file_name, :data_file_size, :data_updated_at , :data_origin_file_name, :data
 
   before_create :randomize_file_name
 

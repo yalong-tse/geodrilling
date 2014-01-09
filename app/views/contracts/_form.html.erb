@@ -169,7 +169,12 @@
   <div class="control-group">
     <%= f.label "合同附件",:class=>"control-label" %>
     <div class="controls">
-      <%= f.file_field :contractassets, :class=>"input-large"  %>
+      <%= f.fields_for :contractassets do |contractasset| %>
+        <%= contractasset.file_field :data  %>
+      <% end %>
+      <% @contract.contractassets.each do |att| %>
+        <span id="att_<%=att.id%>"><%=link_to att.data.url do %><%= att.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=att.id%>)"><i class="icon-remove bigger"></i></a></span>
+      <% end %>
     </div>
   </div>
   </div>
@@ -201,7 +206,7 @@
 
   $(function(){
 //  $('input, textarea').placeholder();
-  $('#_contract_file').ace_file_input({
+  $("input[type='file']").ace_file_input({
         no_file:'未选择文件 ...',
         btn_choose:'选择',
         btn_change:'重新选择',
@@ -242,9 +247,27 @@
 
   });
 
-function setsibling(obj) 
-{
-  $(obj).parent().siblings("input").val($(obj).val());
-}
+   
+  function setsibling(obj) 
+  {
+     $(obj).parent().siblings("input").val($(obj).val());
+  }
+
+  function deleteAttachment(id)
+  {
+    var r = confirm("确认要删除该附件吗？"); 
+    if (r==true)
+    {
+      $.post("<%=contracts_deleteAttachment_path%>", 
+        {id: id},
+        function(result)
+        {
+          if(result=="true")
+          {
+            $("#att_"+id).remove();
+          }
+        }); 
+    }
+  }
   </script>
 <% end %>
