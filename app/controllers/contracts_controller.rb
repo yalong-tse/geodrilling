@@ -50,6 +50,9 @@ class ContractsController < ApplicationController
   # GET /contracts/1/edit
   def edit
     @contract = Contract.find(params[:id])
+    if @contract.contractassets.empty?
+      @contract.contractassets.build
+    end
   end
 
   # POST /contracts

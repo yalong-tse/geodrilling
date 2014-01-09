@@ -173,7 +173,9 @@
         <%= contractasset.file_field :data  %>
       <% end %>
       <% @contract.contractassets.each do |att| %>
+        <% if att.id %>
         <span id="att_<%=att.id%>"><%=link_to att.data.url do %><%= att.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=att.id%>)"><i class="icon-remove bigger"></i></a></span>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -265,6 +267,7 @@
           if(result=="true")
           {
             $("#att_"+id).remove();
+            $("input[value='" + id + "']").remove();
           }
         }); 
     }
