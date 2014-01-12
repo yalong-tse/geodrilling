@@ -61,10 +61,10 @@
 
   <div class="span5">
   <div class="control-group">
-    <%= f.label "设计终孔直径" ,:class=>"control-label" %>
+    <%= f.label "设计直径" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.select(:designdiameter,options_for_select(Hole::DIAMETERS),{:prompt=>"请选择..."} ,{:class=>"text_field"} ) %><span class="add-on">mm</span>
+        <%= f.select(:designdiameter,options_for_select(Dictionary.diameters.collect{|d|[d.item,d.id]}),{:prompt=>"请选择..."} ,{:class=>"text_field"} ) %><span class="add-on">mm</span>
       </div>
     </div>
   </div>
@@ -139,7 +139,7 @@
   <div class="control-group">
     <%= f.label "钻探目的" ,:class=>"control-label"%>
     <div class="controls">
-      <%= f.select :drillingpurpose , options_for_select(Hole::DRILLINGPURPOSE), :class=>"text_field"%>
+      <%= f.select :drillingpurpose , options_for_select(Dictionary.purpose.collect{|d| [d.item,d.id]}), :class=>"text_field"%>
     </div>
   </div>
   </div>

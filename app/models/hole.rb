@@ -47,8 +47,8 @@ class Hole < ActiveRecord::Base
 #  attr_accessor :statusstr
 
   # 设计孔径的字典表
-  DIAMETERS =[['EQ','EQ'],['AQ[43/36]','AQ'],['BQ[56/46]','BQ'],['NQ[69.9/60.3]','NQ'],['HQ[89/77.8]','HQ'],['PQ[117/103]','PQ'],['SQ','SQ']] ;
-  DRILLINGPURPOSE = [['金属矿'],['非金属矿'],['油气'],['水井'],['地热'],['煤田']] 
+  #DIAMETERS =[['EQ','EQ'],['AQ[43/36]','AQ'],['BQ[56/46]','BQ'],['NQ[69.9/60.3]','NQ'],['HQ[89/77.8]','HQ'],['PQ[117/103]','PQ'],['SQ','SQ']] ;
+  #DRILLINGPURPOSE = [['金属矿'],['非金属矿'],['油气'],['水井'],['地热'],['煤田']] 
 
   # 选出所有已经关闭的钻孔
   scope :closed , :conditions=>{:status=>2}

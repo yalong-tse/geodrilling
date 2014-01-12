@@ -33,19 +33,19 @@
   <div class="control-group">
     <%= f.label "字典项" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :item , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入字典的内容" >?<span>
+      <%= f.text_field :item , :class=>"input-large" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "字典类型" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select :dictype ,options_for_select(Dictionary::DICTYPE), :class=>"input-large" %> <span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="选择字典的类型" >?<span>
+      <%= f.select :dictype ,options_for_select(Dictionary::DICTYPE), :class=>"input-large" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label "顺序号" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :priority , :class=>"input-large" %><span class="help-button ace-popover" data-trigger="hover" data-placement="left" data-content="输入字典的顺序号，同一类型的按照顺序号排序" >?<span>
+      <%= f.text_field :priority , :class=>"input-large" %>
     </div>
   </div>
   <div class="control-group">
