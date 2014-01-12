@@ -307,7 +307,7 @@ module ApplicationHelper
     end
   end
 
-  #处理合同的附件
+  #处理合同的附件， 附件已经修改为使用 paperclip ，该方法不用了
   def contract_attachment_dealing(args)
     if(args && args.attachment)
 #      link_to "返回",request.env["HTTP_REFERER"].blank?? "/":request.env["HTTP_REFERER"], :class=>args[:class]||="btn btn-info"
@@ -316,7 +316,7 @@ module ApplicationHelper
   end
 
 
-  # 处理钻孔的附件
+  # 处理钻孔的附件, 附件已经更改了，修改为使用 paperclip gem了，所以该方法不用了
   def hole_attachment_dealing(args)
     if(args)
       link_to Attachment.find(args).filename,holes_download_path+"?id=#{args}", :class=>"alert alert-success" 

@@ -2,6 +2,8 @@
 class Hole < ActiveRecord::Base
   #designapexangle, 设计顶角
   #actualapexangle, 实际终孔顶角
+  #designpositionangle 设计方位角
+  #actualpositionangle 实际方位角
   #designdeep, 设计孔深
   #actualdeep, 实际孔深
   #designdiameter, 设计孔径
@@ -25,23 +27,23 @@ class Hole < ActiveRecord::Base
   #qualitychecktable_id 钻孔质量验收评定表
   #tourreporttabledoc_id 钻孔班报表
   #说明：新建钻孔为待执行，钻孔配置完设备之后是执行中
-  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark, :opennoticeatt_id , :closenoticeatt_id , :curvetableatt_id , :measuretableatt_id, :coretransferdoc_id , :tourreporttransferdoc_id , :qualitychecktable_id ,:tourreporttabledoc_id, :designminecoreratio, :actualminecoreratio, :holeassets
+  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark, :designminecoreratio, :actualminecoreratio, :attachment_id, :designpositionangle, :actualpositionangle,:attachment, :attachment_attributes, :opennotice, :opennotice_attributes, :closenotice, :closenotice_attributes, :curvetable , :curvetable_attributes ,:measuretable, :measuretable_attributes, :coretransferdoc , :coretransferdoc_attributes, :tourreporttransferdoc, :tourreporttransferdoc_attributes, :qualitychecktable, :qualitychecktable_attributes, :tourreporttabledoc, :tourreporttabledoc_attributes
 
   attr_reader :statusstr
   #attr_reader :attachmentstr
   belongs_to :contract,:class_name=>"Contract" ,:foreign_key=>"contract_id"
-  #belongs_to :attachment,:class_name=>"Attachment",:foreign_key=>"attachment_id"
-  belongs_to :opennotice, :class_name=>"Attachment" , :foreign_key=>"opennoticeatt_id"
-  belongs_to :closenotice, :class_name=>"Attachment" , :foreign_key=>"closenoticeatt_id"
-  belongs_to :curvetable, :class_name=>"Attachment" , :foreign_key=>"curvetableatt_id"
-  belongs_to :measuretable, :class_name=>"Attachment" , :foreign_key=>"measuretableatt_id"
-  belongs_to :coretansferdoc, :class_name=>"Attachment" , :foreign_key=>"coretransferdoc_id"
-  belongs_to :tourreporttansferdoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttransferdoc_id"
-  belongs_to :qualitychecktable, :class_name=>"Attachment" , :foreign_key=>"qualitychecktable_id"
-  belongs_to :tourreporttabledoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttabledoc_id"
+  belongs_to :attachment,:class_name=>"Holeassets",:foreign_key=>"attachment_id"
+  belongs_to :opennotice, :class_name=>"Holeassets" , :foreign_key=>"opennoticeatt_id"
+  belongs_to :closenotice, :class_name=>"Holeassets" , :foreign_key=>"closenoticeatt_id"
+  belongs_to :curvetable, :class_name=>"Holeassets" , :foreign_key=>"curvetableatt_id"
+  belongs_to :measuretable, :class_name=>"Holeassets" , :foreign_key=>"measuretableatt_id"
+  belongs_to :coretransferdoc, :class_name=>"Holeassets" , :foreign_key=>"coretransferdoc_id"
+  belongs_to :tourreporttransferdoc, :class_name=>"Holeassets" , :foreign_key=>"tourreporttransferdoc_id"
+  belongs_to :qualitychecktable, :class_name=>"Holeassets" , :foreign_key=>"qualitychecktable_id"
+  belongs_to :tourreporttabledoc, :class_name=>"Holeassets" , :foreign_key=>"tourreporttabledoc_id"
 
-  has_many :holeassets , :dependent=>:destroy , :class_name=>"Holeassets"
-  accepts_nested_attributes_for :holeassets, :allow_destroy=>true
+  #has_many :holeassets , :dependent=>:destroy , :class_name=>"Holeassets"
+  accepts_nested_attributes_for :attachment, :allow_destroy=>true
 #  attr_accessor :statusstr
 
   # 设计孔径的字典表
