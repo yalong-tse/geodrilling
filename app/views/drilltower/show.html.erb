@@ -32,26 +32,20 @@
     <tr>
       <td>钻塔高度</td>
       <td><span class="text-error"><%= @drilltower.height %>m</span></td>
-      <td>钻塔深度</td>
-      <td><span class="text-error"><%= @drilltower.deep %>m</span></td>
-    </tr>
-    <tr>
       <td>钻塔有效载荷</td>
-      <td><span class="text-error"><%= @drilltower.effectiveload %>kN</span></td>
-      <td>提升钻杆根数与长度</td>
-      <td><span class="text-error"><%= @drilltower.pipequantityAndLenght %>(根×m)</span></td>
+      <td><span class="text-error"><%= @drilltower.effectiveload %>吨</span></td>
     </tr>
     <tr>
-      <td>滑车组数与减轻负荷倍数</td>
-      <td><span class="text-error"><%= @drilltower.sheaveQuantity %></span></td>
       <td>钻塔顶宽尺寸</td>
       <td><span class="text-error"><%= @drilltower.topsize %>(m×m)</span></td>
+      <td>立根长度</td>
+      <td><span class="text-error"><%= @drilltower.pipequantityAndLenght %>(m)</span></td>
     </tr>
     <tr>
+      <td>单位编码</td>
+      <td><span class="text-error"><%= @drilltower.officialcode %>t</span></td>
       <td>钻塔重量</td>
       <td><span class="text-error"><%= @drilltower.weight %>t</span></td>
-      <td>钻塔工作台高度</td>
-      <td><span class="text-error"><%= @drilltower.workbenchHeight %>m</span></td>
     </tr>
     <tr>
       <td>厂商</td>
@@ -63,7 +57,7 @@
       <td>钻塔图片</td>
       <td colspan="3">
       <div class="thumbnail">
-        <img data-src="holder.js/260x180" alt="钻塔图片" src="<%=drilltower_download_path + "?id=" + @drilltower.attachment.id.to_s %>"/>
+        <img data-src="holder.js/260x180" alt="钻塔图片" src="<%= @drilltower.attachment.data.url%>"/>
       </div>
       </td>
     </tr>

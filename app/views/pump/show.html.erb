@@ -25,26 +25,20 @@
     <tr>
       <td width="15%">泥浆泵设备编号</td>
       <td width="25%"><span class="text-error"><%=@pump.devicenumber %></span></td>
-      <td width="15%">泥浆泵型号</td>
-      <td width="35%"><span class="text-error"><%=@pump.pumpmodel %></span></td>
+      <td width="15%">单位编码</td>
+      <td width="35%"><span class="text-error"><%=@pump.officialcode %></span></td>
     </tr>
     <tr>
+      <td width="15%">泥浆泵型号</td>
+      <td width="35%"><span class="text-error"><%=@pump.pumpmodel %></span></td>
       <td>泥浆泵功率</td>
       <td><span class="text-error"><%=@pump.power %>kW</span></td>
-      <td>泥浆泵压力</td>
-      <td><span class="text-error"><%=@pump.pressure %>MPa</span></td>
     </tr>
     <tr>
       <td>泥浆泵缸径</td>
       <td><span class="text-error"><%=@pump.pumpDiameter %>mm</span></td>
-      <td>泥浆泵缸数</td>
-      <td><span class="text-error"><%=@pump.pumplineNumber %></span></td>
-    </tr>
-    <tr>
-      <td>冲程</td>
-      <td><span class="text-error"><%=@pump.stroke %>mm</span></td>
-      <td>冲次</td>
-      <td><span class="text-error"><%=@pump.strokeTimes %>(次/min)</span></td>
+      <td>泥浆泵压力</td>
+      <td><span class="text-error"><%=@pump.pressure %>MPa</span></td>
     </tr>
     <tr>
       <td>流量</td>
@@ -68,7 +62,7 @@
       <td>图片</td>
       <td colspan="3">
             <div class="thumbnail">
-              <img data-src="holder.js/260x180" alt="钻塔图片" src="<%=pump_download_path + "?id=" + @pump.attachment.id.to_s %>"/>
+              <img data-src="holder.js/260x180" alt="钻塔图片" src="<%= @pump.attachment.data.url %>"/>
             </div>
      </td>
     </tr>

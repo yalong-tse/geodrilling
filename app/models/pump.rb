@@ -23,16 +23,19 @@ class Pump < ActiveRecord::Base
   #discarddate 处理日期
   #discardtype 处理类型
   #discardreason 处理原因
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :power, :pressure, :pumpDiameter, :pumplineNumber, :pumpmodel, :remark, :stroke, :strokeTimes, :traffic, :weight, :name , :devicenumber, :status, :groupstatus ,:rigmachineid,:discarddate,:discardtype,:discardreason
+  #officialcode 单位编码
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :power, :pressure, :pumpDiameter, :pumplineNumber, :pumpmodel, :remark, :stroke, :strokeTimes, :traffic, :weight, :name , :devicenumber, :status, :groupstatus ,:rigmachineid,:discarddate,:discardtype,:discardreason, :officialcode ,:attachment, :attachment_attributes
 
   belongs_to :rigmachine , :class_name=>"Rigmachine" , :foreign_key=>"rigmachineid"
-  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
+  belongs_to :attachment,:class_name=>"Devicephoto", :foreign_key=>"attachment_id" 
+  accepts_nested_attributes_for :attachment , :allow_destroy=>true
 
   scope :used ,:conditions=>{:status=>1}
   scope :unused , where("status=0 or status is null")
   scope :grouped , :conditions=>{:groupstatus=>1}
   scope :ungrouped ,:conditions=>{:groupstatus=>0}
 
+  # 该方法去掉， 修改为paperclip 上传和管理附件了 ,paperclip model is devicephoto
   def save_file(file)
     if !file.nil?
       @attachment = Attachment.new

@@ -53,7 +53,7 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
-    <%= f.label "钻孔直径", :class=>"control-label" %>
+    <%= f.label "通孔直径", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
         <%= f.text_field :pipeDiameter , :class=>"input-large" %><span class="add-on">mm</span>
@@ -78,7 +78,7 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
-    <%= f.label "钻孔深度", :class=>"control-label" %>
+    <%= f.label "钻进能力", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
         <%= f.text_field :righoleDeep , :class=>"input-large" %><span class="add-on">m</span>
@@ -103,7 +103,7 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
-    <%= f.label "转速", :class=>"control-label" %>
+    <%= f.label "最小转速", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
         <%= f.text_field :rotatingSpeed, :class=>"input-large" %><span class="add-on">r/min</span>
@@ -114,15 +114,15 @@
 
   <div class="span5">
   <div class="control-group">
-    <%= f.label "外观尺寸", :class=>"control-label" %>
+    <%= f.label "最大转速", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)×宽(mm)×高(mm)</span>
+        <%= f.text_field :maxrotatespeed, :class=>"input-large" %><span class="add-on">r/min</span>
       </div>
     </div>
   </div>
   </div>
-  </div>
+</div>
 
 
   <div class="row-fluid">
@@ -149,9 +149,37 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
+    <%= f.label "外观尺寸", :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :overallsize, :class=>"input-large" %><span class="add-on">长(mm)×宽(mm)×高(mm)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "单位编码", :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :officialcode, :class=>"input-large" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
     <%= f.label "图片", :class=>"control-label" %>
     <div class="controls">
-      <input name="picture" type="file" class="input-medium" id="_rigmachine_picture" />
+      <input name="rigmachine[attachment_attributes][data]" type="file" class="input-medium" id="_rigmachine_picture" />
+      <% if @rigmachine.attachment %>
+        <span id="att_<%=@rigmachine.attachment.id%>"><%=link_to @rigmachine.attachment.data.url do %><%= @rigmachine.attachment.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=@rigmachine.attachment.id%>)"><i class="icon-remove bigger"></i></a></span>
+      <% end %>
     </div>
   </div>
   </div>

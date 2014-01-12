@@ -62,16 +62,18 @@
     </div>
   </div>
   </div>
+
   <div class="span5">
   <div class="control-group">
-    <%= f.label "钻孔深度", :class=>"control-label" %>
+    <%= f.label "顶宽尺寸", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :deep , :class=>"input-large" %><span class="add-on">m</span>
+       <%= f.text_field :topsize , :class=>"input-large" %><span class="add-on">m×m</span>
       </div>
     </div>
   </div>
   </div>
+
   </div>
 
 
@@ -82,7 +84,7 @@
     <%= f.label "有效载荷", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :effectiveload , :class=>"input-large" %><span class="add-on">kN</span>
+        <%= f.text_field :effectiveload , :class=>"input-large" %><span class="add-on">吨</span>
       </div>
     </div>
   </div>
@@ -100,69 +102,32 @@
   </div>
 
 
-
-
-
-  <div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "顶宽尺寸", :class=>"control-label" %>
-    <div class="controls">
-      <div class="input-append">
-       <%= f.text_field :topsize , :class=>"input-large" %><span class="add-on">m×m</span>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "工作台高度", :class=>"control-label" %>
-    <div class="controls">
-      <div class="input-append">
-        <%= f.text_field :workbenchHeight , :class=>"input-large" %><span class="add-on">m</span>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  <div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "滑车总数与减轻负荷倍数", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :sheaveQuantity , :class=>"input-large" %>
-    </div>
-  </div>
-  </div>
-
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "提升钻杆根数与长度", :class=>"control-label" %>
-    <div class="controls">
-      <div class="input-append">
-        <%= f.text_field :pipequantityAndLenght , :class=>"input-large" %><span class="add-on">根×m</span>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "重量", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :weight , :class=>"input-large" %><span class="add-on">t</span>
+        <%= f.text_field :weight , :class=>"input-large" %><span class="add-on">kg</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "立根长度", :class=>"control-label" %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :pipequantityAndLenght , :class=>"input-large" %><span class="add-on">m</span>
       </div>
     </div>
   </div>
   </div>
+  </div>
 
+
+  <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "厂商", :class=>"control-label" %>
@@ -171,10 +136,7 @@
     </div>
   </div>
   </div>
-  </div>
 
-
-  <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "厂商联系方式", :class=>"control-label" %>
@@ -188,12 +150,25 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
-    <%= f.label "图片", :class=>"control-label" %>
+    <%= f.label "单位编码", :class=>"control-label" %>
     <div class="controls">
-      <input name="picture" type="file" class="input-medium" id="_drilltower_picture" />
+      <%= f.text_field :officialcode , :class=>"input-large" %>
     </div>
   </div>
   </div>
+
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "图片", :class=>"control-label" %>
+    <div class="controls">
+      <input name="drilltower[attachment_attributes][data]" type="file" class="input-medium" id="_drilltower_picture" />
+      <% if @drilltower.attachment %>
+        <span id="att_<%=@drilltower.attachment.id%>"><%=link_to @drilltower.attachment.data.url do %><%= @drilltower.attachment.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=@drilltower.attachment.id%>)"><i class="icon-remove bigger"></i></a></span>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
   </div>
 
   <div class="row-fluid">

@@ -38,7 +38,18 @@
     </div>
   </div>
   </div>
+  <div class="span5">
+  <div class="control-group">
+    <%= f.label "单位编码", :class=>"control-label" %>
+    <div class="controls">
+        <%= f.text_field :officialcode , :class=>"input-large" %>
+    </div>
+  </div>
+  </div>
+  </div>
 
+
+  <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "泥浆泵型号", :class=>"control-label" %>
@@ -47,10 +58,7 @@
     </div>
   </div>
   </div>
-  </div>
 
-
-  <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "功率", :class=>"control-label" %>
@@ -61,6 +69,9 @@
     </div>
   </div>
   </div>
+  </div>
+
+  <div class="row-fluid">
 
   <div class="span5">
   <div class="control-group">
@@ -72,9 +83,6 @@
     </div>
   </div>
   </div>
-  </div>
-
-  <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
     <%= f.label "缸径", :class=>"control-label" %>
@@ -86,41 +94,7 @@
   </div>
   </div>
 
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "缸数", :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :pumplineNumber , :class=>"input-large" %>
-    </div>
   </div>
-  </div>
-  </div>
-
-  <div class="row-fluid">
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "冲程", :class=>"control-label" %>
-    <div class="controls">
-      <div class="input-append">
-      <%= f.text_field :stroke , :class=>"input-large" %><span class="add-on">mm</span>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div class="span5">
-  <div class="control-group">
-    <%= f.label "冲次(MAX)", :class=>"control-label" %>
-    <div class="controls">
-      <div class="input-append">
-      <%= f.text_field :strokeTimes , :class=>"input-large" %><span class="add-on">次/min</span>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
 
   <div class="row-fluid">
   <div class="span5">
@@ -185,7 +159,10 @@
   <div class="control-group">
     <%= f.label "图片", :class=>"control-label" %>
     <div class="controls">
-      <input name="picture" type="file" class="input-medium" id="_pump_picture" />
+      <input name="pump[attachment_attributes][data]" type="file" class="input-medium" id="_pump_picture" />
+      <% if @pump.attachment %>
+        <span id="att_<%=@pump.attachment.id%>"><%=link_to @pump.attachment.data.url do %><%= @pump.attachment.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=@pump.attachment.id%>)"><i class="icon-remove bigger"></i></a></span>
+      <% end %>
     </div>
   </div>
   </div>

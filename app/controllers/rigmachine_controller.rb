@@ -17,7 +17,7 @@ class RigmachineController < ApplicationController
 
   def create
     @rigmachine = Rigmachine.new(params[:rigmachine])
-    @rigmachine.save_file(params[:picture]) if params[:picture]
+    #@rigmachine.save_file(params[:picture]) if params[:picture]
     logger.info "-----------------------------"
     respond_to do |format|
       if @rigmachine.save

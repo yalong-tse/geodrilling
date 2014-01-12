@@ -5,10 +5,10 @@ class Rigmachine < ActiveRecord::Base
   # manufactureContact  厂商联系方式
   # overallsize 外观尺寸
   # picture  图片
-  # pipeDiameter 钻孔直径
+  # pipeDiameter 钻孔直径, 修改为通孔直径
   # remark 备注
   # rigpower 钻机功率
-  # righoleDeep 钻孔深度
+  # righoleDeep 钻孔深度,修改为钻进能力
   # rigmodel 钻机型号
   # rigweight 钻机重量
   # rotatingSpeed 转速 
@@ -18,9 +18,14 @@ class Rigmachine < ActiveRecord::Base
   # discarddate 处理日期
   # discardtype 处理类型
   # discardreason 处理原因
-  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed,:name, :devicenumber, :status,:attachment_id,:discarddate,:discardtype,:discardreason
+  # officialcode 单位编码
+  # maxrotatespeed 最大转速， rotatingspeed 为 最小转速
+  attr_accessible :manufacture, :manufactureContact, :overallsize, :picture, :pipeDiameter, :remark, :rigPower, :righoleDeep, :rigmodel, :rigweight, :rotatingSpeed,:name, :devicenumber, :status,:attachment, :attachment_attributes,:discarddate,:discardtype,:discardreason, :officialcode, :maxrotatespeed
 
-  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
+  # 钻机的图片附件
+  belongs_to :attachment,:class_name=>"Devicephoto", :foreign_key=>"attachment_id" 
+  accepts_nested_attributes_for :attachment , :allow_destroy=>true
+
   has_one :pump , :foreign_key=>"rigmachineid"
   has_one :drilltower, :foreign_key=>"rigmachineid"
   

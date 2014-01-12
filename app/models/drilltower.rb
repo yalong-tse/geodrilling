@@ -9,9 +9,9 @@ class Drilltower < ActiveRecord::Base
   # manufactureContact  厂商联系人
   # model 型号 
   # picture 图片
-  # pipequantityAndLength  提升钻杆根数与长度
+  # pipequantityAndLength  提升钻杆根数与长度， 
   # remark 备注
-  # sheaveQuantity 滑车组数与减轻负荷倍数
+  # sheaveQuantity 滑车组数与减轻负荷倍数， 去掉
   # topsize 顶宽尺寸
   # weight 重量
   # workbenchHeight 工作台高度
@@ -23,10 +23,13 @@ class Drilltower < ActiveRecord::Base
   # discarddate 处理日期
   # discardtype 处理类型
   # discardreason 处理原因
-  attr_accessible :basePlatformsize, :deep, :effectiveload, :height, :manufacture, :manufactureContact, :model, :picture, :pipequantityAndLenght, :remark, :sheaveQuantity, :topsize, :weight, :workbenchHeight, :name, :devicenumber , :status, :groupstatus, :rigmachineid,:attachment_id,:discarddate,:discardtype,:discardreason
+  # officialcode 单位编码
+  attr_accessible :basePlatformsize, :deep, :effectiveload, :height, :manufacture, :manufactureContact, :model, :picture, :pipequantityAndLenght, :remark, :sheaveQuantity, :topsize, :weight, :workbenchHeight, :name, :devicenumber , :status, :groupstatus, :rigmachineid,:attachment,:attachment_attributes,:discarddate,:discardtype,:discardreason, :officialcode
+
 
   belongs_to :rigmachine ,:class_name=>"Rigmachine", :foreign_key=>"rigmachineid"
-  belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
+  belongs_to :attachment,:class_name=>"Devicephoto", :foreign_key=>"attachment_id" 
+  accepts_nested_attributes_for :attachment , :allow_destroy=>true
 
   scope :used , :conditions=>{ :status=>1}
   #未占用的钻塔
@@ -35,6 +38,7 @@ class Drilltower < ActiveRecord::Base
   scope :ungrouped , :conditions=>{:groupstatus=>0}
 
 
+  # 该方法已经没有用了，修改为使用 paperclip , paperclip model is devicephoto
   def save_file(file)
     if !file.nil?
       @attachment = Attachment.new

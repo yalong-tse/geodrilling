@@ -230,14 +230,6 @@ module ApplicationHelper
     return h3[passkey]
   end
 
-  def contract_fundsource(passkey)
-    dic = Dictionary.find(passkey)
-    if dic
-      return dic.item 
-    else
-      return ""
-    end
-  end
 
   # 根据holeid 获取 钻孔的机长
   def hole_administrator(holeid)

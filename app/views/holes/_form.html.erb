@@ -151,6 +151,9 @@
     <%= f.label "钻探施工设计书" ,:class=>"control-label" %>
     <div class="controls">
       <input type="file" id="hole_attachment_data" name="hole[attachment_attributes][data]">
+      <% if @hole.attachment %>
+        <span id="att_<%=@hole.attachment.id%>"><%=link_to @hole.attachment.data.url do %><%= @hole.attachment.data_origin_file_name %> <% end %><a href="#" onclick="deleteAttachment(<%=@hole.attachment.id%>)"><i class="icon-remove bigger"></i></a></span>
+      <% end %>
     </div>
   </div>
   </div>
