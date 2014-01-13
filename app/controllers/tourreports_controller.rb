@@ -84,8 +84,8 @@ class TourreportsController < ApplicationController
       workcontent.upmore = params[:workcontent_upmore][i]
       workcontent.drilllength = params[:workcontent_drilllength][i]
       workcontent.holedeep = params[:workcontent_holedeep][i]
-      workcontent.corename = params[:workcontent_corename][i]
-      workcontent.coregrade = params[:workcontent_coregrade][i]
+      #workcontent.corename = params[:workcontent_corename][i]
+      #workcontent.coregrade = params[:workcontent_coregrade][i]
       workcontent.corenumber = params[:workcontent_corenumber][i]
       workcontent.corelength = params[:workcontent_corelength][i]
       workcontent.coreleftlength = params[:workcontent_coreleftlength][i]
@@ -97,6 +97,7 @@ class TourreportsController < ApplicationController
       workcontent.pumppressure = params[:workcontent_pumppressure][i]
       workcontent.rotatespeed = params[:workcontent_rotatespeed][i]
       workcontent.pumpquantity = params[:workcontent_pumpquantity][i]
+      workcontent.mudamount = params[:workcontent_mudamount][i]
       
       workcontent.holeid = params[:tourreport][:holeid]
       workcontent.tourreport = @tourreport

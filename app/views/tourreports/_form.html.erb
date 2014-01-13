@@ -647,7 +647,7 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
       $("input[name='workcontent_drilllength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" &&  pattern.test($(this).val()) ) 
           {
-            drillsummary+=parseFloat($(this).val());
+          drillsummary+=Math.round($(this).val()*1000)/1000;
           }
       });
 
@@ -655,7 +655,7 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
       var coresummary = 0.00;
       $("input[name='workcontent_corelength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" && pattern.test($(this).val()) ) 
-          coresummary+=parseFloat($(this).val());
+          coresummary+=Math.round($(this).val()*1000)/1000;
        });
       $("#tourreport_tourcore").val(coresummary);
   }
@@ -666,7 +666,7 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
     if(pattern.test($(obj).val()))
     {
       var result = 0;
-      $("input[name='corelength[]']").each(function(i){result += parseFloat($(this).val()).toFixed(2);});
+      $("input[name='corelength[]']").each(function(i){result += Math.round($(this).val()*1000)/1000;});
       $("#tourreport_tourcore").val(result);
     }
   }
