@@ -32,11 +32,11 @@
         <tr>
           <th>设备编号</th>
           <th>钻机型号</th>
+          <th>单位编码</th>
           <th>钻机重量</th>
-          <th>钻孔深度</th>
+          <th>钻进能力</th>
           <th>钻机功率</th>
-          <th>转速</th>
-          <th>钻孔直径</th>
+          <th>通孔直径</th>
           <th>厂商</th>
           <th>占用状态</th>
         </tr>
@@ -50,11 +50,9 @@
         <tr>
           <th>设备编号</th>
           <th>型号</th>
+          <th>单位编码</th>
           <th>有效载荷</th>
-          <th>深度</th>
-          <th>高度</th>
-          <th>提升钻杆根数与长度</th>
-          <th>滑车组数与减轻负荷倍数</th>
+          <th>立根长度</th>
           <th>顶宽尺寸</th>
           <th>重量</th>
           <th>厂商</th>
@@ -70,10 +68,8 @@
         <tr>
           <th>设备编号</th>
           <th>型号</th>
+          <th>单位编码</th>
           <th>缸径</th>
-          <th>缸数</th>
-          <th>冲程</th>
-          <th>冲次</th>
           <th>流量</th>
           <th>重量</th>
           <th>功率</th>
@@ -114,7 +110,7 @@
     );
         
    var oTable2=$("#_drilltower_table").dataTable({
-     "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
+     "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=drilltower_index_path(:format=>:json) %>",
@@ -131,7 +127,7 @@
      );
 
    var oTable3=$("#_pump_table").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
+        "aoColumns":[null,null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=pump_index_path(:format=>:json) %>",

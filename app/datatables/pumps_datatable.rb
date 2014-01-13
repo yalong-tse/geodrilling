@@ -22,15 +22,13 @@ private
       [
         h(pump.devicenumber),
         h(pump.pumpmodel),
+        h(pump.officialcode),
         h(pump.pumpDiameter),
-        h(pump.pumplineNumber),
-        h(pump.stroke),
         h(pump.traffic),
         h(pump.weight),
         h(pump.power),
         h(pump.pressure),
         h(pump.overallsize),
-        h(pump.pressure),
         h(getstatus(pump))
       ]
     end
@@ -59,7 +57,7 @@ private
     pumps = Pump.order("#{sort_column} #{sort_direction}")
     pumps = pumps.page(page).per_page(per_page)
     if params[:sSearch].present?
-      pumps = pumps.where("pumpmodel like :search or pumpDiameter like :search or pumplineNumber like :search or stroke like :search or weight like :search or power like :search", search: "%#{params[:sSearch]}%")
+      pumps = pumps.where("pumpmodel like :search or pumpDiameter like :search or officialcode like :search or devicenumber like :search or weight like :search or power like :search", search: "%#{params[:sSearch]}%")
     end
     pumps 
   end
@@ -73,7 +71,7 @@ private
   end
 
   def sort_column
-    columns = %w[devicenumber pumpmodel pumpDiameter pumplineNumber stroke traffic weight power pressure overallsize pressure status]
+    columns = %w[devicenumber pumpmodel officialcode pumpDiameter traffic weight power pressure overallsize status]
     columns[params[:iSortCol_0].to_i]
   end
 

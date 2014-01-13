@@ -22,11 +22,9 @@ private
       [
         h(tower.devicenumber),
         h(tower.model),
+        h(tower.officialcode),
         h(tower.effectiveload),
-        h(tower.deep),
-        h(tower.height),
         h(tower.pipequantityAndLenght),
-        h(tower.sheaveQuantity),
         h(tower.topsize),
         h(tower.weight),
         h(tower.manufacture),
@@ -58,7 +56,7 @@ private
     drilltowers = Drilltower.order("#{sort_column} #{sort_direction}")
     drilltowers = drilltowers.page(page).per_page(per_page)
     if params[:sSearch].present?
-      drilltowers = drilltowers.where("manufacture like :search or rigPower like :search or rigweight like :search or manufactureContact like :search or rigmodel like :search or righoleDeep like :search", search: "%#{params[:sSearch]}%")
+      drilltowers = drilltowers.where("manufacture like :search or rigPower like :search or rigweight like :search or manufactureContact like :search or rigmodel like :search or officialcode like :search", search: "%#{params[:sSearch]}%")
     end
     drilltowers 
   end
@@ -72,7 +70,7 @@ private
   end
 
   def sort_column
-    columns = %w[devicenumber model effectiveload deep height pipequantityAndLenght sheaveQuantity topsize weight manufacture status]
+    columns = %w[devicenumber model officialcode effectiveload pipequantityAndLenght topsize weight manufacture status]
     columns[params[:iSortCol_0].to_i]
   end
 

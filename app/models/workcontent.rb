@@ -18,8 +18,9 @@
 #enlargertype 扩孔器类型
 #enlargernumber 扩孔器编号
 #holedeep 孔深
+# mudamount 泥浆消耗量
 class Workcontent < ActiveRecord::Base
-  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid ,:upmore,:corename ,:coregrade , :corenumber ,:drillbittype,:drillbitnumber ,:enlargertype,:enlargernumber,:holedeep
+  attr_accessible :content, :coreleftlength, :corelength, :drillbit, :drilllength, :finishtime, :holeid, :pumppressure, :pumpquantity, :rotatespeed, :starttime, :tourreportid ,:upmore,:corename ,:coregrade , :corenumber ,:drillbittype,:drillbitnumber ,:enlargertype,:enlargernumber,:holedeep, :mudamount
 
   belongs_to :hole , :class_name=>"Hole" , :foreign_key=>"holeid"
   belongs_to :tourreport , :class_name=>"Tourreport" , :foreign_key=>"tourreportid"

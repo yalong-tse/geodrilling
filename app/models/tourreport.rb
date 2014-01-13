@@ -26,13 +26,14 @@ class Tourreport < ActiveRecord::Base
   # nextleader 下一个班长，接班班长
   # centralizer 扶正器长
   # antideviation 防斜措施
+  # mudamount 泥浆消耗量
   attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status, :lastdeep, :currentdeep, :intrumenttakeover, :takeoverremark, :holeaccidenttime,:deviceaccidenttime,:othertime,:totaltime,:projectmanager,:lastleader,:nextleader,:centralizer,:antideviation
   # 属于哪个钻孔
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
   has_many :tourreportworkcontent
   TOURTIME=[['00:00'],['08:00'],['16:00'],['03:00'],['15:00']]
   TOURTIME2=[['00:00'],['12:00']]
-  WORKITEM=[['钻进'],['起下钻、取心'],['起钻、取心'],['起钻'],['下钻'],['取心'],['孔内事故'],['设备事故'],['停待'],['简易水文观测'],['封孔'],['其他']]
+  WORKITEM=[['钻进'],['起下钻、取心'],['起钻、取心'],['起钻'],['下钻'],['取心'],['孔内事故'],['设备故障'],['停待'],['简易水文观测'],['封孔'],['其他']]
 
   scope :archive, :conditions => {:status=>2}
 

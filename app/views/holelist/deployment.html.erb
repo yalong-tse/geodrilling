@@ -51,39 +51,44 @@
   </div>
 
   <div class="row-fluid">
-    <div class="span5">
+    <div class="span10">
       <div class="control-group">
         <%=f.label "钻塔" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
             <input type="hidden" id="drilltowerid" name="drilltowerid" value="<%=@deployment.drilltower_id if @deployment && @deployment.drilltower_id  %>" />
-            <input type="text" id="drilltower" name="drilltower", class="input-large" onclick="javascript:open_drilltower_modal();" value="<%= "设备编号:" + @deployment.drilltower.devicenumber if @deployment && @deployment.drilltower  %>"><i class="icon-leaf"></i>
+            <input type="text" id="drilltower" name="drilltower", class="input-xxlarge" onclick="javascript:open_drilltower_modal();" value="<%= "设备编号:" + @deployment.drilltower.devicenumber if @deployment && @deployment.drilltower  %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
     </div>
 
-    <div class="span5">
+  </div>
+  
+
+  <div class="row-fluid">
+    <div class="span10">
       <div class="control-group">
         <%=f.label "钻机" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
             <input type="hidden" id="rigmachineid" name="rigmachineid" value="<%=@deployment.rigmachine_id if @deployment && @deployment.rigmachine_id%>" />
-            <input type="text" id="rigmachine" name="rigmachine", class="input-large" onclick="javascript:open_rigmachine_modal();" value="<%="设备编号" + @deployment.rigmachine.devicenumber if @deployment && @deployment.rigmachine %>"><i class="icon-leaf"></i>
+            <input type="text" id="rigmachine" name="rigmachine", class="input-xxlarge" onclick="javascript:open_rigmachine_modal();" value="<%="设备编号" + @deployment.rigmachine.devicenumber if @deployment && @deployment.rigmachine %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
     </div>
   </div>
-  
+
+
   <div class="row-fluid">
-    <div class="span5">
+    <div class="span10">
       <div class="control-group">
         <%=f.label "泥浆泵" , :class=>"control-label" %>
         <div class="controls">
           <span class="input-icon">
-            <input type="hidden" id="pumpid" name="pumpid" value="<%=@deployment.pump if @deployment && @deployment.pump_id %>" />
-            <input type="text" id="pump" name="pump" class="input-large" onclick="javascript:open_pump_modal();" value="<%="设备编号："+@deployment.pump.devicenumber if @deployment && @deployment.pump %>"><i class="icon-leaf"></i>
+            <input type="hidden" id="pumpid" name="pumpid" value="<%=@deployment.pump_id if @deployment && @deployment.pump_id %>" />
+            <input type="text" id="pump" name="pump" class="input-xxlarge" onclick="javascript:open_pump_modal();" value="<%="设备编号："+@deployment.pump.devicenumber if @deployment && @deployment.pump %>"><i class="icon-leaf"></i>
           </span>
         </div>
       </div>
@@ -115,10 +120,10 @@
         <tr>
         <th>选择</th>
         <th>设备编号</th>
+        <th>单位编码</th>
         <th>钻机重量</th>
-        <th>钻孔深度</th>
+        <th>钻进能力</th>
         <th>钻机功率</th>
-         <th>转速</th>
          <th>钻孔直径</th>
          <th>厂商</th>
          <th>占用状态</th>
@@ -129,10 +134,10 @@
           <tr>
             <td class="center"><input type="radio" name="rig" value="<%=rig.id%>" style="opacity:100;position:relative"/></td>
             <td><%= rig.devicenumber %> </td>
+            <td><%= rig.officialcode %> </td>
             <td><%= rig.rigweight %></td>
             <td><%= rig.righoleDeep %></td>
             <td><%= rig.rigPower %></td>
-            <td><%= rig.rotatingSpeed %></td>
             <td><%= rig.pipeDiameter %></td>
             <td><%= rig.manufacture%></td>
             <td><%= get_device_status(rig) %></td>
@@ -163,12 +168,10 @@
         <tr>
           <th>选择</th>
           <th>设备编号</th>
+          <th>单位编码</th>
           <th>型号</th>
           <th>有效载荷</th>
-          <th>深度</th>
-          <th>高度</th>
-          <th>提升钻杆根数与长度</th>
-          <th>滑车组数与减轻负荷倍数</th>
+          <th>立根长度</th>
           <th>顶宽尺寸</th>
           <th>重量</th>
           <th>厂商</th>
@@ -180,12 +183,10 @@
           <tr>
             <td class="center"><input type="radio" name="tower" value="<%=tower.id%>" style="opacity:100;position:relative"/></td>
             <td><%= tower.devicenumber %> </td>
+            <td><%= tower.officialcode %> </td>
             <td><%= tower.model %></td>
             <td><%= tower.effectiveload%></td>
-            <td><%= tower.deep %></td>
-            <td><%= tower.height %></td>
             <td><%= tower.pipequantityAndLenght %></td>
-            <td><%= tower.sheaveQuantity%></td>
             <td><%= tower.topsize%></td>
             <td><%= tower.weight%></td>
             <td><%= tower.manufacture%></td>
@@ -217,11 +218,9 @@
         <tr>
           <th>选择</th>
           <th>设备编号</th>
+          <th>单位编码</th>
           <th>型号</th>
           <th>缸径</th>
-          <th>缸数</th>
-          <th>冲程</th>
-          <th>冲次</th>
           <th>流量</th>
           <th>重量</th>
           <th>功率</th>
@@ -235,11 +234,9 @@
           <tr>
             <td class="center"><input type="radio" name="pump" value="<%=pump.id%>" style="opacity:100;position:relative"/></td>
             <td><%= pump.devicenumber %> </td>
+            <td><%= pump.officialcode %> </td>
             <td><%= pump.pumpmodel %></td>
             <td><%= pump.pumpDiameter%></td>
-            <td><%= pump.pumplineNumber %></td>
-            <td><%= pump.stroke %></td>
-            <td><%= pump.strokeTimes %></td>
             <td><%= pump.traffic %></td>
             <td><%= pump.weight %></td>
             <td><%= pump.power %></td>
