@@ -85,4 +85,12 @@ module TourreportsHelper
     END_OF_CODE
     code.html_safe;
   end
+
+  # 交接说明的默认内容，方便用户修改
+  def default_tools_takeover_info
+    result ="1个单根，长 米：①      ②      ③     ④     ⑤     \r";
+    result << "1个立根，长546米，机长钻杆长 米\r"
+    result << "粗径钻具全长  米，钻具总长  米 "
+    result.html_safe
+  end
 end
