@@ -432,7 +432,7 @@
     <%= f.label "钻具交接" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>default_tools_takeover_info %>
+        <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>default_tools_takeover_info(@hole.id) %>
       </div>
     </div>
   </div>
