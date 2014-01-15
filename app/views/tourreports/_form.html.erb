@@ -151,12 +151,12 @@
                     <td>&nbsp;&nbsp;</td>
                     <td>
                       <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>(content.nil? || content.starttime.nil?)? "":content.starttime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_starttime[]", nil, :class=>"time_picker input-mini" ,:value=>(content.nil? || content.starttime.nil?)? "00:00":content.starttime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                       </div>
                     </td>
                     <td>
                     <div class="input-append bootstrap-timepicker">
-                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>(content.nil?|| content.finishtime.nil?)? "":content.finishtime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
+                      <%= text_field_tag "workcontent_finishtime[]", nil, :class=>"time_picker input-mini" , :value=>(content.nil?|| content.finishtime.nil?)? "01:00":content.finishtime.strftime("%H:%M") %><span class="add-on"><i class="icon-time"></i></span>
                     </div>
                     </td>
                     <td>
@@ -477,9 +477,10 @@
   <script type="text/javascript">
 
 
+	var the_endtime;
     var Fun_finishtime = function(){$(this).parent("div").parent("td").parent("tr").next("tr").find("input[class='time_picker input-mini']").val($(this).val());}
 
-    var Fun_starttime = function(){$(this).parent("div").parent("td").parent("tr").find("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").val($(this).val());}
+    var Fun_starttime = function(){$(this).parent("div").parent("td").parent("tr").find("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").val($(this).val());the_endtime=$(this).val();}
 
     var Fun_computetime = function(){
 
@@ -579,7 +580,7 @@
         
     })
 
-var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " /></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime[]" type="text" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime[]" type="text" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><select class="input-medium" id="workcontent" name="workcontent[]" ><option value="钻进">钻进</option><option value="起下钻、取心">起下钻、取心</option><option value="起钻、取心">起钻、取心</option><option value="起钻">起钻</option><option value="下钻" selected="selected">下钻</option><option value="取心">取心</option><option value="孔内事故">孔内事故</option><option value="设备事故">设备事故</option><option value="停待">停待</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></td><td><input class="input-mini" id="workcontent_upmore" name="workcontent_upmore[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drilllength" name="workcontent_drilllength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_holedeep" name="workcontent_holedeep[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corenumber" name="workcontent_corenumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corelength" name="workcontent_corelength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_coreleftlength" name="workcontent_coreleftlength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbittype" name="workcontent_drillbittype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbitnumber" name="workcontent_drillbitnumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargernumber" name="workcontent_enlargernumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargertype" name="workcontent_enlargertype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_mudamount" name="workcontent_mudamount[]" onblur="compute_content(this)" type="text" /></td></tr>';
+var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" onClick="deleteRow(this)" value=" - " /></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_starttime" name="workcontent_starttime[]" type="text" value="'+ the_endtime +'" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><div class="input-append bootstrap-timepicker"><input class="time_picker input-mini" id="workcontent_finishtime" name="workcontent_finishtime[]" type="text" value="' + the_endtime+ '" /><span class="add-on"><i class="icon-time"></i></span></div></td><td><select class="input-medium" id="workcontent" name="workcontent[]" ><option value="钻进">钻进</option><option value="起下钻、取心">起下钻、取心</option><option value="起钻、取心">起钻、取心</option><option value="起钻">起钻</option><option value="下钻" selected="selected">下钻</option><option value="取心">取心</option><option value="孔内事故">孔内事故</option><option value="设备事故">设备事故</option><option value="停待">停待</option><option value="简易水文观测">简易水文观测</option><option value="封孔">封孔</option><option value="其他">其他</option></select></td><td><input class="input-mini" id="workcontent_upmore" name="workcontent_upmore[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drilllength" name="workcontent_drilllength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_holedeep" name="workcontent_holedeep[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corenumber" name="workcontent_corenumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_corelength" name="workcontent_corelength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_coreleftlength" name="workcontent_coreleftlength[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbit" name="workcontent_drillbit[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbittype" name="workcontent_drillbittype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_drillbitnumber" name="workcontent_drillbitnumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargernumber" name="workcontent_enlargernumber[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_enlargertype" name="workcontent_enlargertype[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumppressure" name="workcontent_pumppressure[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_rotatespeed" name="workcontent_rotatespeed[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_pumpquantity" name="workcontent_pumpquantity[]" onblur="compute_content(this)" type="text" /></td><td><input class="input-mini" id="workcontent_mudamount" name="workcontent_mudamount[]" onblur="compute_content(this)" type="text" /></td></tr>';
 
     
     function worktime_ready()
@@ -615,28 +616,28 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
   
   function refresh_event()
   {
-  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
-  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",Fun_finishtime);
+		$("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
+		$("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",Fun_finishtime);
 
-  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").unbind("change",Fun_starttime);
-  $("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",Fun_starttime);
+		$("input[class='time_picker input-mini'][name='workcontent_starttime[]']").unbind("change",Fun_starttime);
+		$("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",Fun_starttime);
 
-  $("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
-  $("input[class='time_picker input-mini']").bind("change",Fun_computetime);
+		$("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
+		$("input[class='time_picker input-mini']").bind("change",Fun_computetime);
 
-  $("select[name='workcontent[]']").unbind("change",Fun_computetime);
-  $("select[name='workcontent[]']").bind("change",Fun_computetime);
+		$("select[name='workcontent[]']").unbind("change",Fun_computetime);
+		$("select[name='workcontent[]']").bind("change",Fun_computetime);
 
   }
 
   function add_line()
   {
-    // alert($("#_line_container div").first());
-    // $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
-    $("#_workcontent_table").append(new_line);
-    worktime_ready();
-    refresh_event();
-    $("input[class='time_picker input-mini']").trigger("change");
+		// alert($("#_line_container div").first());
+		// $("#_thelast").before($("#_line_container div").first().clone().append(delete_row_content)); //.append(delete_row_content);
+		$("#_workcontent_table").append(new_line);
+		worktime_ready();
+		refresh_event();
+		$("input[class='time_picker input-mini']").trigger("change");
 
   }
 
@@ -662,21 +663,21 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
 
   function length_content(obj)
   {
-    var pattern = /^\d+(\.\d+)?$/;
-    if(pattern.test($(obj).val()))
-    {
-      var result = 0;
-      $("input[name='corelength[]']").each(function(i){result += Math.round($(this).val()*1000)/1000;});
-      $("#tourreport_tourcore").val(result);
-    }
+		var pattern = /^\d+(\.\d+)?$/;
+		if(pattern.test($(obj).val()))
+		{
+		  var result = 0;
+		  $("input[name='corelength[]']").each(function(i){result += Math.round($(this).val()*1000)/1000;});
+		  $("#tourreport_tourcore").val(result);
+		}
   }
 
 
   function deleteRow(obj)
   {
-    $(obj).parent("td").parent("tr").remove();
-    refresh_event();
-   $("input[class='time_picker input-mini']").trigger("change");
+		$(obj).parent("td").parent("tr").remove();
+		refresh_event();
+		$("input[class='time_picker input-mini']").trigger("change");
   }
 
   function compute_time(startstr,finishstr)
