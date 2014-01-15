@@ -23,15 +23,12 @@ private
       [
         h(pump.devicenumber),
         h(pump.pumpmodel),
+        h(pump.officialcode),
         h(pump.pumpDiameter),
-        h(pump.pumplineNumber),
-        h(pump.stroke),
-        h(pump.traffic),
         h(pump.weight),
         h(pump.power),
         h(pump.pressure),
         h(pump.overallsize),
-        h(pump.pressure),
         h(getstatus(pump)),
         h(open_modal(pump))
       ]
@@ -82,7 +79,7 @@ private
   end
 
   def sort_column
-    columns = %w[devicenumber pumpmodel pumpDiameter pumplineNumber stroke traffic weight power pressure overallsize pressure status status]
+    columns = %w[devicenumber pumpmodel officialcode pumpDiameter weight power pressure overallsize status status]
     columns[params[:iSortCol_0].to_i]
   end
 

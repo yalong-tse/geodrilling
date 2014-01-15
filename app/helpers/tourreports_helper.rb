@@ -96,4 +96,12 @@ module TourreportsHelper
     end
     result.html_safe
   end
+
+  def getLastHoleDeep(holeid)
+    result =""
+    if(holeid)
+      result << Tourreport.getLastHoleDeep(holeid).to_s
+    end
+    result
+  end
 end

@@ -23,11 +23,9 @@ private
       [
         h(tower.devicenumber),
         h(tower.model),
+        h(tower.officialcode),
         h(tower.effectiveload),
-        h(tower.deep),
-        h(tower.height),
         h(tower.pipequantityAndLenght),
-        h(tower.sheaveQuantity),
         h(tower.topsize),
         h(tower.weight),
         h(tower.manufacture),
@@ -81,7 +79,7 @@ private
   end
 
   def sort_column
-    columns = %w[devicenumber model effectiveload deep height pipequantityAndLenght sheaveQuantity topsize weight manufacture status status]
+    columns = %w[devicenumber model officialcode effectiveload pipequantityAndLenght topsize weight manufacture status status]
     columns[params[:iSortCol_0].to_i]
   end
 

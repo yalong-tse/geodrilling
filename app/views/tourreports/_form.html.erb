@@ -363,7 +363,7 @@
     <%= f.label "接班孔深" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :lastdeep , :class=>"input-large" %><span class="add-on">m</span>
+        <%= f.text_field :lastdeep , :class=>"input-large" ,:value=> getLastHoleDeep(@hole.id) %><span class="add-on">m</span>
       </div>
     </div>
   </div>

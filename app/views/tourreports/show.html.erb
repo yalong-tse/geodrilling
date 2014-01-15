@@ -4,7 +4,7 @@
     <div class="span12">
       <div class="widget-box transparent">
         <div class="widget-header widget-header-flat">
-          <h5 class="lighter"><i class="icon-signal orange"></i>钻进班报表记录,该报班来自<% if @tourreport.source==1 %><%= "大平台"%><% else %><%="手机平台"%> <%end%> </h5>
+          <h5 class="lighter"><i class="icon-signal orange"></i>钻进班报表记录,该报班来自:<font color="red"><% if @tourreport.source==1 %><%= "大平台"%><% else %><%="手机平台"%> <%end%></font> <i class='icon-file red bigger-120'></i> </h5>
           <div class="widget-toolbar widget-toolbar-light no-border">
           <i class="icon-bell purple"></i>
           钻孔编号：<span class="text-warning" style="text-decoration:underline"><%=@tourreport.hole.holenumber if @tourreport.hole %></span>

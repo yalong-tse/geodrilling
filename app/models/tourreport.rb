@@ -46,7 +46,7 @@ class Tourreport < ActiveRecord::Base
     end
   end
 
-  # 获取上一个班报的钻具交接的内容
+  # 获取上一个班报的钻具交接的内容,方便用户填写
   def self.getLastTakeovertools(holeid)
     if holeid
       tourreport = self.where("holeid=?",holeid).order("tourdate desc,starttime desc").first
@@ -54,6 +54,18 @@ class Tourreport < ActiveRecord::Base
         tourreport.intrumenttakeover
       end
     end
+  end
+
+  #获取该钻孔的上一班的孔深
+  def self.getLastHoleDeep(holeid)
+    if holeid
+      tourreport = self.where("holeid=?",holeid).order("tourdate desc,starttime desc").first
+      if tourreport
+        tourreport.lastdeep
+      end
+
+    end
+
   end
 
   # 获取该孔的岩心采取长度

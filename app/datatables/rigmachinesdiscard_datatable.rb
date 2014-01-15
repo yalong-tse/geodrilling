@@ -23,10 +23,10 @@ private
       [
         h(rigmachine.devicenumber),
         h(rigmachine.rigmodel),
+        h(rigmachine.officialcode),
         h(rigmachine.rigweight),
         h(rigmachine.righoleDeep),
         h(rigmachine.rigPower),
-        h(rigmachine.rotatingSpeed),
         h(rigmachine.pipeDiameter),
         h(rigmachine.manufacture),
         h(getstatus(rigmachine)),
@@ -81,7 +81,7 @@ private
   end
 
   def sort_column
-    columns = %w[devicenumber rigmodel rigweight righoleDeep rigPower rotatingSpeed pipeDiameter manufacture status status]
+    columns = %w[devicenumber rigmodel officialcode rigweight righoleDeep rigPower pipeDiameter manufacture status status]
     columns[params[:iSortCol_0].to_i]
   end
 
