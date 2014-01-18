@@ -1,4 +1,6 @@
 Geodrilling::Application.routes.draw do
+  get "holedesigner/view"
+
   get "leader/holeproduct"
   get "leader/holefinish"
   get "leader/contract"
