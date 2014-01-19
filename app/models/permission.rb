@@ -22,5 +22,6 @@ class Permission < ActiveRecord::Base
     rowspan = permissions.map{|p| p.subject_class}.uniq
     rowspan.length + 1
   end
+
 end
 

@@ -18,4 +18,16 @@ module RolesHelper
     end
     html_code.html_safe
   end
+
+  # 用户角色的规则化显示
+  def user_role_treat (roles)
+    result =""
+    if roles
+      roles.each do |role|
+        result << role.name 
+        result << "<br/>"
+      end
+    end
+    result.html_safe
+  end
 end

@@ -1,5 +1,4 @@
 class RolesController < ApplicationController
-
   # only user with Admin role can access
   # before_filter :is_super_admin?
   
