@@ -5,8 +5,13 @@
     <% if can? :index, Contract %>
     <%= link_to raw('<i class="icon-home"></i>'), contracts_path, :class=>"btn btn-small btn-success" %>
     <% end %>
+    <% if can? :index, Hole %>
     <%= link_to raw('<i class="icon-cog"></i>'), holes_path, :class=>"btn btn-small btn-info" %>
+    <% end %>
+    <% if can? :index, Equipment %>
     <%= link_to raw('<i class="icon-group"></i>'), equipment_index_path, :class=>"btn btn-small btn-warning" %>
+    <% end %>
+
     <%= link_to raw('<i class="icon-cogs"></i>'), materials_path , :class=>"btn btn-small btn-danger" %>
   </div>
 
@@ -87,17 +92,23 @@
       </li>
       <% end %>
 
+      <% if can? :new, Tourreport %>
       <li <%= active_page?(holes_list_path) %> <%=active_page?(new_tourreport_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报填写')), holes_list_path %>
       </li>
+      <% end  %>
 
+      <% if can? :edit, Tourreport %>
       <li <%= active_page?(holes_tourreportsmodify_path) %> <%=active_page?(tourreports_indexformodify_path)%> <%=active_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0)%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报修改')), holes_tourreportsmodify_path %>
       </li>
+      <% end  %>
 
+      <% if can? :index, Tourreport %>
       <li <%= active_page?(holes_tourreports_path) %> <%=active_page?(tourreports_path)%> <%=active_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0 )%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>班报查询')), holes_tourreports_path %>
       </li>
+      <% end  %>
 
     </ul>
   <% end %>
@@ -105,6 +116,7 @@
 
 
 
+  <% if can? :index, Equipment %>
   <%= content_tag :li, :class => "#{active_menu?(current_page?(equipment_index_path) || current_page?(equipment_stockin_path) ||  current_page?(equipment_discard_path) || current_page?(rigmachine_new_path) || current_page?(drilltower_new_path) || current_page?(pump_new_path) || current_page?(equipment_group_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-bell"></i>
@@ -114,17 +126,23 @@
     </a>
 
     <ul class="submenu">
+      <% if can? :index, Equipment %>
       <li <%= active_page?(equipment_index_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备库存')), equipment_index_path %>
       </li>
+      <% end  %>
 
+      <% if can? :stockin, Equipment %>
       <li <%= active_page?(equipment_stockin_path) %> <%=active_page?(rigmachine_new_path)%> <%=active_page?(drilltower_new_path)%> <%=active_page?(pump_new_path)%>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备入库')), equipment_stockin_path %>
       </li>
+      <% end  %>
 
+      <% if can? :discard, Equipment %>
       <li <%= active_page?(equipment_discard_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>设备处理')), equipment_discard_path %>
       </li>
+      <% end  %>
 
      <!-- 
       <li <%= active_page?(equipment_group_path) %>>
@@ -132,6 +150,7 @@
       </li-->
 
     </ul>
+  <% end %>
   <% end %>
 
 
