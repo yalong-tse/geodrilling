@@ -12,7 +12,9 @@
     <%= link_to raw('<i class="icon-group"></i>'), equipment_index_path, :class=>"btn btn-small btn-warning" %>
     <% end %>
 
+    <% if can? :index, Material %>
     <%= link_to raw('<i class="icon-cogs"></i>'), materials_path , :class=>"btn btn-small btn-danger" %>
+    <% end %>
   </div>
 
   <div id="sidebar-shortcuts-mini">
@@ -154,6 +156,7 @@
   <% end %>
 
 
+  <% if can? :index, Material %>
   <%= content_tag :li, :class => "#{active_menu?(current_page?(materials_path) || current_page?(new_material_path) || current_page?(materials_stockout_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-picture"></i>
@@ -163,19 +166,26 @@
     </a>
 
     <ul class="submenu">
+      <% if can? :index, Material %>
       <li <%= active_page?(materials_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>材料库存')), materials_path %>
       </li>
+      <% end %>
 
+      <% if can? :new, Material %>
       <li <%= active_page?(new_material_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>材料入库')), new_material_path %>
       </li>
+      <% end %>
 
+      <% if can? :stockout, Material %>
       <li <%= active_page?(materials_stockout_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>材料消耗')), materials_stockout_path %>
       </li>
+      <% end %>
 
     </ul>
+  <% end %>
   <% end %>
 
   <%= content_tag :li, :class => "#{active_menu?(current_page?(contractschart_path) || current_page?(tourreports_holesreport_path) )}" do %>
