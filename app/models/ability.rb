@@ -28,7 +28,13 @@ class Ability
       if permission.subject_class == "all"
         can permission.action.to_sym, permission.subject_class.to_sym
       else
-        can permission.action.to_sym, permission.subject_class.constantize
+        action = permission.action.to_sym
+        subject = begin
+                    permission.subject_class.camelize.constantize
+                  rescue
+                    permission.subject_class.underscore.to_sym
+                  end
+        can action, subject 
       end
     end
 

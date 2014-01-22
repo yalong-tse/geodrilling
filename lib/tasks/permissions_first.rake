@@ -18,8 +18,9 @@ namespace 'permissions' do
     Permission.create({:name=>"材料库存",:description=>"材料库存", :subject_class=>"Material", :action=>"index"})
     Permission.create({:name=>"材料入库",:description=>"材料入库", :subject_class=>"Material", :action=>"new"})
     Permission.create({:name=>"材料消耗",:description=>"材料消耗", :subject_class=>"Material", :action=>"stockout"})
-    Permission.create({:name=>"合同统计",:description=>"合同统计", :subject_class=>"Contract", :action=>"chart"})
+    Permission.create({:name=>"合同统计",:description=>"合同统计", :subject_class=>"Chart", :action=>"contract"})
     Permission.create({:name=>"领导关注钻孔情况",:description=>"领导关注钻孔情况", :subject_class=>"Leader", :action=>"holeproduct"})
+    Permission.create({:name=>"钻孔统计",:description=>"钻孔统计的情况", :subject_class=>"Chart", :action=>"hole"})
   end
 end
 
