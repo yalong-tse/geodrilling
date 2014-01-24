@@ -248,13 +248,17 @@
     </a>
 
     <ul class="submenu">
+      <% if can? :contract, :archive %>
       <li <%= active_page?(archive_contract_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>合同档案')), archive_contract_path %>
       </li>
+      <% end %>
 
+      <% if can? :hole, :archive %>
       <li <%= active_page?(archive_hole_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔档案')), archive_hole_path %>
       </li>
+      <% end %>
 
     </ul>
   <% end %>
@@ -270,31 +274,35 @@
 
     <ul class="submenu">
 
-      <% if can? :department_read, Department %>
+      <% if can? :index, Department %>
       <li <%= active_page?(department_tree_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.department.manage'))), department_tree_path %>
       </li>
       <% end %>
 
-      <% if can? :read, User %>
+      <% if can? :index, User %>
       <li <%= active_page?(users_main_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t("headers.system.people.manage") )), users_main_path %>
       </li>
       <% end %>
 
+      <% if can? :index, Group %>
       <li <%= active_page?(groups_main_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.group.index'))), groups_main_path %>
       </li>
+      <% end %>
 
-      <% if can? :read, Role %>
+      <% if can? :index, Role %>
       <li <%= active_page?(roles_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.role.manage'))), roles_path %>
       </li>
       <% end %>
 
+      <% if can? :index, Dictionary %>
       <li <%= active_page?(dictionary_index_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>' + t('headers.system.dictionary.manage'))), dictionary_index_path %>
       </li>
+      <% end %>
 
       <% if can? :read, Useroperation %>
       <li <%= active_page?(useroperation_index_path) %>>

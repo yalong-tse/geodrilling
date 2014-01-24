@@ -146,7 +146,7 @@
             <div class="controls">
               <label>
               <% @roles.each do |role| %>
-                <%= check_box_tag "user[role_ids][]", role.id, @user_roles.include?(role.id), :id=>"role_ids_#{role.id}" %><span class="lbl"> <%= role.name %></span>
+                <%= check_box_tag "user[role_ids][]", role.id, @user_roles.include?(role.id), :id=>"role_ids_#{role.id}" %><span class="lbl"> <%= role.name %></span><br/>
               <% end %>
               </label>
             </div>

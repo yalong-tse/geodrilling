@@ -22,6 +22,13 @@ namespace 'permissions' do
     Permission.create({:name=>"钻孔统计",:description=>"钻孔统计的情况", :subject_class=>"Chart", :action=>"hole"})
     Permission.create({:name=>"领导关注钻孔情况",:description=>"领导关注钻孔情况", :subject_class=>"Leader", :action=>"holeproduct"})
     Permission.create({:name=>"领导关注合同情况",:description=>"领导关注合同情况", :subject_class=>"Leader", :action=>"contract"})
+    Permission.create({:name=>"合同归档",:description=>"合同归档", :subject_class=>"archive", :action=>"contract"})
+    Permission.create({:name=>"钻孔归档",:description=>"钻孔归档", :subject_class=>"archive", :action=>"hole"})
+    Permission.create({:name=>"部门管理",:description=>"部门管理", :subject_class=>"department", :action=>"index"})
+    Permission.create({:name=>"人员管理",:description=>"人员管理", :subject_class=>"user", :action=>"index"})
+    Permission.create({:name=>"人员配组",:description=>"人员配组", :subject_class=>"group", :action=>"index"})
+    Permission.create({:name=>"角色管理",:description=>"角色管理", :subject_class=>"role", :action=>"index"})
+    Permission.create({:name=>"字典管理",:description=>"字典管理", :subject_class=>"dictionary", :action=>"index"})
   end
 end
 
