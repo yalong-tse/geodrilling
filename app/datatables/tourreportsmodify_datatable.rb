@@ -57,11 +57,11 @@ private
     code = ""
     if report
       if report.source==1
-        code << "<i class='icon-file red bigger-120'></i> " + report.hole.holenumber
+        code << "<img src='/assets/icons/little_pc.png' width='20'> " + report.hole.holenumber
       elsif report.source==2
-        code << "<i class='icon-cloud-upload green bigger-120'></i> " + report.hole.holenumber
+        code << "<img src='/assets/icons/mobile_basic_red.png' width='20'> " + report.hole.holenumber
       else
-        code << "<i class='icon-file red bigger-120'></i> " + report.hole.holenumber
+        code << "<img src='/assets/icons/little_pc.png' width='20' >" + report.hole.holenumber
       end
     end
     code.html_safe
