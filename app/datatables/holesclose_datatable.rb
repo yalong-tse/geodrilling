@@ -35,7 +35,9 @@ private
 
   def detail_button(hole)
     code = "<div class=\"inline position-relative btn-group\">"
-    code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\"" + hole_path(hole)  + "\")' rel=\"tooltip\" title=\"查看详情\")'><i class=\"icon-eye-open bigger-120\"></i></button>"
+    if(hole.status.nil? || hole.status==1)
+      code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\""+ holes_close_path + "?id="+hole.id.to_s+"\")' rel=\"tooltip\" title=\"钻孔终孔\")'><i class=\"icon-cogs bigger-120\"></i></button>"
+    end
     code << "</div>"
     code.html_safe
   end

@@ -89,13 +89,13 @@
       <% end %>
 
       <% if can? :index, Hole %>
-      <li <%= active_page?(holes_path) %><%=active_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0)%> <%=active_page?(holes_close_path)%> >
+      <li <%= active_page?(holes_path) %><%=active_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0)%>  >
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔查询')), holes_path %>
       </li>
       <% end %>
 
       <% if can? :index, Hole %>
-      <li <%= active_page?(holes_closelist_path) %><%=active_page?(:controller=>"holes",:action=>"closelist" ,:id=>params[:id] || 0)%> <%=active_page?(holes_closelist_path)%> >
+      <li <%= active_page?(holes_closelist_path) %> <%=active_page?(holes_close_path)%> >
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔终孔')), holes_closelist_path %>
       </li>
       <% end %>
