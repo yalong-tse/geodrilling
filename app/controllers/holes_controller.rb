@@ -21,6 +21,15 @@ class HolesController < ApplicationController
     end
   end
 
+  # 钻孔关闭的列表
+  def closelist
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: HolescloseDatatable.new(view_context) }
+    end
+
+  end
+
   # 用来班报查询的钻孔列表界面
   def tourreports
     respond_to do |format|

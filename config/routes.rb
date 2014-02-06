@@ -96,6 +96,7 @@ Geodrilling::Application.routes.draw do
 
   get "holes/download"
   get "holes/list"
+  get "holes/closelist"
   get "holes/tourreports"
   get "holes/tourreportsmodify"
   get "holes/close"
