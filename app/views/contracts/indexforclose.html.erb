@@ -12,9 +12,10 @@
     <th>项目名称</th>
     <th>业主</th>
     <th>乙方</th>
-    <th>合同金额</th>
-    <th>开始日期</th>
-    <th>完成日期</th>
+    <th>合同金额(元)</th>
+    <th>合同工作量(m)</th>
+    <th>项目所在地</th>
+    <th>签订日期</th>
     <th>合同状态</th>
     <th>操作</th>
   </tr>
@@ -54,7 +55,7 @@
   var _contractno; 
   $(function(){
       var oTable1=$("#_table_contract").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null,{"bSortable":false}],
+        "aoColumns":[null,null,null,null,null,null,null,null,null,null,{"bSortable":false}],
         "bServerSide":true,
         "bAutoWidth" :false,
         "sAjaxSource":"<%=contracts_indexforclose_path(:format=>:json) %>",

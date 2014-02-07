@@ -8,8 +8,9 @@
     <th>项目名称</th>
     <th>业主</th>
     <th>乙方</th>
-    <th>合同金额</th>
-    <th>合同工作量</th>
+    <th>合同金额(元）</th>
+    <th>合同工作量(m)</th>
+    <th>项目所在地</th>
     <th>签订日期</th>
     <th>合同状态</th>
   </tr>
@@ -26,7 +27,7 @@
 <script type="text/javascript">
   $(function(){
       var oTable1=$("#_table_contract").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,null],
+        "aoColumns":[null,null,null,null,null,null,null,null,null,null],
         "bServerSide":true,
         "bAutoWidth" :false,
         "sAjaxSource":"<%=contracts_path(:format=>:json) %>",
