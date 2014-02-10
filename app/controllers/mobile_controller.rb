@@ -1,7 +1,7 @@
 #encoding: utf-8
 class MobileController < ApplicationController
 
-  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport]
+  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport,:holedetail]
 
   # 根据合同编号获取所有的钻孔列表的
   # android 手机端使用的方法
@@ -84,6 +84,20 @@ class MobileController < ApplicationController
 
   end
 
+  # 得到钻孔的详细信息,钻孔的其他信息, 比如当前的孔深，矿区，孔号
+  def holedetail
+    hole = Hole.find(params[:holeid])
+    obj = {
+        :minearea=>hole.minearea,
+        :actualdeep=>hole.actualdeep,
+        :holenumber=>hole.holenumber,
+        :geologysituation=>hole.geologysituation
+        }
+    respond_to do |format|
+      format.xml
+      format.json {render :json=>obj}
+    end
+  end
 
   # 接收Json 提交的班报内容
   # 提交的JSON 格式字符串
@@ -148,4 +162,10 @@ class MobileController < ApplicationController
     end
   end
 
+  # 获取最新的5条班报
+  def gettourreports
+    logger.info("the holeid is :#{params[:holeid]}");
+    hole = Hole.find(params[:holeid])
+
+  end
 end
