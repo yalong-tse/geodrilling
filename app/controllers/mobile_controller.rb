@@ -40,7 +40,7 @@ class MobileController < ApplicationController
     end
   end
 
-  # 得到某个钻孔的人员配置情况
+  # 得到某个钻孔的，设备配置情况和人员配置情况
   def getdeployments
     #@hole = Hole.find(params[:holeid])
     @objs = Array.new
@@ -74,6 +74,32 @@ class MobileController < ApplicationController
             }
           end
         end
+
+        # 得到钻孔的配置的钻机
+        if @deployment.rigmachine
+          @objs<<{
+            :id => @deployment.rigmachine.id,
+            :name => @deployment.rigmachine.devicenumber,
+            :type =>"rigmachine" 
+          }
+        end
+
+        if @deployment.pump
+          @objs<<{
+            :id => @deployment.pump.id,
+            :name => @deployment.pump.devicenumber,
+            :type =>"pump" 
+          }
+        end
+
+        if @deployment.drilltower
+          @objs<<{
+            :id => @deployment.drilltower.id,
+            :name => @deployment.drilltower.devicenumber,
+            :type =>"drilltower" 
+          }
+        end
+
       end
     end
 
