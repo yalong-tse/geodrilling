@@ -61,6 +61,18 @@
   <% end %>
   <% end %>
 
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(holedesigner_view_path))}" do %>
+    <a href="#" class="dropdown-toggle">
+      <i class="icon-desktop"></i>
+      <span>钻孔设计</span>
+      <b class="arrow icon-angle-down"></b>
+    </a>
+    <ul class="submenu">
+      <li <%= active_page?(holedesigner_view_path) %>>
+          <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔设计')), holedesigner_view_path %>
+      </li>
+    </ul>
+  <% end %>
 
   <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(holes_closelist_path) || current_page?(holes_close_path)|| current_page?(tourreports_indexformodify_path) || current_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0) || current_page?(tourreports_path) || current_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0) ||current_page?(new_tourreport_path) || current_page?(holelist_deployment_path) || current_page?(holes_tourreportsmodify_path))}" do %>
     <a href="#" class="dropdown-toggle">
