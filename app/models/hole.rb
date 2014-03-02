@@ -26,8 +26,12 @@ class Hole < ActiveRecord::Base
   #tourreporttransferdoc_id 原始记录报表移交清单
   #qualitychecktable_id 钻孔质量验收评定表
   #tourreporttabledoc_id 钻孔班报表
+  #钻孔关闭的时候增加
+  #unitprice 单价
+  #output 产值  =  单价 x 孔深
+  #outerflag 是否外协
   #说明：新建钻孔为待执行，钻孔配置完设备之后是执行中
-  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark, :designminecoreratio, :actualminecoreratio, :attachment_id, :designpositionangle, :actualpositionangle,:attachment, :attachment_attributes, :opennotice, :opennotice_attributes, :closenotice, :closenotice_attributes, :curvetable , :curvetable_attributes ,:measuretable, :measuretable_attributes, :coretransferdoc , :coretransferdoc_attributes, :tourreporttransferdoc, :tourreporttransferdoc_attributes, :qualitychecktable, :qualitychecktable_attributes, :tourreporttabledoc, :tourreporttabledoc_attributes
+  attr_accessible :designdeep,:actualdeep,:designdiameter,:actualdiameter,:finishdate, :startdate,:contract_id, :minearea,:holenumber,:geologysituation,:designapexangle,:actualapexangle,:designcoreratio,:actualcoreratio,:designbook,:drillingpurpose,:status,:remark, :designminecoreratio, :actualminecoreratio, :attachment_id, :designpositionangle, :actualpositionangle,:attachment, :attachment_attributes, :opennotice, :opennotice_attributes, :closenotice, :closenotice_attributes, :curvetable , :curvetable_attributes ,:measuretable, :measuretable_attributes, :coretransferdoc , :coretransferdoc_attributes, :tourreporttransferdoc, :tourreporttransferdoc_attributes, :qualitychecktable, :qualitychecktable_attributes, :tourreporttabledoc, :tourreporttabledoc_attributes,:unitprice,:output,:outerflag
 
   attr_reader :statusstr
   #attr_reader :attachmentstr
