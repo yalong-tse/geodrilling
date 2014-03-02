@@ -42,7 +42,7 @@
           </tr>
           <tr>
             <td><strong>设计钻孔直径</strong></td>
-            <td><span class="text-error"><%= dictionary_treat @hole.designdiameter %></span></td>
+            <td><span class="text-error"><%= dictionary_treat @hole.designdiameter unless @hole.designdiameter %></span></td>
             <td><strong>实际钻孔直径</strong></td>
             <td><span class="text-error"><%= @hole.actualdiameter %></span></td>
           </tr>
@@ -80,7 +80,11 @@
           </tr>
           <tr>
             <td><strong>钻探目的</strong></td>
-            <td><span class="text-error"><%=dictionary_treat @hole.drillingpurpose %></span></td>
+            <td><span class="text-error"><%= dictionary_treat @hole.drillingpurpose unless @hole.drillingpurpose.nil? %></span></td>
+          </tr>
+          <tr>
+            <td><strong>是否外协</strong></td>
+            <td><span class="text-error"><input type="checkbox" <% if @hole.outerflag ==1 %> checked <% end %> />外协孔</span></td>
           </tr>
           <tr>
             <td><strong>钻孔开孔通知书</strong></td>

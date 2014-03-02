@@ -85,6 +85,12 @@
             <td><span class="text-error"><%= @hole.startdate %></span></td>
           </tr>
           <tr>
+            <td><strong>单价</strong></td>
+            <td><span class="text-error"><%=f.text_field :unitprice , :class=>"input-medium" %></span></td>
+            <td><strong>产值</strong></td>
+            <td><span class="text-error"><%=f.text_field :output , :class=>"input-medium" %></span></td>
+          </tr>
+          <tr>
             <td><strong>钻孔开孔通知书</strong></td>
             <td ><input name="hole[opennotice_attributes][data]" type="file" id="_opennoticeatt"/></td>
             <td><strong>钻孔终孔通知书</strong></td>
