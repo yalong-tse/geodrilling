@@ -1,6 +1,6 @@
 #encoding: utf-8
 class RigmachinesDatatable
-  delegate :params, :h,:link_to,:logger, to: :@view
+  delegate :params, :h,:link_to,:logger, :rigmachine_show_path, to: :@view
 
   def initialize(view)
     @view = view
@@ -20,7 +20,7 @@ private
   def data
     rigmachines.map do |rigmachine|
       [
-        h(rigmachine.devicenumber),
+        h(detail(rigmachine)),
         h(rigmachine.rigmodel),
         h(rigmachine.officialcode),
         h(rigmachine.rigweight),
@@ -31,6 +31,11 @@ private
         h(getstatus(rigmachine))
       ]
     end
+  end
+
+  def detail(rigmachine)
+    code = "<a href=" + rigmachine_show_path + "?id=" + rigmachine.id.to_s + ">" + rigmachine.devicenumber + "</a>"
+    code.html_safe
   end
 
   def getstatus(rigmachine)

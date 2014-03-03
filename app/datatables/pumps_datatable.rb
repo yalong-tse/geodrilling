@@ -1,6 +1,6 @@
 #encoding: utf-8
 class PumpsDatatable
-  delegate :params, :h,:link_to,:logger, to: :@view
+  delegate :params, :h,:link_to,:pump_show_path, :logger, to: :@view
 
   def initialize(view)
     @view = view
@@ -20,7 +20,7 @@ private
   def data
     pumps.map do |pump|
       [
-        h(pump.devicenumber),
+        h(detail(pump)),
         h(pump.pumpmodel),
         h(pump.officialcode),
         h(pump.pumpDiameter),
@@ -32,6 +32,11 @@ private
         h(getstatus(pump))
       ]
     end
+  end
+  
+  def detail(pump)
+    code = "<a href=" + pump_show_path + "?id=" + pump.id.to_s + ">" + pump.devicenumber + "</a>"
+    code.html_safe
   end
 
   def getstatus(pump)

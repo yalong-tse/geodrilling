@@ -56,9 +56,11 @@
     <tr>
       <td>钻塔图片</td>
       <td colspan="3">
+      <% if @drilltower.attachment %>
       <div class="thumbnail">
-        <img data-src="holder.js/260x180" alt="钻塔图片" src="<%= @drilltower.attachment.data.url%>"/>
+        <img data-src="holder.js/260x180" alt="钻塔图片" src="<%= @drilltower.attachment.data.url %>"/>
       </div>
+      <% end %>
       </td>
     </tr>
 

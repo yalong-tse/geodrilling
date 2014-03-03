@@ -1,6 +1,6 @@
 #encoding: utf-8
 class DrilltowersDatatable
-  delegate :params, :h,:link_to,:logger, to: :@view
+  delegate :params, :h,:link_to,:logger, :drilltower_show_path, to: :@view
 
   def initialize(view)
     @view = view
@@ -20,7 +20,7 @@ private
   def data
     drilltowers.map do |tower|
       [
-        h(tower.devicenumber),
+        h(detail(tower)),
         h(tower.model),
         h(tower.officialcode),
         h(tower.effectiveload),
@@ -31,6 +31,12 @@ private
         h(getstatus(tower))
       ]
     end
+  end
+
+  # 查看详情的方法
+  def detail(tower)
+    code = "<a href=" + drilltower_show_path + "?id=" + tower.id.to_s + ">" + tower.devicenumber + "</a>"
+    code.html_safe
   end
 
   def getstatus(tower)

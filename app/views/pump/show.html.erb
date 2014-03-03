@@ -61,9 +61,11 @@
     <tr>
       <td>图片</td>
       <td colspan="3">
+        <% if @pump.attachment %>
             <div class="thumbnail">
               <img data-src="holder.js/260x180" alt="钻塔图片" src="<%= @pump.attachment.data.url %>"/>
             </div>
+        <% end %>
      </td>
     </tr>
         </tbody>
