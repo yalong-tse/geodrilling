@@ -11,8 +11,10 @@
       <th class="center" width="%8">钻孔编号</th>
       <th class="center" width="%5">合同名称</th>
       <th class="center" width="%5">状态</th>
-      <th class="center" width="35%">岩心采取率</th>
-      <th class="center" width="35%">平均机械钻速</th>
+      <th class="center" width="10%">台月效率</th>
+      <th class="center" width="15%">岩心采取率</th>
+      <th class="center" width="15%">机械钻速</th>
+      <th class="center" width="15%">材料消耗</th>
     </tr>
   </thead>
   <tbody>
@@ -21,8 +23,10 @@
       <td class="center"><%= hole.holenumber %> </td>
       <td class="center"><%= hole.contract.name %> </td>
       <td class="center"><%= hole.statusstr %> </td>
-      <td><%= hole_coreratio_xml(hole) %></td>
-      <td><%= mech_speed(hole)%></td>
+      <td class="center"><%= hole.statusstr %> </td>
+      <td class="center"><%= hole.statusstr %> </td>
+      <td class="center"><%= hole.statusstr %> </td>
+      <td class="center"><%= hole.statusstr %> </td>
     </tr>
   <% end %>
   <%= will_paginate @holes %>
