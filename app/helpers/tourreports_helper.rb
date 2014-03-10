@@ -104,4 +104,31 @@ module TourreportsHelper
     end
     result
   end
+
+  # 计算台月效率
+  def compute_taiyue(holeid)
+    if (holeid)
+      hole = Hole.find(holeid)
+    end
+  end
+
+  # 计算岩心采取率
+  def compute_coreratio(holeid)
+    if(holeid)
+      hole = Hole.find(holeid)
+      per = Tourreport.sumcore(hole.id).to_i/(hole.actualdeep.nil?? 1:hole.actualdeep) ;
+      return per
+    end
+  end
+
+  # 计算机械钻速
+  def compute_mechspeed(holeid)
+    if (holeid)
+      hole = Hole.find(holeid)
+      deep = hole.actualdeep.nil?? 1 : hole.actualdeep
+      drillingtime = Tourreport.sum_drillingtime(hole.id)
+      v = deep/drillingtime
+      return v
+    end
+  end
 end
