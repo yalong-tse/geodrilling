@@ -124,9 +124,11 @@ class Tourreport < ActiveRecord::Base
     if(holeid)
       #sum(:tourauxiliarytime,:conditions=>{:holeid=>holeid})
       where("holeid=?",holeid).pluck(:totaltime).each do |thetime|
-        h,m = thetime.split(/:/);
-        hours = hours+h.to_i;
-        minutes = minutes + m.to_i;
+        if (thetime)
+          h,m = thetime.split(/:/);
+          hours = hours+h.to_i;
+          minutes = minutes + m.to_i;
+        end
       end
       r = minutes/60.0;
       hours = hours+r;

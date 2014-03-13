@@ -106,9 +106,9 @@ module TourreportsHelper
   end
 
   # 计算台月效率
-  def compute_taiyue(holeid)
+  def compute_montheffiency(holeid)
     if (holeid)
-      hole = Hole.find(holeid)
+      Tourreport.montheffiency(holeid)
     end
   end
 

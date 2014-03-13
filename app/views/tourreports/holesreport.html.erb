@@ -22,9 +22,9 @@
     <tr>
       <td class="center"><%= hole.holenumber %> </td>
       <td class="center"><%= hole.contract.name %> </td>
-      <td class="center"><%= hole.statusstr %> </td>
-      <td class="center"><%= hole.statusstr %> </td>
-      <td class="center"><%= hole.statusstr %> </td>
+      <td class="center"><%= compute_montheffiency hole.id %> </td>
+      <td class="center"><%= compute_coreratio hole.id %> </td>
+      <td class="center"><%= compute_mechspeed hole.id %> </td>
       <td class="center"><%= hole.statusstr %> </td>
       <td class="center"><%= hole.statusstr %> </td>
     </tr>
