@@ -147,11 +147,8 @@ class TourreportsController < ApplicationController
     end
   end
 
-  # 查询报表的内容
+  # 查询班报报表的内容，支持条件查询
   def holesreport
-    logger.info("=============================")
-    logger.info params[:holenumber]
-    logger.info params[:contractname]
     if params[:holenumber]
       @holes = Hole.where("holenumber like ?", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
     elsif params[:contractname]
