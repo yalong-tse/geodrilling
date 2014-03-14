@@ -127,6 +127,9 @@ module TourreportsHelper
       hole = Hole.find(holeid)
       deep = hole.actualdeep.nil?? 1 : hole.actualdeep
       drillingtime = Tourreport.sum_drillingtime(hole.id)
+      if drillingtime ==0
+        return 0
+      end
       v = deep/drillingtime
       return v
     end

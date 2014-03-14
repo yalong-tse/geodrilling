@@ -147,8 +147,20 @@ class TourreportsController < ApplicationController
     end
   end
 
+  # 查询报表的内容
   def holesreport
-    @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
+    logger.info("=============================")
+    logger.info params[:holenumber]
+    logger.info params[:contractname]
+    if params[:holenumber]
+      @holes = Hole.where("holenumber like ?", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
+    elsif params[:contractname]
+      @holes = Hole.where("contract.name like ?", "%#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
+    elsif (params[:contractname] && params[:holenumber])
+      @holes = Hole.where("holenumber=? and contract.name like ?", "%#{params[:holenumber]}%","#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
+    else
+      @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
+    end
 
     respond_to do |format|
       format.html

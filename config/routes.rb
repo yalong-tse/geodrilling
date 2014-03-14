@@ -87,6 +87,7 @@ Geodrilling::Application.routes.draw do
 
   get "tourreports/indexformodify"
   get "tourreports/holesreport"
+  post "tourreports/holesreport"
 
   resources :tourreports
 
