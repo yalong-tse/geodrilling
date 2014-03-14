@@ -151,7 +151,7 @@ class Tourreport < ActiveRecord::Base
       if hours==0 
         return 0
       end
-      return (summary/hours)*30.0*24.0
+      return format("%.2f",(summary/hours)*30.0*24.0)
     end
   end
 

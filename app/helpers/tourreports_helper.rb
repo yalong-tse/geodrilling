@@ -117,7 +117,7 @@ module TourreportsHelper
     if(holeid)
       hole = Hole.find(holeid)
       per = Tourreport.sumcore(hole.id).to_i/(hole.actualdeep.nil?? 1:hole.actualdeep) ;
-      return per
+      return format("%.2f",per)
     end
   end
 
@@ -131,7 +131,7 @@ module TourreportsHelper
         return 0
       end
       v = deep/drillingtime
-      return v
+      return format("%.2f",v)
     end
   end
 end
