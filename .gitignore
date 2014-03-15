@@ -32,7 +32,7 @@ log/
 .ruby-gemset
 
 #Ignore the db/schema.rb
-#/db/schema.rb
+/db/schema.rb
 #Ignore all vim temp files
 *~
 *.swp
