@@ -9,6 +9,7 @@ namespace 'permissions' do
     Permission.create({:name=>"新增钻孔",:description=>"新增钻孔", :subject_class=>"Hole", :action=>"new"})
     Permission.create({:name=>"钻孔配置",:description=>"钻孔配置", :subject_class=>"Hole", :action=>"deployment"})
     Permission.create({:name=>"钻孔查询",:description=>"钻孔查询", :subject_class=>"Hole", :action=>"index"})
+    Permission.create({:name=>"钻孔终孔",:description=>"钻孔终孔", :subject_class=>"Hole", :action=>"close"})
     Permission.create({:name=>"班报填写",:description=>"班报填写", :subject_class=>"Tourreport", :action=>"new"})
     Permission.create({:name=>"班报修改",:description=>"班报修改", :subject_class=>"Tourreport", :action=>"edit"})
     Permission.create({:name=>"班报查询",:description=>"班报查询", :subject_class=>"Tourreport", :action=>"index"})

@@ -94,7 +94,7 @@
       </li>
       <% end %>
 
-      <% if can? :index, Hole %>
+      <% if can? :close, Hole %>
       <li <%= active_page?(holes_closelist_path) %> <%=active_page?(holes_close_path)%> >
         <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔终孔')), holes_closelist_path %>
       </li>
