@@ -130,4 +130,5 @@ class UsersController < ApplicationController
   def load_department
     @department = Department.find(params[:department_id])
   end
+
 end

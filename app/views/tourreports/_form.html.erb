@@ -87,7 +87,7 @@
     <div class="controls">
       <% if @hole.outerflag==1 %>
         <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME , :selected=>"00:00"),{}, {:class=>"input-small",:onchange=>"change_time()"}) %>&nbsp;&nbsp;至&nbsp;
-      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"23:59" ), {},{:class=>"input-small",:readonly=>true} ) %>
+      <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"24:00" ), {},{:class=>"input-small",:readonly=>true} ) %>
       <% else %>
       <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME),{}, {:class=>"input-small",:onchange=>"change_time()"}) %>&nbsp;&nbsp;至&nbsp;
       <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {},{:class=>"input-small",:readonly=>true} ) %>

@@ -43,7 +43,9 @@
 
           <tr>
             <td><strong>设计书附件</strong></td>
+            <% if @hole.attachment %>
             <td colspan="3"><span class="text-error"><%=link_to @hole.attachment.data.url do %><%=@hole.attachment.data_origin_file_name%><%end %></span></td>
+            <% end %>
           </tr>
 
           <tr>
