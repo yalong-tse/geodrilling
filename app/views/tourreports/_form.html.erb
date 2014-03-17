@@ -671,17 +671,17 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
       $("input[name='workcontent_drilllength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" &&  pattern.test($(this).val()) ) 
           {
-          drillsummary+=Math.round($(this).val()*1000)/1000;
+            drillsummary+=Math.round($(this).val()*1000)/1000;
           }
       });
 
-      $("#tourreport_tourshift").val(drillsummary);
+      $("#tourreport_tourshift").val(drillsummary.toFixed(2));
       var coresummary = 0.00;
       $("input[name='workcontent_corelength[]']").each(function(i){
           if($(this).val()!=undefined && $(this).val()!="" && pattern.test($(this).val()) ) 
           coresummary+=Math.round($(this).val()*1000)/1000;
        });
-      $("#tourreport_tourcore").val(coresummary);
+      $("#tourreport_tourcore").val(coresummary.toFixed(2));
   }
 
   function length_content(obj)
@@ -709,6 +709,8 @@ var new_line = '<tr><td><input type="button" name="_deleterow" id="_deleterow" o
         var _endtime_ms = Date.parse("2013/09/13 " + finishstr);
         var _span = _endtime_ms - _starttime_ms;
         var hours = Math.floor(_span/(3600*1000));
+        if(hours<0)
+          hours = 24+hours;
         var leave = _span%(3600*1000);
         var minutes = Math.floor(leave/(60*1000));
         if(minutes<10)
