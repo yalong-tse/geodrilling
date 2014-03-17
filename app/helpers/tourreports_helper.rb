@@ -91,7 +91,7 @@ module TourreportsHelper
     result =Tourreport.getLastTakeovertools(holeid)
     if (result.nil? || result.empty?)
     result ="1个单根，长 米：①      ②      ③     ④     ⑤     \r";
-    result << "1个立根，长546米，机长钻杆长 米\r"
+    result << "1个立根，长546米，机上钻杆长 米\r"
     result << "粗径钻具全长  米，钻具总长  米 "
     end
     result.html_safe
