@@ -1,35 +1,32 @@
 Geodrilling::Application.routes.draw do
-  get "holedesigner/view"
+  match "holedesigner/view" , :via=> :get , :as=> :holedesigner_view
 
-  get "leader/holeproduct"
-  get "leader/holefinish"
-  get "leader/contract"
-  get "leader/yearreport"
+  match "leader/holeproduct" , :via=> :get , :as => :leader_holeproduct
+  match "leader/holefinish" , :via=>:get , :as=> :leader_holefinish
+  match "leader/contract" , :via=>:get, :as=> :leader_contract
+  match "leader/yearreport" , :via=>:get, :as => :leader_yearreport
 
-  get "groups/index"
-  get "groups/main"
-  get "groups/deploy"
-  post "groups/saveleader"
+  match "groups/index" , :via=>:get , :as=>:groups_index
+  match "groups/main" , :via=>:get , :as=>:groups_main
+  match "groups/deploy" , :via=>:get , :as=>:groups_deploy
+  match "groups/saveleader", :via=>:post , :as=>:groups_saveleader
+
   resources :groups
+
 
   get "useroperation/index"
 
   get "useroperation/show"
 
-  get "dictionary/index"
+  match "dictionary/index" , :via=>:get , :as=>:dictionary_index
+  match "dictionary/show", :via=>:get , :as=>:dictionary_show
+  match "dictionary/new" , :via=>:get , :as=>:dictionary_new
+  match "dictionary/destroy" ,:via=>:get , :as=>:dictionary_destroy
+  match "dictionary/create" ,:via=>:post
 
-  get "dictionary/show"
-
-  get "dictionary/new"
-
-  get "dictionary/destroy"
-
-  post "dictionary/create"
-
-  get "pump/index"
-
-  post "pump/create"
-  post "pump/dismiss"
+  match "pump/index" , :via=>:get
+  match "pump/create" , :via=>:post
+  match "pump/dismiss", :via=>:post
 
   get "pump/new"
 
@@ -95,10 +92,11 @@ Geodrilling::Application.routes.draw do
   get "holelist/deployment"
   post "holelist/create"
 
-  get "holes/download"
-  get "holes/list"
-  get "holes/closelist"
-  get "holes/tourreports"
+  match "holes/download" ,:via =>:get , :as => :holes_download
+  match "holes/list" , :via=> :get , :as =>:holes_list
+  match "holes/closelist" ,:via=>:get , :as=>:holes_closelist
+  match "holes/tourreports" ,:via=>:get , :as=> :holes_tourreports
+
   get "holes/tourreportsmodify"
   get "holes/close"
   get "contracts/indexforclose"
