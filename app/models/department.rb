@@ -19,6 +19,16 @@ class Department < ActiveRecord::Base
     }
   end
 
+  # for 合同中下拉框的选择
+  def self.to_select
+    arr = []
+    order("id asc").each do |d|
+      arr << [d.name,d.id]
+    end
+    return arr
+  end
+
+  # 
   def self.to_dhtmlxtree_node
     { :id => 0, :item => dhtmlxtree(Department.arrange :order=> :depcode) }
   end
@@ -73,5 +83,6 @@ class Department < ActiveRecord::Base
     end
     return a
   end
+
 
 end

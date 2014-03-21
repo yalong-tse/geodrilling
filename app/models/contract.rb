@@ -10,7 +10,7 @@ class Contract < ActiveRecord::Base
   #fundsource ,资金来源
   #status的四种状态, 0-待执行,1-正在执行,2-已经完成,3-已经归档，只有已经完成的合同可以归档。
   #workshift ，合同的总工作量
-  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets, :contractassets_attributes, :workshift
+  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets, :contractassets_attributes, :workshift, :department, :administrator
 
   has_many :holes
 
@@ -20,6 +20,8 @@ class Contract < ActiveRecord::Base
 
   #合同的附件, 不用自己发明轮子了
   #belongs_to :attachment,:class_name=>"Attachment", :foreign_key=>"attachment_id" 
+  belongs_to :department , :class_name=>"Department", :foreign_key=>"department_id"
+  belongs_to :administrator, :class_name=>"User", :foreign_key=>"administrator_id"
 
   # 待归档的合同
   scope :wait_archive, :conditions => {:status=>2}

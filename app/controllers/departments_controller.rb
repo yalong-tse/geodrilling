@@ -2,7 +2,7 @@
 class DepartmentsController < ApplicationController
   layout 'iframe', :only => [:index, :show, :edit]
   
-#  load_and_authorize_resource
+ #  load_and_authorize_resource
  # before_filter :load_permissions # call this after load and authorize else it gives a cancan error
 
   # GET /departments
@@ -92,7 +92,7 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
-    logger.debug "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&destroy=#{params[:id]}"
+    #logger.debug "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&destroy=#{params[:id]}"
     @department = Department.find(params[:id])
     @department.destroy
 
@@ -105,7 +105,7 @@ class DepartmentsController < ApplicationController
 
   # dynamic autoloading tree node
   def dynamic_tree
-    logger.debug "dynamic_tree ************************#{params[:id]}"
+    #logger.debug "dynamic_tree ************************#{params[:id]}"
     @department_tree = Department.dynamic_dhtmlxtree(params[:id])
     respond_to do |format|
       format.json {render json: @department_tree}

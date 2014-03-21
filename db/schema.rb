@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302042727) do
+ActiveRecord::Schema.define(:version => 20140319061558) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(:version => 20140302042727) do
     t.date     "startdate"
     t.date     "finishdate"
     t.integer  "status"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.string   "projectname"
     t.string   "buyerparty"
     t.string   "projectaddr"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20140302042727) do
     t.string   "fundsource"
     t.integer  "attachment_id"
     t.string   "workshift"
+    t.decimal  "department_id",    :precision => 10, :scale => 0
+    t.decimal  "administrator_id", :precision => 10, :scale => 0
   end
 
   create_table "departments", :force => true do |t|

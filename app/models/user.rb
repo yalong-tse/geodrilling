@@ -124,5 +124,14 @@ class User < ActiveRecord::Base
       "班长"
     end
   end
+  
+  # 获取所有的项目经理
+  def self.get_all_administrators
+    arr=[]
+    where(:position=>1).order("id asc").each do |u|
+      arr << [u.name, u.id]
+    end
+    return arr
+  end
 end
 
