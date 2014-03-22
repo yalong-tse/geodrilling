@@ -65,6 +65,12 @@
               <td ><span class="text-error"><%= @contract.workshift %>m</span></td>
           </tr>
           <tr>
+              <td style="text-align:center"><strong>所属部门</strong></td>
+              <td ><span class="text-error"><%= @contract.department.name if @contract.department %></span></td>
+              <td style="text-align:center"><strong>项目经理</strong></td>
+              <td ><span class="text-error"><%= @contract.administrator.name if @contract.administrator %></span></td>
+          </tr>
+          <tr>
               <td style="text-align:center"><strong>合同附件</strong></td>
               <td colspan="3">
                 <% @contract.contractassets.each do |att| %>

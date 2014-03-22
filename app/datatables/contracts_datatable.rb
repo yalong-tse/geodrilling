@@ -1,6 +1,7 @@
 #encoding: utf-8
 class ContractsDatatable
   delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
+  include GlobalFun
 
   def initialize(view)
     @view = view
@@ -42,20 +43,6 @@ private
     end
   end
 
-  def contract_status_treat(args)
-    code = ""
-    case args
-    when 0 
-    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
-    when 1 
-    code << "<span class='label label-warning arrowed-in'>正在执行</span>";
-    when 2 
-    code << "<span class='label label-success arrowed-in'>已经完成</span>";
-    when 3 
-    code <<  "<span class='label label-info arrowed-in'>已经归档</span>";
-    end
-    code.html_safe
-  end
 
   def contracts
     @contracts ||= fetch_contracts

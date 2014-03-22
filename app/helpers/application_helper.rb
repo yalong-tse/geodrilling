@@ -35,16 +35,22 @@ module ApplicationHelper
     code.html_safe
   end
 
+  # 钻孔编号处理
   def holenumber_dealing(holeid)
     result = ""
-    logger.info("==============="+holeid)
+    #logger.info("==============="+holeid)
     if holeid then 
       hole = Hole.find(holeid) if holeid
-      result = hole.contract.name + "[" + hole.holenumber + "]" if hole
+      if (hole.outerflag)
+        result = hole.contract.name + "[" + hole.holenumber + "]" +"[外协]"  if hole
+      else
+        result = hole.contract.name + "[" + hole.holenumber + "]" if hole
+      end
     end
     return result
   end
 
+  # 钻孔是否归档
   def hole_enable_archive(status)
     code = ""
     if status == 2 
@@ -77,6 +83,7 @@ module ApplicationHelper
     end
   end
 
+
   def tourreport_status_display(args)
     code = ""
     case args
@@ -87,6 +94,7 @@ module ApplicationHelper
     end
     code.html_safe
   end
+
 
   def pump_group(rig)
     html = ""
@@ -102,6 +110,7 @@ module ApplicationHelper
     html.html_safe
   end
 
+
   def drilltower_group(rig)
     html = ""
     if (rig.drilltower && rig.drilltower.model)
@@ -115,6 +124,7 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
 
   def hole_use_device(hole)
     html = ""
@@ -231,23 +241,27 @@ module ApplicationHelper
   end
 
 
-  # 根据holeid 获取 钻孔的机长
+  # 根据holeid 获取 钻孔的机长, 
+  # 如果为外协孔的话，就需要显示项目经理
   def hole_administrator(holeid)
-    result =""
+    result = ""
     d = Deployment.find_by_hole_id holeid
     if d
       if d.user
         result << d.user.name
-        if (d.user.members)
-          result << "["
-          d.user.members.each do |m|
-            result << m.name + " "
+        #logger.info("the result is #{result}");
+        unless d.user.position==1
+          if (d.user.members)
+           result << "["
+             d.user.members.each do |m|
+               result << m.name + " "
+             end
+           # 去掉后侧空格
+           result = result.rstrip
+           result << "]"
           end
-          # 去掉后侧空格
-          result = result.rstrip
-          #result.rstrip!
-          result << "]"
         end
+        return result
       end
     else
       return result 
@@ -328,19 +342,6 @@ module ApplicationHelper
     end
   end
 
-  # 得到所有的机长，以及机长下属的所有班长
-  def get_leader_member
-    result = ""
-    Group.get_all_leader.each do |leader|
-      result<< "<option value='" + leader.id.to_s + "'>" +"机长:" + leader.name + " [班长：";
-        leader.members.each do |user|
-          result << user.name + " "
-        end
-      result = result.rstrip
-      result <<  "]"  + "</option>"
-    end
-    return result.html_safe;
-  end
 
   # 得到每个设备的状态 
   def get_device_status(obj)

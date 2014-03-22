@@ -10,7 +10,9 @@ class Contract < ActiveRecord::Base
   #fundsource ,资金来源
   #status的四种状态, 0-待执行,1-正在执行,2-已经完成,3-已经归档，只有已经完成的合同可以归档。
   #workshift ，合同的总工作量
-  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets, :contractassets_attributes, :workshift, :department, :administrator
+  attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets, :contractassets_attributes, :workshift, :department_id, :administrator_id
+
+  attr_reader :department, :administrator
 
   has_many :holes
 

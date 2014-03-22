@@ -1,6 +1,7 @@
 #encoding: utf-8
 class HolescloseDatatable
   delegate :params, :h,:hole_path, :holes_close_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
+  include GlobalFun
 
   def initialize(view)
     @view = view
@@ -20,8 +21,7 @@ private
   def data
     holes.map do |hole|
       [
-        h(hole.holenumber),
-        h(hole.contract.name),
+        h(holenumber_dealing(hole.id)),
         h(hole.designdeep),
         h(hole.actualdeep),
         h(hole.designcoreratio),
@@ -39,23 +39,6 @@ private
       code << "<button class=\"btn btn-mini btn-success tooltip-success\" onclick='open_detail(\""+ holes_close_path + "?id="+hole.id.to_s+"\")' rel=\"tooltip\" title=\"钻孔终孔\")'><i class=\"icon-cogs bigger-120\"></i></button>"
     end
     code << "</div>"
-    code.html_safe
-  end
-
-  def hole_status_treat(args)
-    code = ""
-    case args
-    when 0
-    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
-    when 1 
-    code << "<span class='label label-success arrowed-in'>执行中</span>";
-    when 2 
-    code << "<span class='label label-alert arrowed-in'>终孔</span>";
-    when 3 
-    code << "<span class='label label-inverse arrowed-in'>停工</span>";
-    when 4 
-    code <<  "<span class='label label-warning arrowed-in'>续作</span>";
-    end
     code.html_safe
   end
 

@@ -5,7 +5,6 @@
 <thead>
   <tr>
     <th>孔号</th>
-    <th>合同名称</th>
     <th>设计深度(m)</th>
     <th>当前深度(m)</th>
     <th>设计取心率(%)</th>
@@ -41,7 +40,7 @@
   });
 
    var oTable1=$("#_hole_table").dataTable({
-        "aoColumns":[null,null,null,null,null,null,null,null,{"bSortable":false} ],
+        "aoColumns":[null,null,null,null,null,null,null,{"bSortable":false} ],
         "bServerSide":true,
         "bAutoWidth" : false,
         "sAjaxSource":"<%=holes_closelist_path(:format=>:json) %>",
