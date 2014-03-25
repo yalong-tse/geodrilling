@@ -106,7 +106,7 @@ class Hole < ActiveRecord::Base
     if !file.nil?
       @attachment = Attachment.new
       rename = @attachment.save_att(file)
-      logger.info("the rename is #{rename}");
+      #logger.info("the rename is #{rename}");
       @attachment.save
       self.attachment_id = @attachment.id
     end
@@ -174,9 +174,11 @@ class Hole < ActiveRecord::Base
 
   end
 
+
   # 增加 as_json 方法
   def as_json(options={})
     super.as_json(options).merge({:statusstr=> statusstr}).merge({:attachmentstr=>attachmentstr})
   end
+
 
 end

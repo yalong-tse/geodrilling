@@ -11,10 +11,12 @@ class SessionsController < ApplicationController
       redirect_to root_url, :alert => t("prompt.invalid.account")
       return false
     end
+
     if params[:password].blank?
       redirect_to root_url, :alert => t("prompt.invalid.password")
       return false
     end
+
     user = User.authenticate(params[:account], params[:password])
     if user
       session[:user_id] = user.id
@@ -23,10 +25,12 @@ class SessionsController < ApplicationController
       flash.now.alert = t("prompt.invalid.login")
       render "new"
     end
+
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url
   end
+
 end

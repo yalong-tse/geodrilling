@@ -5,10 +5,10 @@ module GlobalFun
     result = ""
     if holeid then 
       hole = Hole.find(holeid) if holeid
-      if (hole.outerflag)
-        result = hole.contract.name + "[" + hole.holenumber + "]" +"[外协]"  if hole
+      if (hole.outerflag && hole.outerflag==1)
+        result = hole.contract.name + "【" + hole.holenumber + "】" +"【外协】"  if hole
       else
-        result = hole.contract.name + "[" + hole.holenumber + "]" if hole
+        result = hole.contract.name + "【" + hole.holenumber + "】" if hole
       end
     end
     return result
@@ -49,7 +49,6 @@ module GlobalFun
     code.html_safe
   end
 
-  # 规范时间显示的方法
   def regtime(args)
     if(args)
       args.strftime("%Y-%m-%d")
@@ -57,5 +56,4 @@ module GlobalFun
       ""
     end
   end
-
 end

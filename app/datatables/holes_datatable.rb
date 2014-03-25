@@ -1,8 +1,9 @@
 #encoding: utf-8
 class HolesDatatable
-  delegate :params, :h,:hole_path, :holes_close_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h,:hole_path, :holes_close_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, :session, to: :@view 
 
   include GlobalFun
+  include HolesUtils
 
   def initialize(view)
     @view = view
@@ -50,7 +51,7 @@ private
   end
 
   def fetch_holes
-    holes = Hole.unclosed.order("#{sort_column} #{sort_direction}")
+    holes = Hole.where("id in (?)", getHoles).order("#{sort_column} #{sort_direction}")
     holes = holes.page(page).per_page(per_page)
     if params[:sSearch].present?
       holes = holes.where("minearea like :search or holenumber like :search ", search: "%#{params[:sSearch]}%")

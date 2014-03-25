@@ -41,7 +41,7 @@ module ApplicationHelper
     #logger.info("==============="+holeid)
     if holeid then 
       hole = Hole.find(holeid) if holeid
-      if (hole.outerflag)
+      if (hole.outerflag && hole.outerflag==1)
         result = hole.contract.name + "[" + hole.holenumber + "]" +"[外协]"  if hole
       else
         result = hole.contract.name + "[" + hole.holenumber + "]" if hole
