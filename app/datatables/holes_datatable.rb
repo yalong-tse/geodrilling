@@ -51,7 +51,11 @@ private
   end
 
   def fetch_holes
-    holes = Hole.where("id in (?)", getHoles).order("#{sort_column} #{sort_direction}")
+    if getHoles.empty?
+      holes = Hole.order("#{sort_column} #{sort_direction}")
+    else
+      holes = Hole.where("id in (?)", getHoles).order("#{sort_column} #{sort_direction}")
+    end
     holes = holes.page(page).per_page(per_page)
     if params[:sSearch].present?
       holes = holes.where("minearea like :search or holenumber like :search ", search: "%#{params[:sSearch]}%")

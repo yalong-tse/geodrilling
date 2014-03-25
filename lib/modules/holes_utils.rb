@@ -18,7 +18,8 @@ module HolesUtils
         holeids = Hole.where("contract_id in (?)",contractids).pluck(:id)
       else
         logger.info "3333333333333333333333"
-        unclosed(:include=> :Contract, :conditions=>{ :department_id => user.department.id })
+        #unclosed(:include=> :Contract, :conditions=>{ :department_id => user.department.id })
+        return holeids
       end
     end
 
