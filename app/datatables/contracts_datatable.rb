@@ -37,14 +37,6 @@ private
     end
   end
 
-  def regtime(args)
-    if(args)
-      args.strftime("%Y-%m-%d")
-    else
-      ""
-    end
-  end
-
 
   def contracts
     @contracts ||= fetch_contracts

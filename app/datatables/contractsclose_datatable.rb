@@ -1,7 +1,8 @@
 #encoding: utf-8
 class ContractscloseDatatable
-  delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h, :link_to, :number_to_currency, :logger, :session, to: :@view
   include GlobalFun
+  include ContractsUtils
 
   def initialize(view)
     @view = view

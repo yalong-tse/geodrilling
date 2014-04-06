@@ -16,7 +16,8 @@ class Contract < ActiveRecord::Base
 
   has_many :holes
 
-  # 修改为使用 paperclip 来管理附件，一个合同可以有多个附件,
+  # 修改为使用 paperclip 来管理附件，一个合同可以有多个附件
+
   has_many :contractassets, :dependent=>:destroy ,:class_name=>"Contractassets"
   accepts_nested_attributes_for :contractassets ,:allow_destroy => true
 

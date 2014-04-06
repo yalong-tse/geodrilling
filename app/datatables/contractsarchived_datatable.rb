@@ -1,6 +1,10 @@
 #encoding: utf-8
 class ContractsarchivedDatatable
-  delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h, :link_to, :number_to_currency, :logger, :session, to: :@view
+
+  include GlobalFun
+  include ContractsUtils
+
 
   def initialize(view)
     @view = view
@@ -33,29 +37,6 @@ private
     end
   end
 
-  def regtime(args)
-    if(args)
-      args.strftime("%Y-%m-%d")
-    else
-      ""
-    end
-  end
-
-  def contract_status_treat(args)
-    code = ""
-    case args
-    when 0
-    code << "<span class='label label-inverse arrowed-in'>待执行</span>";
-    when 1
-    code << "<span class='label label-warning arrowed-in'>正在执行</span>";
-    when 2
-    code << "<span class='label label-success arrowed-in'>已经完成</span>";
-    when 3
-    code <<  "<span class='label label-info arrowed-in'>已经归档</span>";
-    end
-    code.html_safe
-  end
-
   def operation_dealing(args)
     code = ""
     if args
@@ -71,6 +52,7 @@ private
   def fetch_contracts
     contracts = querycontracts(sort_column,sort_direction)
     contracts = contracts.archived
+    #logger.info("#{sort_column} #{sort_direction}")
     contracts = contracts.page(page).per_page(per_page)
     if params[:sSearch].present?
       contracts = contracts.wait_archive.where("name like :search or projectname like :search or owner like :search or buyerparty like :search ", search: "%#{params[:sSearch]}%")

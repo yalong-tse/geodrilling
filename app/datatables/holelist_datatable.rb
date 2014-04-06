@@ -1,9 +1,10 @@
 #encoding: utf-8
 # 钻孔列表用于填写班报的功能
 class HolelistDatatable
-  delegate :params, :h,:hole_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h,:hole_path, :tourreports_path, :new_tourreport_path, :schedule_index_path,:link_to, :number_to_currency, :logger, :session, to: :@view
 
   include GlobalFun
+  include HolesUtils
 
   def initialize(view)
     @view = view
@@ -49,7 +50,8 @@ private
   end
 
   def fetch_holes
-    holes = Hole.where("status=1").order("#{sort_column} #{sort_direction}")
+    holes = queryholes(sort_column,sort_direction)
+    holes = holes.where("status=1")
     holes = holes.page(page).per_page(per_page)
     if params[:sSearch].present?
       holes = holes.where("minearea like :search or holenumber like :search ", search: "%#{params[:sSearch]}%")
