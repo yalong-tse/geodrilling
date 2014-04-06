@@ -12,7 +12,7 @@ class Contract < ActiveRecord::Base
   #workshift ，合同的总工作量
   attr_accessible :content, :finishdate, :name,:projectname,:buyerparty,:projectaddr,:remark,:contractno,:owner, :signdate, :startdate,:finishdate, :status,:fundsource,:contractamount, :contractassets, :contractassets_attributes, :workshift, :department_id, :administrator_id
 
-  attr_reader :department, :administrator
+  attr_readonly :department, :administrator
 
   has_many :holes
 

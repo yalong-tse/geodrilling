@@ -1,7 +1,9 @@
 #encoding: utf-8
 class ContractsDatatable
-  delegate :params, :h, :link_to, :number_to_currency, :logger, to: :@view
+  delegate :params, :h, :link_to, :number_to_currency, :logger,:session, to: :@view
+
   include GlobalFun
+  include ContractsUtils
 
   def initialize(view)
     @view = view
@@ -48,9 +50,11 @@ private
     @contracts ||= fetch_contracts
   end
 
+
   def fetch_contracts
-    contracts = Contract.unclosed.order("#{sort_column} #{sort_direction}")
-    logger.info("#{sort_column} #{sort_direction}")
+    contracts = querycontracts(sort_column,sort_direction)
+    contracts = contracts.unclosed
+    #logger.info("#{sort_column} #{sort_direction}")
     contracts = contracts.page(page).per_page(per_page)
     if params[:sSearch].present?
       contracts = contracts.where("name like :search or projectname like :search or owner like :search or buyerparty like :search ", search: "%#{params[:sSearch]}%")

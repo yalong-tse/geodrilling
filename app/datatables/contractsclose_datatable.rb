@@ -50,8 +50,9 @@ private
   end
 
   def fetch_contracts
-    contracts = Contract.closed.order("#{sort_column} #{sort_direction}")
-    logger.info("#{sort_column} #{sort_direction}")
+    contracts = querycontracts(sort_column,sort_direction)
+    contracts = contracts.closed
+    #logger.info("#{sort_column} #{sort_direction}")
     contracts = contracts.page(page).per_page(per_page)
     if params[:sSearch].present?
       contracts = contracts.wait_archive.where("name like :search or projectname like :search or owner like :search or buyerparty like :search ", search: "%#{params[:sSearch]}%")
