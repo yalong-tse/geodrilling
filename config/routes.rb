@@ -106,13 +106,16 @@ Geodrilling::Application.routes.draw do
 
   get "/contractschart" => "contracts#chart", :as=>"contractschart"
 
-  get "schedule/index"
+  match "schedule/index" ,:via =>:get , :as => :schedule_index
 
-  get "mobile/contracts"
-  get "mobile/contractholes"
-  get "mobile/getdeployments"
-  get "mobile/holedetail"
-  post "mobile/savetourreport"
+  #for mobile rest service 
+  match "mobile/contracts" ,:via =>:get , :as => :mobile_contracts
+  match "mobile/contractholes" ,:via =>:get , :as => :mobile_contractholes
+  match "mobile/getdeployments" ,:via =>:get , :as => :mobile_getdeployments
+  match "mobile/holedetail" ,:via =>:get , :as => :mobile_holedetail
+  match "mobile/validateuser" ,:via =>:post , :as => :mobile_savetourreport
+  match "mobile/validateuser" ,:via =>:get , :as => :mobile_validateuser
+  match "mobile/queryownholes" ,:via =>:get , :as => :mobile_queryownholes
 
   resources :teams
 

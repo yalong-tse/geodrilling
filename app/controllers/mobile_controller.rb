@@ -1,8 +1,9 @@
 #encoding: utf-8
 class MobileController < ApplicationController
 
-  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport,:holedetail]
+  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport,:holedetail, :validateuser,:queryownholes]
 
+  include HolesUtils
   # 根据合同编号获取所有的钻孔列表的
   # android 手机端使用的方法
   def contractholes 
@@ -194,4 +195,49 @@ class MobileController < ApplicationController
     hole = Hole.find(params[:holeid])
 
   end
+
+  # 验证用户登录
+  def validateuser
+    result =""
+    if params[:account].blank?
+      result = "false"
+    end
+
+    if params[:password].blank?
+      result = "false"
+    end
+
+    user = User.authenticate(params[:account], params[:password])
+    if user
+      result = user.id.to_s 
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render :json=> result}
+    end
+  end
+
+
+  # 获取自己管辖的钻孔
+  def queryownholes
+    if params[:userid]
+      holes = findholes(params[:userid])
+      @objs = Array.new
+      holes.each do |hole|
+        @objs << {
+        :id=> h.id,
+        :minearea =>h.minearea,
+        :contractname => h.contract.name,
+        :holenumber=>h.holenumber
+        }
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render :json=> @objs}
+    end
+  end
+
 end
