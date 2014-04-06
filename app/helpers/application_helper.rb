@@ -42,9 +42,9 @@ module ApplicationHelper
     if holeid then 
       hole = Hole.find(holeid) if holeid
       if (hole.outerflag && hole.outerflag==1)
-        result = hole.contract.name + "[" + hole.holenumber + "]" +"[外协]"  if hole
+        result = hole.contract.name + "【" + hole.holenumber + "】" +"【外协】"  if hole
       else
-        result = hole.contract.name + "[" + hole.holenumber + "]" if hole
+        result = hole.contract.name + "【" + hole.holenumber + "】" if hole
       end
     end
     return result
@@ -246,11 +246,25 @@ module ApplicationHelper
   def hole_administrator(holeid)
     result = ""
     d = Deployment.find_by_hole_id holeid
-    if d
-      if d.user
+    # 如果是外协孔，就显示项目经理
+    hole = Hole.find(holeid) if holeid
+    if (hole.outerflag && hole.outerflag==1)
+      if d && d.user && d.user.position==1
+        result << d.user.name
+        result << "{}"
+        return result
+      end
+    else
+      #  自己管理的孔
+      if d && d.user
+        if d.user.leader
+          result << d.user.leader.name
+          result << "{"
+        end
+
         result << d.user.name
         #logger.info("the result is #{result}");
-        unless d.user.position==1
+        if d.user.position==2
           if (d.user.members)
            result << "["
              d.user.members.each do |m|
@@ -261,11 +275,12 @@ module ApplicationHelper
            result << "]"
           end
         end
-        return result
+        if d.user.leader
+          result << "}"
+        end
       end
-    else
-      return result 
     end
+    return result 
   end
 
   # 根据钻孔id 获得钻孔的项目经理
