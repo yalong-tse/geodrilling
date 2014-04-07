@@ -15,6 +15,30 @@
         </div>
         <div class="widget-body">
           <div class="widget-main no-padding">
+            <% if @tourreport.hole &&  @tourreport.hole.outerflag == 1 %>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>钻孔类型</th>
+                    <th>钻孔编号</th>
+                    <th>班报时间</th>
+                    <th>本班进尺</th>
+                    <th>当前孔深</th>
+                    <th>项目经理</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>外协孔</td>
+                    <td><%= @tourreport.hole.holenumber if @tourreport.hole %></td>
+                    <td><%= @tourreport.starttime.strftime("%H:%M") %> 至 24:00 </td>
+                    <td><%= @tourreport.tourshift %></td>
+                    <td><%= @tourreport.currentdeep %></td>
+                    <td><li><i class="icon-group blue"></i><% if @tourreport.administrator %><%=User.find(@tourreport.administrator).name%><% end %></li></td>
+                  </tr>
+                </tbody>
+              </table>
+            <% else %>
               <table class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
@@ -120,6 +144,9 @@
                     </td>
                   </tr>
                 </tfoot>
+              </table>
+
+            <% end %>
 
           </div>
         </div>

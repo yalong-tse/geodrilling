@@ -27,13 +27,14 @@ class Tourreport < ActiveRecord::Base
   # centralizer 扶正器长
   # antideviation 防斜措施
   # mudamount 泥浆消耗量
+  # 如果为外协孔，只需要填写0-24小时，然后填写班报日期，班报时间和进尺即可和项目经理
   attr_accessible :administrator, :finishtime, :holeid, :recorder, :remark, :starttime, :tourauxiliarytime, :tourcore, :tourdate, :tourdrillingtime, :tourleader, :tourshift, :status, :lastdeep, :currentdeep, :intrumenttakeover, :takeoverremark, :holeaccidenttime,:deviceaccidenttime,:othertime,:totaltime,:projectmanager,:lastleader,:nextleader,:centralizer,:antideviation
   # 属于哪个钻孔
   belongs_to :hole, :class_name=>"Hole", :foreign_key=>"holeid"
   has_many :tourreportworkcontent
   TOURTIME=[['00:00'],['01:00'],['02:00'],['03:00'],['04:00'],['05:00'],['06:00'],['07:00'],['08:00'],['09:00'],['10:00'],['11:00'],['12:00'],['13:00'],['14:00'],['15:00'],['16:00'],['17:00'],['18:00'],['19:00'],['20:00'],['21:00'],['22:00'],['23:00'],['24:00']]
   #TOURTIME2=[['00:00'],['12:00']]
-  WORKITEM=[['接班'],['交班'],['加减钻具'],['钻进'],['起下钻、取心'],['起钻、取心'],['起钻'],['下钻'],['取心'],['孔内事故'],['设备故障'],['停待'],['简易水文观测'],['封孔'],['其他']]
+  WORKITEM=[['接班'],['交班'],['辅助'],['钻进'],['起下钻、取心'],['起钻、取心'],['起钻'],['下钻'],['取心'],['孔内事故'],['设备故障'],['停待'],['简易水文观测'],['封孔'],['其他']]
 
   scope :archive, :conditions => {:status=>2}
 
