@@ -72,8 +72,21 @@ class TourreportsController < ApplicationController
     @tourreport.source=1
 
     thehole = Hole.find(@tourreport.holeid) if @tourreport.holeid 
-    thehole.actualdeep = @tourreport.currentdeep 
-    thehole.save
+    if thehole
+      # 保存当前孔深
+      thehole.actualdeep = @tourreport.currentdeep 
+      thehole.save
+      # 如果是外协孔,则项目经理就是配置的人员ID，否则就填写合同的项目经理经理即可
+      if thehole.outerflag ==1
+        deployment = Deployment.find_by_hole_id(thehole.id)
+        if deployment
+          @tourreport.projectmanager = deployment.user_id
+        elsif thehole.contract && thehole.contract.administrator_id
+          @tourreport.projectmanager = thehole.contract.administrator_id 
+        end
+      end
+
+    end
 
     # 工作内容的保存
     if params[:workcontent_starttime]
@@ -85,8 +98,6 @@ class TourreportsController < ApplicationController
         workcontent.upmore = params[:workcontent_upmore][i]
         workcontent.drilllength = params[:workcontent_drilllength][i]
         workcontent.holedeep = params[:workcontent_holedeep][i]
-        #workcontent.corename = params[:workcontent_corename][i]
-        #workcontent.coregrade = params[:workcontent_coregrade][i]
         workcontent.corenumber = params[:workcontent_corenumber][i]
         workcontent.corelength = params[:workcontent_corelength][i]
         workcontent.coreleftlength = params[:workcontent_coreleftlength][i]

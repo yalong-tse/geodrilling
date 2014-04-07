@@ -57,16 +57,14 @@ class Tourreport < ActiveRecord::Base
     end
   end
 
-  #获取该钻孔的上一班的孔深
+  #获取该钻孔的上一班的孔深,上一个班报的当前孔深才对
   def self.getLastHoleDeep(holeid)
     if holeid
-      tourreport = self.where("holeid=?",holeid).order("tourdate desc,starttime desc").first
+      tourreport = self.where("holeid=?",holeid).order("tourdate desc,starttime desc,id desc").first
       if tourreport
-        tourreport.lastdeep
+        tourreport.currentdeep
       end
-
     end
-
   end
 
   # 获取该孔的岩心采取长度
