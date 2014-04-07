@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :birthday, :duty, :education, :email, :isappuser, :mobile, :name, :officephone, :sex, :account, :password, :password_confirmation, :role_ids, :group_ids, :department_id, :leaderid, :position, :oldpassword
 
+  attr_readonly :department
+
   attr_accessor :password
 
   before_save :encrypt_password

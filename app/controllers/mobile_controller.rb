@@ -1,43 +1,60 @@
 #encoding: utf-8
 class MobileController < ApplicationController
 
-  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport,:holedetail, :validateuser,:queryownholes]
+  skip_before_filter :login_required?, :only => [:contracts, :contractholes,:getdeployments,:savetourreport,:holedetail, :validateuser,:queryownholes, :queryuserinfo]
 
   include HolesUtils
+
   # 根据合同编号获取所有的钻孔列表的
   # android 手机端使用的方法
   def contractholes 
-    @holes = Hole.getbycontractid(params[:contractid])
-    @objs = Array.new
-    @holes.each do |h|
-      @objs <<
-      {
-        :id=> h.id,
-        :minearea =>h.minearea,
-        :holenumber=>h.holenumber
-      }
-    end
-    respond_to do |format|
-      format.html
-      format.json {render :json=> @objs}
+    begin
+      @holes = Hole.getbycontractid(params[:contractid])
+      @objs = Array.new
+      if @holes
+        @holes.each do |h|
+          @objs <<
+          {
+            :id=> h.id,
+            :minearea =>h.minearea,
+            :holenumber=>h.holenumber
+          }
+        end
+        respond_to do |format|
+          format.html
+          format.json {render :json=> @objs}
+        end
+      end
+    rescue
+      respond_to do |format|
+        format.html
+        format.json {render :json=> "contractid invalid"}
+      end
     end
   end
 
   # for 手机端的json数据
   # url 必须以json 结尾
   def contracts 
-    @contracts = Contract.unclosed
-    @objs = Array.new
-    @contracts.each do |contract|
-      @objs << {
-        :id=>contract.id,
-        :contractno => contract.contractno,
-        :name =>contract.name
-      }
-    end
-    respond_to do |format|
-      format.xml
-      format.json {render :json=>@objs }
+    begin
+      @contracts = Contract.unclosed
+      @objs = Array.new
+      @contracts.each do |contract|
+        @objs << {
+          :id=>contract.id,
+          :contractno => contract.contractno,
+          :name =>contract.name
+        }
+      end
+      respond_to do |format|
+        format.xml
+        format.json {render :json=>@objs }
+      end
+    rescue
+      respond_to do |format|
+        format.xml
+        format.json {render :json=>"invalid" }
+      end
     end
   end
 
@@ -113,16 +130,23 @@ class MobileController < ApplicationController
 
   # 得到钻孔的详细信息,钻孔的其他信息, 比如当前的孔深，矿区，孔号
   def holedetail
-    hole = Hole.find(params[:holeid])
-    obj = {
-        :minearea=>hole.minearea,
-        :actualdeep=>hole.actualdeep,
-        :holenumber=>hole.holenumber,
-        :geologysituation=>hole.geologysituation
-        }
-    respond_to do |format|
-      format.xml
-      format.json {render :json=>obj}
+    begin
+      hole = Hole.find(params[:holeid])
+      obj = {
+          :minearea=>hole.minearea,
+          :actualdeep=>hole.actualdeep,
+          :holenumber=>hole.holenumber,
+          :geologysituation=>hole.geologysituation
+          }
+      respond_to do |format|
+        format.xml
+        format.json {render :json=>obj}
+      end
+    rescue
+      respond_to do |format|
+        format.xml
+        format.json {render :json=>"holeid invalid"}
+      end
     end
   end
 
@@ -210,6 +234,8 @@ class MobileController < ApplicationController
     user = User.authenticate(params[:account], params[:password])
     if user
       result = user.id.to_s 
+    else
+      result = "false"
     end
 
     respond_to do |format|
@@ -222,21 +248,60 @@ class MobileController < ApplicationController
   # 获取自己管辖的钻孔
   def queryownholes
     if params[:userid]
-      holes = findholes(params[:userid])
-      @objs = Array.new
-      holes.each do |hole|
-        @objs << {
-        :id=> h.id,
-        :minearea =>h.minearea,
-        :contractname => h.contract.name,
-        :holenumber=>h.holenumber
-        }
+      begin
+        holes = findholes(params[:userid])
+        @objs = Array.new
+        holes.each do |h|
+          @objs << {
+            :id=> h.id,
+            :minearea =>h.minearea,
+            :contractname => h.contract.name,
+            :outerflag => h.outerflag,
+            :holenumber=>h.holenumber
+          }
+        end
+        respond_to do |format|
+          format.html
+          format.json {render :json=> @objs}
+        end
+      rescue
+        respond_to do |format|
+          format.html
+          format.json {render :json=> @objs}
+        end
       end
     end
 
     respond_to do |format|
       format.html
-      format.json {render :json=> @objs}
+      format.json {render :json=> "userid invalid"}
+    end
+  end
+
+  # 查询该用户的详细信息
+  def queryuserinfo
+    if params[:userid]
+      begin
+        user = User.find(params[:userid])
+        obj = {
+          :name=> user.name, 
+          :duty => user.duty,
+          :mobile => user.mobile,
+          :sex => user.sex,
+          :account => user.account,
+          :position => user.position,
+          :departmentname => user.department.name
+        }
+        respond_to do |format|
+          format.html
+          format.json {render :json=> obj}
+        end
+      rescue
+        respond_to do |format|
+          format.html
+          format.json {render :json=> "userid invalid"}
+        end
+      end
     end
   end
 

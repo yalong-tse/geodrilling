@@ -116,6 +116,7 @@ Geodrilling::Application.routes.draw do
   match "mobile/validateuser" ,:via =>:post , :as => :mobile_savetourreport
   match "mobile/validateuser" ,:via =>:get , :as => :mobile_validateuser
   match "mobile/queryownholes" ,:via =>:get , :as => :mobile_queryownholes
+  match "mobile/queryuserinfo" ,:via =>:get , :as => :mobile_queryuserinfo
 
   resources :teams
 
