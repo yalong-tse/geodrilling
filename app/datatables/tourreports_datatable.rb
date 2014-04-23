@@ -39,16 +39,19 @@ private
 
   # 判断userid is nil 的情况
   def finduser(userid)
-    logger.info "the userid is #{userid}"
-    if userid && !userid.nil? && !userid.empty?
-      user = User.find(userid)
-      if user 
-        return user.name
-      else
-        return ""
-       end
+    begin
+      if userid && !userid.nil? && !userid.empty?
+        user = User.find(userid)
+        if user 
+          return user.name
+        else
+          return ""
+        end
+      end
+      return ""
+    rescue
+      return ""
     end
-    return ""
   end
 
   def renderhole(report)
