@@ -1,8 +1,9 @@
 #encoding: utf-8
 class HolelistController < ApplicationController
 
+  include HolesUtils
   def index
-    @holes_list = Hole.unclosed.order('status asc ,startdate desc')
+    @holes_list = queryholes("id","desc").unclosed.order('status asc ,startdate desc')
     #@rigmachine = Rigmachine.unused
     #@drilltower = Drilltower.unused
     #@pump = Pump.unused

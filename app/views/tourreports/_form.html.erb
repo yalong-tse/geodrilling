@@ -44,7 +44,7 @@
                 <div class="row-fluid">
                   <div class="span5">
                     <div class="control-group">
-                      <%= f.label "当前深度", :class=>"control-label" %>
+                      <%= f.label "上一班深度", :class=>"control-label" %>
                       <div class="controls">
                         <%= f.text_field :lastdeep , :class=>"input-large" ,:value=> getLastHoleDeep(@hole.id) %><span class="add-on">m</span>
                       </div>
@@ -86,7 +86,7 @@
                         <% if @tourreport.starttime.nil? %>
                         <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME, "00:00")%></select>
                           &nbsp;&nbsp;至&nbsp;
-                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME , "08:00") %></select> 
+                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME , "24:00") %></select> 
                         <% else %>
                         <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME , @tourreport.starttime.strftime("%H:%M"))%></select>
                           &nbsp;&nbsp;至&nbsp;
