@@ -218,6 +218,7 @@
     </ul>
   <% end %>
 
+  <% if can? :contract, :leader %>
   <%= content_tag :li, :class => "#{active_menu?(current_page?(leader_contract_path) || current_page?(leader_yearreport_path) || current_page?(leader_holeproduct_path)  || current_page?(leader_holefinish_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-beaker"></i>
@@ -244,6 +245,7 @@
 
     </ul>
   <% end %>
+<% end %>
   
   <%= content_tag :li, :class => "#{active_menu?(current_page?(archive_contract_path) || current_page?(archive_hole_path) || current_page?(archive_tourreport_path))}" do %>
     <a href="#" class="dropdown-toggle">
