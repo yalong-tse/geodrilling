@@ -83,8 +83,15 @@
                     <div class="control-group">
                       <%= f.label "班报时间" ,:class=>"control-label" %>
                       <div class="controls">
-                          <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME , :selected=>"00:00"),{}, {:class=>"input-small",:onchange=>"change_time()"}) %>&nbsp;&nbsp;至&nbsp;
-                          <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"24:00" ), {},{:class=>"input-small"} ) %>
+                        <% if @tourreport.starttime.nil? %>
+                        <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME, "00:00")%></select>
+                          &nbsp;&nbsp;至&nbsp;
+                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME , "08:00") %></select> 
+                        <% else %>
+                        <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME , @tourreport.starttime.strftime("%H:%M"))%></select>
+                          &nbsp;&nbsp;至&nbsp;
+                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME, @tourreport.finishtime.strftime("%H:%M")) %></select> 
+                        <%end %>
                       </div>
                     </div>
                   </div>
@@ -175,8 +182,15 @@
                     <div class="control-group">
                       <%= f.label "班报时间" ,:class=>"control-label" %>
                       <div class="controls">
-                          <%= f.select(:starttime, options_for_select(Tourreport::TOURTIME),{}, {:class=>"input-small",:onchange=>"change_time()"}) %>&nbsp;&nbsp;至&nbsp;
-                          <%= f.select(:finishtime, options_for_select(Tourreport::TOURTIME ,:selected=>"08:00" ), {},{:class=>"input-small"} ) %>
+                        <% if @tourreport.starttime.nil? %>
+                        <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME, "00:00")%></select>
+                          &nbsp;&nbsp;至&nbsp;
+                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME, "08:00") %></select> 
+                        <% else %>
+                        <select class="input-small" id="tourreport_starttime" name="tourreport[starttime]" onchange="change_time()" ><%=options_for_select(Tourreport::TOURTIME , @tourreport.starttime.strftime("%H:%M"))%></select>
+                          &nbsp;&nbsp;至&nbsp;
+                          <select class="input-small" id="tourreport_finishtime" name="tourreport[finishtime]"><%=options_for_select(Tourreport::TOURTIME, @tourreport.finishtime.strftime("%H:%M")) %></select> 
+                        <%end %>
                       </div>
                     </div>
                   </div>
@@ -265,7 +279,11 @@
                           <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.drilllength%>
                         </td>
                         <td>
-                          <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.holedeep %>
+                          <% if content.holedeep.nil? %>
+                            <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>getLastHoleDeep(@hole.id) %>
+                          <% else %>
+                            <%=text_field_tag "workcontent_holedeep[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)",:value=>content.holedeep %>
+                          <% end %>
                         </td>
                         <td>
                           <%=text_field_tag "workcontent_corenumber[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.corenumber%>
@@ -459,7 +477,13 @@
                       <%= f.label "接班孔深" ,:class=>"control-label" %>
                       <div class="controls">
                         <div class="input-append">
-                          <%= f.text_field :lastdeep , :class=>"input-large" ,:value=> getLastHoleDeep(@hole.id) %><span class="add-on">m</span>
+                          <% if @tourreport.lastdeep.nil? %>
+
+                            <%= f.text_field :lastdeep , :class=>"input-large" ,:value=> getLastHoleDeep(@hole.id) %><span class="add-on">m</span>
+                          <% else %>
+                            <%= f.text_field :lastdeep , :class=>"input-large" ,:value=> @tourreport.lastdeep %><span class="add-on">m</span>
+
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -710,6 +734,14 @@ function change_time()
   else if($("#tourreport_starttime").val()=="16:00")
   {
     $("#tourreport_finishtime").val("00:00");
+  }
+  else if($("#tourreport_starttime").val()=="15:00")
+  {
+    $("#tourreport_finishtime").val("03:00");
+  }
+  else if($("#tourreport_starttime").val()=="03:00")
+  {
+    $("#tourreport_finishtime").val("15:00");
   }
 
   $("input[name='workcontent_starttime[]']").val($("#tourreport_starttime").val());

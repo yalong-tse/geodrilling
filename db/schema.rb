@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319061558) do
+ActiveRecord::Schema.define(:version => 20140423082231) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -341,8 +341,8 @@ ActiveRecord::Schema.define(:version => 20140319061558) do
   create_table "tourreports", :force => true do |t|
     t.integer  "holeid"
     t.date     "tourdate"
-    t.datetime "starttime"
-    t.datetime "finishtime"
+    t.time     "starttime"
+    t.time     "finishtime"
     t.string   "administrator"
     t.string   "tourleader"
     t.string   "recorder"
