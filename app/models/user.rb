@@ -1,4 +1,5 @@
 #encoding: utf-8
+# isappuser 是否系统用户
 require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
@@ -24,10 +25,11 @@ class User < ActiveRecord::Base
   EDUCATION = ["大专","本科","硕士","博士","博士后"]
   POSITION = [["项目经理", 1], ["机长", 2], ["班长", 3]]
 
-  validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?
+  validates :password, :length => { minimum: 1 }, :confirmation => true, :if => :is_appuser?, :on=>:create
   validates :account, presence: true, :if => :is_appuser?
 #  validates :account, presence: true, :unless => :personal_setting?
-  validate :unique_account_only_for_appuser, :if => :is_appuser?
+  #validate :unique_account_only_for_appuser, :if => :is_appuser?
+  validates_uniqueness_of :account, :if=> :is_appuser? , :on=>:create
 
   # 下面的方式是在rails 4.0中使用的,在rails3.2.13中不支持condition的这种方式
   # validates_uniqueness_of :account, conditions: -> { where(isappuser: true) }, :if => :is_appuser?
@@ -36,12 +38,19 @@ class User < ActiveRecord::Base
     isappuser?
   end
 
-  def unique_account_only_for_appuser
-    users = User.where("isappuser = ? AND account = ? AND id != ?", true, account, id)
-    unless users.empty?
-      errors.add(:account, I18n.t("errors.messages.taken"))
-    end
-  end
+  #def unique_account_only_for_appuser
+  #  logger.info "333333333333333333333"
+  #  users = User.where("isappuser = ? AND account = ? AND id != ?", true, account, id)
+  #  unless users.empty?
+  #    logger.info "4444444444444444444"
+  #    errors.add(:account, I18n.t("errors.messages.taken"))
+  #    false
+  #  end
+  #  if users.empty?
+  #    logger.info "55555555555555555"
+  #    true
+  #  end
+  #end
 
   # 如果attributes为空字符串或者strip后为空，将它设置为nil
   def normalize_blank_values
@@ -100,7 +109,6 @@ class User < ActiveRecord::Base
 
   # 人员配组，将机长分配给项目经理或班长分配给机长
   def self.save_leader(userids, leaderid)
-    logger.debug "------------------------userid=#{userids};leaderid=#{leaderid}"
     if userids == "" then
       User.find(leaderid).members.each do |user|
         user.update_attributes(:leaderid => nil)
@@ -126,7 +134,7 @@ class User < ActiveRecord::Base
       "班长"
     end
   end
-  
+
   # 获取所有的项目经理
   def self.get_all_administrators
     arr=[]

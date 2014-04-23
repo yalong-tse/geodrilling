@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
   end
 
   def saveleader
+    #logger.info "===================="
+    #logger.info "#{params[:userids]}, and the leaderid is #{params[:leaderid]}"
     User.save_leader(params[:userids], params[:leaderid])
     respond_to do |format|
       format.js
@@ -30,7 +32,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  # 配组
+  # 配组,主要实现项目经理配置机长，机长配置班长的功能
   def deploy
     a = params[:groupflag].to_i + 1
     @user = User.find(params[:user_id])
