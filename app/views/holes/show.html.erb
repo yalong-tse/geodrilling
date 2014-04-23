@@ -1,127 +1,133 @@
 <%= render partial: "layouts/flash_messages", flash: flash %>
 <% content_for(:title,"钻孔详情") %>
 
-  <div class="row-fluid">
-    <div class="span10">
-      <div class="widget-box transparent">
-        <div class="widget-header widget-header-flat">
-          <h5 class="lighter">
-            <i class="icon-star green"></i>
-            钻孔详细情况
-          </h5>
+<div class="row-fluid">
+  <div class="span10">
+    <div class="widget-box transparent">
+      <div class="widget-header widget-header-flat">
+        <h5 class="lighter">
+          <i class="icon-star green"></i>
+          钻孔详细情况
+        </h5>
 
-          <div class="widget-toolbar">
-            <a href="#" data-action="collapse">
-              <i class="icon-chevron-up"></i>
-            </a>
-          </div>
+        <div class="widget-toolbar">
+          <a href="#" data-action="collapse">
+            <i class="icon-chevron-up"></i>
+          </a>
         </div>
+      </div>
 
-        <div class="widget-body">
-          <div class="widget-main no-padding">
+      <div class="widget-body">
+        <div class="widget-main no-padding">
           <table class="table table-striped table-hover table-bordered ">
             <thead></thead>
             <tbody>
-          <tr>
-            <td width="15%"><strong>孔号</strong></td>
-            <td width="25%"><span class="text-error"><%= @hole.holenumber %></span></td>
-            <td width="15%"><strong>钻孔状态</strong></td>
-            <td width="35%"><span class="text-error"><%= hole_status_treat(@hole.status) %></span></td>
-          </tr>
-          <tr>
-            <td><strong>矿区</strong></td>
-            <td><span class="text-error"><%= @hole.minearea %></span></td>
-            <td width="15%"><strong>合同名称</strong></td>
-            <td width="35%"><span class="text-error"><%= @hole.contract.name %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计钻孔深度</strong></td>
-            <td><span class="text-error"><%= @hole.designdeep %></span></td>
-            <td><strong>实际钻孔深度</strong></td>
-            <td><span class="text-error"><%= @hole.actualdeep %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计钻孔直径</strong></td>
-            <td><span class="text-error"><%= dictionary_treat @hole.designdiameter unless @hole.designdiameter %></span></td>
-            <td><strong>实际钻孔直径</strong></td>
-            <td><span class="text-error"><%= @hole.actualdiameter %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计顶角</strong></td>
-            <td><span class="text-error"><%= @hole.designapexangle %></span></td>
-            <td><strong>实际顶角</strong></td>
-            <td><span class="text-error"><%= @hole.actualapexangle %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计方位角</strong></td>
-            <td><span class="text-error"><%= @hole.designpositionangle %></span></td>
-            <td><strong>实际方位角</strong></td>
-            <td><span class="text-error"><%= @hole.actualpositionangle %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计岩心采取率</strong></td>
-            <td><span class="text-error"><%= @hole.designcoreratio %></span></td>
-            <td><strong>实际岩心采取率</strong></td>
-            <td><span class="text-error"><%= @hole.actualcoreratio %></span></td>
-          </tr>
-          <tr>
-            <td><strong>开孔日期</strong></td>
-            <td><span class="text-error"><%= @hole.startdate %></span></td>
-            <td><strong>终孔日期</strong></td>
-            <td><span class="text-error"><%= @hole.finishdate %></span></td>
-          </tr>
-          <tr>
-            <td><strong>地层情况</strong></td>
-            <td colspan="3"><span class="text-error"><%= @hole.geologysituation %></span></td>
-          </tr>
-          <tr>
-            <td><strong>设计书附件</strong></td>
-            <td colspan="3"><span class="text-error"><% if @hole.attachment %><%= link_to @hole.attachment.data.url do %><%= @hole.attachment.data_origin_file_name %><% end %><% end %></span></td>
-          </tr>
-          <tr>
-            <td><strong>钻探目的</strong></td>
-            <td><span class="text-error"><%= dictionary_treat @hole.drillingpurpose unless @hole.drillingpurpose.nil? %></span></td>
-          </tr>
-          <tr>
-            <td><strong>是否外协</strong></td>
-            <td><span class="text-error"><input type="checkbox" <% if @hole.outerflag ==1 %> checked <% end %> />外协孔</span></td>
-          </tr>
-          <tr>
-            <td><strong>钻孔开孔通知书</strong></td>
-            <td ><% if @hole.opennotice %><%= link_to @hole.opennotice.data.url do %><%= @hole.opennotice.data_origin_file_name %><% end %><% end %></td>
-            <td><strong>钻孔终孔通知书</strong></td>
-            <td ><%if @hole.closenotice %><%= link_to @hole.closenotice.data.url do %><%= @hole.closenotice.data_origin_file_name%><%end %> <%end%></td>
-          </tr>
-          <tr>
-            <td><strong>钻孔弯曲度测量记录表</strong></td>
-            <td ><%if @hole.curvetable %><%=link_to @hole.curvetable.data.url do %><%= @hole.curvetable.data_origin_file_name%><% end %><% end %></td>
-            <td><strong>钻具丈量及孔深误差记录表</strong></td>
-            <td ><% if @hole.measuretable %><%= link_to @hole.measuretable.data.url do %><%= @hole.measuretable.data_origin_file_name %><% end %><%end %></td>
-          </tr>
-          <tr>
-            <td><strong>岩矿心移交验收单</strong></td>
-            <td ><% if @hole.coretransferdoc %><% link_to @hole.coretransferdoc.data.url do %><%=@hole.coretransferdoc.data_origin_file_name%><%end%><%end%></td>
-            <td><strong>原始记录报表移交清单</strong></td>
-            <td ><% if @hole.tourreporttransferdoc %><% link_to @hole.tourreporttransferdoc.data.url do %><%= @hole.tourreporttransferdoc.data_origin_file_name%><% end %><% end %></td>
-          </tr>
-          <tr>
-            <td><strong>钻孔质量验收评定表</strong></td>
-            <td ><% if @hole.qualitychecktable %><% link_to @hole.qualitychecktable.data.url do %><%=@hole.qualitychecktable.data_origin_file_name%><% end %> <%end %></td>
-            <td><strong>钻孔班报表</strong></td>
-            <td ><% if @hole.tourreporttabledoc %> <% link_to @hole.tourreporttabledoc.data.url do %><%=@hole.tourreporttabledoc.data_origin_file_name%><% end %> <%end%></td>
-          </tr>
+              <tr>
+                <td width="15%"><strong>孔号</strong></td>
+                <td width="25%"><span class="text-error"><%= @hole.holenumber %></span></td>
+                <td width="15%"><strong>钻孔状态</strong></td>
+                <td width="35%"><span class="text-error"><%= hole_status_treat(@hole.status) %></span></td>
+              </tr>
+              <tr>
+                <td><strong>矿区</strong></td>
+                <td><span class="text-error"><%= @hole.minearea %></span></td>
+                <td width="15%"><strong>合同名称</strong></td>
+                <td width="35%"><span class="text-error"><%= @hole.contract.name %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计钻孔深度</strong></td>
+                <td><span class="text-error"><%= @hole.designdeep %></span></td>
+                <td><strong>实际钻孔深度</strong></td>
+                <td><span class="text-error"><%= @hole.actualdeep %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计钻孔直径</strong></td>
+                <td><span class="text-error"><%= dictionary_treat @hole.designdiameter unless @hole.designdiameter %></span></td>
+                <td><strong>实际钻孔直径</strong></td>
+                <td><span class="text-error"><%= @hole.actualdiameter %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计顶角</strong></td>
+                <td><span class="text-error"><%= @hole.designapexangle %></span></td>
+                <td><strong>实际顶角</strong></td>
+                <td><span class="text-error"><%= @hole.actualapexangle %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计方位角</strong></td>
+                <td><span class="text-error"><%= @hole.designpositionangle %></span></td>
+                <td><strong>实际方位角</strong></td>
+                <td><span class="text-error"><%= @hole.actualpositionangle %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计岩心采取率</strong></td>
+                <td><span class="text-error"><%= @hole.designcoreratio %></span></td>
+                <td><strong>实际岩心采取率</strong></td>
+                <td><span class="text-error"><%= @hole.actualcoreratio %></span></td>
+              </tr>
+              <tr>
+                <td><strong>开孔日期</strong></td>
+                <td><span class="text-error"><%= @hole.startdate %></span></td>
+                <td><strong>终孔日期</strong></td>
+                <td><span class="text-error"><%= @hole.finishdate %></span></td>
+              </tr>
+              <tr>
+                <td><strong>地层情况</strong></td>
+                <td colspan="3"><span class="text-error"><%= @hole.geologysituation %></span></td>
+              </tr>
+              <tr>
+                <td><strong>设计书附件</strong></td>
+                <td colspan="3"><span class="text-error"><% if @hole.attachment %><%= link_to @hole.attachment.data.url do %><%= @hole.attachment.data_origin_file_name %><% end %><% end %></span></td>
+              </tr>
+              <tr>
+                <td><strong>钻探目的</strong></td>
+                <td><span class="text-error"><%= dictionary_treat @hole.drillingpurpose unless @hole.drillingpurpose.nil? %></span></td>
+              </tr>
+              <tr>
+                <td><strong>是否外协</strong></td>
+                <td><span class="text-error">
+                  <% if @hole.outerflag==1 %>
+                      外协孔
+                  <% else %>
+                      非外协孔，自主管理孔
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>钻孔开孔通知书</strong></td>
+                <td ><% if @hole.opennotice %><%= link_to @hole.opennotice.data.url do %><%= @hole.opennotice.data_origin_file_name %><% end %><% end %></td>
+                <td><strong>钻孔终孔通知书</strong></td>
+                <td ><%if @hole.closenotice %><%= link_to @hole.closenotice.data.url do %><%= @hole.closenotice.data_origin_file_name%><%end %> <%end%></td>
+              </tr>
+              <tr>
+                <td><strong>钻孔弯曲度测量记录表</strong></td>
+                <td ><%if @hole.curvetable %><%=link_to @hole.curvetable.data.url do %><%= @hole.curvetable.data_origin_file_name%><% end %><% end %></td>
+                <td><strong>钻具丈量及孔深误差记录表</strong></td>
+                <td ><% if @hole.measuretable %><%= link_to @hole.measuretable.data.url do %><%= @hole.measuretable.data_origin_file_name %><% end %><%end %></td>
+              </tr>
+              <tr>
+                <td><strong>岩矿心移交验收单</strong></td>
+                <td ><% if @hole.coretransferdoc %><% link_to @hole.coretransferdoc.data.url do %><%=@hole.coretransferdoc.data_origin_file_name%><%end%><%end%></td>
+                <td><strong>原始记录报表移交清单</strong></td>
+                <td ><% if @hole.tourreporttransferdoc %><% link_to @hole.tourreporttransferdoc.data.url do %><%= @hole.tourreporttransferdoc.data_origin_file_name%><% end %><% end %></td>
+              </tr>
+              <tr>
+                <td><strong>钻孔质量验收评定表</strong></td>
+                <td ><% if @hole.qualitychecktable %><% link_to @hole.qualitychecktable.data.url do %><%=@hole.qualitychecktable.data_origin_file_name%><% end %> <%end %></td>
+                <td><strong>钻孔班报表</strong></td>
+                <td ><% if @hole.tourreporttabledoc %> <% link_to @hole.tourreporttabledoc.data.url do %><%=@hole.tourreporttabledoc.data_origin_file_name%><% end %> <%end%></td>
+              </tr>
             </tbody>
           </table>
 
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 <div class="form-actions">
   <% if @hole.status!=2 %>
-  <%= link_to edit_hole_path(@hole) ,:class=>"btn btn-purple btn-small" do %><i class="icon-reply"></i>编辑<% end %>
+    <%= link_to edit_hole_path(@hole) ,:class=>"btn btn-purple btn-small" do %><i class="icon-reply"></i>编辑<% end %>
   <% end %>
   <%= link_to holes_path,:class=>"btn btn-primary btn-small" do %><i class="icon-reply"></i>返回<% end %>
 </div>

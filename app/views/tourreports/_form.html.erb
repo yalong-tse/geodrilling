@@ -255,7 +255,11 @@
                           <%= select_tag("workcontent[]",options_for_select(Tourreport::WORKITEM , :selected=>content.content ), :class=>"input-medium" )%>
                         </td>
                         <td>
+                          <% if content.upmore.nil? %>
+                          <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>getLastUpmore(@hole.id)%>
+                        <% else %>
                           <%=text_field_tag "workcontent_upmore[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.upmore%>
+                        <% end %>
                         </td>
                         <td>
                           <%=text_field_tag "workcontent_drilllength[]" ,nil, :class=>"input-mini",:onblur=>"compute_content(this)" ,:value=>content.drilllength%>

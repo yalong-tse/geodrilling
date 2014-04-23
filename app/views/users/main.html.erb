@@ -15,16 +15,47 @@
 <% javascript "dhtmlxtree_json" %>
 <% javascript "dhtmlxmenu" %>
 <% javascript "dhtmlxmenu_ext" %>
-<%= content_for :inline_javascripts do %>
-  <%= user_dynatree(:tree_id => "dynatree") %>
-<% end %>
 
 <div class="tree_column">
   <div id="dynatree" style="overflow:auto;"></div>
 </div>
 <div class="content_column">
-  <iframe id="_iframe" src="<%= department_users_path(@department) %>" frameborder="0" scrolling="no"></iframe>
+  <iframe id="_iframe" src="<%= department_users_path(@department) %>" onload="expandHeight(this)" frameborder="0" scrolling="no"></iframe>
 </div>
 
+<%= content_for :inline_javascripts do %>
+<%= user_dynatree(:tree_id => "dynatree") %>
+<script language="javascript">
 
+//进行Iframe的自动撑开,让所有父页面的Iframe都自动适应包含页高度  
+function autoHeight(){  
+    var doc = document,  
+        p = window;  
+    while(p = p.parent){  
+        var frames = p.frames,  
+            frame,  
+            i = 0;  
+        while(frame = frames[i++]){  
+            if(frame.document == doc){  
+                frame.frameElement.style.height = doc.body.scrollHeight;  
+                doc = p.document;  
+                break;  
+            }  
+        }  
+        if(p == top){  
+            break;  
+        }  
+    }  
+}  
 
+function expandHeight(iframeObj){  
+  if (iframeObj){  
+    if (iframeObj.contentDocument && iframeObj.contentDocument.body.offsetHeight){  
+      iframeObj.height = iframeObj.contentDocument.body.offsetHeight;  
+      } else if (document.frames[iframeObj.name].document && document.frames[iframeObj.name].document.body.scrollHeight){  
+      iframeObj.height = document.frames[iframeObj.name].document.body.scrollHeight;  
+    }  
+  }  
+}  
+</script>
+<% end %>

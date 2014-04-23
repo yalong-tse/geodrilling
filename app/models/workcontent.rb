@@ -32,4 +32,14 @@ class Workcontent < ActiveRecord::Base
       order("created_at desc")
     end
   end
+
+  # 获取一个班报的最后的一个上余量
+  def self.getLastUpmore(tourreportid)
+    if tourreportid
+      result = where("tourreportid=? and upmore is not null",tourreportid).order("created_at desc").pluck("upmore").first
+      return format("%.2f",result)
+    end
+    return 0.0
+  end
+
 end

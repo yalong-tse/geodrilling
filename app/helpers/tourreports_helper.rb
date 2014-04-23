@@ -105,6 +105,17 @@ module TourreportsHelper
     result
   end
 
+  # 获得上个班报的最后一条工作项的上余量
+  def getLastUpmore(holeid)
+    result =""
+    if(holeid)
+      tourreport = Tourreport.where("holeid=?",holeid).order("tourdate desc,starttime desc,id desc").first
+      if tourreport
+        return Workcontent.getLastUpmore(tourreport.id)
+      end
+    end
+  end
+
   # 计算台月效率
   def compute_montheffiency(holeid)
     if (holeid)
