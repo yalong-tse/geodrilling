@@ -233,7 +233,7 @@ class MobileController < ApplicationController
 
     user = User.authenticate(params[:account], params[:password])
     if user
-      result = "ok_" +user.id.to_s 
+      result = user.id.to_s 
     else
       result = "false"
     end
