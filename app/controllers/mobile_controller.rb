@@ -249,7 +249,9 @@ class MobileController < ApplicationController
   def queryownholes
     if params[:userid]
       begin
+	    logger.info("111111111111111");
         holes = findholes(params[:userid])
+	    logger.info("222222222222222222222222");
         @objs = Array.new
         holes.each do |h|
           @objs << {
@@ -270,11 +272,6 @@ class MobileController < ApplicationController
           format.json {render :json=> @objs}
         end
       end
-    end
-
-    respond_to do |format|
-      format.html
-      format.json {render :json=> "userid invalid"}
     end
   end
 

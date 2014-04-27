@@ -113,7 +113,7 @@ Geodrilling::Application.routes.draw do
   match "mobile/contractholes" ,:via =>:get , :as => :mobile_contractholes
   match "mobile/getdeployments" ,:via =>:get , :as => :mobile_getdeployments
   match "mobile/holedetail" ,:via =>:get , :as => :mobile_holedetail
-  match "mobile/validateuser" ,:via =>:post , :as => :mobile_savetourreport
+  match "mobile/savetourreport" ,:via =>:post , :as => :mobile_savetourreport
   match "mobile/validateuser" ,:via =>:get , :as => :mobile_validateuser
   match "mobile/queryownholes" ,:via =>:get , :as => :mobile_queryownholes
   match "mobile/queryuserinfo" ,:via =>:get , :as => :mobile_queryuserinfo
