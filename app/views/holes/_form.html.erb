@@ -28,7 +28,7 @@
   <div class="control-group">
     <%= f.label "所属合同" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:contract_id, options_for_select(@contracts.collect{|contract|["["+contract.contractno+"] "+contract.name,contract.id]}),{},{:class=>"input-xxlarge"}) %>
+      <%= f.select(:contract_id, options_for_select(@contracts.collect{|contract|["["+contract.contractno+"] "+contract.name,contract.id]},:selected=>@hole.contract_id),{},{:class=>"input-xxlarge"}) %>
     </div>
   </div>
   </div>
