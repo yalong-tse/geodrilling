@@ -56,6 +56,7 @@ module HolesUtils
   # 查询钻孔,返回钻孔的集合
   def findholes(userid)
     user = User.find(userid) if userid
+	logger.info user.position
     if user
       # 机长或者班长进来查看自己的孔
       holeids = []
