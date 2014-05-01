@@ -132,10 +132,18 @@ class MobileController < ApplicationController
   def holedetail
     begin
       hole = Hole.find(params[:holeid])
+	  flag = 0;
+	  if(hole.outerflag==1)
+		flag = 1;
+	  else
+	  	flag =0;
+	  end
+
       obj = {
           :minearea=>hole.minearea,
           :actualdeep=>hole.actualdeep,
           :holenumber=>hole.holenumber,
+		  :outerflag=>flag,
           :geologysituation=>hole.geologysituation
           }
       respond_to do |format|
