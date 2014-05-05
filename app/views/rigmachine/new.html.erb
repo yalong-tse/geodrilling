@@ -222,7 +222,7 @@
 
   $("#new_rigmachine").validate({
   rules:{
-  "rigmachine[devicenumber]":{required:true,maxlength:500},
+  "rigmachine[officialcode]":{required:true,maxlength:500},
   "rigmachine[rigmodel]":{required:true, maxlength:50},
   "rigmachine[pipeDiameter]":{required:true},
   "rigmachine[rigPower]":{required:true},
@@ -231,7 +231,7 @@
   "rigmachine[manufactureContact]":{required:true},
   },
   messages:{
-     "rigmachine[devicenumber]":{required:"设备编号不能为空",maxlength:"设备编号不能超过500字符"},
+     "rigmachine[officialcode]":{required:"单位编码不能为空",maxlength:"单位编号不能超过500字符"},
      "rigmachine[rigmodel]":{required:"钻机型号不能为空", maxlength:"钻机型号不能超过50字符"},
      "rigmachine[pipeDiameter]":{required:"钻孔直径不能为空"},
      "rigmachine[rigPower]":{required:"钻机功率不能为空"},

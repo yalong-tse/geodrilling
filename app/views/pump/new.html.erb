@@ -204,7 +204,7 @@
 
   $("#new_pump").validate({
   rules:{
-  "pump[devicenumber]":{required:true,maxlength:500},
+  "pump[officialcode]":{required:true,maxlength:500},
   "pump[pumpmodel]":{required:true, maxlength:50},
   "pump[power]":{required:true},
   "pump[pressure]":{required:true},
@@ -213,7 +213,7 @@
   "pump[manufactureContact]":{required:true},
   },
   messages:{
-     "pump[devicenumber]":{required:"设备编号不能为空",maxlength:"设备编号不能超过500字符"},
+     "pump[officialcode]":{required:"单位编码不能为空",maxlength:"单位编码不能超过500字符"},
      "pump[pumpmodel]":{required:"泥浆泵型号不能为空", maxlength:"泥浆泵型号不能超过50字符"},
      "pump[power]":{required:"泥浆泵功率不能为空"},
      "pump[pressure]":{required:"泥浆泵压力不能为空"},

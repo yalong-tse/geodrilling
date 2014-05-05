@@ -207,14 +207,14 @@
 
   $("#new_drilltower").validate({
   rules:{
-  "drilltower[devicenumber]":{required:true,maxlength:500},
+  "drilltower[officialcode]":{required:true,maxlength:500},
   "drilltower[model]":{required:true, maxlength:50},
   "drilltower[weight]":{required:true},
   "drilltower[manufacture]":{required:true},
   "drilltower[manufactureContact]":{required:true},
   },
   messages:{
-     "drilltower[devicenumber]":{required:"设备编号不能为空",maxlength:"设备编号不能超过500字符"},
+     "drilltower[officialcode]":{required:"单位编码不能为空",maxlength:"单位编码不能超过500字符"},
      "drilltower[model]":{required:"钻塔型号不能为空", maxlength:"钻塔型号不能超过50字符"},
      "drilltower[weight]":{required:"钻孔重量不能为空"},
      "drilltower[manufacture]":{required:"厂商不能为空"},
