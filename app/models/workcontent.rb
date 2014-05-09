@@ -37,9 +37,10 @@ class Workcontent < ActiveRecord::Base
   def self.getLastUpmore(tourreportid)
     if tourreportid
       result = where("tourreportid=? and upmore is not null",tourreportid).order("created_at desc").pluck("upmore").first
-      return format("%.2f",result)
+	  if result
+		return format("%.2f",result)
+	  end
     end
     return 0.0
   end
-
 end
