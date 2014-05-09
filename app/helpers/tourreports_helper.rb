@@ -112,6 +112,8 @@ module TourreportsHelper
       tourreport = Tourreport.where("holeid=?",holeid).order("tourdate desc,starttime desc,id desc").first
       if tourreport
         return Workcontent.getLastUpmore(tourreport.id)
+	  else
+	  	return 0.0
       end
     end
   end
