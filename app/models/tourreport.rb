@@ -83,9 +83,11 @@ class Tourreport < ActiveRecord::Base
     minutes = 0;
     if(holeid)
       where("holeid=?",holeid).pluck(:tourdrillingtime).each do |thetime|
+	  if (thetime)
         h,m = thetime.split(/:/)
         hours=hours+h.to_i
         minutes = minutes+m.to_i
+    	end
       end
       # 此处会有小数
       r = (minutes/60.0);
