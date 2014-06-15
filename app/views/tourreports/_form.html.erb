@@ -557,10 +557,10 @@
                       <%= f.label "钻具交接" ,:class=>"control-label" %>
                       <div class="controls">
                         <div class="input-append">
-                        <% if @tourreport.instrumenttakeover.nil? %>
+                        <% if @tourreport.intrumenttakeover.nil? %>
                           <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>default_tools_takeover_info(@hole.id) %>
                           <% else %>
-                          <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>@tourreport.instrumenttakeover %>
+                          <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>@tourreport.intrumenttakeover %>
                           <% end %>
                         </div>
                       </div>
