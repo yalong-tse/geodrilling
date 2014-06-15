@@ -71,7 +71,12 @@
                       <%= f.label "班报日期", :class=>"control-label" %>
                       <div class="controls">
                         <div class="input-append">
+                        <% if @tourreport.tourdate.nil? %>
                           <%= f.text_field :tourdate,:class=>"input-large", :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+                          <% else %>
+                          <%= f.text_field :tourdate,:class=>"input-large", :value=>@tourreport.tourdate %><span class="add-on"><i class="icon-calendar"></i></span>
+
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -552,7 +557,11 @@
                       <%= f.label "钻具交接" ,:class=>"control-label" %>
                       <div class="controls">
                         <div class="input-append">
+                        <% if @tourreport.instrumenttakeover.nil? %>
                           <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>default_tools_takeover_info(@hole.id) %>
+                          <% else %>
+                          <%= f.text_area :intrumenttakeover ,:rows=>"4", :cols=>"3", :class=>"input-xxlarge" ,:value=>@tourreport.instrumenttakeover %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
