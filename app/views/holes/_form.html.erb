@@ -68,7 +68,7 @@
     <%= f.label "设计直径" ,:class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
-        <%= f.select(:designdiameter,options_for_select(Dictionary.diameters.collect{|d|[d.item,d.id]}),{:prompt=>"请选择..."} ,{:class=>"text_field"} ) %><span class="add-on">mm</span>
+        <%= f.select(:designdiameter,options_for_select(Dictionary.diameters.collect{|d|[d.item,d.id]}, @hole.designdiameter),{:prompt=>"请选择..."} ,{:class=>"text_field"} ) %><span class="add-on">mm</span>
       </div>
     </div>
   </div>

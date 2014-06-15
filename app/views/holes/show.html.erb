@@ -42,7 +42,7 @@
               </tr>
               <tr>
                 <td><strong>设计钻孔直径</strong></td>
-                <td><span class="text-error"><%= dictionary_treat @hole.designdiameter unless @hole.designdiameter %></span></td>
+                <td><span class="text-error"><%= dictionary_treat @hole.designdiameter unless @hole.designdiameter.nil? %></span></td>
                 <td><strong>实际钻孔直径</strong></td>
                 <td><span class="text-error"><%= @hole.actualdiameter %></span></td>
               </tr>
