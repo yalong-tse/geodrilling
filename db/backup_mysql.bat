@@ -2,6 +2,8 @@
 REM ###########################################################  
 REM # Windows Server 2003下Mysql数据库自动备份批处理脚本
 REM ###########################################################  
+REM 设置环境变量
+set path=C:\Program Files\MySQL\MySQL Server 5.6\bin;%path%;
 REM 取当前系统时间,可能因操作系统不同而取值不一样
 set CURDATE=%date:~0,4%%date:~5,2%%date:~8,2%
 set CURTIME=%time:~0,2%
