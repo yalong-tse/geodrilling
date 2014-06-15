@@ -64,7 +64,7 @@ class LeaderController < ApplicationController
     # 计算钻孔的产值
 	@allhole_output = 0
 	Hole.unclosed.each do |hole|
-		if hole.unit_price.nil? || hole.unit_price.empty? || hole.actualdeep.nil? || hole.actualdeep.empty?
+		if hole.unit_price.nil? || hole.actualdeep.nil? || hole.actualdeep.empty?
 		  @hole_output = 0 
 		else	
 		  @hole_output = hole.actualdeep * hole.unit_price.to_f
