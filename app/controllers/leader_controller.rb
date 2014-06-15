@@ -51,6 +51,7 @@ class LeaderController < ApplicationController
 		@lastyearprice = 0
 	else
 		@lastyearvalue= lastyearleft.lastyeartotallength
+		@lastyearprice= lastyearleft.lastyearprice
 		if @lastyearprice.nil? || @lastyearprice.empty?
 			@lastyearprice = 0
 		else
