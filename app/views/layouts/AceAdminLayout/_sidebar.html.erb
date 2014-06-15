@@ -219,7 +219,7 @@
   <% end %>
 
   <% if can? :contract, :leader %>
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(leader_contract_path) || current_page?(leader_yearreport_path) || current_page?(leader_holeproduct_path)  || current_page?(leader_holefinish_path) )}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(leader_contract_path) || current_page?(leader_yearreport_path) || current_page?(leader_holeproduct_path) || current_page?(leader_lastyearleft_path)  || current_page?(leader_holefinish_path) )}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-beaker"></i>
       <span>领导关注</span>
@@ -241,6 +241,10 @@
 
       <li <%= active_page?(leader_yearreport_path) %>>
         <%= link_to (raw('<i class="icon-double-angle-right"></i>年度统计')), leader_yearreport_path + "?year=" + Time.now.strftime("%Y")  %>
+      </li>
+
+      <li <%= active_page?(leader_lastyearleft_path) %>>
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>跨年度孔深计算')), leader_lastyearleft_path %>
       </li>
 
     </ul>
