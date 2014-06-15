@@ -84,12 +84,18 @@ class LeaderController < ApplicationController
 # 查询页面的方法
   def lastyearleft
   	@lastyearleft = Lastyearleft.first;
-	if @lastyearleft.nil?
+	if @lastyearleft.nil? || @lastyearleft.empty?
 		@lastyearvalue= 0
 	else
 		@lastyearvalue= @lastyearleft.lastyeartotallength
-
 	end
+
+	if @lastyearprice.nil? || @lastyearprice.empty?
+		@lastyearprice =0
+	else
+		@lastyearprice= @lastyearleft.lastyearprice
+	end
+
     respond_to do |format|
       format.html
     end
