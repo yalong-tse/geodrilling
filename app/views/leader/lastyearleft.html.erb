@@ -13,6 +13,8 @@
           <div class="widget-main">
 		  <label class="control-label" >上年度未完工钻孔工作量:</label>
 		  <input name="totallengthleft" type="text" id="_totallengthleft" value="<%= @lastyearvalue %>" />
+		  <label class="control-label" >上年度未完工钻孔产值:</label>
+		  <input name="lastyearprice" type="text" id="_lastyearprice" value="<%= @lastyearprice %>" />
 		  <button onclick="savelastyear();" class="btn btn-purple btn-small">提交<i class="icon-ok icon-on-right bigger-110"></i></button>
   </div>
   </div>
@@ -33,8 +35,10 @@
   function savelastyear()
   {
 	  var lastyear = $("#_totallengthleft").val();
+	  var price = $("#_lastyearprice").val();
 	  $.post("<%=leader_savelastyear_path %>",
-			  {totallengthleft: lastyear},
+			  {totallengthleft: lastyear,
+				lastyearprice: price},
 			  function(result){
 			  if (result == "true")
 			  {

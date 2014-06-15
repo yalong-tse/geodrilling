@@ -162,6 +162,19 @@
   <div class="row-fluid">
   <div class="span5">
   <div class="control-group">
+    <%= f.label "钻孔单价" ,:class=>"control-label"%>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.text_field :unit_price,:class=>"text_field" %><span class="add-on">元/米</span>
+	  </div>
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="row-fluid">
+  <div class="span5">
+  <div class="control-group">
     <%= f.label "钻探施工设计书" ,:class=>"control-label" %>
     <div class="controls">
       <input type="file" id="hole_attachment_data" name="hole[attachment_attributes][data]">

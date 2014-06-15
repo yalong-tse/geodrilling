@@ -36,9 +36,9 @@
               </tr>
               <tr>
                 <td><strong>设计钻孔深度</strong></td>
-                <td><span class="text-error"><%= @hole.designdeep %></span></td>
+                <td><span class="text-error"><%= @hole.designdeep %> 米</span></td>
                 <td><strong>实际钻孔深度</strong></td>
-                <td><span class="text-error"><%= @hole.actualdeep %></span></td>
+                <td><span class="text-error"><%= @hole.actualdeep %>  米</span></td>
               </tr>
               <tr>
                 <td><strong>设计钻孔直径</strong></td>
@@ -60,9 +60,9 @@
               </tr>
               <tr>
                 <td><strong>设计岩心采取率</strong></td>
-                <td><span class="text-error"><%= @hole.designcoreratio %></span></td>
+                <td><span class="text-error"><%= @hole.designcoreratio %> %</span></td>
                 <td><strong>实际岩心采取率</strong></td>
-                <td><span class="text-error"><%= @hole.actualcoreratio %></span></td>
+                <td><span class="text-error"><%= @hole.actualcoreratio %> %</span></td>
               </tr>
               <tr>
                 <td><strong>开孔日期</strong></td>
@@ -81,6 +81,10 @@
               <tr>
                 <td><strong>钻探目的</strong></td>
                 <td><span class="text-error"><%= dictionary_treat @hole.drillingpurpose unless @hole.drillingpurpose.nil? %></span></td>
+              </tr>
+              <tr>
+                <td><strong>钻孔单价</strong></td>
+                <td><span class="text-error"><%=  @hole.unit_price %> 元/米</span></td>
               </tr>
               <tr>
                 <td><strong>是否外协</strong></td>

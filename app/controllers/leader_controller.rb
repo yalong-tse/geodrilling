@@ -43,16 +43,36 @@ class LeaderController < ApplicationController
 
     @year=year;
     
+    #计算年度的总进尺
   	summarydeep = Hole.unclosed.sum(:actualdeep);
 	lastyearleft = Lastyearleft.first;
 	if lastyearleft.nil?
 		@lastyearvalue = 0
+		@lastyearprice = 0
 	else
 		@lastyearvalue= lastyearleft.lastyeartotallength
+		if @lastyearprice.nil? || @lastyearprice.empty?
+			@lastyearprice = 0
+		else
+		    @lastyearprice = lastyearleft.lastyearprice.to_f
+		end
 	end
-
 	@lastyearvalue = summarydeep - @lastyearvalue
 	@lastyearvalue = format("%.2f", @lastyearvalue)
+
+    # 计算钻孔的产值
+	@allhole_output = 0
+	Hole.unclosed.each do |hole|
+		if hole.unit_price.nil? || hole.unit_price.empty?
+		  @hole_output = hole.actualdeep * 0 
+		else	
+		  @hole_output = hole.actualdeep * hole.unit_price.to_f
+		end
+		@allhole_output = @allhole_output + @hole_output
+	end
+
+	@allhole_output = @allhole_output - @lastyearprice
+	@allhole_output = format("%.2f",@allhole_output)
 
     respond_to do |format|
       format.html
@@ -79,12 +99,15 @@ class LeaderController < ApplicationController
   def savelastyear
 	  begin
 		totalleftlength = params[:totallengthleft]
+		lastyearprice = params[:lastyearprice]
 		@lastyearleft = Lastyearleft.first;
 		if @lastyearleft.nil?
 			@lastyearleft = Lastyearleft.new
 		end
 
 		@lastyearleft.lastyeartotallength = totalleftlength
+		@lastyearleft.lastyearprice = lastyearprice 
+
 		@lastyearleft.save
 		render :text=>"true"
 	rescue
