@@ -144,8 +144,8 @@
                       <i class="icon-circle green"></i> 项目经理:<% if @tourreport.projectmanager && !@tourreport.projectmanager.empty?  %> <%= User.find(@tourreport.projectmanager).name  %> <% end %>
                       <i class="icon-circle green"></i> 机长:<% if @tourreport.administrator && !@tourreport.administrator.empty?%><%=User.find(@tourreport.administrator).name%><%end %>
                         <i class="icon-circle green"></i> 班记录员:<%=@tourreport.recorder%>
-                        <i class="icon-circle green"></i> 交班班长:<%if @tourreport.lastleader %><%=User.find(@tourreport.lastleader).name%><%end%>
-                        <i class="icon-circle green"></i> 接班班长:<%if @tourreport.nextleader%> <%=User.find(@tourreport.nextleader).name%><%end%>
+                        <i class="icon-circle green"></i> 接班班长:<%if @tourreport.lastleader %><%=User.find(@tourreport.lastleader).name%><%end%>
+                        <i class="icon-circle green"></i> 交班班长:<%if @tourreport.nextleader%> <%=User.find(@tourreport.nextleader).name%><%end%>
                       </ul>
                     </td>
                   </tr>
