@@ -60,11 +60,19 @@ module LeaderHelper
       return yearcount
   end
 
+  # 年度合同中的总进尺
+  def totalcontractlength(year)
+    totallength = Contract.sum(:workshift,:conditions=>["signdate<? and signdate>?",Time.mktime(year+1),Time.mktime(year)])
+	return totallength
+  end
+
+  # 年度钻孔的数量
   def holeyearcount(year)
       yearcount = Hole.where("startdate<? and finishdate>?",Time.mktime(year+1),Time.mktime(year)).count;
       return yearcount;
   end
 
+  # 年度钻孔的进尺
   def amountholeshift(year)
       amount = Tourreport.sum(:tourshift,:conditions=>["tourdate<? and tourdate>?",Time.mktime(year+1),Time.mktime(year)])
       return format("%.2f",amount)

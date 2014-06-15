@@ -64,13 +64,16 @@
     <td class="center">合同金额</td><td><%= amountcontract @year %> 元</td>
   </tr>
   <tr>
+    <td class="center">合同总工作量</td><td><%= totalcontractlength @year %> 米</td>
+  </tr>
+  <tr>
     <td class="center">已完成钻孔数量</td><td> <%=holeyearcount @year%> 个</td>
   </tr>
   <tr>
-    <td class="center">总工作量</td><td><%= @lastyearvalue %> 米</td>
+    <td class="center">已完成总工作量</td><td><%= @lastyearvalue %> 米</td>
   </tr>
   <tr>
-    <td class="center">完成进尺</td><td><%=amountholeshift @year %> 米</td>
+    <td class="center">已完成班报进尺</td><td><%=amountholeshift @year %> 米</td>
   </tr>
 </tbody>
 </table>
