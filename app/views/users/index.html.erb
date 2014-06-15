@@ -52,10 +52,10 @@
   </tbody>
 </table>
 <br />
-<% if can? :add, User %>
+<% if can? :index, User %>
   <%= link_to t('labels.new'), new_department_user_path, :class => "btn btn-primary" %>
 <% end %>
-<% if can? :delete, User %>
+<% if can? :index, User %>
   <%= submit_tag t('labels.destroy'), :class => "btn" %>
 <% end %>
 
