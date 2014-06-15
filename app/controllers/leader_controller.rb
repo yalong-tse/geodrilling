@@ -43,6 +43,17 @@ class LeaderController < ApplicationController
 
     @year=year;
     
+  	summarydeep = Hole.unclosed.sum(:actualdeep);
+	lastyearleft = Lastyearleft.first;
+	if lastyearleft.nil?
+		@lastyearvalue = 0
+	else
+		@lastyearvalue= lastyearleft.lastyeartotallength
+	end
+
+	@lastyearvalue = summarydeep - @lastyearvalue
+	@lastyearvalue = format("%.2f", @lastyearvalue)
+
     respond_to do |format|
       format.html
     end

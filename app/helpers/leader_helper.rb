@@ -67,7 +67,7 @@ module LeaderHelper
 
   def amountholeshift(year)
       amount = Tourreport.sum(:tourshift,:conditions=>["tourdate<? and tourdate>?",Time.mktime(year+1),Time.mktime(year)])
-      return amount
+      return format("%.2f",amount)
   end 
 
 end

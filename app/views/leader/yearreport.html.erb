@@ -9,15 +9,13 @@
     <div class="span10">
         <div class="widget-body">
           <div class="widget-main">
-    <form class="form-search">
-    <label class="control-label" >选择年度:</label>
-    <select name="year" id="_year" data-placeholder="下拉选择年度">
-      <% for year in 2009..2020 %>
-        <option value=<%=year%> <%="selected" if (year==@year) %>><%=year %></option>
-      <% end %>
-    </select>
-    <button onclick="queryfunction();" class="btn btn-purple btn-small">查询<i class="icon-search icon-on-right bigger-110"></i></button>
-    </form>
+		<label class="control-label" >选择年度:</label>
+		<select name="year" id="_year" data-placeholder="下拉选择年度">
+		  <% for year in 2009..2020 %>
+			<option value=<%=year%> <%="selected" if (year==@year) %>><%=year %></option>
+		  <% end %>
+		</select>
+		<button onclick="queryfunction();" class="btn btn-purple btn-small">查询<i class="icon-search icon-on-right bigger-110"></i></button>
 
   </div>
   </div>
@@ -66,10 +64,10 @@
     <td class="center">合同金额</td><td><%= amountcontract @year %> 元</td>
   </tr>
   <tr>
-    <td class="center">总工作量</td><td>1320米</td>
+    <td class="center">已完成钻孔数量</td><td> <%=holeyearcount @year%> 个</td>
   </tr>
   <tr>
-    <td class="center">已完成钻孔数量</td><td> <%=holeyearcount @year%> 个</td>
+    <td class="center">总工作量</td><td><%= @lastyearvalue %> 米</td>
   </tr>
   <tr>
     <td class="center">完成进尺</td><td><%=amountholeshift @year %> 米</td>
@@ -111,7 +109,7 @@
   });
   function queryfunction()
   {
-    windows.location.href="<%=leader_yearreport_path %>?year="+$("#_year").val();
+    window.location.href="<%=leader_yearreport_path %>?year="+$("#_year").val();
   }
   </script>
 <% end %>
