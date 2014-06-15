@@ -5,6 +5,8 @@ Geodrilling::Application.routes.draw do
   match "leader/holefinish" , :via=>:get , :as=> :leader_holefinish
   match "leader/contract" , :via=>:get, :as=> :leader_contract
   match "leader/yearreport" , :via=>:get, :as => :leader_yearreport
+  match "leader/lastyearleft" , :via=>:get, :as => :leader_lastyearleft
+  match "leader/savelastyear" , :via=>:post, :as=> :leader_savelastyear
 
   match "groups/index" , :via=>:get , :as=>:groups_index
   match "groups/main" , :via=>:get , :as=>:groups_main

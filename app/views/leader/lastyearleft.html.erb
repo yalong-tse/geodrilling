@@ -1,0 +1,53 @@
+<% content_for(:title,"领导关注-填报所有跨年度的孔上一年度总孔深") %>
+<% content_for(:page_header_description, "领导关注-填报所有跨年度的孔上一年度总孔深") %>
+
+<%= content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
+  <%= stylesheet_link_tag 'chosen' %>
+  <%= stylesheet_link_tag 'bootstrap-timepicker' %>
+<% end %>
+
+  <div class="row-fluid">
+    <div class="span10">
+        <div class="widget-body">
+          <div class="widget-main">
+	  <form class="form-search">
+		  <label class="control-label" >所有跨年度的孔上一年度总孔深:</label>
+		  <input name="totallengthleft" type="text" id="_totallengthleft" value="<%= @lastyearvalue %>" />
+		  <button onclick="savelastyear();" class="btn btn-purple btn-small">提交<i class="icon-ok icon-on-right bigger-110"></i></button>
+	  </form>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+<% content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'jquery.dataTables.min' %>
+  <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
+<% end %>
+
+<% content_for :inline_javascripts do %>
+<script language="javascript">
+  $(function(){
+
+  });
+
+  function savelastyear()
+  {
+	  var lastyear = $("#_totallengthleft").val();
+	  $.post("<%=leader_savelastyear_path %>",
+			  {totallengthleft: lastyear},
+			  function(result){
+			  if (result == "true")
+			  {
+    			  window.location.href="<%=leader_lastyearleft_path %>?random="+Math.random();
+			  }
+			 else
+			 {
+			 	alert("保存失败，请核对！");
+			 }
+			 });
+  }
+</script>
+<% end %>

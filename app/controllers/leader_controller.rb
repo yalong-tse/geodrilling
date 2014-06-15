@@ -48,4 +48,37 @@ class LeaderController < ApplicationController
     end
 
   end
+
+
+# 查询页面的方法
+  def lastyearleft
+  	@lastyearleft = Lastyearleft.first;
+	if @lastyearleft.nil?
+		@lastyearvalue= 0
+	else
+		@lastyearvalue= @lastyearleft.lastyeartotallength
+
+	end
+    respond_to do |format|
+      format.html
+    end
+  end
+
+# 保存所有跨年度的所有孔的总孔深
+  def savelastyear
+	  begin
+		totalleftlength = params[:totallengthleft]
+		@lastyearleft = Lastyearleft.first;
+		if @lastyearleft.nil?
+			@lastyearleft = Lastyearleft.new
+		end
+
+		@lastyearleft.lastyeartotallength = totalleftlength
+		@lastyearleft.save
+		render :text=>"true"
+	rescue
+		render :text=>"false"
+	end
+  end
+
 end

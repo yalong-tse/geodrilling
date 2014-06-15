@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140423082231) do
+ActiveRecord::Schema.define(:version => 20140615042930) do
 
   create_table "appsettings", :force => true do |t|
     t.string   "name"
@@ -235,6 +235,13 @@ ActiveRecord::Schema.define(:version => 20140423082231) do
     t.decimal "unitprice",                :precision => 10, :scale => 0
     t.decimal "output",                   :precision => 10, :scale => 0
     t.decimal "outerflag",                :precision => 10, :scale => 0
+  end
+
+  create_table "lastyearlefts", :force => true do |t|
+    t.string   "year"
+    t.float    "lastyeartotallength"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "materials", :force => true do |t|
