@@ -36,6 +36,10 @@
                     <td><%= @tourreport.currentdeep %></td>
                     <td><li><i class="icon-group blue"></i><% if @tourreport.projectmanager %><%=User.find(@tourreport.projectmanager).name%><% end %></li></td>
                   </tr>
+				  <tr>
+				  	<td>交接说明</td>
+					<td colspan="5"> <%= @tourrreport.takeoverremark %></td>
+				  </tr>
                 </tbody>
                 <tfoot>
                   <tr>
