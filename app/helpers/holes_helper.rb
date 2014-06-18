@@ -2,7 +2,7 @@ module HolesHelper
 
   # 字典项的处理方法
   def dictionary_treat(passkey)
-	if passkey
+	if !passkey
 		return ""
 	else
 		dic = Dictionary.find(passkey)

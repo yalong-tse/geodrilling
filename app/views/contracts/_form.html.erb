@@ -109,7 +109,7 @@
   <div class="control-group">
     <%= f.label "资金来源" ,:class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:fundsource , options_for_select(Dictionary.fundsource.collect{|d|[d.item,d.id]}), :class=>"span4",:prompt=>"请选择") %>
+      <%= f.select(:fundsource , options_for_select(Dictionary.fundsource.collect{|d|[d.item,d.id]},@contract.fundsource), :class=>"span4",:prompt=>"请选择") %>
     </div>
   </div>
   </div>
@@ -132,7 +132,11 @@
     <%= f.label "开始日期", :class=>"control-label" %>
     <div class="controls">
       <div class="input-append">
+	  <% if @contract.startdate.nil? %>
         <%= f.text_field :startdate, :class=>"text_field" , :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% else %>
+        <%= f.text_field :startdate, :class=>"text_field" , :value=>@contract.startdate %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% end %>
 
     </div>
     </div>
@@ -144,7 +148,11 @@
     <%= f.label "截止日期", :class=>"control-label"%>
     <div class="controls">
     <div class="input-append">
-      <%= f.text_field :finishdate, :class=>"text_field", :value=>Time.now.change(:year=>Time.now.year+1).strftime("%Y-%m-%d")%><span class="add-on"><i class="icon-calendar"></i></span>
+		<% if @contract.finishdate.nil? %>
+		  <%= f.text_field :finishdate, :class=>"text_field", :value=>Time.now.change(:year=>Time.now.year+1).strftime("%Y-%m-%d")%><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% else %>
+		  <%= f.text_field :finishdate, :class=>"text_field", :value=> @contract.finishdate %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% end %>
     </div>
     </div>
   </div>
@@ -157,7 +165,11 @@
     <%= f.label "签订日期", :class=>"control-label" %>
     <div class="controls ">
       <div class="input-append">
-      <%= f.text_field :signdate ,:class=>"text_field",:value=>Time.now.strftime("%Y-%m-%d")  %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% if @contract.signdate.nil? %>
+		  <%= f.text_field :signdate ,:class=>"text_field",:value=>Time.now.strftime("%Y-%m-%d")  %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% else %>
+		  <%= f.text_field :signdate ,:class=>"text_field",:value=> @contract.signdate  %><span class="add-on"><i class="icon-calendar"></i></span>
+	  <% end %>
     </div>
     </div>
   </div>
@@ -169,7 +181,11 @@
     <%= f.label "工作量", :class=>"control-label" %>
     <div class="controls ">
       <div class="input-append">
-      <%= f.text_field :workshift ,:class=>"text_field",:value=>"500.00"  %><span class="add-on">m</span>
+	  <% if @contract.workshift.nil? %>
+		  <%= f.text_field :workshift ,:class=>"text_field",:value=>"500.00"  %><span class="add-on">m</span>
+	  <% else %>
+		  <%= f.text_field :workshift ,:class=>"text_field",:value=>@contract.workshift  %><span class="add-on">m</span>
+	  <% end %>
     </div>
     </div>
   </div>
