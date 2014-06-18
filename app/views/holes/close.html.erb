@@ -64,7 +64,7 @@
             <td><strong>实际钻孔直径</strong></td>
             <td><%=f.text_field :actualdiameter, :class=>"input-medium", :value=>@hole.designdiameter%></td>
             <td><strong>设计钻孔直径</strong></td>
-            <td><span class="text-error"><%= @hole.designdiameter %></span></td>
+            <td><span class="text-error"><%=dictionary_treat @hole.designdiameter %></span></td>
           </tr>
 
           <tr>
