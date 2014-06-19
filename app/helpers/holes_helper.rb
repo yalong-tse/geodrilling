@@ -4,6 +4,8 @@ module HolesHelper
   def dictionary_treat(passkey)
 	if !passkey
 		return ""
+	elsif passkey.nil?
+		return ""
 	else
 		dic = Dictionary.find(passkey)
 		if dic
