@@ -80,8 +80,9 @@ private
   end
 
   def fetch_tourreports
-    tourreports = Tourreport.gettourreports(@holeid).order("#{sort_column} #{sort_direction}")
-    tourreports = tourreports.page(page).per_page(per_page)
+#tourreports = Tourreport.gettourreports(@holeid).order("#{sort_column} #{sort_direction}")
+	tourreports = Tourreport.gettourreports(@holeid).order("tourdate desc")
+	tourreports = tourreports.page(page).per_page(per_page)
     if params[:sSearch].present?
       tourreports = tourreports.joins(:hole).where("holes.holenumber like :search or tourdate like :search or administrator like :search or tourleader like :search or recorder like :search", search: "%#{params[:sSearch]}%")
     end
@@ -98,6 +99,9 @@ private
 
   def sort_column
     columns = %w[holeid tourdate starttime finishtime administrator tourleader recorder tourshift tourcore tourdrillingtime tourauxiliarytime]
+	if params[:iSortCol_0].nil? || params[:iSortCol_0].empty?
+		"tourdate"
+	end 
     columns[params[:iSortCol_0].to_i]
   end
 

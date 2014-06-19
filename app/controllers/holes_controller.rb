@@ -113,8 +113,8 @@ class HolesController < ApplicationController
   # PUT /holes/1.json
   def update
     @hole = Hole.find(params[:id])
-    if(params[:opennoticeatt] || params[:closenoticeatt])
-      @hole.save_closefile(params[:opennoticeatt],params[:closenoticeatt],params[:curvetableatt],params[:measuretableatt],params[:coretransferdoc],params[:tourreporttransferdoc],params[:qualitychecktable])
+    if(params[:opennotice] || params[:closenotice])
+      @hole.save_closefile(params[:opennotice],params[:closenotice],params[:curvetable],params[:measuretable],params[:coretransferdoc],params[:tourreporttransferdoc],params[:qualitychecktable],params[:tourreporttable])
       @hole.save
       # 释放占用的设备和人员
       Deployment.find_by_hole_id(@hole.id).destroy if (Deployment.find_by_hole_id(@hole.id))

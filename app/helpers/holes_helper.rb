@@ -6,6 +6,8 @@ module HolesHelper
 		return ""
 	elsif passkey.nil?
 		return ""
+	elsif passkey.empty?
+		return ""
 	else
 		dic = Dictionary.find(passkey)
 		if dic

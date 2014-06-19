@@ -114,7 +114,7 @@ class Hole < ActiveRecord::Base
   end
 
   #关孔操作时其他附件的保存办法,在参数中一起传递过来
-  def save_closefile(opennotice,closenotice,curvetable,measuretable,coretransfer,tourreporttransfer,qualitycheck)
+  def save_closefile(opennotice,closenotice,curvetable,measuretable,coretransfer,tourreporttransfer,qualitycheck,tourreporttable)
     if(!opennotice.nil?)
       opennoticeatt = Attachment.new
       opennoticeatt.save_att(opennotice)
@@ -164,12 +164,12 @@ class Hole < ActiveRecord::Base
       self.qualitychecktable_id = qualitycheckatt.id
     end
 
-#if(!tourreporttable.nil?)
-#      tourreporttableatt= Attachment.new
-#      tourreporttableatt.save_att(tourreporttable)
-#      tourreporttableatt.save
-#      self.tourreporttabledoc_id = tourreporttableatt.id
-#    end
+	if(!tourreporttable.nil?)
+      tourreporttableatt= Attachment.new
+      tourreporttableatt.save_att(tourreporttable)
+      tourreporttableatt.save
+      self.tourreporttabledoc_id = tourreporttableatt.id
+    end
     # 设置钻孔状态
     self.status=2
 
