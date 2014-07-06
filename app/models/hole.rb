@@ -56,7 +56,7 @@ class Hole < ActiveRecord::Base
   #DRILLINGPURPOSE = [['金属矿'],['非金属矿'],['油气'],['水井'],['地热'],['煤田']] 
 
   # 选出所有已经关闭的钻孔
-  scope :closed, :conditions=>{:status=>2}
+  scope :closed, :conditions=>{:status=>2} , :order =>"outerflag,create_at desc"
   # 所有未配置的钻孔
   scope :undeployed, :conditions=>{:status=>0}
 
