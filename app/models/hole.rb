@@ -38,14 +38,14 @@ class Hole < ActiveRecord::Base
   #attr_reader :attachmentstr
   belongs_to :contract,:class_name=>"Contract" ,:foreign_key=>"contract_id"
   belongs_to :attachment,:class_name=>"Holeassets",:foreign_key=>"attachment_id"
-  belongs_to :opennotice, :class_name=>"Holeassets" , :foreign_key=>"opennoticeatt_id"
-  belongs_to :closenotice, :class_name=>"Holeassets" , :foreign_key=>"closenoticeatt_id"
-  belongs_to :curvetable, :class_name=>"Holeassets" , :foreign_key=>"curvetableatt_id"
-  belongs_to :measuretable, :class_name=>"Holeassets" , :foreign_key=>"measuretableatt_id"
-  belongs_to :coretransferdoc, :class_name=>"Holeassets" , :foreign_key=>"coretransferdoc_id"
-  belongs_to :tourreporttransferdoc, :class_name=>"Holeassets" , :foreign_key=>"tourreporttransferdoc_id"
-  belongs_to :qualitychecktable, :class_name=>"Holeassets" , :foreign_key=>"qualitychecktable_id"
-  belongs_to :tourreporttabledoc, :class_name=>"Holeassets" , :foreign_key=>"tourreporttabledoc_id"
+  belongs_to :opennotice, :class_name=>"Attachment" , :foreign_key=>"opennoticeatt_id"
+  belongs_to :closenotice, :class_name=>"Attachment" , :foreign_key=>"closenoticeatt_id"
+  belongs_to :curvetable, :class_name=>"Attachment" , :foreign_key=>"curvetableatt_id"
+  belongs_to :measuretable, :class_name=>"Attachment" , :foreign_key=>"measuretableatt_id"
+  belongs_to :coretransferdoc, :class_name=>"Attachment" , :foreign_key=>"coretransferdoc_id"
+  belongs_to :tourreporttransferdoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttransferdoc_id"
+  belongs_to :qualitychecktable, :class_name=>"Attachment" , :foreign_key=>"qualitychecktable_id"
+  belongs_to :tourreporttabledoc, :class_name=>"Attachment" , :foreign_key=>"tourreporttabledoc_id"
 
   #has_many :holeassets , :dependent=>:destroy , :class_name=>"Holeassets"
   accepts_nested_attributes_for :attachment, :allow_destroy=>true

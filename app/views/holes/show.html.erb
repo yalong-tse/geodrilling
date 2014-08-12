@@ -98,27 +98,27 @@
               </tr>
               <tr>
                 <td><strong>钻孔开孔通知书</strong></td>
-                <td ><% if @hole.opennotice %><%= link_to @hole.opennotice.data.url do %><%= @hole.opennotice.data_origin_file_name %><% end %><% end %></td>
+                <td ><% if @hole.opennotice %><%= hole_attachment_dealing @hole.opennoticeatt_id %><% end %></td>
                 <td><strong>钻孔终孔通知书</strong></td>
-                <td ><%if @hole.closenotice %><%= link_to @hole.closenotice.data.url do %><%= @hole.closenotice.data_origin_file_name%><%end %> <%end%></td>
+                <td ><%if @hole.closenotice %><%= hole_attachment_dealing @hole.closenoticeatt_id %><%end%></td>
               </tr>
               <tr>
                 <td><strong>钻孔弯曲度测量记录表</strong></td>
-                <td ><%if @hole.curvetable %><%=link_to @hole.curvetable.data.url do %><%= @hole.curvetable.data_origin_file_name%><% end %><% end %></td>
+                <td ><%if @hole.curvetable %><%= hole_attachment_dealing @hole.curvetableatt_id %><% end %></td>
                 <td><strong>钻具丈量及孔深误差记录表</strong></td>
-                <td ><% if @hole.measuretable %><%= link_to @hole.measuretable.data.url do %><%= @hole.measuretable.data_origin_file_name %><% end %><%end %></td>
+                <td ><% if @hole.measuretable %><%= hole_attachment_dealing @hole.measuretableatt_id %><%end %></td>
               </tr>
               <tr>
                 <td><strong>岩矿心移交验收单</strong></td>
-                <td ><% if @hole.coretransferdoc %><% link_to @hole.coretransferdoc.data.url do %><%=@hole.coretransferdoc.data_origin_file_name%><%end%><%end%></td>
+                <td ><% if @hole.coretransferdoc %><%= hole_attachment_dealing @hole.coretransferdoc_id %><%end%></td>
                 <td><strong>原始记录报表移交清单</strong></td>
-                <td ><% if @hole.tourreporttransferdoc %><% link_to @hole.tourreporttransferdoc.data.url do %><%= @hole.tourreporttransferdoc.data_origin_file_name%><% end %><% end %></td>
+                <td ><% if @hole.tourreporttransferdoc %><%= hole_attachment_dealing @hole.tourreporttransferdoc_id %><% end %></td>
               </tr>
               <tr>
                 <td><strong>钻孔质量验收评定表</strong></td>
-                <td ><% if @hole.qualitychecktable %><% link_to @hole.qualitychecktable.data.url do %><%=@hole.qualitychecktable.data_origin_file_name%><% end %> <%end %></td>
+                <td ><% if @hole.qualitychecktable %><%= hole_attachment_dealing @hole.qualitychecktable_id %><%end %></td>
                 <td><strong>钻孔班报表</strong></td>
-                <td ><% if @hole.tourreporttabledoc %> <% link_to @hole.tourreporttabledoc.data.url do %><%=@hole.tourreporttabledoc.data_origin_file_name%><% end %> <%end%></td>
+                <td ><% if @hole.tourreporttabledoc %> <%= hole_attachment_dealing @hole.tourreporttabledoc_id %><%end%></td>
               </tr>
             </tbody>
           </table>
