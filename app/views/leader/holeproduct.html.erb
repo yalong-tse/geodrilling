@@ -35,9 +35,13 @@
     </tr>
   <% end %>
 </tbody>
-  <%= will_paginate @holes %>
 </table>
 
+<div class="digg_pagination">
+	<div class="page_info">
+	<%= will_paginate @holes, :container=>false %>
+	</div>
+</div>
 <% content_for :page_specific_javascripts do %>
   <%= javascript_include_tag 'jquery.dataTables.min' %>
   <%= javascript_include_tag 'jquery.dataTables.bootstrap' %>
