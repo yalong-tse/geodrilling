@@ -98,6 +98,8 @@ Geodrilling::Application.routes.draw do
   match "holes/list" , :via=> :get , :as =>:holes_list
   match "holes/closelist" ,:via=>:get , :as=>:holes_closelist
   match "holes/tourreports" ,:via=>:get , :as=> :holes_tourreports
+  match "holes/query" ,:via=>:post , :as=>:holes_query
+  match "holes/query" ,:via=>:get , :as=>:holes_query
 
   get "holes/tourreportsmodify"
   get "holes/close"

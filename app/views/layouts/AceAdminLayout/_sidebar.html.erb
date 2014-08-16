@@ -67,7 +67,7 @@
   </li>
 
 
-  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_path) || current_page?(holes_closelist_path) || current_page?(holes_close_path)|| current_page?(tourreports_indexformodify_path) || current_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0) || current_page?(tourreports_path) || current_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0) ||current_page?(new_tourreport_path) || current_page?(holelist_deployment_path) || current_page?(holes_tourreportsmodify_path))}" do %>
+  <%= content_tag :li, :class => "#{active_menu?(current_page?(new_hole_path) || current_page?(holelist_index_path) || current_page?(holes_query_path) || current_page?(holes_closelist_path) || current_page?(holes_close_path)|| current_page?(tourreports_indexformodify_path) || current_page?(:controller=>"tourreports",:action=>"edit",:id=>params[:id] || 0) || current_page?(tourreports_path) || current_page?(:controller=>"tourreports",:action=>"show",:id=>params[:id] || 0) || current_page?(holes_list_path) || current_page?(holes_tourreports_path) || current_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0) ||current_page?(new_tourreport_path) || current_page?(holelist_deployment_path) || current_page?(holes_tourreportsmodify_path))}" do %>
     <a href="#" class="dropdown-toggle">
       <i class="icon-edit"></i>
       <span>钻孔管理</span>
@@ -89,8 +89,8 @@
       <% end %>
 
       <% if can? :index, Hole %>
-      <li <%= active_page?(holes_path) %><%=active_page?(:controller=>"holes",:action=>"show" ,:id=>params[:id] || 0)%>  >
-        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔查询')), holes_path %>
+      <li <%= active_page?(holes_query_path) %><%=active_page?(holes_query_path)%>  >
+        <%= link_to (raw('<i class="icon-double-angle-right"></i>钻孔查询')), holes_query_path %>
       </li>
       <% end %>
 

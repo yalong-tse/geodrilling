@@ -2,7 +2,7 @@
 <% content_for(:page_header_description, "查询钻孔的相关信息，检索框中输入内容即可条件检索") %>
 
 <div class="row"> 
-  <%= form_tag holes_path, :class=>"form-horizontal" do %>
+  <%= form_tag holes_query_path, :class=>"form-horizontal" do %>
        <div class="control-group">
           <%= label_tag :holenumber, "钻孔编号", :class => "control-label" %>
           <div class="controls">
@@ -26,8 +26,9 @@
           <div class="controls">
             <div class="input-prepend">
 			  <select name="outerflag">
-			  	<option name="0">自管</option>
-			  	<option name="1">外协</option>
+			  	<option value="2" <% if params[:outerflag]=="2" %> selected <% end %>>所有</option>
+			  	<option value="0" <% if params[:outerflag]=="0" %> selected <% end %>>自管</option>
+			  	<option value="1" <% if params[:outerflag]=="1" %> selected <% end %>>外协</option>
 			  </select>
             </div>
           </div>
@@ -47,7 +48,7 @@
   <tr>
   	<th>公司名称</th>
     <th>孔号</th>
-    <th>合同名称</th>
+    <th>矿区</th>
     <th>设计深度(m)</th>
     <th>当前深度(m)</th>
     <th>设计取心率(%)</th>
@@ -61,14 +62,15 @@
   <% @holes.each do |hole| %>
     <tr>
       <td class="center"><% if(hole.contract) %><%= hole.contract.department.name %><% end %></td>
-      <td class="center"><%= hole.holenumber %> </td>
-      <td class="center"><%= hole.contract.name %> </td>
+      <td class="center"><%= holenumber_dealing hole.id %> </td>
+      <td class="center"><%= hole.minearea %> </td>
       <td class="center"><%= hole.designdeep %> </td>
       <td class="center"><%= hole.actualdeep %> </td>
       <td class="center"><%= hole.designcoreratio %> </td>
       <td class="center"><%= hole.actualcoreratio %> </td>
       <td class="center"><%= hole.startdate.strftime("%Y-%m-%d") %> </td>
       <td class="center"><%= hole.statusstr %> </td>
+
       <td class="center">
     	<div class="inline position-relative btn-group">
     	<button class="btn btn-mini btn-success tooltip-success" onclick='open_detail( "<%=hole_path(hole)%> ")' rel="tooltip" title="查看详情"><i class="icon-eye-open bigger-120"></i></button>"

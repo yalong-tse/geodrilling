@@ -5,10 +5,19 @@ class HolesController < ApplicationController
   # GET /holes.json
   def index
     #@holes = Hole.all
+	if(params[:holenumber])
+      @holes = Hole.where("holenumber like ?", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
+	elsif params[:minearea]
+      @holes = Hole.where("minearea like ?", "%#{params[:minearea]}%").paginate(:page=>params[:page],:per_page=>10)
+	elsif params[:outerflag]=1
+      @holes = Hole.where("outerflag=1").paginate(:page=>params[:page],:per_page=>10)
+	else
+      @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
+	end
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: HolesDatatable.new(view_context) }
+      format.json  # { render json: HolesDatatable.new(view_context) }
     end
   end
 
@@ -155,6 +164,33 @@ class HolesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @hole }
+    end
+  end
+
+  def query
+    #@holes = Hole.all
+	logger.info "the param is #{params[:minearea]}"
+	if (!params[:minearea].nil? && !params[:minearea].empty? && !params[:holenumber].nil? && !params[:holenumber].empty? && params[:outerflag]!="2")
+      @holes = Hole.where("minearea like ? and holenumber like ? and outerflag=?", "%#{params[:minearea]}%","%#{params[:holenumber]}%", "#{params[:outerflag]}").paginate(:page=>params[:page],:per_page=>10)
+	elsif (params[:outerflag]!="2" && !params[:holenumber].nil? && !params[:holenumber].empty?)
+      @holes = Hole.where("holenumber like ? and outerflag=?", "%#{params[:holenumber]}%", "#{params[:outerflag]}" ).paginate(:page=>params[:page],:per_page=>10)
+	elsif (params[:outerflag]!="2" && !params[:minearea].nil? && !params[:minearea].empty?)
+      @holes = Hole.where("minearea like ? and outerflag=?", "%#{params[:minearea]}%", "#{params[:outerflag]}" ).paginate(:page=>params[:page],:per_page=>10)
+	elsif (!params[:minearea].nil? && !params[:minearea].empty? && !params[:holenumber].nil? && !params[:holenumber].empty?)
+      @holes = Hole.where("minearea like ? and holenumber like ?", "%#{params[:minearea]}%","%#{params[:holenumber]}%" ).paginate(:page=>params[:page],:per_page=>10)
+	elsif(!params[:holenumber].nil? && !params[:holenumber].empty?)
+      @holes = Hole.where("holenumber like ?", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
+	elsif (!params[:minearea].nil? && !params[:minearea].empty?)
+      @holes = Hole.where("minearea like ?", "%#{params[:minearea]}%").paginate(:page=>params[:page],:per_page=>10)
+	elsif (params[:outerflag]=="1" || params[:outerflag]=="0")
+      @holes = Hole.where("outerflag=?","#{params[:outerflag]}").paginate(:page=>params[:page],:per_page=>10)
+	else
+      @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
+	end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  # { render json: HolesDatatable.new(view_context) }
     end
   end
   
