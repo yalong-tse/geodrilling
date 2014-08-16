@@ -38,7 +38,6 @@
   <thead>
     <tr>
       <th class="center" width="%8">钻孔编号</th>
-      <th class="center" width="%5">合同名称</th>
       <th class="center" width="10%">台月效率(米/月）</th>
       <th class="center" width="15%">岩心采取率(%)</th>
       <th class="center" width="15%">机械钻速(m/h)</th>
@@ -48,8 +47,7 @@
   <tbody>
   <% @holes.each do |hole| %>
     <tr>
-      <td class="center"><%= hole.holenumber %> </td>
-      <td class="center"><%= hole.contract.name %> </td>
+      <td class="center"><%=holenumber_dealing hole.id %> </td>
       <td class="center"><%= compute_montheffiency hole.id %> </td>
       <td class="center"><%= compute_coreratio hole.id %> </td>
       <td class="center"><%= compute_mechspeed hole.id %> </td>

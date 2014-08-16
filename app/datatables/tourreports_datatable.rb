@@ -81,7 +81,7 @@ private
 
   def fetch_tourreports
 #tourreports = Tourreport.gettourreports(@holeid).order("#{sort_column} #{sort_direction}")
-	tourreports = Tourreport.gettourreports(@holeid).order("tourdate desc")
+	tourreports = Tourreport.gettourreports(@holeid).order("tourdate desc,starttime desc")
 	tourreports = tourreports.page(page).per_page(per_page)
     if params[:sSearch].present?
       tourreports = tourreports.joins(:hole).where("holes.holenumber like :search or tourdate like :search or administrator like :search or tourleader like :search or recorder like :search", search: "%#{params[:sSearch]}%")

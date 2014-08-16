@@ -163,13 +163,13 @@ class TourreportsController < ApplicationController
   # 查询班报报表的内容，支持条件查询
   def holesreport
     if params[:holenumber]
-      @holes = Hole.where("holenumber like ?", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
+      @holes = Hole.where("holenumber like ? and outerflag=0", "%#{params[:holenumber]}%").paginate(:page=>params[:page],:per_page=>10)
     elsif params[:contractname]
-      @holes = Hole.where("contract.name like ?", "%#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
+      @holes = Hole.where("contract.name like ? and outerflag=0", "%#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
     elsif (params[:contractname] && params[:holenumber])
-      @holes = Hole.where("holenumber=? and contract.name like ?", "%#{params[:holenumber]}%","#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
+      @holes = Hole.where("holenumber=? and contract.name like ? and outerflag=0", "%#{params[:holenumber]}%","#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
     else
-      @holes = Hole.paginate(:page=>params[:page],:per_page=>10)
+      @holes = Hole.where("outerflag=0").paginate(:page=>params[:page],:per_page=>10)
     end
 
     respond_to do |format|
