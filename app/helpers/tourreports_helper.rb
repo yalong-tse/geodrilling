@@ -129,7 +129,7 @@ module TourreportsHelper
   def compute_coreratio(holeid)
     if(holeid)
       hole = Hole.find(holeid)
-      per = Tourreport.sumcore(hole.id).to_i/(hole.actualdeep.nil?? 1:hole.actualdeep) ;
+      per = Tourreport.sumcore(hole.id).to_i/(hole.actualdeep.nil?? 1:hole.actualdeep) *100;
       return format("%.2f",per)
     end
   end
