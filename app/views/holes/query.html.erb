@@ -47,8 +47,9 @@
 <thead>
   <tr>
   	<th>公司名称</th>
+    <th style="text-align:center">项目名称</th>
     <th>孔号</th>
-    <th>矿区</th>
+    <th style="text-align:center">矿区</th>
     <th>设计深度(m)</th>
     <th>当前深度(m)</th>
     <th>设计取心率(%)</th>
@@ -62,7 +63,8 @@
   <% @holes.each do |hole| %>
     <tr>
       <td class="center"><% if(hole.contract) %><%= hole.contract.department.name %><% end %></td>
-      <td class="center"><%= holenumber_dealing hole.id %> </td>
+      <td class="center"><%= hole.contract.projectname %> </td>
+      <td class="center"><%= holenumber_dealing2 hole.id %> </td>
       <td class="center"><%= hole.minearea %> </td>
       <td class="center"><%= hole.designdeep %> </td>
       <td class="center"><%= hole.actualdeep %> </td>

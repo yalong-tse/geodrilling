@@ -50,6 +50,21 @@ module ApplicationHelper
     return result
   end
 
+  # 钻孔编号处理
+  def holenumber_dealing2(holeid)
+    result = ""
+    #logger.info("==============="+holeid)
+    if holeid then 
+      hole = Hole.find(holeid) if holeid
+      if (hole.outerflag && hole.outerflag==1)
+        result = "【" + hole.holenumber + "】" +"【外协】"  if hole
+      else
+        result = "【" + hole.holenumber + "】" if hole
+      end
+    end
+    return result
+  end
+
   # 钻孔是否归档
   def hole_enable_archive(status)
     code = ""
