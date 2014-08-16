@@ -114,7 +114,7 @@ class HolesController < ApplicationController
   def update
     @hole = Hole.find(params[:id])
     if(params[:opennotice] || params[:closenotice])
-      @hole.save_closefile(params[:opennotice][:data],params[:closenotice][:data],params[:curvetable][:data],params[:measuretable][:data],params[:coretransferdoc][:data],params[:tourreporttransferdoc][:data],params[:qualitychecktable][:data],params[:tourreporttable][:data])
+      @hole.save_closefile(params[:opennotice].nil??nil:params[:opennotice][:data],params[:closenotice].nil??nil:params[:closenotice][:data],params[:curvetable].nil??nil:params[:curvetable][:data],params[:measuretable].nil??nil:params[:measuretable][:data],params[:coretransferdoc].nil??nil:params[:coretransferdoc][:data],params[:tourreporttransferdoc].nil??nil:params[:tourreporttransferdoc][:data],params[:qualitychecktable].nil??nil:params[:qualitychecktable][:data],params[:tourreporttable].nil??nil:params[:tourreporttable][:data])
       @hole.save
       # 释放占用的设备和人员
       Deployment.find_by_hole_id(@hole.id).destroy if (Deployment.find_by_hole_id(@hole.id))
