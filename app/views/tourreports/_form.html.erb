@@ -843,9 +843,9 @@ function compute_time(startstr,finishstr)
   var _starttime_ms = Date.parse("2013/09/13 " + startstr);
   var _endtime_ms = Date.parse("2013/09/13 " + finishstr);
   var _span = _endtime_ms - _starttime_ms;
+  if(_span<0)
+	  _span = _span+(24*3600*1000);
   var hours = Math.floor(_span/(3600*1000));
-  if(hours<0)
-    hours = 24+hours;
   var leave = _span%(3600*1000);
   var minutes = Math.floor(leave/(60*1000));
   if(minutes<10)

@@ -181,5 +181,4 @@ class Hole < ActiveRecord::Base
     super.as_json(options).merge({:statusstr=> statusstr}).merge({:attachmentstr=>attachmentstr})
   end
 
-
 end
