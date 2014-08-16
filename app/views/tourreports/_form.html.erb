@@ -774,17 +774,17 @@ function change_time()
 
 function refresh_event()
 {
-  //$("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
-  //$("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",Fun_finishtime);
+  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").unbind("change",Fun_finishtime);
+  $("input[class='time_picker input-mini'][name='workcontent_finishtime[]']").bind("change",Fun_finishtime);
 
   //$("input[class='time_picker input-mini'][name='workcontent_starttime[]']").unbind("change",Fun_starttime);
   //$("input[class='time_picker input-mini'][name='workcontent_starttime[]']").bind("change",Fun_starttime);
 
-  //$("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
-  //$("input[class='time_picker input-mini']").bind("change",Fun_computetime);
+  $("input[class='time_picker input-mini']").unbind("change",Fun_computetime);
+  $("input[class='time_picker input-mini']").bind("change",Fun_computetime);
 
-  //$("select[name='workcontent[]']").unbind("change",Fun_computetime);
-  //$("select[name='workcontent[]']").bind("change",Fun_computetime);
+  $("select[name='workcontent[]']").unbind("change",Fun_computetime);
+  $("select[name='workcontent[]']").bind("change",Fun_computetime);
 
 }
 
