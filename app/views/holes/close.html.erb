@@ -125,7 +125,7 @@
   </div>
 
 <div class="form-actions">
-    <%= f.submit "钻孔终孔",:class=>"btn btn-primary" %> 
+	<input type="button" value="钻孔终孔" onclick="javascript:checksumbit();" />
 </div>
 <% end %>
 
@@ -169,5 +169,22 @@
         });
   });
 
+	function checksumbit()
+	{
+		var result = true;
+		$("input[type='file']").each(function(){
+				
+      		if("<%= current_user.account %>"!="admin")
+			if($(this).val()=="")
+			{
+				alert("请上传各类钻孔终孔的资料");	
+				result=false;
+				return false;
+			}
+		});
+
+		if(result==true)
+			$("#formservice").submit();
+	}
 </script>
 <% end %>
