@@ -23,7 +23,7 @@
 <tbody>
   <% @holes.each do |hole| %>
     <tr>
-    <td class="center"><%=hole.minearea %> <%= hole.holenumber %></td>
+    <td class="center"><a href="<%=leader_holetourreport_path%>?holeid=<%=hole.id%>"><%=hole.minearea %> <%= hole.holenumber %></a></td>
       <td class="center"><%=hole.contract.name %></td>
       <td class="center"><%=hole.contract.owner %></td>
       <td class="center"><%= hole_projectmanager(hole.id) %></td>

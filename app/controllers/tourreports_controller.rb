@@ -176,6 +176,7 @@ class TourreportsController < ApplicationController
       format.html
       format.json
     end
-
   end
+
+
 end

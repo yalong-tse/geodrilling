@@ -47,6 +47,12 @@ class Tourreport < ActiveRecord::Base
     end
   end
 
+  def self.findtourreports(holeid)
+	if holeid
+		where("holeid=?", holeid).order("tourdate asc,starttime asc")
+	end
+  end
+
   # 获取上一个班报的钻具交接的内容,方便用户填写
   def self.getLastTakeovertools(holeid)
     if holeid

@@ -1,0 +1,44 @@
+<%= render partial: "layouts/flash_messages", flash: flash %>
+<% content_for(:title,"钻孔态势分析") %>
+<% content_for(:page_header_description, "钻孔态势分析") %>
+<%= content_for :page_specific_javascripts do %>
+  <%= javascript_include_tag 'FusionCharts' %>
+<% end %>
+
+  <div class="row-fluid">
+    <div class="span10">
+    <h3><strong>钻孔生产情况态势分析</strong></h3>
+  </div>
+  </div>
+  <hr>
+
+<div class="page-section">
+  <div class="container">
+    <div class="span12">
+        <div align="center">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="900" height="450" id="Line2D" >
+			   <param name="movie" value="/FusionCharts/Line.swf?chartWidth=900&chartHeight=450" />
+               <param name="FlashVars" value="&dataXML=<%=@tourreportxml%>">
+			   <param name="quality" value="high" />
+               <embed src="/FusionCharts/Line.swf?chartWidth=900&chartHeight=420" flashVars="&dataXML=<%=@tourreportxml%>" quality="high" width="900" height="420" name="Line" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+			</object>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-actions">
+	<input type="button" name="return" value="返回" onclick="javascript:window.history.go(-1);" />
+</div>
+
+<%= content_for :inline_javascripts do %>
+  <script type="text/javascript">
+
+  $(function(){
+
+  });
+
+  </script>
+
+<% end %>

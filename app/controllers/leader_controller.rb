@@ -1,3 +1,4 @@
+#encoding: utf-8
 class LeaderController < ApplicationController
 
   # 钻孔生产情况的界面，所有在生产的钻孔
@@ -8,7 +9,25 @@ class LeaderController < ApplicationController
       format.html
       format.json {render :json=>@holes}
     end
+  end
 
+  # 展示钻孔的所有班报的情况
+  def holetourreport
+  	@tourreports = Tourreport.findtourreports(params[:holeid])
+
+    tourreportxml= "<graph caption='钻孔态势分析' xAxisName='日期' yAxisName='深度' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
+
+	@tourreports.each do |t|
+      	tourreportxml << "<set name='#{t.tourdate.strftime("%Y-%m-%d")}' " + "value='" + t.currentdeep.to_s + "' />";
+	end
+
+	tourreportxml << "</graph>";
+	@tourreportxml = tourreportxml.html_safe
+
+    respond_to do |format|
+      format.html
+      format.json {render :json=>@tourreports}
+	end
   end
 
   # 所有完孔的情况

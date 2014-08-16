@@ -7,6 +7,7 @@ Geodrilling::Application.routes.draw do
   match "leader/yearreport" , :via=>:get, :as => :leader_yearreport
   match "leader/lastyearleft" , :via=>:get, :as => :leader_lastyearleft
   match "leader/savelastyear" , :via=>:post, :as=> :leader_savelastyear
+  match "leader/holetourreport" , :via=>:get, :as=> :leader_holetourreport
 
   match "groups/index" , :via=>:get , :as=>:groups_index
   match "groups/main" , :via=>:get , :as=>:groups_main
