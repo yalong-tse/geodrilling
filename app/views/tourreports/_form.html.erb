@@ -73,8 +73,9 @@
                         <div class="input-append">
                         <% if @tourreport.tourdate.nil? %>
                          <%= f.text_field :tourdate,:class=>"input-large", :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+						 <input type="text" value="1111111111111"/>
                         <% else %>
-                         <%= f.text_field :tourdate,:class=>"input-large", :value=>@tourreport.tourdate %><span class="add-on"><i class="icon-calendar"></i></span>
+                         <%= f.text_field :tourdate,:class=>"input-large", :value=>@tourreport.tourdate.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
                         <% end %>
                         </div>
                       </div>
@@ -177,7 +178,12 @@
                       <%= f.label "班报日期", :class=>"control-label" %>
                       <div class="controls">
                         <div class="input-append">
-                          <%= f.text_field :tourdate,:class=>"input-large", :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+                        <% if @tourreport.tourdate.nil? %>
+                         <%= f.text_field :tourdate,:class=>"input-large", :value=>Time.now.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+						 <input type="text" value="1111111111111"/>
+                        <% else %>
+                         <%= f.text_field :tourdate,:class=>"input-large", :value=>@tourreport.tourdate.strftime("%Y-%m-%d") %><span class="add-on"><i class="icon-calendar"></i></span>
+                        <% end %>
                         </div>
                       </div>
                     </div>

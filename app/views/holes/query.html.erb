@@ -3,6 +3,7 @@
 
 <div class="row"> 
   <%= form_tag holes_query_path, :class=>"form-horizontal" do %>
+  	<div class="span4">
        <div class="control-group">
           <%= label_tag :holenumber, "钻孔编号", :class => "control-label" %>
           <div class="controls">
@@ -13,10 +14,31 @@
         </div>
 
        <div class="control-group">
+          <%= label_tag :contractname, "合同名称", :class => "control-label" %>
+          <div class="controls">
+            <div class="input-prepend">
+              <%= text_field_tag :contractname, params[:contractname], :placeholder => "合同名称" %>
+            </div>
+          </div>
+        </div>
+
+       <div class="control-group">
           <%= label_tag :minearea, "矿区名称", :class => "control-label" %>
           <div class="controls">
             <div class="input-prepend">
               <%= text_field_tag :minearea, params[:minearea], :placeholder => "矿区名称" %>
+            </div>
+          </div>
+        </div>
+
+		</div>
+
+		<div class="span4">
+       <div class="control-group">
+          <%= label_tag :departmentid, "部门名称", :class => "control-label" %>
+          <div class="controls">
+            <div class="input-prepend">
+      			<%= select_tag(:departmentid ,options_for_select(Department.to_select, params[:departmentid]),:prompt=>"请选择") %>
             </div>
           </div>
         </div>
@@ -34,11 +56,13 @@
           </div>
         </div>
 
+		
         <div class="control-group">
           <div class="controls">
             <%= submit_tag "查询", :class => "btn-small btn-primary" %>
           </div>
         </div>
+		</div>
   <% end %>
 </div>
 
