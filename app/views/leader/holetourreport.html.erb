@@ -39,11 +39,9 @@
   <script type="text/javascript">
 
   $(function(){
-	alert("11111111111");
 	$.getJSON("<%=leader_holetours_path%>.json?holeid=<%=@hole.id%>",
 		function(result)
 		{
-			alert("2222222222222");
 			$('#chartcontainer').highcharts('StockChart', {
 			
 			rangeSelector : {
