@@ -16,7 +16,7 @@ class LeaderController < ApplicationController
   	@tourreports = Tourreport.findtourreports(params[:holeid])
 	@hole = Hole.find(params[:holeid])
 
-    tourreportxml= "<graph caption='钻孔进度分析' xAxisName='日期' yAxisName='深度' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
+    tourreportxml= "<graph caption='钻孔进度分析' xAxisName='日期' yAxisName='深度' showNames='0' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
 
 	@tourreports.each do |t|
       	tourreportxml << "<set name='#{t.tourdate.strftime("%Y-%m-%d")}' " + "value='" + t.currentdeep.to_s + "' />";
@@ -28,6 +28,31 @@ class LeaderController < ApplicationController
     respond_to do |format|
       format.html
       format.json {render :json=>@tourreports}
+	end
+  end
+
+
+  def holetours
+  begin
+		@tourreports = Tourreport.findtourreports(params[:holeid])
+		@objs = "{(/* AAPL historical OHLC data from the Google Finance API */" 
+		@objs << "["
+		if @tourreports
+			@tourreports.each do |t|
+				@objs << "['#{t.tourdate}',#{t.currentdeep}],"
+			end
+		end
+		@objs = @objs.chop
+		@objs << "])}"
+        respond_to do |format|
+          format.html
+          format.json {render :json=> @objs}
+        end
+	rescue
+      respond_to do |format|
+        format.html
+        format.json {render :json=> "holeid invalid"}
+      end
 	end
   end
 

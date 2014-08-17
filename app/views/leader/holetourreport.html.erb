@@ -2,12 +2,13 @@
 <% content_for(:title,"钻孔态势分析") %>
 <% content_for(:page_header_description, "钻孔态势分析") %>
 <%= content_for :page_specific_javascripts do %>
-  <%= javascript_include_tag 'FusionCharts' %>
+<%= javascript_include_tag 'FusionCharts' %>
+<%= javascript_include_tag 'highstock' %>
 <% end %>
 
   <div class="row-fluid">
     <div class="span10">
-    <h3><strong><%= holenumber_dealing @hole %>钻孔生产情况态势分析</strong></h3>
+    <h3><strong><%= holenumber_dealing @hole %>钻孔生产情况进度分析</strong></h3>
   </div>
   </div>
   <hr>
@@ -27,6 +28,8 @@
   </div>
 </div>
 
+<hr/>
+<div id="chartcontainer" style="height:400px; min-width: 310px"></div>
 
 <div class="form-actions">
 	<input type="button" name="return" value="返回" onclick="javascript:window.history.go(-1);" />
@@ -36,7 +39,31 @@
   <script type="text/javascript">
 
   $(function(){
+	alert("11111111111");
+	$.getJSON("<%=leader_holetours_path%>.json?holeid=<%=@hole.id%>",
+		function(result)
+		{
+			alert("2222222222222");
+			$('#chartcontainer').highcharts('StockChart', {
+			
+			rangeSelector : {
+				selected : 1,
+				inputEnabled: $('#chartcontainer').width() > 480
+			},
 
+			title : {
+				text : '钻孔生产情况'
+			},
+			
+			series : [{
+				name : '钻孔生产情况',
+				data : result,
+				tooltip: {
+					valueDecimals: 2
+				}
+			}]
+		});
+		})
   });
 
   </script>
