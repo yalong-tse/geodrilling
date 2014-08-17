@@ -14,8 +14,9 @@ class LeaderController < ApplicationController
   # 展示钻孔的所有班报的情况
   def holetourreport
   	@tourreports = Tourreport.findtourreports(params[:holeid])
+	@hole = Hole.find(params[:holeid])
 
-    tourreportxml= "<graph caption='钻孔态势分析' xAxisName='日期' yAxisName='深度' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
+    tourreportxml= "<graph caption='钻孔进度分析' xAxisName='日期' yAxisName='深度' showNames='1' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
 
 	@tourreports.each do |t|
       	tourreportxml << "<set name='#{t.tourdate.strftime("%Y-%m-%d")}' " + "value='" + t.currentdeep.to_s + "' />";
