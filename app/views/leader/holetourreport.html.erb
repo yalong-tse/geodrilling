@@ -38,30 +38,55 @@
 <%= content_for :inline_javascripts do %>
   <script type="text/javascript">
 
+  var arrdata = <%=@objs %>
   $(function(){
-	$.getJSON("<%=leader_holetours_path%>.json?holeid=<%=@hole.id%>",
-		function(result)
-		{
-			$('#chartcontainer').highcharts('StockChart', {
-			
-			rangeSelector : {
-				selected : 1,
-				inputEnabled: $('#chartcontainer').width() > 480
-			},
-
-			title : {
-				text : '钻孔生产情况'
-			},
-			
-			series : [{
-				name : '钻孔生产情况',
-				data : result,
-				tooltip: {
-					valueDecimals: 2
-				}
-			}]
-		});
-		})
+	$('#chartcontainer').highcharts('StockChart', {
+		rangeSelector : {
+			selected : 1,
+			inputEnabled: $('#chartcontainer').width() > 480
+		},
+		title : {
+			text : '钻孔生产情况'
+		},
+		xAxis: { 
+	   		dateTimeLabelFormats: {
+                            second: '%Y-%m-%d<br/>%H:%M:%S',
+                            minute: '%Y-%m-%d<br/>%H:%M',
+                            hour: '%Y-%m-%d<br/>%H:%M',
+                            day: '%Y<br/>%m-%d',
+                            week: '%Y<br/>%m-%d',
+                            month: '%Y-%m',
+                            year: '%Y'
+            },	
+            title :{  
+               text:"日期"  
+            },  
+            //type: 'date', //定义x轴上日期的显示格式  
+            labels: {  
+            formatter: function() {  
+                var vDate=new Date(this.value);  
+                //alert(this.value);  
+                return vDate.getFullYear()+"-"+(vDate.getMonth()+1)+"-"+vDate.getDate();  
+            },  
+            align: 'center'  
+        	}  
+        },  
+        yAxis : {    
+              title: {    
+                  text: '孔深'  //y轴上的标题  
+              }    
+         },    
+        tooltip: {  
+            xDateFormat: '%Y-%m-%d, %A'//鼠标移动到趋势线上时显示的日期格式  
+        },  
+		series : [{
+			name : '钻孔生产情况',
+			data : arrdata,
+			tooltip: {
+				valueDecimals: 2
+		}
+		}]
+	});
   });
 
   </script>

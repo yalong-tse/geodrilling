@@ -15,15 +15,22 @@ class LeaderController < ApplicationController
   def holetourreport
   	@tourreports = Tourreport.findtourreports(params[:holeid])
 	@hole = Hole.find(params[:holeid])
+	
+	@objs = "[" 
 
     tourreportxml= "<graph caption='钻孔进度分析' xAxisName='日期' yAxisName='深度' showNames='0' decimalPrecision='0' formatNumberScale='0' BaseFontSize = '12'>"
 
 	@tourreports.each do |t|
       	tourreportxml << "<set name='#{t.tourdate.strftime("%Y-%m-%d")}' " + "value='" + t.currentdeep.to_s + "' />";
+		@objs << "['#{t.tourdate.strftime("%Y-%m-%d")}',#{t.currentdeep}],"
 	end
 
+	@objs = @objs.chop
+	@objs << "]"
+	@objs = @objs.html_safe
 	tourreportxml << "</graph>";
 	@tourreportxml = tourreportxml.html_safe
+
 
     respond_to do |format|
       format.html
@@ -32,10 +39,11 @@ class LeaderController < ApplicationController
   end
 
 
+  # 此方法废弃不用
   def holetours
   begin
 		@tourreports = Tourreport.findtourreports(params[:holeid])
-		@objs = "{(/* AAPL historical OHLC data from the Google Finance API */" 
+		@objs = "holetour(/* AAPL historical OHLC data from the Google Finance API */" 
 		@objs << "["
 		if @tourreports
 			@tourreports.each do |t|
@@ -43,10 +51,10 @@ class LeaderController < ApplicationController
 			end
 		end
 		@objs = @objs.chop
-		@objs << "])}"
+		@objs << "])"
         respond_to do |format|
           format.html
-          format.json {render :json=> @objs}
+          format.json {render :json=> @objs.to_s}
         end
 	rescue
       respond_to do |format|
