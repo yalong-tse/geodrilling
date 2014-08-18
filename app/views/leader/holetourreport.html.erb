@@ -64,9 +64,11 @@
             //type: 'date', //定义x轴上日期的显示格式  
             labels: {  
             formatter: function() {  
-                var vDate=new Date(this.value);  
-                //alert(this.value);  
-                return vDate.getFullYear()+"-"+(vDate.getMonth()+1)+"-"+vDate.getDate();  
+                //var vDate=new Date(this.value);  
+				var vDate = arrdata[this.value][0];
+                //alert(vDate);  
+				return vDate;
+                //return vDate.getFullYear()+"-"+(vDate.getMonth()+1)+"-"+vDate.getDate();  
             },  
             align: 'center'  
         	}  

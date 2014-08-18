@@ -31,7 +31,6 @@ class LeaderController < ApplicationController
 	tourreportxml << "</graph>";
 	@tourreportxml = tourreportxml.html_safe
 
-
     respond_to do |format|
       format.html
       format.json {render :json=>@tourreports}
