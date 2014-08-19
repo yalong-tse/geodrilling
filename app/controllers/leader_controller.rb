@@ -22,7 +22,7 @@ class LeaderController < ApplicationController
 
 	@tourreports.each do |t|
       	tourreportxml << "<set name='#{t.tourdate.strftime("%Y-%m-%d")}' " + "value='" + t.currentdeep.to_s + "' />";
-		@objs << "['#{t.tourdate.strftime("%Y-%m-%d")}',#{t.currentdeep}],"
+		@objs << "[#{Time.parse(t.tourdate.strftime('%Y-%m-%d')).to_i}000,#{t.currentdeep}],"
 	end
 
 	@objs = @objs.chop

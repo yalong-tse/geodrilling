@@ -61,13 +61,14 @@
             title :{  
                text:"日期"  
             },  
-            //type: 'date', //定义x轴上日期的显示格式  
+            type: 'datetime', //定义x轴上日期的显示格式  
             labels: {  
             formatter: function() {  
-                //var vDate=new Date(this.value);  
-				var vDate = arrdata[this.value][0];
+                var vDate=new Date(this.value);  
+				//var vDate = arrdata[this.value][0];
                 //alert(vDate);  
-				return vDate;
+				var sDate = vDate.getFullYear()+"-" +(vDate.getMonth()+1) +"-" +vDate.getDate();
+				return sDate;
                 //return vDate.getFullYear()+"-"+(vDate.getMonth()+1)+"-"+vDate.getDate();  
             },  
             align: 'center'  
