@@ -14,6 +14,7 @@ class LeaderController < ApplicationController
 	conditions << Hole.send(:sanitize_sql,["minearea like ?" , "%#{params[:minearea]}%" ]) if(!params[:minearea].nil? && !params[:minearea].empty?)
 	conditions << Hole.send(:sanitize_sql,["outerflag=?" , "#{params[:outerflag]}"])  if(!params[:outerflag].nil? && params[:outerflag]!="2")
 
+	conditions << Hole.send(:sanitize_sql,['holes.status=0 or holes.status=1'])
 	#conditions << Contract.send(:sanitize_sql,["name=? ", "%#{params[:contractname]}%"]) if(!params[:contractname].nil? && !params[:contractname].empty?)
 	#conditions << Contract.send(:sanitize_sql,["contract.department_id=? ", "#{params[:departmentid]}" ]) if(!params[:departmentid].nil? && !params[:departmentid].empty?)
 
