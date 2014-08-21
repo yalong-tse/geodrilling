@@ -5,6 +5,7 @@ Geodrilling::Application.routes.draw do
   match "leader/holeproduct" , :via=>:post, :as=> :leader_holetours
 
   match "leader/holefinish" , :via=>:get , :as=> :leader_holefinish
+  match "leader/holefinish" , :via=>:post , :as=> :leader_holefinish
   match "leader/contract" , :via=>:get, :as=> :leader_contract
   match "leader/yearreport" , :via=>:get, :as => :leader_yearreport
   match "leader/lastyearleft" , :via=>:get, :as => :leader_lastyearleft
