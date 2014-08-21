@@ -4,7 +4,31 @@ class LeaderController < ApplicationController
   # 钻孔生产情况的界面，所有在生产的钻孔
   # 所有未完孔的钻孔情况
   def holeproduct
-    @holes = Hole.unclosed.paginate(:page=>params[:page])
+	conditions=[];
+#	[:holenumber, :minearea, :outerflag, :contract.name,  :department.id].each{
+#        |attr| conditions << Hole.send(:sanitize_sql, ["#{attr} LIKE ?", "%#{params[attr]}%"]) unless params[attr].blank? 
+#	}
+#	conditions = conditions.any? ? conditions.collect { |c| "(#{c})" }.join(' AND '):nil
+
+	conditions << Hole.send(:sanitize_sql,["holenumber like ?", "%#{params[:holenumber]}%"]) if (!params[:holenumber].nil? && !params[:holenumber].empty?)
+	conditions << Hole.send(:sanitize_sql,["minearea like ?" , "%#{params[:minearea]}%" ]) if(!params[:minearea].nil? && !params[:minearea].empty?)
+	conditions << Hole.send(:sanitize_sql,["outerflag=?" , "#{params[:outerflag]}"])  if(!params[:outerflag].nil? && params[:outerflag]!="2")
+
+	#conditions << Contract.send(:sanitize_sql,["name=? ", "%#{params[:contractname]}%"]) if(!params[:contractname].nil? && !params[:contractname].empty?)
+	#conditions << Contract.send(:sanitize_sql,["contract.department_id=? ", "#{params[:departmentid]}" ]) if(!params[:departmentid].nil? && !params[:departmentid].empty?)
+
+	conditions = conditions.any? ? conditions.collect { |c| "(#{c})" }.join(' AND '):nil
+
+	
+	if(!params[:contractname].nil? && !params[:contractname].empty?)
+		@holes = Hole.where(conditions).joins(:contract).where("contracts.name like ?", "%#{params[:contractname]}%").paginate(:page=>params[:page],:per_page=>10)
+	elsif(!params[:departmentid].nil? && !params[:departmentid].empty?)
+		@holes = Hole.where(conditions).joins(:contract).where("contracts.department_id=?" , params[:departmentid]).paginate(:page=>params[:page],:per_page=>10)
+	else
+		@holes = Hole.where(conditions).paginate(:page=>params[:page],:per_page=>10)
+	end
+
+    #@holes = Hole.unclosed.paginate(:page=>params[:page])
     respond_to do |format|
       format.html
       format.json {render :json=>@holes}

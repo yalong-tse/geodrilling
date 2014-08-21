@@ -2,6 +2,8 @@ Geodrilling::Application.routes.draw do
   match "holedesigner/view" , :via=> :get , :as=> :holedesigner_view
 
   match "leader/holeproduct" , :via=> :get , :as => :leader_holeproduct
+  match "leader/holeproduct" , :via=>:post, :as=> :leader_holetours
+
   match "leader/holefinish" , :via=>:get , :as=> :leader_holefinish
   match "leader/contract" , :via=>:get, :as=> :leader_contract
   match "leader/yearreport" , :via=>:get, :as => :leader_yearreport
